@@ -31,7 +31,7 @@ interface SpaceObject {
 interface Props {
   as: string;
   space: SpaceObject | spaceOptions;
-  isRecursive: boolean;
+  isRecursive?: boolean;
   [key: string]: any;
 }
 
@@ -41,20 +41,21 @@ const {
   isRecursive,
   class: classList,
   ...rest
-} = Astro.props;
+} = Astro.props as Props;
+
+const responsiveSpace =
+  typeof space === "object"
+    ? {
+        ["default:mbs-" + space.default]: space.default,
+        ["tablet:mbs-" + space.tablet]: space.tablet,
+        ["laptop:mbs-" + space.laptop]: space.laptop,
+        ["desktop:mbs-" + space.desktop]: space.desktop,
+      }
+    : { ["mbs-" + space]: space };
 ---
 
 <Element
-  class:list={[
-    "stack",
-    classList,
-    typeof space === "object" ? "" : { ["mbs-" + space]: space },
-    { ["default:mbs-" + space?.default]: space?.default },
-    { ["tablet:mbs-" + space?.tablet]: space?.tablet },
-    { ["laptop:mbs-" + space?.laptop]: space?.laptop },
-    { ["desktop:mbs-" + space?.desktop]: space?.desktop },
-    { recursive: isRecursive },
-  ]}
+  class:list={["stack", classList, responsiveSpace, { recursive: isRecursive }]}
   {...rest}
 >
   <slot />

@@ -1,5 +1,5 @@
-/*
-* UTILITIES 
+/* 
+* TEXT 
 */
 
 /*
@@ -13,6 +13,17 @@
 @custom-media --laptop-and-up (width >= 68.75em);
 @custom-media --desktop-and-up (width >= 93.75em);
 
-/* Justify */
+.text-center {
+  text-align: center;
+}
 
-/* Align */
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+}
+
+@media (--laptop-and-up) {
+}
+
+@media (--desktop-and-up) {
+}

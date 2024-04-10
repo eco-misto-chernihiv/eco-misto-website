@@ -7,8 +7,13 @@
   --body-line-height: 1.5;
   --heading-line-height: 1.2;
 
-  --font-family-sans-serif: sans-serif;
-  --font-family-serif: serif;
+  /* Base font stacks */
+
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
 
   /*
   * Major second: 1.125

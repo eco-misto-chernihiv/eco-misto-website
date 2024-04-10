@@ -3,4 +3,17 @@
 */
 
 :root {
+  /* Brand colors */
+  --color-primary: hsl(168 96% 51% / 0.8);
+  --color-secondary: hsl(168 96% 51% / 0.8);
+  --color-accent: hsl(168 96% 51% / 0.8);
+
+  /* Neutral colors */
+  --color-black: hsl(0 0% 0%);
+  --color-white: hsl(255 100% 100%);
+
+  --color-text: hsl(168 96% 51% / 0.8);
+  --color-heading: hsl(168 96% 51% / 0.8);
+  --color-link: hsl(168 96% 51% / 0.8);
+  --color-background: hsl(168 96% 51% / 0.8);
 }
