@@ -1,29 +1,27 @@
 ---
-import "../styles/typography.css";
-import "../styles/spacing.css";
-import "../styles/animations.css";
+// Components
+import Head from "./Head.astro";
+
+// Styles
+import "../styles/01-typography.css";
+import "../styles/02-spacing.css";
+import "../styles/03-colors.css";
+import "../styles/04-animations.css";
 import "../styles/global.css";
 import "../styles/utilities.css";
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
+  <Head {...Astro.props} />
   <body>
     <div id="root">
       <slot />
     </div>
+    <style>
+      #root {
+        /** TEMP  */
+        padding-block: 100px;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  #root {
-    /** TEMP  */
-    padding-block: 100px;
-  }
-</style>
