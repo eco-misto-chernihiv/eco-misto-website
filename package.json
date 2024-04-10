@@ -1,0 +1,33 @@
+{
+  "name": "eco-misto",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/react": "^3.2.0",
+    "@types/react": "^18.2.60",
+    "@types/react-dom": "^18.2.19",
+    "astro": "^4.5.18",
+    "astro-icon": "^1.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.5",
+    "postcss-custom-media": "^10.0.3",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.4.0"
+  }
+}

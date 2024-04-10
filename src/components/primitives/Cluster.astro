@@ -1,0 +1,80 @@
+---
+type gapOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type justifyOptions =
+  | "normal"
+  | "start"
+  | "end"
+  | "center"
+  | "centered"
+  | "between"
+  | "around"
+  | "evenly"
+  | "stretch";
+
+type alignOptions = "start" | "end" | "center" | "baseline" | "stretch";
+
+interface PropObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
+interface Props {
+  as: string;
+  gap?: PropObject | gapOptions;
+  justify?: PropObject | justifyOptions;
+  align?: PropObject | alignOptions;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  as: Element,
+  gap = "space-2",
+  justify = "start",
+  alignItems = "stretch",
+  class: classList,
+  ...rest
+} = Astro.props;
+---
+
+<Element
+  class:list={[
+    "cluster",
+    classList,
+    typeof gap === "object" ? "" : { ["gap-" + gap]: gap },
+    typeof justify === "object" ? "" : { ["justify-" + justify]: justify },
+    typeof alignItems === "object"
+      ? ""
+      : { ["items-" + alignItems]: alignItems },
+  ]}
+  {...rest}
+>
+  <slot />
+</Element>
+
+<style is:global>
+  /* 
+  * TODO: Test fluid gap
+   */
+
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cluster.justify-centered > :first-child,
+  .cluster.justify-centered > :last-child {
+    flex: 1;
+  }
+</style>

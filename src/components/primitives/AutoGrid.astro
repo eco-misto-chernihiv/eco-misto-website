@@ -1,0 +1,44 @@
+---
+type gapOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  gap?: gapOptions;
+  class?: string;
+  minItemWidth?: string;
+  [key: string]: any;
+};
+const {
+  gap = "space-4",
+  class: classList,
+  minItemWidth = "250px",
+  ...rest
+} = Astro.props;
+---
+
+<div class:list={["auto-grid", { ["gap-" + gap]: gap }, classList]} {...rest}>
+  <slot />
+</div>
+
+<style define:vars={{ minItemWidth }}>
+  .auto-grid {
+    display: grid;
+  }
+
+  /* Auto columns if min() is supported */
+  @supports (width: min(250px, 100%)) {
+    .auto-grid {
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(var(--minItemWidth), 100%), 1fr)
+      );
+    }
+  }
+</style>

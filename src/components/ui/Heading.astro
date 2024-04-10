@@ -1,0 +1,73 @@
+---
+// import { type HTMLAttributes } from "astro/types";
+
+type tagOptions = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+const sizeOptions = {
+  h1: "h1",
+  h2: "h2",
+  h3: "h3",
+  h4: "h4",
+  h5: "h5",
+  h6: "h6",
+} as const;
+
+type Props = {
+  tagName: tagOptions;
+  size: keyof typeof sizeOptions;
+  isBolded?: boolean;
+  class?: string;
+  rest?: any;
+};
+
+const {
+  tagName,
+  size,
+  class: classList,
+  isBolded = false,
+  ...rest
+} = Astro.props;
+
+// Assigning tagName to a capital Tag (so Astro knows it's a component)
+const Tag = tagName;
+---
+
+<Tag
+  class:list={["heading", sizeOptions[size], { bold: isBolded }, classList]}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .heading {
+    line-height: var(--heading-line-height);
+    font-weight: var(--font-regular);
+  }
+
+  .bold {
+    font-weight: var(--font-bold);
+  }
+
+  .h1 {
+    font-size: var(--heading-7);
+  }
+  .h2 {
+    font-size: var(--heading-6);
+  }
+  .h3 {
+    font-size: var(--heading-5);
+  }
+  .h4 {
+    font-size: var(--heading-4);
+  }
+  .h5 {
+    font-size: var(--heading-3);
+  }
+  .h5 {
+    font-size: var(--heading-2);
+  }
+  .h6 {
+    font-size: var(--heading-1);
+  }
+</style>

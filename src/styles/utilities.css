@@ -1,0 +1,260 @@
+/*
+* UTILITIES 
+*/
+
+/*
+  0-550px — default
+  550-1100px - 34.37rem
+  1100-1500px — 68.75rem
+ 1500px — 93.75em
+*/
+
+@custom-media --tablet-and-up (width >= 34.37em);
+@custom-media --laptop-and-up (width >= 68.75em);
+@custom-media --desktop-and-up (width >= 93.75em);
+
+/* Text */
+
+.text-center {
+  text-align: center;
+}
+
+/* Gap */
+.gap-space-0 {
+  gap: var(--space-0-fixed);
+}
+
+.gap-space-1 {
+  gap: var(--space-1-fixed);
+}
+
+.gap-space-2 {
+  gap: var(--space-2-fixed);
+}
+
+.gap-space-3 {
+  gap: var(--space-3-fixed);
+}
+
+.gap-space-4 {
+  gap: var(--space-4-fixed);
+}
+
+.gap-space-5 {
+  gap: var(--space-5-fixed);
+}
+
+.gap-space-6 {
+  gap: var(--space-6-fixed);
+}
+
+.gap-space-7 {
+  gap: var(--space-7-fixed);
+}
+
+.gap-space-8 {
+  gap: var(--space-8-fixed);
+}
+
+.gap-space-9 {
+  gap: var(--space-9-fixed);
+}
+
+.gap-space-10 {
+  gap: var(--space-10-fixed);
+}
+
+.gap-space-11 {
+  gap: var(--space-11-fixed);
+}
+
+.gap-space-12 {
+  gap: var(--space-12-fixed);
+}
+
+.gap-space-13 {
+  gap: var(--space-13-fixed);
+}
+
+.gap-space-14 {
+  gap: var(--space-14-fixed);
+}
+
+.gap-space-15 {
+  gap: var(--space-15-fixed);
+}
+
+.gap-space-16 {
+  gap: var(--space-16-fixed);
+}
+
+.gap-space-17 {
+  gap: var(--space-17-fixed);
+}
+
+.gap-space-18 {
+  gap: var(--space-18-fixed);
+}
+
+.gap-space-19 {
+  gap: var(--space-19-fixed);
+}
+
+/* Padding */
+
+.pi-space-0 {
+  padding-inline-start: var(--space-0-fixed);
+  padding-inline-end: var(--space-0-fixed);
+}
+
+.pi-space-1 {
+  padding-inline-start: var(--space-1-fixed);
+  padding-inline-end: var(--space-1-fixed);
+}
+
+.pi-space-2 {
+  padding-inline-start: var(--space-2-fixed);
+  padding-inline-end: var(--space-2-fixed);
+}
+
+.pi-space-3 {
+  padding-inline-start: var(--space-3-fixed);
+  padding-inline-end: var(--space-3-fixed);
+}
+
+.pi-space-4 {
+  padding-inline-start: var(--space-4-fixed);
+  padding-inline-end: var(--space-4-fixed);
+}
+
+.pi-space-5 {
+  padding-inline-start: var(--space-5-fixed);
+  padding-inline-end: var(--space-5-fixed);
+}
+
+.pi-space-6 {
+  padding-inline-start: var(--space-6-fixed);
+  padding-inline-end: var(--space-6-fixed);
+}
+
+.pi-space-7 {
+  padding-inline-start: var(--space-7-fixed);
+  padding-inline-end: var(--space-7-fixed);
+}
+
+.pi-space-8 {
+  padding-inline-start: var(--space-8-fixed);
+  padding-inline-end: var(--space-8-fixed);
+}
+
+.pi-space-9 {
+  padding-inline-start: var(--space-9-fixed);
+  padding-inline-end: var(--space-9-fixed);
+}
+
+.pi-space-10 {
+  padding-inline-start: var(--space-10-fixed);
+  padding-inline-end: var(--space-10-fixed);
+}
+
+.pi-space-11 {
+  padding-inline-start: var(--space-11-fixed);
+  padding-inline-end: var(--space-11-fixed);
+}
+
+.pi-space-12 {
+  padding-inline-start: var(--space-12-fixed);
+  padding-inline-end: var(--space-12-fixed);
+}
+
+.pi-space-13 {
+  padding-inline-start: var(--space-13-fixed);
+  padding-inline-end: var(--space-13-fixed);
+}
+
+.pi-space-14 {
+  padding-inline-start: var(--space-14-fixed);
+  padding-inline-end: var(--space-14-fixed);
+}
+
+.pi-space-15 {
+  padding-inline-start: var(--space-15-fixed);
+  padding-inline-end: var(--space-15-fixed);
+}
+
+.pi-space-16 {
+  padding-inline-start: var(--space-16-fixed);
+  padding-inline-end: var(--space-16-fixed);
+}
+
+.pi-space-17 {
+  padding-inline-start: var(--space-17-fixed);
+  padding-inline-end: var(--space-17-fixed);
+}
+
+.pi-space-18 {
+  padding-inline-start: var(--space-18-fixed);
+  padding-inline-end: var(--space-18-fixed);
+}
+
+.pi-space-19 {
+  padding-inline-start: var(--space-19-fixed);
+  padding-inline-end: var(--space-19-fixed);
+}
+
+/* Justify */
+
+.justify-normal {
+  justify-content: normal;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+.justify-stretch {
+  justify-content: stretch;
+}
+
+/* Align */
+
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.items-stretch {
+  align-items: stretch;
+}
+
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+}
+
+@media (--laptop-and-up) {
+}
+
+@media (--desktop-and-up) {
+}

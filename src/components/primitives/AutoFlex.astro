@@ -1,0 +1,56 @@
+---
+type gapOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  gap?: gapOptions;
+  class?: string;
+  minItemWidth?: string;
+  noStretch?: boolean;
+  [key: string]: any;
+};
+
+const {
+  gap = "space-4",
+  class: classList,
+  minItemWidth = "0px",
+  noStretch = false,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "auto-flex",
+    { ["gap-" + gap]: gap },
+    { "no-stretch": noStretch },
+    classList,
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style is:global define:vars={{ minItemWidth }}>
+  .auto-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .auto-flex > * {
+    flex-grow: 1;
+    flex-basis: var(--minItemWidth);
+  }
+
+  .auto-flex.no-stretch > * {
+    flex-grow: 0;
+  }
+</style>

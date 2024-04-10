@@ -1,0 +1,22 @@
+---
+type Props = {
+  href: string;
+  rel?: string;
+  isExternal?: boolean;
+  class?: string;
+  [key: string]: any;
+};
+
+const { href, rel = "", isExternal, class: classList, ...rest } = Astro.props;
+---
+
+<a
+  href={href}
+  rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
+  class:list={["link", classList]}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style></style>

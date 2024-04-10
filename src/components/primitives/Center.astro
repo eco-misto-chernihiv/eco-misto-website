@@ -1,0 +1,56 @@
+---
+type gutterOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  gutter?: gutterOptions;
+  maxWidth: string;
+  class?: string;
+  andText?: boolean;
+  intrinsic?: boolean;
+  [key: string]: any;
+};
+
+const {
+  gutter = "space-0",
+  maxWidth,
+  class: classList,
+  andText = false,
+  intrinsic = false,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "center",
+    classList,
+    { "text-center": andText },
+    { intrinsic: intrinsic },
+    { ["pi-" + gutter]: gutter },
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style define:vars={{ maxWidth }}>
+  .center {
+    box-sizing: content-box;
+    max-inline-size: var(--maxWidth, 100%);
+    margin-inline: auto;
+  }
+
+  .center.intrinsic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// Astro tools
+
+// Layouts
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Components
+import Center from "../components/primitives/Center.astro";
+import Heading from "../components/ui/Heading.astro";
+import Link from "../components/ui/Link.astro";
+---
+
+<BaseLayout>
+  <Center maxWidth="60rem" gutter="space-4">
+    <Heading tagName="h1" size="h1">Index</Heading>
+    <Link href="typography" class="size">Typography System</Link>
+  </Center>
+</BaseLayout>
+
+<style>
+  .size {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: blueviolet;
+  }
+</style>

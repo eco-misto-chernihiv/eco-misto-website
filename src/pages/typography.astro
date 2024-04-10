@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Heading from "../components/ui/Heading.astro";
+import Text from "../components/ui/Text.astro";
+import Stack from "../components/primitives/Stack.astro";
+import Center from "../components/primitives/Center.astro";
+import Link from "../components/primitives/ui/Link.astro";
+---
+
+<BaseLayout>
+  <Center maxWidth="60ch" gutter="space-4">
+    <Stack as="div" space="space-7">
+      <Stack as="div" space="space-2">
+        <Heading tagName="h1" size="h1">Heading h1</Heading>
+        <Heading tagName="h2" size="h2">Heading h2</Heading>
+        <Heading tagName="h3" size="h3">Heading h3</Heading>
+        <Heading tagName="h4" size="h4">Heading h4</Heading>
+        <Heading tagName="h5" size="h5">Heading h5</Heading>
+        <Heading tagName="h6" size="h6" isBolded>Heading h6</Heading>
+      </Stack>
+
+      <Stack as="div" space="space-6">
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY XXX-LARGE</Text>
+          <Text tagName="p" size="xxx-large">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY XX-LARGE</Text>
+          <Text tagName="p" size="xx-large">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY X-LARGE</Text>
+          <Text tagName="p" size="x-large">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY LARGE</Text>
+          <Text tagName="p" size="large">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY MEDIUM</Text>
+          <Text tagName="p" size="medium">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY SMALL</Text>
+          <Text tagName="p" size="small">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+
+        <Stack as="div" space="space-2">
+          <Text tagName="span" size="small" class="size">BODY X-SMALL</Text>
+          <Text tagName="p" size="x-small">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+            eligendi doloribus! Ab dolor similique magni commodi voluptatem
+            incidunt velit assumenda? Eum quia assumenda soluta est asperiores
+            iure, ducimus enim magni?
+          </Text>
+        </Stack>
+      </Stack>
+    </Stack>
+  </Center>
+</BaseLayout>
+
+<style>
+  .size {
+    display: block;
+    /* margin-top: 24px; */
+    /* margin-bottom: 8px; */
+    color: blueviolet;
+  }
+</style>
