@@ -1,0 +1,31 @@
+/*
+* GENERIC
+*/
+@import "@styles/01-generic/reset.css";
+@import "@styles/01-generic/global.css";
+@import "@styles/01-generic/fonts.css";
+
+/*
+* SETTINGS
+*/
+@import "@styles/02-settings/typography.css";
+@import "@styles/02-settings/spacing.css";
+@import "@styles/02-settings/colors.css";
+@import "@styles/02-settings/animations.css";
+@import "@styles/02-settings/shadows.css";
+
+/*
+* UTILITIES
+*/
+@import "@styles/03-utilities/align-items.css";
+@import "@styles/03-utilities/breakpoints.css";
+@import "@styles/03-utilities/gap.css";
+@import "@styles/03-utilities/column-gap.css";
+@import "@styles/03-utilities/grid.css";
+@import "@styles/03-utilities/height.css";
+@import "@styles/03-utilities/justify-content.css";
+@import "@styles/03-utilities/padding.css";
+@import "@styles/03-utilities/row-gap.css";
+@import "@styles/03-utilities/text.css";
+@import "@styles/03-utilities/visually-hidden.css";
+@import "@styles/03-utilities/slide-and-reveal.css";

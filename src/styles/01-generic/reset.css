@@ -62,11 +62,11 @@ body {
   5. Improve text rendering
 */
 body {
-  position: relative;
   font-size: var(--body-base-text);
   line-height: var(--body-line-height);
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-sans-serif);
+
   /* overflow-y: scroll; */
 }
 

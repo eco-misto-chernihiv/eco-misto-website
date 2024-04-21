@@ -1,5 +1,5 @@
 ---
-type gapOptions =
+type spaceOptions =
   | "space-0"
   | "space-1"
   | "space-2"
@@ -10,7 +10,7 @@ type gapOptions =
   | "space-7";
 
 type Props = {
-  gap?: gapOptions;
+  gap?: spaceOptions;
   class?: string;
   minItemWidth?: string;
   noStretch?: boolean;
@@ -18,7 +18,7 @@ type Props = {
 };
 
 const {
-  gap = "space-4",
+  space = "space-4",
   class: classList,
   minItemWidth = "0px",
   noStretch = false,
@@ -29,7 +29,7 @@ const {
 <div
   class:list={[
     "auto-flex",
-    { ["gap-" + gap]: gap },
+    { ["gap-" + space]: space },
     { "no-stretch": noStretch },
     classList,
   ]}

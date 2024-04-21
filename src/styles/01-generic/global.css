@@ -1,0 +1,11 @@
+@import "../03-utilities/breakpoints.css";
+
+:root {
+ 
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+

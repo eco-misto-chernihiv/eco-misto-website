@@ -2,16 +2,7 @@
 * PADDING 
 */
 
-/*
-  0-550px — default
-  550-1100px - 34.37rem
-  1100-1500px — 68.75rem
- 1500px — 93.75em
-*/
-
-@custom-media --tablet-and-up (width >= 34.37em);
-@custom-media --laptop-and-up (width >= 68.75em);
-@custom-media --desktop-and-up (width >= 93.75em);
+@import "./breakpoints.css";
 
 .pi-space-0 {
   padding-inline-start: var(--space-0-fixed);

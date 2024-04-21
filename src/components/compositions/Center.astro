@@ -1,5 +1,5 @@
 ---
-type gutterOptions =
+type spaceOptions =
   | "space-0"
   | "space-1"
   | "space-2"
@@ -10,8 +10,8 @@ type gutterOptions =
   | "space-7";
 
 type Props = {
-  gutter?: gutterOptions;
-  maxWidth: string;
+  space?: spaceOptions;
+  maxWidth?: string;
   class?: string;
   andText?: boolean;
   intrinsic?: boolean;
@@ -19,7 +19,7 @@ type Props = {
 };
 
 const {
-  gutter = "space-0",
+  space = "space-0",
   maxWidth,
   class: classList,
   andText = false,
@@ -34,7 +34,7 @@ const {
     classList,
     { "text-center": andText },
     { intrinsic: intrinsic },
-    { ["pi-" + gutter]: gutter },
+    { ["pi-" + space]: space },
   ]}
   {...rest}
 >

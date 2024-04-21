@@ -1,5 +1,5 @@
 ---
-type gapOptions =
+type spaceOptions =
   | "space-0"
   | "space-1"
   | "space-2"
@@ -7,23 +7,27 @@ type gapOptions =
   | "space-4"
   | "space-5"
   | "space-6"
-  | "space-7";
+  | "space-7"
+  | "space-8";
 
 type Props = {
-  gap?: gapOptions;
+  space?: spaceOptions;
   class?: string;
   minItemWidth?: string;
   [key: string]: any;
 };
 const {
-  gap = "space-4",
+  space = "space-4",
   class: classList,
   minItemWidth = "250px",
   ...rest
 } = Astro.props;
 ---
 
-<div class:list={["auto-grid", { ["gap-" + gap]: gap }, classList]} {...rest}>
+<div
+  class:list={["auto-grid", { ["gap-" + space]: space }, classList]}
+  {...rest}
+>
   <slot />
 </div>
 

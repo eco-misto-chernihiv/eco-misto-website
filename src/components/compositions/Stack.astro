@@ -1,4 +1,6 @@
 ---
+import { getBreakpoins } from "@/lib/helpers";
+
 type spaceOptions =
   | "space-0"
   | "space-1"
@@ -29,37 +31,31 @@ interface SpaceObject {
 }
 
 interface Props {
-  as: string;
+  tagName?: "section" | "div" | "ul";
   space: SpaceObject | spaceOptions;
   isRecursive?: boolean;
   [key: string]: any;
 }
 
 const {
-  as: Element,
+  tagName = "div",
   space,
   isRecursive,
   class: classList,
   ...rest
 } = Astro.props as Props;
 
-const responsiveSpace =
-  typeof space === "object"
-    ? {
-        ["default:mbs-" + space.default]: space.default,
-        ["tablet:mbs-" + space.tablet]: space.tablet,
-        ["laptop:mbs-" + space.laptop]: space.laptop,
-        ["desktop:mbs-" + space.desktop]: space.desktop,
-      }
-    : { ["mbs-" + space]: space };
+const Tag = tagName;
+
+const responsiveSpace = getBreakpoins("mbs", space);
 ---
 
-<Element
+<Tag
   class:list={["stack", classList, responsiveSpace, { recursive: isRecursive }]}
   {...rest}
 >
   <slot />
-</Element>
+</Tag>
 
 <style is:global>
   /*
@@ -107,6 +103,12 @@ const responsiveSpace =
     margin-block-start: var(--space-3-fixed);
   }
 
+  .stack.mbs-space-4 > * + *,
+  .stack.default\:mbs-space-4 > * + *,
+  .stack.recursive.mbs-space-4 * + * {
+    margin-block-start: var(--space-4-fixed);
+  }
+
   .stack.mbs-space-5 > * + *,
   .stack.default\:mbs-space-5 > * + *,
   .stack.recursive.mbs-space-5 * + * {
@@ -143,6 +145,36 @@ const responsiveSpace =
     margin-block-start: var(--space-10-fixed);
   }
 
+  .stack.mbs-space-11 > * + *,
+  .stack.default\:mbs-space-11 > * + *,
+  .stack.recursive.mbs-space-11 * + * {
+    margin-block-start: var(--space-11-fixed);
+  }
+
+  .stack.mbs-space-12 > * + *,
+  .stack.default\:mbs-space-12 > * + *,
+  .stack.recursive.mbs-space-12 * + * {
+    margin-block-start: var(--space-12-fixed);
+  }
+
+  .stack.mbs-space-13 > * + *,
+  .stack.default\:mbs-space-13 > * + *,
+  .stack.recursive.mbs-space-13 * + * {
+    margin-block-start: var(--space-13-fixed);
+  }
+
+  .stack.mbs-space-14 > * + *,
+  .stack.default\:mbs-space-14 > * + *,
+  .stack.recursive.mbs-space-14 * + * {
+    margin-block-start: var(--space-14-fixed);
+  }
+
+  .stack.mbs-space-15 > * + *,
+  .stack.default\:mbs-space-15 > * + *,
+  .stack.recursive.mbs-space-15 * + * {
+    margin-block-start: var(--space-15-fixed);
+  }
+
   /* Breakpoints */
 
   @media (--tablet-and-up) {
@@ -159,6 +191,11 @@ const responsiveSpace =
     .stack.tablet\:mbs-space-3 > * + *,
     .stack.recursive.tablet\:mbs-space-3 * + * {
       margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.tablet\:mbs-space-4 > * + *,
+    .stack.recursive.tablet\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
     }
 
     .stack.tablet\:mbs-space-5 > * + *,
@@ -190,6 +227,31 @@ const responsiveSpace =
     .stack.recursive.tablet\:mbs-space-10 * + * {
       margin-block-start: var(--space-10-fixed);
     }
+
+    .stack.tablet\:mbs-space-11 > * + *,
+    .stack.recursive.tablet\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.tablet\:mbs-space-12 > * + *,
+    .stack.recursive.tablet\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.tablet\:mbs-space-13 > * + *,
+    .stack.recursive.tablet\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.tablet\:mbs-space-14 > * + *,
+    .stack.recursive.tablet\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.tablet\:mbs-space-15 > * + *,
+    .stack.recursive.tablet\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
+    }
   }
 
   @media (--laptop-and-up) {
@@ -206,6 +268,11 @@ const responsiveSpace =
     .stack.laptop\:mbs-space-3 > * + *,
     .stack.recursive.laptop\:mbs-space-3 * + * {
       margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.laptop\:mbs-space-4 > * + *,
+    .stack.recursive.laptop\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
     }
 
     .stack.laptop\:mbs-space-5 > * + *,
@@ -237,6 +304,31 @@ const responsiveSpace =
     .stack.recursive.laptop\:mbs-space-10 * + * {
       margin-block-start: var(--space-10-fixed);
     }
+
+    .stack.laptop\:mbs-space-11 > * + *,
+    .stack.recursive.laptop\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.laptop\:mbs-space-12 > * + *,
+    .stack.recursive.laptop\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.laptop\:mbs-space-13 > * + *,
+    .stack.recursive.laptop\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.laptop\:mbs-space-14 > * + *,
+    .stack.recursive.laptop\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.laptop\:mbs-space-15 > * + *,
+    .stack.recursive.laptop\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
+    }
   }
 
   @media (--desktop-and-up) {
@@ -253,6 +345,11 @@ const responsiveSpace =
     .stack.desktop\:mbs-space-3 > * + *,
     .stack.recursive.desktop\:mbs-space-3 * + * {
       margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.desktop\:mbs-space-4 > * + *,
+    .stack.recursive.desktop\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
     }
 
     .stack.desktop\:mbs-space-5 > * + *,
@@ -283,6 +380,31 @@ const responsiveSpace =
     .stack.desktop\:mbs-space-10 > * + *,
     .stack.recursive.desktop\:mbs-space-10 * + * {
       margin-block-start: var(--space-10-fixed);
+    }
+
+    .stack.desktop\:mbs-space-11 > * + *,
+    .stack.recursive.desktop\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.desktop\:mbs-space-12 > * + *,
+    .stack.recursive.desktop\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.desktop\:mbs-space-13 > * + *,
+    .stack.recursive.desktop\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.desktop\:mbs-space-14 > * + *,
+    .stack.recursive.desktop\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.desktop\:mbs-space-15 > * + *,
+    .stack.recursive.desktop\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
     }
   }
 </style>

@@ -1,0 +1,20 @@
+/* 
+* TEXT 
+*/
+
+@import "./breakpoints.css";
+
+.text-center {
+  text-align: center;
+}
+
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+}
+
+@media (--laptop-and-up) {
+}
+
+@media (--desktop-and-up) {
+}

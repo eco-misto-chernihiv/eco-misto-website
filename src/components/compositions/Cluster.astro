@@ -1,5 +1,5 @@
 ---
-type gapOptions =
+type spaceOptions =
   | "space-0"
   | "space-1"
   | "space-2"
@@ -14,7 +14,6 @@ type justifyOptions =
   | "start"
   | "end"
   | "center"
-  | "centered"
   | "between"
   | "around"
   | "evenly"
@@ -30,38 +29,41 @@ interface PropObject {
 }
 
 interface Props {
-  as: string;
-  gap?: PropObject | gapOptions;
+  tagName?: "section" | "div" | "ul";
+  space?: PropObject | spaceOptions;
   justify?: PropObject | justifyOptions;
-  align?: PropObject | alignOptions;
+  alignItems?: PropObject | alignOptions;
   class?: string;
+  isCenterMiddle?: boolean;
   [key: string]: any;
 }
 
 const {
-  as: Element,
-  gap = "space-2",
+  tagName = "div",
+  space = "space-4",
   justify = "start",
   alignItems = "stretch",
+  isCenterMiddle = false,
   class: classList,
   ...rest
 } = Astro.props as Props;
+
+const Tag = tagName;
 ---
 
-<Element
+<Tag
   class:list={[
     "cluster",
     classList,
-    typeof gap === "object" ? "" : { ["gap-" + gap]: gap },
-    typeof justify === "object" ? "" : { ["justify-" + justify]: justify },
-    typeof alignItems === "object"
-      ? ""
-      : { ["items-" + alignItems]: alignItems },
+    { ["gap-" + space]: space },
+    { ["justify-" + justify]: justify },
+    { ["items-" + alignItems]: alignItems },
+    { "center-middle": isCenterMiddle },
   ]}
   {...rest}
 >
   <slot />
-</Element>
+</Tag>
 
 <style is:global>
   /* 
@@ -73,8 +75,8 @@ const {
     flex-wrap: wrap;
   }
 
-  .cluster.justify-centered > :first-child,
-  .cluster.justify-centered > :last-child {
+  .cluster.center-middle > :first-child,
+  .cluster.center-middle > :last-child {
     flex: 1;
   }
 </style>

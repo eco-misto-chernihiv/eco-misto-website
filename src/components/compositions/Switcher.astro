@@ -1,5 +1,5 @@
 ---
-type gapOptions =
+type spaceOptions =
   | "space-0"
   | "space-1"
   | "space-2"
@@ -10,16 +10,16 @@ type gapOptions =
   | "space-7";
 
 type Props = {
-  gap?: gapOptions;
+  gap?: spaceOptions;
   classes?: string;
   threshold: string;
   [key: string]: any;
 };
 
-const { gap = "space-1", classes, threshold, ...rest } = Astro.props;
+const { space = "space-1", classes, threshold, ...rest } = Astro.props;
 ---
 
-<div class:list={["switcher", classes, { ["gap-" + gap]: gap }]} {...rest}>
+<div class:list={["switcher", classes, { ["gap-" + space]: space }]} {...rest}>
   <slot />
 </div>
 
