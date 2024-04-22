@@ -2,11 +2,61 @@
 * FONTS 
 */
 
-/* cormorant-regular - latin */
-/* @font-face {
-    font-display: fallback; 
-    font-family: 'Cormorant';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/cormorant-v21-latin-regular.woff2') format('woff2'); 
-  } */
+/* Ermilov Bold */
+
+@font-face {
+  font-display: fallback;
+  font-family: "Ermilov Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Ermilov Bold"), url("/fonts/Ermilov-Bold.woff") format("woff");
+}
+
+/* Ermilov Fallback */
+
+@font-face {
+  font-family: "Adjusted Arial Black Fallback";
+  src: local(Arial Black);
+  size-adjust: 93%;
+  ascent-override: 75%;
+  descent-override: 21%;
+  line-gap-override: normal;
+}
+
+/* Mariupol Regular */
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Mariupol Regular"),
+    url("/fonts/Mariupol-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Mariupol Medium"),
+    url("/fonts/Mariupol-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Mariupol Bold"), url("/fonts/Mariupol-Bold.woff") format("woff");
+}
+
+/* Mariupol Fallback */
+@font-face {
+  font-family: "Adjusted Arial Fallback";
+  src: local(Arial);
+  size-adjust: 96%;
+  ascent-override: 79%;
+  descent-override: 17%;
+  line-gap-override: normal;
+}

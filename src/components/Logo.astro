@@ -1,0 +1,22 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Components
+import Link from "./ui/Link.astro";
+
+// Assets
+import logo from "../assets/ecomisto-logo.svg";
+---
+
+<Link href="/" class="logo">
+  <Image src={logo} format="svg" alt="Ecomisto" />
+</Link>
+
+<style>
+  .logo img {
+    /* TODO: Make responsive using clamp */
+    width: 160px;
+    height: auto;
+  }
+</style>

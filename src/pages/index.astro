@@ -2,6 +2,7 @@
 // Astro tools
 
 // Layouts
+import About from "@/components/home/About.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 // Components
@@ -11,10 +12,7 @@ import Link from "@ui/Link.astro";
 ---
 
 <BaseLayout>
-  <Center maxWidth="60rem" gutter="space-4">
-    <Heading tagName="h1" size="h1">Index</Heading>
-    <Link href="typography" class="size">Typography System</Link>
-  </Center>
+  <About />
 </BaseLayout>
 
 <style>

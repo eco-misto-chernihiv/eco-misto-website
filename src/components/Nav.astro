@@ -1,0 +1,33 @@
+---
+import Cluster from "./compositions/Cluster.astro";
+import Link from "./ui/Link.astro";
+
+const navList = [
+  {
+    title: "Головна",
+    href: "#",
+  },
+  {
+    title: "Проєкти",
+    href: "#",
+  },
+  {
+    title: "Контакти",
+    href: "#",
+  },
+];
+---
+
+<nav>
+  <Cluster tagName="ul" role="list">
+    {
+      navList.map((navItem) => {
+        return (
+          <li>
+            <Link href={navItem.href}>{navItem.title}</Link>
+          </li>
+        );
+      })
+    }
+  </Cluster>
+</nav>

@@ -1,0 +1,45 @@
+---
+// Tools
+// Compositions
+import Center from "@compositions/Center.astro";
+
+// Components
+import Heading from "@ui/Heading.astro";
+import Text from "@ui/Text.astro";
+import Stack from "../compositions/Stack.astro";
+import Row from "../compositions/Row.astro";
+---
+
+<section class="about">
+  <Center maxWidth="80rem" space="space-4">
+    <Row columnGap="space-4">
+      <Heading tagName="h2" size="h5" isBolded class="col-6"
+        >Організація функціонує в Чернігові з 2016 року і реалізувала понад 50
+        проєктів в напрямку сталого розвитку, урбаністики та мейкерства.</Heading
+      >
+
+      <Stack space="space-6" class="col-5 col-start-8">
+        <Text tagName="p" size="x-large" class="font-medium"
+          >Ми перші в Чернігові створили станцію сортування твердих побутових
+          відходів та соціальне підприємство, почали переробляти пластик в
+          фантастичні речі та трансформуємо колишній кінотеатр “Перемога” в
+          центр стартапів та інновацій Peremoha Lab.
+        </Text>
+
+        <Text tagName="p" size="x-large" class="font-medium"
+          >Наша мрія — перетворити Чернігів на прогресивне, комфортне та
+          безпечне європейське місто, що розвивається за принципами цілей
+          сталого розвитку.
+        </Text>
+      </Stack>
+    </Row>
+  </Center>
+</section>
+
+<style>
+  .about {
+    padding-block: var(--space-11-fixed);
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+  }
+</style>

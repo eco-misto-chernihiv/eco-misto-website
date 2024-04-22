@@ -1,23 +1,28 @@
 ---
 // Components
+import Header from "@/components/Header.astro";
 import Head from "./Head.astro";
 
 // Styles
 import "@styles/main.css";
+import Footer from "@/components/Footer.astro";
 ---
 
 <html lang="en">
   <Head {...Astro.props} />
   <body>
     <div id="root">
+      <Header />
       <slot />
+      <Footer />
     </div>
+
+    <script src="../scripts/global.js"></script>
     <style>
       #root {
         /** TEMP  */
         padding-block: 100px;
       }
     </style>
-    <script src="../scripts/global.js"></script>
   </body>
 </html>

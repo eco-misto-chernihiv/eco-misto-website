@@ -67,28 +67,52 @@
   grid-row-start: 1;
 }
 
-.col-start-first {
+.col-start-1 {
   grid-column-start: 1;
 }
 
-.col-start-fourth {
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.col-start-3 {
+  grid-column-start: 3;
+}
+
+.col-start-4 {
   grid-column-start: 4;
 }
 
-.col-start-third {
+.col-start-5 {
   grid-column-start: 5;
 }
 
-.col-start-half {
+.col-start-6 {
+  grid-column-start: 6;
+}
+
+.col-start-7 {
   grid-column-start: 7;
 }
 
-.col-start-two-thirds {
+.col-start-8 {
+  grid-column-start: 8;
+}
+
+.col-start-9 {
   grid-column-start: 9;
 }
 
-.col-start-three-fourths {
+.col-start-10 {
   grid-column-start: 10;
+}
+
+.col-start-11 {
+  grid-column-start: 11;
+}
+
+.col-start-12 {
+  grid-column-start: 12;
 }
 
 /* Breakpoints */

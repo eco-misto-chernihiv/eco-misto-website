@@ -6,16 +6,23 @@
 
 :root {
   --body-base-text: 1rem; /* This means 16px */
-  --body-line-height: 1.5;
+  --body-line-height: 1.4;
   --heading-line-height: 1.2;
 
   /* Base font stacks */
 
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+
   --font-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
     Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol;
+
+  --font-text: "Mariupol", "Adjusted Arial Fallback", -apple-system,
+    BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
+    Ubuntu, roboto, noto, arial, sans-serif;
+  --font-heading: "Ermilov Bold", "Adjusted Arial Black Fallback", Avenir,
+    Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
 
   /*
   * Major second: 1.125
@@ -63,6 +70,60 @@
   --font-black: 900;
 
   @media (--tablet-and-up) {
-    --body-base-text: 1.25rem; /* This means 16px */
+    --body-base-text: 1.25rem; /* This means 20px */
   }
+}
+
+/* Headings */
+
+.h1 {
+  font-size: var(--heading-7);
+}
+.h2 {
+  font-size: var(--heading-6);
+}
+.h3 {
+  font-size: var(--heading-5);
+}
+.h4 {
+  font-size: var(--heading-4);
+}
+.h5 {
+  font-size: var(--heading-3);
+}
+.h5 {
+  font-size: var(--heading-2);
+}
+.h6 {
+  font-size: var(--heading-1);
+}
+
+/* Text */
+
+.x-small {
+  font-size: var(--text-minus-3);
+}
+
+.small {
+  font-size: var(--text-minus-2);
+}
+
+.medium {
+  font-size: var(--text-minus-1);
+}
+
+.large {
+  font-size: var(--text-base);
+}
+
+.x-large {
+  font-size: var(--text-1);
+}
+
+.xx-large {
+  font-size: var(--text-2);
+}
+
+.xxx-large {
+  font-size: var(--text-3);
 }

@@ -15,48 +15,33 @@ type Props = {
   tagName: tagOptions;
   size: keyof typeof sizeOptions;
   class?: string;
+  isBolded?: boolean;
   rest?: any;
 };
 
-const { tagName, size, class: classList, ...rest } = Astro.props;
+const {
+  tagName,
+  size,
+  class: classList,
+  isBolded = false,
+  ...rest
+} = Astro.props;
 
 // Assigning tagName to a capital Tag (so Astro knows it's a component)
 const Tag = tagName;
 ---
 
-<Tag {...rest} class:list={["text", classList, sizeOptions[size]]}>
+<Tag
+  {...rest}
+  class:list={["text", classList, sizeOptions[size], { "font-bold": isBolded }]}
+>
   <slot />
 </Tag>
 
 <style>
   .text {
+    /* font-family: var(--font-text); */
+
     /* text-wrap: balance; */
-  }
-  .x-small {
-    font-size: var(--text-minus-3);
-  }
-
-  .small {
-    font-size: var(--text-minus-2);
-  }
-
-  .medium {
-    font-size: var(--text-minus-1);
-  }
-
-  .large {
-    font-size: var(--text-base);
-  }
-
-  .x-large {
-    font-size: var(--text-1);
-  }
-
-  .xx-large {
-    font-size: var(--text-2);
-  }
-
-  .xxx-large {
-    font-size: var(--text-3);
   }
 </style>

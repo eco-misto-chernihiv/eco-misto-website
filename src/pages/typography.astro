@@ -15,11 +15,11 @@ import Text from "@ui/Text.astro";
     <Cluster tagName="div">
       <Stack tagName="div" space={{ default: "space-7", tablet: "space-2" }}>
         <Stack tagName="div" space="space-2">
-          <Heading tagName="h1" size="h1">Heading h1</Heading>
-          <Heading tagName="h2" size="h2">Heading h2</Heading>
-          <Heading tagName="h3" size="h3">Heading h3</Heading>
-          <Heading tagName="h4" size="h4">Heading h4</Heading>
-          <Heading tagName="h5" size="h5">Heading h5</Heading>
+          <Heading tagName="h1" size="h1" isBolded>Heading h1</Heading>
+          <Heading tagName="h2" size="h2" isBolded>Heading h2</Heading>
+          <Heading tagName="h3" size="h3" isBolded>Heading h3</Heading>
+          <Heading tagName="h4" size="h4" isBolded>Heading h4</Heading>
+          <Heading tagName="h5" size="h5" isBolded>Heading h5</Heading>
           <Heading tagName="h6" size="h6" isBolded>Heading h6</Heading>
         </Stack>
       </Stack>
@@ -104,6 +104,6 @@ import Text from "@ui/Text.astro";
     display: block;
     /* margin-top: 24px; */
     /* margin-bottom: 8px; */
-    color: blueviolet;
+    color: var(--color-primary);
   }
 </style>
