@@ -1,0 +1,137 @@
+---
+type Props = {
+  class?: string;
+  direction?: "left" | "right";
+  duration?: "slow" | "fast";
+  [key: string]: any;
+};
+const { class: classList, direction = "left", duration, ...rest } = Astro.props;
+---
+
+<div
+  class="marquee"
+  class:list={[classList]}
+  {...rest}
+  data-direction={direction}
+  data-duration={duration}
+>
+  <slot />
+</div>
+
+<style is:global>
+  /* Based on this tutorial:
+    * https://www.youtube.com/watch?v=iLmBy-HKIAw
+     */
+
+  .marquee {
+  }
+
+  .marquee > .marquee-inner {
+    --marquee-gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--marquee-gap);
+  }
+
+  .marquee[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+  }
+
+  .marquee[data-animated="true"] > .marquee-inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: marquee var(--_animation-duration, 35s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+
+  /* Pause on hover */
+  .marquee[data-animated="true"]:hover > .marquee-inner {
+    animation-play-state: paused;
+  }
+
+  /* Animation Direction  */
+
+  .marquee[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+
+  .marquee[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+
+  /* Animation Duration */
+
+  .marquee[data-duration="slow"] {
+    --_animation-duration: 100s;
+  }
+
+  .marquee[data-duration="fast"] {
+    --_animation-duration: 20s;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+</style>
+
+<script>
+  // Select all marquee elements
+  const marquues = [...document.querySelectorAll(".marquee")];
+
+  /**
+   * Adds marquee animation to an marquee inner
+   */
+  function addAnimation() {
+    // Loop through all marquees
+    marquues.forEach((marquee) => {
+      // Set animated state
+      marquee.setAttribute("data-animated", "true");
+
+      // Select inner element
+      const marqueeInner = marquee.querySelector(
+        ".marquee-inner"
+      ) as HTMLElement;
+
+      // Select all children elements
+      const marqueeContent = [...marqueeInner.children];
+
+      // Create temporary placeholder
+      const fragment = new DocumentFragment();
+
+      // Loop through marquee children
+      marqueeContent.forEach((item) => {
+        // Duplicate content item
+        const duplicate = item.cloneNode(true) as HTMLElement;
+        // Hide duplicated item from screenreader
+        duplicate.setAttribute("aria-hidden", "true");
+
+        // Add to a fragment
+        fragment.append(duplicate);
+      });
+
+      // Add all duplicates to an inner element
+      marqueeInner.append(fragment);
+    });
+  }
+
+  // Only add animation if reduced motion is disabled
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation();
+  }
+</script>

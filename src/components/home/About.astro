@@ -8,38 +8,67 @@ import Heading from "@ui/Heading.astro";
 import Text from "@ui/Text.astro";
 import Stack from "../compositions/Stack.astro";
 import Row from "../compositions/Row.astro";
+import Partners from "./Partners.astro";
 ---
 
 <section class="about">
-  <Center maxWidth="80rem" space="space-4">
-    <Row columnGap="space-4">
-      <Heading tagName="h2" size="h5" isBolded class="col-6"
-        >Організація функціонує в Чернігові з 2016 року і реалізувала понад 50
-        проєктів в напрямку сталого розвитку, урбаністики та мейкерства.</Heading
+  <Stack space="space-11">
+    <Center maxWidth="80rem" space="space-4">
+      <Row
+        columnGap="space-4"
+        rowGap={{ default: "space-7", laptop: "space-0" }}
       >
+        <Heading
+          tagName="h2"
+          size="h5"
+          isBolded
+          class="col-12 tablet:col-10 tablet:col-start-2 laptop:col-5 laptop:col-start-2"
+          >Організація функціонує в Чернігові з 2016 року і реалізувала понад 50
+          проєктів в напрямку сталого розвитку, урбаністики та мейкерства.</Heading
+        >
 
-      <Stack space="space-6" class="col-5 col-start-8">
-        <Text tagName="p" size="x-large" class="font-medium"
-          >Ми перші в Чернігові створили станцію сортування твердих побутових
-          відходів та соціальне підприємство, почали переробляти пластик в
-          фантастичні речі та трансформуємо колишній кінотеатр “Перемога” в
-          центр стартапів та інновацій Peremoha Lab.
-        </Text>
+        <Stack
+          space="space-6"
+          class="col-12 tablet:col-10 tablet:col-start-2 laptop:col-4 laptop:col-start-8"
+        >
+          <Text tagName="p" size="x-large" class="font-medium"
+            >Ми перші в Чернігові створили станцію сортування твердих побутових
+            відходів та соціальне підприємство, почали переробляти пластик в
+            фантастичні речі та трансформуємо колишній кінотеатр “Перемога” в
+            центр стартапів та інновацій Peremoha Lab.
+          </Text>
 
-        <Text tagName="p" size="x-large" class="font-medium"
-          >Наша мрія — перетворити Чернігів на прогресивне, комфортне та
-          безпечне європейське місто, що розвивається за принципами цілей
-          сталого розвитку.
-        </Text>
-      </Stack>
-    </Row>
-  </Center>
+          <Text tagName="p" size="x-large" class="font-medium"
+            >Наша мрія — перетворити Чернігів на прогресивне, комфортне та
+            безпечне європейське місто, що розвивається за принципами цілей
+            сталого розвитку.
+          </Text>
+        </Stack>
+      </Row>
+    </Center>
+    <Partners />
+  </Stack>
 </section>
 
 <style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
   .about {
     padding-block: var(--space-11-fixed);
     color: var(--color-secondary);
     background-color: var(--color-primary);
+
+    border-top-left-radius: var(--rounded-2xl);
+    border-top-right-radius: var(--rounded-2xl);
+
+    @media (--laptop-and-up) {
+      border-top-left-radius: var(--rounded-3xl);
+      border-top-right-radius: var(--rounded-3xl);
+    }
+  }
+
+  .about h2,
+  .about p {
+    text-wrap: balance;
   }
 </style>

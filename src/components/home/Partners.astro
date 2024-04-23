@@ -1,0 +1,38 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Compositions
+import Center from "../compositions/Center.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Marquee from "../ui/Marquee.astro";
+import Text from "../ui/Text.astro";
+
+// Assets
+import tolocar from "@/assets/partners/tolocar-black.png";
+---
+
+<div class="partners">
+  <Stack space="space-7">
+    <Center maxWidth="80rem" space="space-4">
+      <Text tagName="div" size="large">Наші партнери</Text>
+    </Center>
+    <Marquee direction="left">
+      <div class="marquee-inner">
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+        <Image src={tolocar} alt="" />
+      </div>
+    </Marquee>
+  </Stack>
+</div>

@@ -7,7 +7,7 @@
 :root {
   --body-base-text: 1rem; /* This means 16px */
   --body-line-height: 1.4;
-  --heading-line-height: 1.2;
+  --heading-line-height: 1.1;
 
   /* Base font stacks */
 
@@ -70,6 +70,10 @@
   --font-black: 900;
 
   @media (--tablet-and-up) {
+    --body-base-text: 1.125rem; /* This means 18px */
+  }
+
+  @media (--laptop-and-up) {
     --body-base-text: 1.25rem; /* This means 20px */
   }
 }

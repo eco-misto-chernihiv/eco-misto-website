@@ -61,11 +61,11 @@
   grid-column: auto / span 12;
 }
 
-/*Control where to start */
+/* Control where to start */
 
-[class*="col-start-"] {
+/* [class*="col-start-"] {
   grid-row-start: 1;
-}
+} */
 
 .col-start-1 {
   grid-column-start: 1;
@@ -166,6 +166,56 @@
   .tablet\:col-12 {
     grid-column: auto / span 12;
   }
+
+  /* Tablet control */
+
+  .tablet\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .tablet\:col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .tablet\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .tablet\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .tablet\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .tablet\:col-start-6 {
+    grid-column-start: 6;
+  }
+
+  .tablet\:col-start-7 {
+    grid-column-start: 7;
+  }
+
+  .tablet\:col-start-8 {
+    grid-column-start: 8;
+  }
+
+  .tablet\:col-start-9 {
+    grid-column-start: 9;
+  }
+
+  .tablet\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .tablet\:col-start-11 {
+    grid-column-start: 11;
+  }
+
+  .tablet\:col-start-12 {
+    grid-column-start: 12;
+  }
 }
 
 @media (--laptop-and-up) {
@@ -217,6 +267,56 @@
   .laptop\:col-12 {
     grid-column: auto / span 12;
   }
+
+  /* Laptop control */
+
+  .laptop\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .laptop\:col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .laptop\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .laptop\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .laptop\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .laptop\:col-start-6 {
+    grid-column-start: 6;
+  }
+
+  .laptop\:col-start-7 {
+    grid-column-start: 7;
+  }
+
+  .laptop\:col-start-8 {
+    grid-column-start: 8;
+  }
+
+  .laptop\:col-start-9 {
+    grid-column-start: 9;
+  }
+
+  .laptop\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .laptop\:col-start-11 {
+    grid-column-start: 11;
+  }
+
+  .laptop\:col-start-12 {
+    grid-column-start: 12;
+  }
 }
 
 @media (--desktop-and-up) {
@@ -267,5 +367,55 @@
 
   .desktop\:col-12 {
     grid-column: auto / span 12;
+  }
+
+  /* Desktop control */
+
+  .desktop\:col-start-1 {
+    grid-column-start: 1;
+  }
+
+  .desktop\:col-start-2 {
+    grid-column-start: 2;
+  }
+
+  .desktop\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .desktop\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .desktop\:col-start-5 {
+    grid-column-start: 5;
+  }
+
+  .desktop\:col-start-6 {
+    grid-column-start: 6;
+  }
+
+  .desktop\:col-start-7 {
+    grid-column-start: 7;
+  }
+
+  .desktop\:col-start-8 {
+    grid-column-start: 8;
+  }
+
+  .desktop\:col-start-9 {
+    grid-column-start: 9;
+  }
+
+  .desktop\:col-start-10 {
+    grid-column-start: 10;
+  }
+
+  .desktop\:col-start-11 {
+    grid-column-start: 11;
+  }
+
+  .desktop\:col-start-12 {
+    grid-column-start: 12;
   }
 }
