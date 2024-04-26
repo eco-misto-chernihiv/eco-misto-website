@@ -1,0 +1,56 @@
+---
+
+---
+
+<div class="circular-text">
+  <p>
+    <slot />
+  </p>
+</div>
+
+<style is:global>
+  .circular-text {
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    animation: rotate 8s linear infinite;
+  }
+
+  .circular-text span {
+    /* TEMP */
+    font-size: 0.5em;
+
+    position: absolute;
+    left: 50%;
+    transform-origin: 0px 64px;
+    /* text-transform: uppercase; */
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<script>
+  const textElement = document.querySelector(
+    ".circular-text p"
+  ) as HTMLParagraphElement;
+
+  const text = textElement.innerText;
+
+  textElement.innerHTML = text
+    .split("")
+    .map((char, i) => {
+      return `<span style="transform: rotate(${12.2 * i}deg)" >${char}</span>`;
+    })
+    .join("");
+  //   console.log(text.split(""));
+</script>

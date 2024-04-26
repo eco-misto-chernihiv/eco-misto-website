@@ -1,7 +1,11 @@
 ---
-
+type Props = {
+  class?: string;
+  [key: string]: any;
+};
+const { class: classList, ...rest } = Astro.props;
 ---
 
-<button>
+<button class:list={[classList]} {...rest}>
   <slot />
 </button>

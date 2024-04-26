@@ -1,0 +1,145 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Compositions
+import Center from "../compositions/Center.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Heading from "../ui/Heading.astro";
+import CircularText from "../ui/CircularText.astro";
+
+// Assets
+import sample from "../../assets/images/tolocar_056.jpg";
+import Button from "../ui/Button.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="hero">
+  <Center maxWidth="80rem" space="space-7">
+    <Heading tagName="h1" size="h1" class="font-heading sr-only"
+      >Події. Простори. Спільнота.</Heading
+    >
+    <Stack space="space-7">
+      <div class="block events">
+        <div class="image">
+          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+        </div>
+        <span class="text font-heading">Події</span>
+      </div>
+      <div class="block spaces">
+        <span class="text font-heading">Простори</span>
+        <div class="image">
+          <div class="play-video">
+            <Button class="play-btn"
+              ><Icon name="icon-play" size={40} />
+              <CircularText>Дивитись Відео Дивитись Відео&nbsp;</CircularText
+              ></Button
+            >
+          </div>
+          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+        </div>
+      </div>
+      <div class="block community">
+        <div class="image">
+          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+        </div>
+        <span class="text font-heading">Спільнота</span>
+      </div>
+    </Stack>
+  </Center>
+</section>
+
+<style>
+  /* 
+  * Possible responsive numbers
+  * Mobile: 
+  * h1 as h4
+  * image height: 56px
+  * gap: 1rem
+  */
+
+  .hero {
+    padding-block: var(--space-11-fixed);
+    color: var(--color-dark-gray);
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .text {
+    font-size: var(--heading-7);
+    /* text-transform: uppercase; */
+  }
+
+  .image {
+    border-radius: var(--rounded-2xl);
+    width: 100%;
+
+    /* Temp */
+    overflow: hidden;
+
+    & img {
+      height: 144px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .events {
+    & .text {
+      padding-inline-end: var(--space-17-fixed);
+    }
+  }
+
+  .spaces {
+    --btn-play-size: 144px;
+
+    & .text {
+      padding-inline-start: var(--space-13-fixed);
+    }
+
+    & .image {
+      position: relative;
+      padding-inline-start: calc(var(--btn-play-size) / 2);
+    }
+
+    & .play-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: 144px;
+      width: 144px;
+    }
+
+    & button {
+      /* Temp */
+      position: relative;
+      font-size: var(--heading-1);
+      background-color: var(--color-primary);
+      border: none;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* transform: translateX(-50%); */
+
+      /* padding: var(--space-4); */
+      border-radius: var(--rounded-full);
+    }
+  }
+
+  .community {
+    & .text {
+      padding-inline-end: var(--space-17-fixed);
+    }
+  }
+</style>
