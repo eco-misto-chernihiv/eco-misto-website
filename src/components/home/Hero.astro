@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -11,9 +12,10 @@ import Heading from "../ui/Heading.astro";
 import CircularText from "../ui/CircularText.astro";
 
 // Assets
-import sample from "../../assets/images/tolocar_056.jpg";
+import eventsImg from "../../assets/images/events-image.jpg";
+import spacesImg from "../../assets/images/spaces-image.jpg";
+import communityImg from "../../assets/images/community-image.jpg";
 import Button from "../ui/Button.astro";
-import { Icon } from "astro-icon/components";
 ---
 
 <section class="hero">
@@ -24,7 +26,12 @@ import { Icon } from "astro-icon/components";
     <Stack space="space-7">
       <div class="block events">
         <div class="image">
-          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+          <Image
+            src={eventsImg}
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+          />
         </div>
         <span class="text font-heading">Події</span>
       </div>
@@ -38,12 +45,22 @@ import { Icon } from "astro-icon/components";
               ></Button
             >
           </div>
-          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+          <Image
+            src={spacesImg}
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+          />
         </div>
       </div>
       <div class="block community">
         <div class="image">
-          <Image src={sample} alt="" role="presentation" aria-hidden="true" />
+          <Image
+            src={communityImg}
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+          />
         </div>
         <span class="text font-heading">Спільнота</span>
       </div>
