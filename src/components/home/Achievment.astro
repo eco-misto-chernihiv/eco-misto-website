@@ -1,0 +1,127 @@
+---
+// Components
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+
+// Data
+const { achievment } = Astro.props;
+const { title, description, id } = achievment;
+---
+
+<div class:list={["achievment", id]}>
+  <div class="content">
+    <Heading tagName="h4" size="h4">{title}</Heading>
+    <Text tagName="p" size="large">{description}</Text>
+  </div>
+</div>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .achievment {
+    --_translate-y: 0rem;
+
+    position: absolute;
+
+    padding: var(--space-4-fixed);
+
+    background-color: var(--color-white);
+
+    transform: translateY(var(--_translate-y));
+
+    @media (--tablet-and-up) {
+      padding: var(--space-6-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      padding: var(--space-7-fixed);
+    }
+  }
+
+  .achievment,
+  .achievment .content {
+    border-radius: var(--rounded-2xl);
+
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+    }
+  }
+
+  .achievment .content {
+    width: 8rem;
+    height: 8rem;
+
+    @media (--tablet-and-up) {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    @media (--laptop-and-up) {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+
+  .achievment.green {
+    --_translate-y: -5rem;
+
+    top: 0;
+    right: 4rem;
+
+    & .content {
+      color: var(--color-secondary);
+      background-color: var(--color-primary);
+    }
+
+    @media (--laptop-and-up) {
+      right: 14rem;
+    }
+  }
+
+  .achievment.black,
+  .achievment.gray {
+    bottom: 0;
+  }
+
+  .achievment.black {
+    --_translate-y: 5rem;
+
+    left: 4rem;
+
+    & .content {
+      color: var(--color-white);
+      background-color: var(--color-black);
+    }
+
+    @media (--laptop-and-up) {
+      left: 9rem;
+    }
+  }
+
+  .achievment.gray {
+    --_translate-y: 8rem;
+
+    display: none;
+
+    & .content {
+      background-color: var(--color-gray-100);
+    }
+
+    @media (--laptop-and-up) {
+      right: 5rem;
+      display: flex;
+    }
+  }
+
+  .content {
+    padding: var(--space-3-fixed);
+
+    @media (--tablet-and-up) {
+      padding: var(--space-4-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      padding: var(--space-6-fixed);
+    }
+  }
+</style>

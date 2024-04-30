@@ -1,0 +1,62 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Components
+import Achievment from "./Achievment.astro";
+
+// Assets
+import missionBgDesktop from "../../assets/images/mission-bg-desktop.jpg";
+
+// Data
+const achievments = [
+  {
+    title: "424",
+    description: "креативних заходів організовано",
+    id: "green",
+  },
+  {
+    title: "365",
+    description: "велосипедів видано в рамках кампанії #BikesForUkraine",
+    id: "black",
+  },
+  {
+    title: "7",
+    description: "просторів ревіталізовано",
+    id: "gray",
+  },
+];
+---
+
+<div class="achievments-container">
+  <div class="image-container">
+    <Image src={missionBgDesktop} alt="" />
+  </div>
+  {achievments.map((achievment) => <Achievment achievment={achievment} />)}
+</div>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .achievments-container {
+    position: relative;
+  }
+
+  .image-container {
+    overflow: hidden;
+    border-radius: var(--rounded-2xl);
+
+    & img {
+      height: 600px;
+      object-fit: cover;
+
+      @media (--laptop-and-up) {
+        height: 600px;
+      }
+    }
+
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+    }
+  }
+</style>

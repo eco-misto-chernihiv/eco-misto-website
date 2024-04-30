@@ -1,0 +1,45 @@
+---
+// Tools
+
+// Compositions
+import Center from "../compositions/Center.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import Achievments from "./Achievments.astro";
+
+// Assets
+
+// Data
+---
+
+<section class="mission">
+  <Center maxWidth="80rem" space="space-7">
+    <Stack space="space-12">
+      <Stack space="space-6">
+        <Text tagName="div" size="xxx-large" class="text-center">Місія</Text>
+        <Heading tagName="h3" size="h4" class="font-heading">
+          Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та
+          креативних рішень, залучаючи спільноту на всіх рівнях.
+        </Heading>
+      </Stack>
+
+      <Achievments />
+    </Stack>
+  </Center>
+</section>
+
+<style>
+  .mission {
+    padding-block: var(--space-14-fixed);
+  }
+
+  .mission h3 {
+    text-indent: 3em;
+    line-height: 1;
+    text-wrap: wrap;
+    color: var(--color-dark-gray);
+  }
+</style>

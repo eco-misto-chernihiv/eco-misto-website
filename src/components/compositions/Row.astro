@@ -37,14 +37,14 @@ interface breakpointsObject {
 type alignOptions = "start" | "end" | "center" | "baseline" | "stretch";
 
 interface Props {
-  columnGap: breakpointsObject | columnGapOptions;
+  columnGap?: breakpointsObject | columnGapOptions;
   rowGap?: breakpointsObject | rowGapOptions;
   alignItems?: alignOptions;
   class?: string;
   [key: string]: any;
 }
 const {
-  columnGap,
+  columnGap = "space-4",
   rowGap,
   class: classList,
   alignItems = "start",
