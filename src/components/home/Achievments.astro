@@ -14,16 +14,27 @@ const achievments = [
     title: "424",
     description: "креативних заходів організовано",
     id: "green",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "right-rotate": "270deg",
   },
   {
     title: "365",
     description: "велосипедів видано в рамках кампанії #BikesForUkraine",
     id: "black",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "left-rotate": "90deg",
+    "right-rotate": "180deg",
   },
   {
     title: "7",
     description: "просторів ревіталізовано",
     id: "gray",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "left-rotate": "90deg",
+    "right-rotate": "180deg",
   },
 ];
 ---
@@ -46,6 +57,10 @@ const achievments = [
     overflow: hidden;
     border-radius: var(--rounded-2xl);
 
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+    }
+
     & img {
       height: 600px;
       object-fit: cover;
@@ -53,10 +68,6 @@ const achievments = [
       @media (--laptop-and-up) {
         height: 600px;
       }
-    }
-
-    @media (--laptop-and-up) {
-      border-radius: var(--rounded-3xl);
     }
   }
 </style>
