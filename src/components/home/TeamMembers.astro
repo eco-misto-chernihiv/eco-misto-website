@@ -1,0 +1,25 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+// Compositions
+import AutoGrid from "../compositions/AutoGrid.astro";
+
+// Components
+import TeamMember from "./TeamMember.astro";
+
+// Data
+const members = await getCollection("members");
+---
+
+<AutoGrid space="space-6" role="list">
+  {
+    members.map((member) => {
+      return (
+        <div role="listitem">
+          <TeamMember member={member} />
+        </div>
+      );
+    })
+  }
+</AutoGrid>

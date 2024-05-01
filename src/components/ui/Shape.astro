@@ -1,0 +1,53 @@
+---
+type Props = {
+  color: "primary" | "secondary" | "accent" | "white" | "black";
+  translateX?: string;
+  translateY?: string;
+  rotate?: string;
+  class?: string;
+  [key: string]: any;
+};
+
+const {
+  class: classList,
+  color,
+  translateX = "0",
+  translateY = "0",
+  rotate = "0deg",
+  ...rest
+} = Astro.props;
+---
+
+<svg
+  class:list={["shape", classList, { [`color-${color}`]: color }]}
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  x="0"
+  y="0"
+  viewBox="0 0 100 100"
+  xml:space="preserve"
+  {...rest}
+  ><path d="M98.1 0h1.9v51.9h-1.9c0-27.6-22.4-50-50-50V0h50z"></path></svg
+>
+
+<style define:vars={{ translateX, translateY, rotate }}>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .shape {
+    --_size: 2.5rem;
+
+    position: absolute;
+
+    width: var(--_size);
+    height: var(--_size);
+
+    fill: currentColor;
+
+    transform: translateX(var(--translateX)) translateY(var(--translateY))
+      rotate(var(--rotate));
+
+    @media (--laptop-and-up) {
+      --_size: 3rem;
+    }
+  }
+</style>

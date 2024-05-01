@@ -29,7 +29,7 @@ const achievments = [
 ---
 
 <div class="achievments-container">
-  <div class="image-container">
+  <div class="bg-image">
     <Image src={missionBgDesktop} alt="" />
   </div>
   {achievments.map((achievment) => <Achievment achievment={achievment} />)}
@@ -42,7 +42,7 @@ const achievments = [
     position: relative;
   }
 
-  .image-container {
+  .bg-image {
     overflow: hidden;
     border-radius: var(--rounded-2xl);
 

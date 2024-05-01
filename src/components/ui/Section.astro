@@ -1,0 +1,26 @@
+---
+type Props = {
+  class?: string;
+  isRounded?: boolean;
+  [key: string]: any;
+};
+const { class: classList, isRounded = false, ...rest } = Astro.props;
+---
+
+<section class:list={[classList, { rounded: isRounded }]} {...rest}>
+  <slot />
+</section>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .rounded {
+    border-top-left-radius: var(--rounded-2xl);
+    border-top-right-radius: var(--rounded-2xl);
+
+    @media (--laptop-and-up) {
+      border-top-left-radius: var(--rounded-3xl);
+      border-top-right-radius: var(--rounded-3xl);
+    }
+  }
+</style>

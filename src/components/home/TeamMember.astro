@@ -1,0 +1,100 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+// Compositions
+
+// Components
+import Text from "../ui/Text.astro";
+import Shape from "../ui/Shape.astro";
+
+// Data
+type Props = {
+  member: CollectionEntry<"members">;
+};
+
+const { member } = Astro.props;
+const { name, position, picture } = member.data;
+---
+
+<figure class="team-member">
+  <div class="member-photo">
+    <Image src={picture} alt="" />
+  </div>
+  <figcaption class="member-info">
+    <div class="wrapper">
+      <Shape color="secondary" class="top" translateY="-100%" rotate="180deg" />
+      <Shape
+        color="secondary"
+        class="right"
+        translateX="100%"
+        rotate="180deg"
+      />
+      <div class="info">
+        <Text tagName="span" size="medium" isBolded>{name}</Text>
+        <Text tagName="span" size="small">{position}</Text>
+      </div>
+    </div>
+  </figcaption>
+</figure>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .team-member {
+    position: relative;
+
+    border-top-left-radius: var(--rounded-2xl);
+    border-top-right-radius: var(--rounded-2xl);
+    border-bottom-right-radius: var(--rounded-2xl);
+
+    /* To enable border-radius  */
+    overflow: hidden;
+
+    @media (--laptop-and-up) {
+      border-top-left-radius: var(--rounded-3xl);
+      border-top-right-radius: var(--rounded-3xl);
+      border-bottom-right-radius: var(--rounded-3xl);
+    }
+  }
+
+  .member-photo {
+    aspect-ratio: 3 / 4;
+    background-color: var(--color-primary);
+
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .member-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    padding-block-start: var(--space-3-fixed);
+    padding-inline-end: var(--space-6-fixed);
+    border-top-right-radius: var(--rounded-3xl);
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+  }
+
+  .info span {
+    display: block;
+  }
+
+  /* Shape custom positioning */
+  /* TODO: maybe another way to style this? */
+  .top {
+    top: 1px;
+    left: -1px;
+  }
+
+  .right {
+    right: 1px;
+    bottom: -1px;
+  }
+</style>

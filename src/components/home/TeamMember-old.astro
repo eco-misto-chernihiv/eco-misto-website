@@ -1,0 +1,71 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import { Image } from "astro:assets";
+import Stack from "../compositions/Stack.astro";
+import Center from "../compositions/Center.astro";
+
+// Compositions
+
+// Components
+
+type Props = {
+  member: CollectionEntry<"members">;
+};
+
+// Data
+const { member } = Astro.props;
+const { name, position, picture } = member.data;
+---
+
+<figure class="team-member">
+  <div class="member-photo">
+    <Image src={picture} alt="" />
+  </div>
+  <figcaption class="member-info">
+    <Center maxWidth="100%" andText>
+      <Heading tagName="h3" size="h5" class="font-heading">{name}</Heading>
+      <Text tagName="p" size="medium">{position}</Text>
+    </Center>
+  </figcaption>
+</figure>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .team-member {
+    background-color: aqua;
+    border-radius: var(--rounded-2xl);
+
+    /* To enable border-radius  */
+    overflow: hidden;
+
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+    }
+  }
+
+  .member-photo {
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-primary);
+
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .member-info {
+    padding-block: var(--space-5-fixed);
+    padding-inline: var(--space-5-fixed);
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+
+    & p {
+      color: var(--color-black);
+    }
+  }
+</style>

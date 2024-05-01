@@ -1,0 +1,24 @@
+---
+import Center from "../compositions/Center.astro";
+import Stack from "../compositions/Stack.astro";
+import Heading from "../ui/Heading.astro";
+import Section from "../ui/Section.astro";
+import TeamMembers from "./TeamMembers.astro";
+---
+
+<Section class="team" isRounded>
+  <Center maxWidth="80rem" space="space-9">
+    <Stack space="space-9">
+      <Heading tagName="h4" size="h4" class="font-heading">Команда</Heading>
+      <TeamMembers />
+    </Stack>
+  </Center>
+</Section>
+
+<style>
+  .team {
+    padding-block: var(--space-11-fixed);
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+  }
+</style>
