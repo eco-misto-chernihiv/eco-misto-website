@@ -1,27 +1,18 @@
 ---
+// Compositions
 import Cluster from "./compositions/Cluster.astro";
+
+// Components
 import Link from "./ui/Link.astro";
 
-const navList = [
-  {
-    title: "Головна",
-    href: "#",
-  },
-  {
-    title: "Проєкти",
-    href: "#",
-  },
-  {
-    title: "Контакти",
-    href: "#",
-  },
-];
+// Data
+import { navData } from "@/data/siteData";
 ---
 
 <nav>
   <Cluster tagName="ul" role="list">
     {
-      navList.map((navItem) => {
+      navData.map((navItem) => {
         return (
           <li>
             <Link href={navItem.href}>{navItem.title}</Link>
@@ -31,3 +22,9 @@ const navList = [
     }
   </Cluster>
 </nav>
+
+<style>
+  nav li a {
+    color: var(--color-primary);
+  }
+</style>

@@ -1,162 +1,265 @@
 ---
 // Tools
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "../compositions/Center.astro";
+import Row from "../compositions/Row.astro";
 import Stack from "../compositions/Stack.astro";
 
 // Components
 import Heading from "../ui/Heading.astro";
-import CircularText from "../ui/CircularText.astro";
+import Text from "../ui/Text.astro";
+import Donors from "./Donors.astro";
+import Shape from "../ui/Shape.astro";
 
 // Assets
-import eventsImg from "../../assets/images/events-image.jpg";
-import spacesImg from "../../assets/images/spaces-image.jpg";
-import communityImg from "../../assets/images/community-image.jpg";
-import Button from "../ui/Button.astro";
+import heroImg from "@/assets/images/hero.jpg";
 ---
 
 <section class="hero">
-  <Center maxWidth="80rem" space="space-7">
-    <Heading tagName="h1" size="h1" class="font-heading sr-only"
-      >Події. Простори. Спільнота.</Heading
-    >
-    <Stack space="space-7">
-      <div class="block events">
-        <div class="image">
-          <Image
-            src={eventsImg}
-            alt=""
-            role="presentation"
-            aria-hidden="true"
-          />
+  <Stack space="space-12">
+    <Center maxWidth="87.5rem" space="space-7">
+      <Row
+        class="hero-grid"
+        rowGap={{ default: "space-6", tablet: "space-12", laptop: "space-0" }}
+        alignItems="center"
+      >
+        <div class="hero-text col-12">
+          <Heading tagName="h1" size="h1" class="font-heading"
+            >Події. Простори. Спільнота.</Heading
+          >
         </div>
-        <span class="text font-heading">Події</span>
-      </div>
-      <div class="block spaces">
-        <span class="text font-heading">Простори</span>
-        <div class="image">
-          <div class="play-video">
-            <Button class="play-btn"
-              ><Icon name="icon-play" size={40} />
-              <CircularText>Дивитись Відео Дивитись Відео&nbsp;</CircularText
-              ></Button
+
+        <div class="about-text col-12">
+          <Text tagName="p" size="large" class="color-primary"
+            >Організація функціонує в Чернігові з 2016 року і реалізувала понад
+            50 проєктів в напрямку сталого розвитку, урбаністики та мейкерства.
+            Також перетворюємо колишній кінотеатр "Перемога" на центр стартапів
+            та інновацій Peremoha Lab.</Text
+          >
+        </div>
+
+        <div class="hero-image col-12 tablet:col-10 laptop:col-8">
+          <div class="img-wrapper">
+            <Image src={heroImg} alt="" />
+          </div>
+
+          <div class="action"></div>
+
+          <div class="about-text tablet">
+            <Shape color="black" class="left" translateX="-100%" />
+            <Shape color="secondary" class="bottom" translateY="100%" />
+            <Text tagName="p" size="medium" class="color-primary"
+              >Організація функціонує в Чернігові з 2016 року і реалізувала
+              понад 50 проєктів в напрямку сталого розвитку, урбаністики та
+              мейкерства. Також перетворюємо колишній кінотеатр "Перемога" на
+              центр стартапів та інновацій Peremoha Lab.</Text
             >
           </div>
-          <Image
-            src={spacesImg}
-            alt=""
-            role="presentation"
-            aria-hidden="true"
-          />
+
+          <div class="hero-text laptop">
+            <Shape color="secondary" class="left" translateX="-100%" />
+            <Shape color="secondary" class="bottom" translateY="100%" />
+            <Heading tagName="h1" size="h1" class="font-heading"
+              >Події. Простори.<br />Спільнота.</Heading
+            >
+          </div>
         </div>
-      </div>
-      <div class="block community">
-        <div class="image">
-          <Image
-            src={communityImg}
-            alt=""
-            role="presentation"
-            aria-hidden="true"
-          />
-        </div>
-        <span class="text font-heading">Спільнота</span>
-      </div>
-    </Stack>
-  </Center>
+      </Row>
+    </Center>
+
+    <Donors />
+  </Stack>
 </section>
 
 <style>
-  /* 
-  * Possible responsive numbers
-  * Mobile: 
-  * h1 as h4
-  * image height: 56px
-  * gap: 1rem
-  */
+  @import "../../styles/03-utilities/breakpoints.css";
 
   .hero {
-    padding-block: var(--space-11-fixed);
-    color: var(--color-dark-gray);
+    padding-block-start: var(--space-4-fixed);
+    padding-block-end: var(--space-8-fixed);
+    background-color: var(--color-secondary);
+
+    @media (--tablet-and-up) {
+      padding-block: var(--space-10-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      padding-block-start: var(--space-17-fixed);
+      padding-block-end: var(--space-12-fixed);
+    }
   }
 
-  .block {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  .hero-grid {
+    position: relative;
   }
 
-  .text {
-    font-size: var(--heading-7);
-    /* text-transform: uppercase; */
+  .hero-image,
+  .about-text {
+    @media (--laptop-and-up) {
+      grid-row-start: 1;
+    }
   }
 
-  .image {
+  .hero-image {
+    position: relative;
+
+    @media (--laptop-and-up) {
+      grid-column-start: 1;
+    }
+  }
+
+  .img-wrapper {
     border-radius: var(--rounded-2xl);
-    width: 100%;
 
-    /* Temp */
+    /* To enable border-radius */
     overflow: hidden;
 
     & img {
-      height: 144px;
+      height: auto;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
+    }
+
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+
+      & img {
+        height: 33.5rem;
+      }
     }
   }
 
-  .events {
-    & .text {
-      padding-inline-end: var(--space-17-fixed);
+  .hero-text {
+    display: block;
+
+    position: relative;
+    color: var(--color-primary);
+
+    @media (--laptop-and-up) {
+      display: none;
     }
   }
 
-  .spaces {
-    --btn-play-size: 144px;
+  .hero-text.laptop {
+    display: none;
 
-    & .text {
-      padding-inline-start: var(--space-13-fixed);
-    }
+    @media (--laptop-and-up) {
+      display: block;
 
-    & .image {
-      position: relative;
-      padding-inline-start: calc(var(--btn-play-size) / 2);
-    }
-
-    & .play-video {
       position: absolute;
       top: 0;
-      left: 0;
-      bottom: 0;
-      height: 144px;
-      width: 144px;
-    }
+      right: 0;
+      z-index: 2;
 
-    & button {
-      /* Temp */
-      position: relative;
-      font-size: var(--heading-1);
-      background-color: var(--color-primary);
-      border: none;
-      width: 100%;
-      height: 100%;
+      /* Fixed width to prevent shape shift, if text is translated to english */
+      width: 51.875rem;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      transform: translateX(40%) translateY(-50%);
 
-      /* transform: translateX(-50%); */
+      background-color: var(--color-secondary);
+      padding-inline-start: var(--space-7-fixed);
+      padding-block-end: var(--space-2-fixed);
+      border-bottom-left-radius: var(--rounded-3xl);
 
-      /* padding: var(--space-4); */
-      border-radius: var(--rounded-full);
+      & h1 {
+        white-space: nowrap;
+      }
+
+      & .shape.left {
+        top: 6.7rem;
+        left: 0;
+        margin-left: 2px;
+      }
+      & .shape.bottom {
+        bottom: 0;
+        right: 20.6rem;
+        margin-bottom: 2px;
+        margin-right: 0px;
+      }
     }
   }
 
-  .community {
-    & .text {
-      padding-inline-end: var(--space-17-fixed);
+  .action {
+    /* TEMP */
+    position: absolute;
+    inset: 0;
+    margin: auto;
+
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+  }
+
+  .about-text {
+    @media (--tablet-and-up) {
+      display: none;
+    }
+
+    @media (--laptop-and-up) {
+      display: block;
+      grid-column-start: 9;
+
+      padding-inline-start: var(--space-7-fixed);
+      padding-block-start: var(--space-12-fixed);
+    }
+
+    & p {
+      opacity: 0.7;
+    }
+  }
+
+  .about-text.tablet {
+    display: none;
+
+    @media (--tablet-and-up) {
+      display: block;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      /* Fluid max-width */
+      max-width: 21rem;
+      max-width: clamp(21rem, 10rem + 32vw, 32rem);
+
+      padding-inline-start: var(--space-7-fixed);
+      padding-block-end: var(--space-4-fixed);
+
+      transform: translateY(-50%) translateX(25%);
+
+      background-color: var(--color-secondary);
+      border-bottom-left-radius: var(--rounded-2xl);
+
+      & p {
+        /* Override text with fluid font-size */
+        font-size: 1rem;
+        font-size: clamp(1rem, 0.875rem + 0.36363636363636365vw, 1.125rem);
+      }
+
+      & .shape.left {
+        /* TODO: fluid top */
+        top: 4.7rem;
+        left: 0;
+        margin-top: -1px;
+        margin-left: 1px;
+      }
+      & .shape.bottom {
+        bottom: 0;
+
+        /* Fluid right to synchronize with font size */
+        right: 5.2rem;
+        right: clamp(5.2rem, 2.4000000000000004rem + 8.145454545454545vw, 8rem);
+
+        margin-bottom: 1px;
+        margin-right: -1px;
+      }
+    }
+
+    @media (--laptop-and-up) {
+      display: none;
     }
   }
 </style>

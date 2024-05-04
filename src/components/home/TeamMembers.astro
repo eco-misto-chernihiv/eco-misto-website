@@ -12,7 +12,7 @@ import TeamMember from "./TeamMember.astro";
 const members = await getCollection("members");
 ---
 
-<AutoGrid space="space-6" role="list">
+<AutoGrid minItemWidth="275px" space="space-6" role="list">
   {
     members.map((member) => {
       return (

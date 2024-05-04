@@ -1,15 +1,23 @@
 ---
-import Logo from "./Logo.astro";
-import Nav from "./Nav.astro";
+// Tools
+
+// Compositions
 import Center from "./compositions/Center.astro";
 import Cluster from "./compositions/Cluster.astro";
+
+// Componnets
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
 import ButtonLink from "./ui/ButtonLink.astro";
+
+// Assets
+import logoInvert from "../assets/ecomisto-logo-invert.svg";
 ---
 
 <header>
-  <Center maxWidth="80rem" space="space-7">
+  <Center maxWidth="87.5rem" space="space-7">
     <Cluster isCenterMiddle alignItems="center">
-      <Logo />
+      <Logo logoSrc={logoInvert} style={{ "--width": "160px" }} />
       <Nav />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
@@ -21,7 +29,10 @@ import ButtonLink from "./ui/ButtonLink.astro";
 </header>
 
 <style>
+  @import "@styles/03-utilities/breakpoints.css";
+
   header {
+    background-color: var(--color-secondary);
     padding-block: var(--space-7-fixed);
   }
 </style>

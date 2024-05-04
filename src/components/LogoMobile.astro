@@ -1,0 +1,29 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Components
+import Link from "./ui/Link.astro";
+
+// Assets
+import logo from "../assets/ecomisto-symbol.svg";
+
+type Props = {
+  class?: string;
+  [key: string]: any;
+};
+
+const { class: classList, ...rest } = Astro.props;
+---
+
+<Link href="/" class:list={["logo", classList]} {...rest}>
+  <Image src={logo} format="svg" alt="Ecomisto" />
+</Link>
+
+<style>
+    
+  .logo img {
+    width: 40px;
+    height: auto;
+  }
+</style>

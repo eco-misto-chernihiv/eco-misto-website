@@ -1,8 +1,9 @@
 /*
-  0-550px — default
-  550-1100px - 34.37rem
-  1100-1500px — 68.75rem
- 1500px — 93.75em
+  0-550px — default (mobile)
+  550-768px — 
+  550-1100px - 34.37rem — tablet
+  1100-1500px — 68.75rem — laptop
+ 1500px — 93.75em — desktop 
 */
 
 @custom-media --tablet-and-up (width >= 34.37em);

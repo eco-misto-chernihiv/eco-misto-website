@@ -31,7 +31,7 @@
   * Perfect fourth: 1.33
   */
 
-  --heading-ratio: 1.25;
+  --heading-ratio: 1.2;
   --text-ratio: 1.125;
 
   /* Heading typographic scale */
@@ -70,6 +70,7 @@
   --font-black: 900;
 
   @media (--tablet-and-up) {
+    --heading-ratio: 1.25;
     --body-base-text: 1.125rem; /* This means 18px */
   }
 
@@ -79,6 +80,11 @@
 }
 
 /* Headings */
+
+.heading {
+  line-height: var(--heading-line-height);
+  text-wrap: balance;
+}
 
 .h1 {
   font-size: var(--heading-7);

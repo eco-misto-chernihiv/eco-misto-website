@@ -7,6 +7,8 @@ import Achievment from "./Achievment.astro";
 
 // Assets
 import missionBgDesktop from "../../assets/images/mission-bg-desktop.jpg";
+import Center from "../compositions/Center.astro";
+import Section from "../ui/Section.astro";
 
 // Data
 const achievments = [
@@ -39,15 +41,24 @@ const achievments = [
 ];
 ---
 
-<div class="achievments-container">
-  <div class="bg-image">
-    <Image src={missionBgDesktop} alt="" />
-  </div>
-  {achievments.map((achievment) => <Achievment achievment={achievment} />)}
-</div>
+<Section class="achievments">
+  <Center maxWidth="87.5rem" space="space-7">
+    <div class="achievments-container">
+      <div class="bg-image">
+        <Image src={missionBgDesktop} alt="" />
+      </div>
+      {achievments.map((achievment) => <Achievment achievment={achievment} />)}
+    </div>
+  </Center>
+</Section>
 
 <style>
   @import "../../styles/03-utilities/breakpoints.css";
+
+  .achievments {
+    padding-block-start: var(--space-7-fixed);
+    padding-block-end: var(--space-18-fixed);
+  }
 
   .achievments-container {
     position: relative;
