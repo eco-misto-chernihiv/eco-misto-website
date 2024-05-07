@@ -1,0 +1,54 @@
+---
+// Tools
+
+// Compositions
+
+// Components
+
+// Data
+import { contactsData } from "@/data/siteData";
+import { Icon } from "astro-icon/components";
+import Text from "./ui/Text.astro";
+import Stack from "./compositions/Stack.astro";
+---
+
+<div class="contacts">
+  <Stack space="space-4">
+    <Text tagName="div" size="small">Контактні дані</Text>
+    <Stack space="space-3" tagName="ul" role="list">
+      {
+        contactsData.map((contact) => {
+          return (
+            <li class="contact-item">
+              <Icon name={contact.icon} size={14} />
+              <Text tagName="p" size="medium" class="medium">
+                {contact.description}
+              </Text>
+            </li>
+          );
+        })
+      }
+    </Stack>
+  </Stack>
+</div>
+
+<style>
+  .contacts {
+    max-width: 14rem;
+  }
+  .contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3-fixed);
+    color: var(--color-secondary);
+
+    & svg {
+      min-width: 16px;
+      height: 16px;
+
+      stroke: currentColor;
+
+      transform: translateY(2px);
+    }
+  }
+</style>

@@ -1,5 +1,206 @@
 ---
+// Tools
 
+// Compositions
+import Center from "./compositions/Center.astro";
+import Stack from "./compositions/Stack.astro";
+import Cluster from "./compositions/Cluster.astro";
+
+// Components
+import Heading from "./ui/Heading.astro";
+import ButtonLink from "./ui/ButtonLink.astro";
+import Logo from "./Logo.astro";
+import SocialItem from "./SocialItem.astro";
+import Shape from "./ui/Shape.astro";
+import Link from "./ui/Link.astro";
+import Contacts from "./Contacts.astro";
+import Text from "./ui/Text.astro";
+import FooterSocial from "./FooterSocial.astro";
+
+// Data
+import { navData, socialData } from "@/data/siteData";
+
+// Assets
+import logo from "@/assets/ecomisto-logo.svg";
+import logoSymbol from "@/assets/ecomisto-symbol.svg";
 ---
 
-<footer>Footer</footer>
+<footer id="contacts">
+  <Center maxWidth="125rem" space="space-7">
+    <div class="inner">
+      <FooterSocial />
+
+      <Center maxWidth="87.5rem" space="space-7">
+        <Stack space="space-12">
+          <Stack space="space-12">
+            <div class="logo-container">
+              <Logo
+                logoSrc={logo}
+                style={{ "--width": "200px" }}
+                class="desktop"
+              />
+              <Logo
+                logoSrc={logoSymbol}
+                style={{ "--width": "4rem" }}
+                class="mobile"
+              />
+            </div>
+
+            <Cluster justify="between" space="space-6">
+              <div class="support">
+                <Heading tagName="h5" size="h5" class="font-heading">
+                  Подобається що ми робимо?
+                </Heading>
+                <ButtonLink href="/donate">Підтримати</ButtonLink>
+              </div>
+
+              <div class="right">
+                <nav>
+                  <Stack space="space-4">
+                    <Text tagName="div" size="small">Меню</Text>
+                    <Stack tagName="ul" space="space-3" role="list">
+                      {
+                        navData.map(({ title, href }) => {
+                          return (
+                            <li>
+                              <Link href={href}>{title}</Link>
+                            </li>
+                          );
+                        })
+                      }
+                    </Stack>
+                  </Stack>
+                </nav>
+
+                <Contacts />
+              </div>
+            </Cluster>
+          </Stack>
+
+          <Cluster space="space-6" justify="between" alignItems="center">
+            <div>
+              <Text tagName="span" size="small">© Екомісто 2024</Text>
+            </div>
+
+            <div>
+              <Text tagName="span" size="small">Усі права захищені</Text>
+              <Text tagName="span" size="small" class="separator">|</Text>
+              <Link href="#" class="copy">Політика конфіденційності</Link>
+            </div>
+          </Cluster>
+        </Stack>
+      </Center>
+    </div>
+  </Center>
+</footer>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  footer {
+    padding-block: var(--space-6-fixed);
+  }
+
+  .inner {
+    position: relative;
+    padding-block-start: var(--space-11-fixed);
+    padding-block-end: var(--space-8-fixed);
+    /* height: 40vh; */
+    color: var(--color-secondary);
+    background-color: var(--color-accent);
+
+    border-radius: var(--rounded-2xl);
+
+    @media (--laptop-and-up) {
+      border-radius: var(--rounded-3xl);
+    }
+  }
+
+  .social {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    right: 0;
+
+    padding-block-end: var(--space-4-fixed);
+    /* padding-inline-end: var(--space-4-fixed); */
+    padding-inline: var(--space-4-fixed);
+
+    /* border-bottom-right-radius: var(--rounded-2xl); */
+    border-bottom-left-radius: var(--rounded-2xl);
+    background-color: var(--color-white);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-9-fixed);
+    }
+
+    /* & .shape.right {
+      top: -1px;
+      right: 1px;
+    }
+    & .shape.left {
+      left: -1px;
+      bottom: 1px;
+    } */
+
+    & .shape.right {
+      bottom: 1px;
+      right: -1px;
+    }
+    & .shape.left {
+      left: 1px;
+      top: -1px;
+    }
+  }
+
+  .social-list {
+    display: flex;
+    /* flex-direction: column; */
+    gap: var(--space-4-fixed);
+  }
+
+  .logo-container {
+    & .desktop {
+      display: none;
+    }
+
+    & .mobile {
+    }
+
+    @media (--tablet-and-up) {
+      & .desktop {
+        display: block;
+      }
+
+      & .mobile {
+        display: none;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8-fixed);
+
+    @media (--tablet-and-up) {
+      flex-direction: row;
+      gap: var(--space-11-fixed);
+    }
+  }
+
+  .copy {
+    color: var(--color-secondary);
+    font-size: var(--text-minus-2);
+  }
+
+  .separator {
+    font-size: var(--text-minus-2);
+    margin-inline: var(--space-4-fixed);
+  }
+
+  /* TEMP */
+  nav li a {
+    color: var(--color-secondary);
+  }
+</style>

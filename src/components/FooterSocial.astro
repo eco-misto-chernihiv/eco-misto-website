@@ -1,0 +1,67 @@
+---
+// Components
+import SocialItem from "./SocialItem.astro";
+import Shape from "./ui/Shape.astro";
+
+// Data
+import { socialData } from "@/data/siteData";
+---
+
+<div class="footer-social">
+  <!-- <Shape class="right" color="black" translateX="100%" rotate="270deg" /> -->
+  <!-- <Shape class="left" color="black" translateY="100%" rotate="270deg" /> -->
+
+  <Shape class="right" color="white" translateY="100%" />
+  <Shape class="left" color="white" translateX="-100%" />
+
+  <ul class="social-list" role="list">
+    {socialData.map((socialItem) => <SocialItem socialItem={socialItem} />)}
+  </ul>
+</div>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .footer-social {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    right: 0;
+
+    padding-block-end: var(--space-4-fixed);
+    /* padding-inline-end: var(--space-4-fixed); */
+    padding-inline: var(--space-4-fixed);
+
+    /* border-bottom-right-radius: var(--rounded-2xl); */
+    border-bottom-left-radius: var(--rounded-2xl);
+    background-color: var(--color-white);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-9-fixed);
+    }
+
+    /* & .shape.right {
+      top: -1px;
+      right: 1px;
+    }
+    & .shape.left {
+      left: -1px;
+      bottom: 1px;
+    } */
+
+    & .shape.right {
+      bottom: 1px;
+      right: -1px;
+    }
+    & .shape.left {
+      left: 1px;
+      top: -1px;
+    }
+  }
+
+  .social-list {
+    display: flex;
+    /* flex-direction: column; */
+    gap: var(--space-4-fixed);
+  }
+</style>

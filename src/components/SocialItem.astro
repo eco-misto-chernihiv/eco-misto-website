@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+import Link from "./ui/Link.astro";
+
+// Data
+const { socialItem } = Astro.props;
+const { title, href, icon } = socialItem;
+---
+
+<li>
+  <Link href={href} class="social-link" isExternal target="_blank">
+    <Icon name={icon} size={20} />
+  </Link>
+</li>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .social-link {
+    --_circle-width: 2rem;
+    --_icon-width: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+
+    width: var(--_circle-width);
+    height: var(--_circle-width);
+
+    border-radius: 99999px;
+
+    & svg {
+      stroke: currentColor;
+      height: var(--_icon-width);
+      width: var(--_icon-width);
+    }
+
+    @media (--tablet-and-up) {
+      --_circle-width: 3rem;
+
+      & svg {
+        --_icon-width: 20px;
+      }
+    }
+  }
+</style>
