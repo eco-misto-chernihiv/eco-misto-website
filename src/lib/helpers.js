@@ -1,4 +1,7 @@
-export function getBreakpoins(prefix, prop) {
+/**
+ * Creates breakpoints classes to use in class:list directive
+ */
+export function getBreakpoints(prefix, prop) {
   return typeof prop === "object"
     ? {
         [`default:${prefix}-${prop.default}`]: prop.default,
@@ -7,4 +10,13 @@ export function getBreakpoins(prefix, prop) {
         [`desktop:${prefix}-${prop.desktop}`]: prop.desktop,
       }
     : { [`${prefix}-${prop}`]: prop };
+}
+
+/**
+ * Replace symbols to double and single quotes
+ * @param {String} title
+ * @returns Parsed title
+ */
+export function parseTitle(title) {
+  return string.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
 }

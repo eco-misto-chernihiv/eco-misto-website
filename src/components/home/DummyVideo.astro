@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import Stack from "../compositions/Stack.astro";
+import Heading from "../ui/Heading.astro";
+import VideoModal from "@ui/VideoModal.astro";
+import Link from "../ui/Link.astro";
+
+import thumbnail from "@/assets/images/tolocar_056.jpg";
+import Button from "../ui/Button.astro";
+
+const { title } = Astro.props;
+---
+
+<div class="video-item">
+  <Stack space="space-7">
+    <div class="img-container">
+      <Image src={thumbnail} alt="" width={480} height={360} />
+    </div>
+    <Heading tagName="h4" size="h6" class="title color-secondary"
+      >{title}</Heading
+    >
+  </Stack>
+  <Button
+    data-open-modal
+    aria-label="Open youtube video modal"
+    aria-expanded="false"
+  >
+    Дивитись
+  </Button>
+</div>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .video-item {
+    display: flex;
+    flex-direction: column;
+
+    & button {
+      margin-block-start: auto;
+      padding-block-start: var(--space-5-fixed);
+    }
+  }
+
+  .img-container {
+    aspect-ratio: 1.8;
+
+    border-radius: var(--rounded-lg);
+
+    /* Enable border radius */
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .video-container {
+    aspect-ratio: 16 / 9;
+    /* width: 500px; */
+
+    & iframe {
+      width: 100%;
+      height: 100%;
+
+      border: 0;
+      border-radius: var(--rounded-lg);
+    }
+  }
+
+  .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+</style>
+
+<script></script>

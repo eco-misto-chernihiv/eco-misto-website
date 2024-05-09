@@ -1,0 +1,98 @@
+---
+// Tools
+
+// Helpers
+import { parseTitle } from "@/lib/helpers";
+
+// Compositions
+import Center from "@compositions/Center.astro";
+import AutoGrid from "@compositions/AutoGrid.astro";
+
+// Components
+import Heading from "@ui/Heading.astro";
+import YoutubeVideo from "./YoutubeVideo.astro";
+import Stack from "../compositions/Stack.astro";
+import DummyVideo from "./DummyVideo.astro";
+import Button from "../ui/Button.astro";
+
+// Data
+const apiKey = "AIzaSyBmpgxH69C5mdjd_e08w_FBazkZTB9hUgE";
+const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
+
+type YoutubeVideos = {
+  thumbnail: string;
+  title: string;
+  videoId: string;
+};
+
+let youtubeVideos: YoutubeVideos[] = [];
+
+// Using top-level await
+// We don't need to woory about blocking code
+// Because we are using SSG nad it will be rendered once at build
+
+try {
+  const response = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`
+  );
+
+  const data = await response.json();
+
+  // Get desired data shape
+  // &#39;
+  youtubeVideos = data.items.map((item: any) => {
+    return {
+      thumbnail: item.snippet.thumbnails.high.url,
+      title: parseTitle(item.snippet.title),
+      videoId: item.id.videoId,
+    };
+  });
+
+  console.log(data.items);
+} catch (error) {
+  console.log(error);
+  console.log("Error fetching youtube videos");
+}
+
+console.log(youtubeVideos.length);
+---
+
+<section class="youtube">
+  <Center maxWidth="87.5rem" space="space-7">
+    <Stack space="space-9">
+      <Heading tagName="h3" size="h4" class="font-heading">Youtube</Heading>
+
+      <AutoGrid role="list" minItemWidth="265px">
+        {
+          youtubeVideos.length === 0 ? (
+            <>
+              <DummyVideo
+                title={`Онлайн-лекція "Майбутнє Кривого Рогу через призму інтегрованого урбан
+      дизайну"`}
+              />
+              <DummyVideo
+                title={`Онлайн-лекція "Майбутнє Кривого Рогу через призму інтегрованого урбан
+      дизайну"`}
+              />
+              <DummyVideo title={`Онлайн-лекція "Майбутнє"`} />
+            </>
+          ) : (
+            youtubeVideos.map((video) => {
+              return (
+                <div role="listitem">
+                  <YoutubeVideo video={video} />
+                </div>
+              );
+            })
+          )
+        }
+      </AutoGrid>
+    </Stack>
+  </Center>
+</section>
+
+<style>
+  .youtube {
+    padding-block: var(--space-11-fixed);
+  }
+</style>

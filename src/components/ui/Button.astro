@@ -6,6 +6,25 @@ type Props = {
 const { class: classList, ...rest } = Astro.props;
 ---
 
-<button class:list={[classList]} {...rest}>
+<button class:list={["unstyled", classList]} {...rest}>
   <slot />
 </button>
+
+<style>
+  .unstyled {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+
+    /* &:focus {
+      outline-offset: 2px;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    } */
+  }
+</style>

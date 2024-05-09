@@ -1,5 +1,5 @@
 ---
-import { getBreakpoins } from "@/lib/helpers";
+import { getBreakpoints } from "@/lib/helpers";
 
 type columnGapOptions =
   | "space-0"
@@ -69,8 +69,8 @@ const {
   ...rest
 } = Astro.props;
 
-const responsiveColumnGap = getBreakpoins("column-gap", columnGap);
-const responsiveRowGap = getBreakpoins("row-gap", rowGap);
+const responsiveColumnGap = getBreakpoints("column-gap", columnGap);
+const responsiveRowGap = getBreakpoints("row-gap", rowGap);
 ---
 
 <div
