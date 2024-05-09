@@ -24,16 +24,11 @@ const { name, position, picture } = member.data;
   </div>
   <figcaption class="member-info">
     <div class="wrapper">
-      <Shape color="secondary" class="top" translateY="-100%" rotate="180deg" />
-      <Shape
-        color="secondary"
-        class="right"
-        translateX="100%"
-        rotate="180deg"
-      />
+      <Shape color="white" class="top" translateY="-100%" rotate="180deg" />
+      <Shape color="white" class="right" translateX="100%" rotate="180deg" />
       <div class="info">
         <Text tagName="span" size="medium" isBolded>{name}</Text>
-        <Text tagName="span" size="small">{position}</Text>
+        <Text tagName="span" size="small" class="position">{position}</Text>
       </div>
     </div>
   </figcaption>
@@ -43,6 +38,7 @@ const { name, position, picture } = member.data;
   @import "../../styles/03-utilities/breakpoints.css";
 
   .team-member {
+    width: 250px;
     position: relative;
 
     border-top-left-radius: var(--rounded-2xl);
@@ -51,6 +47,10 @@ const { name, position, picture } = member.data;
 
     /* To enable border-radius  */
     overflow: hidden;
+
+    @media (--tablet-and-up) {
+      width: auto;
+    }
 
     @media (--laptop-and-up) {
       border-top-left-radius: var(--rounded-3xl);
@@ -78,12 +78,18 @@ const { name, position, picture } = member.data;
     padding-block-start: var(--space-3-fixed);
     padding-inline-end: var(--space-6-fixed);
     border-top-right-radius: var(--rounded-3xl);
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    color: var(--color-secondary);
+    background-color: var(--color-white);
   }
 
-  .info span {
-    display: block;
+  .info {
+    & span {
+      display: block;
+    }
+
+    & .position {
+      opacity: 0.8;
+    }
   }
 
   /* Shape custom positioning */

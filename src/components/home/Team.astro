@@ -6,7 +6,7 @@ import Section from "../ui/Section.astro";
 import TeamMembers from "./TeamMembers.astro";
 ---
 
-<Section class="team" isRounded>
+<Section class="team" isRoundTop color="white">
   <Center maxWidth="87.5rem" space="space-9">
     <Stack space="space-9">
       <Heading tagName="h3" size="h4" class="font-heading">Команда</Heading>
@@ -18,7 +18,6 @@ import TeamMembers from "./TeamMembers.astro";
 <style>
   .team {
     padding-block: var(--space-11-fixed);
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 </style>

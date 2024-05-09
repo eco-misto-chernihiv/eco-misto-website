@@ -1,0 +1,75 @@
+---
+type colorOptions = "primary" | "secondary" | "accent" | "white" | "black";
+
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  space?: spaceOptions;
+  class?: string;
+  thumbColor: colorOptions;
+  trackColor: colorOptions;
+  [key: string]: any;
+};
+
+const {
+  space = "space-4",
+  class: classList,
+  thumbColor,
+  trackColor,
+  ...rest
+} = Astro.props;
+
+const thumb = `var(--color-${thumbColor})`;
+const track = `var(--color-${trackColor})`;
+
+console.log(thumb);
+console.log(track);
+---
+
+<div class:list={["reel", classList, { ["gap-" + space]: space }]} {...rest}>
+  <slot />
+</div>
+
+<style define:vars={{ thumb, track }}>
+  .reel {
+    display: flex;
+
+    /* We want horizontal scrolling */
+    overflow-x: auto;
+
+    /** Space to move scrollbar away */
+    padding-block-end: var(--space-4-fixed);
+
+    scrollbar-color: var(--thumb) var(--track);
+    scrollbar-width: thin;
+  }
+
+  .reel::-webkit-scrollbar {
+    block-size: 1rem;
+  }
+
+  .reel::-webkit-scrollbar-track {
+    background-color: var(--track);
+  }
+
+  .reel::-webkit-scrollbar-thumb {
+    border: 2px solid var(--track);
+    border-radius: 1000px;
+    background-color: var(--track);
+    background-image: linear-gradient(
+      var(--track) 0,
+      var(--track) 0.25rem,
+      var(--thumb) 0.25rem,
+      var(--thumb) 0.75rem,
+      var(--track) 0.75rem
+    );
+  }
+</style>

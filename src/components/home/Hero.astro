@@ -77,14 +77,19 @@ import heroImg from "@/assets/images/hero.jpg";
     padding-block-end: var(--space-8-fixed);
     background-color: var(--color-secondary);
 
+    border-bottom-left-radius: var(--rounded-2xl);
+    border-bottom-right-radius: var(--rounded-2xl);
+
     @media (--tablet-and-up) {
       padding-block: var(--space-10-fixed);
     }
 
     @media (--laptop-and-up) {
-      height: 100vh;
+      /* height: 100vh; */
       padding-block-start: var(--space-17-fixed);
       padding-block-end: var(--space-12-fixed);
+      border-bottom-left-radius: var(--rounded-3xl);
+      border-bottom-right-radius: var(--rounded-3xl);
     }
   }
 

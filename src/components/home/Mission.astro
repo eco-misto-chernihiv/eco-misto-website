@@ -9,6 +9,7 @@ import Stack from "../compositions/Stack.astro";
 
 // Components
 import Heading from "../ui/Heading.astro";
+import Section from "../ui/Section.astro";
 import Text from "../ui/Text.astro";
 import Achievments from "./Achievments.astro";
 
@@ -17,21 +18,30 @@ import Achievments from "./Achievments.astro";
 // Data
 ---
 
-<section class="mission">
-  <Center maxWidth="56rem" space="space-7">
-    <Stack space="space-6">
-      <Text tagName="div" size="xxx-large" class="text-center">Місія</Text>
-      <Heading tagName="h3" size="h4">
-        Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та
-        креативних рішень, залучаючи спільноту на всіх рівнях.
-      </Heading>
-    </Stack>
-  </Center>
-</section>
+<Section color="secondary" isRound class="mission">
+  <Stack space="space-12">
+    <Center maxWidth="56rem" space="space-7">
+      <Stack space="space-6">
+        <Text tagName="div" size="xxx-large" class="text-center color-primary"
+          >Місія</Text
+        >
+        <Heading tagName="h3" size="h4" class="color-primary">
+          Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та
+          креативних рішень, залучаючи спільноту на всіх рівнях.
+        </Heading>
+      </Stack>
+    </Center>
+
+    <Center maxWidth="87.5rem" space="space-7">
+      <Achievments />
+    </Center>
+  </Stack>
+</Section>
 
 <style>
   .mission {
-    padding-block: var(--space-16-fixed);
+    padding-block-start: var(--space-15-fixed);
+    padding-block-end: var(--space-17-fixed);
   }
 
   .mission h3 {

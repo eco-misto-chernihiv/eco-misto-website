@@ -19,12 +19,14 @@ const { title, href, icon } = socialItem;
   .social-link {
     --_circle-width: 2rem;
     --_icon-width: 14px;
+    --_icon-background: var(--color-secondary);
+    --_icon-color: var(--color-primary);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
+    background-color: var(--_icon-background);
+    color: var(--_icon-color);
 
     width: var(--_circle-width);
     height: var(--_circle-width);
@@ -44,5 +46,10 @@ const { title, href, icon } = socialItem;
         --_icon-width: 20px;
       }
     }
+  }
+
+  .social-link:hover {
+    --_icon-background: var(--color-primary);
+    --_icon-color: var(--color-secondary);
   }
 </style>

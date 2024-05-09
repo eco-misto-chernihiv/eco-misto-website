@@ -1,26 +1,61 @@
 ---
 type Props = {
   class?: string;
-  isRounded?: boolean;
+  isRound?: boolean;
+  isRoundTop?: boolean;
+  isRoundBottom?: boolean;
+  color?: "primary" | "secondary" | "accent" | "white" | "black";
   [key: string]: any;
 };
-const { class: classList, isRounded = false, ...rest } = Astro.props;
+const {
+  class: classList,
+  isRound = false,
+  isRoundTop = false,
+  isRoundBottom = false,
+  color,
+  ...rest
+} = Astro.props;
+
+const background = `var(--color-${color})`;
 ---
 
-<section class:list={[classList, { rounded: isRounded }]} {...rest}>
+<section
+  class:list={[
+    "section",
+    classList,
+    { ["color-" + color]: color },
+    { round: isRound },
+    { ["round-top"]: isRoundTop },
+    { ["round-bottom"]: isRoundBottom },
+  ]}
+  {...rest}
+>
   <slot />
 </section>
 
-<style>
+<style define:vars={{ background }}>
   @import "../../styles/03-utilities/breakpoints.css";
 
-  .rounded {
-    border-top-left-radius: var(--rounded-2xl);
-    border-top-right-radius: var(--rounded-2xl);
+  .section {
+    --_border-radius: var(--rounded-2xl);
+    background-color: var(--background);
 
     @media (--laptop-and-up) {
-      border-top-left-radius: var(--rounded-3xl);
-      border-top-right-radius: var(--rounded-3xl);
+      --_border-radius: var(--rounded-3xl);
     }
+  }
+
+  .round {
+    border-radius: var(--_border-radius);
+  }
+
+  .round-top {
+    border-top-left-radius: var(--_border-radius);
+    border-top-right-radius: var(--_border-radius);
+  }
+
+  .round-bottom {
+    border-bottom-left-radius: var(--_border-radius);
+    border-bottom-right-radius: var(--_border-radius);
   }
 </style>

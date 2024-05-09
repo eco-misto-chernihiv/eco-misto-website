@@ -11,19 +11,37 @@ import Nav from "./Nav.astro";
 import ButtonLink from "./ui/ButtonLink.astro";
 
 // Assets
-import logoInvert from "../assets/ecomisto-logo-invert.svg";
+import logo from "../assets/ecomisto-logo.svg";
+import { Icon } from "astro-icon/components";
+import Button from "./ui/Button.astro";
 ---
 
 <header>
   <Center maxWidth="87.5rem" space="space-7">
-    <Cluster isCenterMiddle alignItems="center">
-      <Logo logoSrc={logoInvert} style={{ "--width": "160px" }} />
+    <Cluster isCenterMiddle alignItems="center" class="desktop">
+      <Logo
+        name="ecomisto-logo"
+        color="primary"
+        style={{ "--width": "160px" }}
+      />
       <Nav />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
           <ButtonLink href="/donate">Підтримати</ButtonLink>
         </Cluster>
       </div>
+    </Cluster>
+
+    <Cluster alignItems="center" justify="between" class="mobile">
+      <Logo
+        name="ecomisto-symbol"
+        color="primary"
+        style={{ "--width": "32px" }}
+      />
+
+      <Button>
+        <Icon name="icon-menu" size={32} />
+      </Button>
     </Cluster>
   </Center>
 </header>
@@ -34,5 +52,23 @@ import logoInvert from "../assets/ecomisto-logo-invert.svg";
   header {
     background-color: var(--color-secondary);
     padding-block: var(--space-7-fixed);
+  }
+
+  header .mobile {
+    & button {
+      color: var(--color-primary);
+    }
+
+    @media (--tablet-and-up) {
+      display: none;
+    }
+  }
+
+  header .desktop {
+    display: none;
+
+    @media (--tablet-and-up) {
+      display: flex;
+    }
   }
 </style>

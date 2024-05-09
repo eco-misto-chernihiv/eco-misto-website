@@ -10,19 +10,15 @@ import Cluster from "./compositions/Cluster.astro";
 import Heading from "./ui/Heading.astro";
 import ButtonLink from "./ui/ButtonLink.astro";
 import Logo from "./Logo.astro";
-import SocialItem from "./SocialItem.astro";
-import Shape from "./ui/Shape.astro";
 import Link from "./ui/Link.astro";
 import Contacts from "./Contacts.astro";
 import Text from "./ui/Text.astro";
 import FooterSocial from "./FooterSocial.astro";
 
 // Data
-import { navData, socialData } from "@/data/siteData";
+import { navData } from "@/data/siteData";
 
 // Assets
-import logo from "@/assets/ecomisto-logo.svg";
-import logoSymbol from "@/assets/ecomisto-symbol.svg";
 ---
 
 <footer id="contacts">
@@ -35,12 +31,14 @@ import logoSymbol from "@/assets/ecomisto-symbol.svg";
           <Stack space="space-12">
             <div class="logo-container">
               <Logo
-                logoSrc={logo}
+                name="ecomisto-logo"
+                color="secondary"
                 style={{ "--width": "200px" }}
                 class="desktop"
               />
               <Logo
-                logoSrc={logoSymbol}
+                name="ecomisto-symbol"
+                color="secondary"
                 style={{ "--width": "4rem" }}
                 class="mobile"
               />

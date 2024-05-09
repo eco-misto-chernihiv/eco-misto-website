@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 
 // Compositions
 import AutoGrid from "../compositions/AutoGrid.astro";
+import Reel from "../compositions/Reel.astro";
 
 // Components
 import TeamMember from "./TeamMember.astro";
@@ -12,7 +13,24 @@ import TeamMember from "./TeamMember.astro";
 const members = await getCollection("members");
 ---
 
-<AutoGrid minItemWidth="265px" space="space-6" role="list">
+<Reel role="list" thumbColor="secondary" trackColor="white" class="members">
+  {
+    members.map((member) => {
+      return (
+        <div role="listitem">
+          <TeamMember member={member} />
+        </div>
+      );
+    })
+  }
+</Reel>
+
+<AutoGrid
+  minItemWidth="265px"
+  space="space-6"
+  role="list"
+  class="members tablet"
+>
   {
     members.map((member) => {
       return (
@@ -23,3 +41,21 @@ const members = await getCollection("members");
     })
   }
 </AutoGrid>
+
+<style>
+  @import "../../styles/03-utilities/breakpoints.css";
+
+  .members {
+    @media (--tablet-and-up) {
+      display: none;
+    }
+  }
+
+  .members.tablet {
+    display: none;
+
+    @media (--tablet-and-up) {
+      display: grid;
+    }
+  }
+</style>
