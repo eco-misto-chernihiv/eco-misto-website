@@ -16,9 +16,10 @@ import DummyVideo from "./DummyVideo.astro";
 import Button from "../ui/Button.astro";
 
 // Data
-const apiKey = "AIzaSyBmpgxH69C5mdjd_e08w_FBazkZTB9hUgE";
+const apiKey = import.meta.env.YOUTUBE_API_KEY;
 const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
 
+console.log(apiKey);
 type YoutubeVideos = {
   thumbnail: string;
   title: string;
