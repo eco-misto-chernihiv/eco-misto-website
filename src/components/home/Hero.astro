@@ -18,21 +18,38 @@ import heroImg from "@/assets/images/hero.jpg";
 ---
 
 <section class="hero">
-  <Stack space="space-12">
-    <Center maxWidth="87.5rem" space="space-7">
-      <Row
-        class="hero-grid"
-        rowGap={{ default: "space-6", tablet: "space-12", laptop: "space-0" }}
-        alignItems="center"
-      >
-        <div class="hero-text col-12">
-          <Heading tagName="h1" size="h1" class="font-heading"
-            >Події. Простори. Спільнота.</Heading
-          >
+  <Center maxWidth="87.5rem" space="space-7">
+    <Row
+      class="hero-grid"
+      rowGap={{ default: "space-6", tablet: "space-12", laptop: "space-0" }}
+      alignItems="center"
+    >
+      <div class="hero-text col-12">
+        <Heading tagName="h1" size="h1" class="font-heading"
+          >Події. Простори. Спільнота.</Heading
+        >
+      </div>
+
+      <div class="about-text col-12">
+        <Text tagName="p" size="large" class="color-primary"
+          >Організація функціонує в Чернігові з 2016 року і реалізувала понад 50
+          проєктів в напрямку сталого розвитку, урбаністики та мейкерства. Також
+          перетворюємо колишній кінотеатр "Перемога" на центр стартапів та
+          інновацій Peremoha Lab.</Text
+        >
+      </div>
+
+      <div class="hero-image col-12 tablet:col-10 laptop:col-8">
+        <div class="img-wrapper">
+          <Image src={heroImg} alt="" />
         </div>
 
-        <div class="about-text col-12">
-          <Text tagName="p" size="large" class="color-primary"
+        <div class="action"></div>
+
+        <div class="about-text tablet">
+          <Shape color="black" class="left" translateX="-100%" />
+          <Shape color="secondary" class="bottom" translateY="100%" />
+          <Text tagName="p" size="medium" class="color-primary"
             >Організація функціонує в Чернігові з 2016 року і реалізувала понад
             50 проєктів в напрямку сталого розвитку, урбаністики та мейкерства.
             Також перетворюємо колишній кінотеатр "Перемога" на центр стартапів
@@ -40,37 +57,16 @@ import heroImg from "@/assets/images/hero.jpg";
           >
         </div>
 
-        <div class="hero-image col-12 tablet:col-10 laptop:col-8">
-          <div class="img-wrapper">
-            <Image src={heroImg} alt="" />
-          </div>
-
-          <div class="action"></div>
-
-          <div class="about-text tablet">
-            <Shape color="black" class="left" translateX="-100%" />
-            <Shape color="secondary" class="bottom" translateY="100%" />
-            <Text tagName="p" size="medium" class="color-primary"
-              >Організація функціонує в Чернігові з 2016 року і реалізувала
-              понад 50 проєктів в напрямку сталого розвитку, урбаністики та
-              мейкерства. Також перетворюємо колишній кінотеатр "Перемога" на
-              центр стартапів та інновацій Peremoha Lab.</Text
-            >
-          </div>
-
-          <div class="hero-text laptop">
-            <Shape color="secondary" class="left" translateX="-100%" />
-            <Shape color="secondary" class="bottom" translateY="100%" />
-            <Heading tagName="h1" size="h1" class="font-heading"
-              >Події. Простори.<br />Спільнота.</Heading
-            >
-          </div>
+        <div class="hero-text laptop">
+          <Shape color="secondary" class="left" translateX="-100%" />
+          <Shape color="secondary" class="bottom" translateY="100%" />
+          <Heading tagName="h1" size="h1" class="font-heading"
+            >Події. Простори.<br />Спільнота.</Heading
+          >
         </div>
-      </Row>
-    </Center>
-
-    <Donors />
-  </Stack>
+      </div>
+    </Row>
+  </Center>
 </section>
 
 <style>
@@ -86,6 +82,7 @@ import heroImg from "@/assets/images/hero.jpg";
     }
 
     @media (--laptop-and-up) {
+      height: 100vh;
       padding-block-start: var(--space-17-fixed);
       padding-block-end: var(--space-12-fixed);
     }
