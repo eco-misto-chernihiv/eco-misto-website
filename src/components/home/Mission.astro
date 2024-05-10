@@ -25,7 +25,11 @@ import Achievments from "./Achievments.astro";
       <Row>
         <Stack space="space-4" class="col-12 tablet:col-9 laptop:col-8">
           <Text tagName="div" size="large" class="color-primary">Місія</Text>
-          <Heading tagName="h3" size="h4" class="color-primary font-heading">
+          <Heading
+            tagName="h3"
+            size="h4"
+            class="mission-text color-primary font-heading"
+          >
             Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних
             та креативних рішень, залучаючи спільноту на всіх рівнях.
           </Heading>
@@ -43,12 +47,12 @@ import Achievments from "./Achievments.astro";
     padding-block-end: var(--space-17-fixed);
   }
 
-  .mission h3 {
+  .mission-text {
     /* text-align: center; */
     /* text-indent: 3em; */
 
     /* 23px (320) -> 48.8px (1400) */
-    font-size: 1.44rem;
+    font-size: var(--heading-4);
     font-size: clamp(
       1.44rem,
       0.962962962962963rem + 2.385185185185185vw,
@@ -57,11 +61,5 @@ import Achievments from "./Achievments.astro";
 
     line-height: 1.1;
     text-wrap: wrap;
-
-    overflow-wrap: break-word;
-    hyphens: auto;
-
-    /* Prefix for Safari */
-    -webkit-hyphens: auto;
   }
 </style>

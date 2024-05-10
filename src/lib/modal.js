@@ -20,8 +20,13 @@ function getKeyboardFocusableElements(element = document) {
   );
 }
 
-function getIframeElement(element) {
-  return element.querySelector("iframe");
+/**
+ * Get iframe or video element, within desired element
+ * @param {HTMLElement} element
+ * @returns {HTMLElement} Iframe or video element
+ */
+function getVideoElement(element) {
+  return element.querySelector("iframe") || element.querySelector("video");
 }
 
 /**
@@ -146,8 +151,6 @@ function BaseModal(settings) {
     open() {
       overlayElement.classList.add("is-open");
 
-      console.log(modalElement);
-
       // Callback function after opening the modal
       settings.afterOpen();
 
@@ -178,13 +181,13 @@ function BaseModal(settings) {
       // Enable page scrolling, when animation ends
       overlayElement.addEventListener("transitionend", modal.enableScroll);
 
-      // Get iframe element, within a modal
-      const iFrameElement = getIframeElement(contentElement);
+      // Get iframe or video element, within a modal
+      const videoElement = getVideoElement(contentElement);
 
       // If it exists reset the src, to stop video from playing
-      if (iFrameElement) {
-        const src = iFrameElement.src;
-        iFrameElement.src = src;
+      if (videoElement) {
+        const src = videoElement.src;
+        videoElement.src = src;
       }
     },
   };

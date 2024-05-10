@@ -1,5 +1,9 @@
 ---
+// Tools
+import { Icon } from "astro-icon/components";
 
+// Components
+import Button from "@ui/Button.astro";
 ---
 
 <div class="modal-overlay jsModalOverlay" data-modal>
@@ -9,12 +13,12 @@
     aria-modal="true"
     aria-label="Youtube video modal"
   >
-    <button
+    <Button
       class="modal__close-button jsModalClose"
       aria-label="Close youtube video"
     >
-      X
-    </button>
+      <Icon name="icon-close" size={32} />
+    </Button>
 
     <div class="modal__content">
       <slot />
@@ -23,6 +27,8 @@
 </div>
 
 <style>
+  @import "@styles/03-utilities/breakpoints.css";
+
   .modal-overlay {
     position: fixed;
     display: flex;
@@ -38,9 +44,9 @@
     background-color: rgba(0, 0, 0, 0.8);
     visibility: hidden;
     transition:
-      opacity 0.3s ease-out,
-      z-index 0s 0.3s,
-      visibility 0s 0.3s;
+      opacity 0.4s ease-out,
+      z-index 0s 0.4s,
+      visibility 0s 0.4s;
   }
 
   .modal-overlay.is-open {
@@ -50,22 +56,116 @@
     visibility: visible;
   }
 
+  .modal__content {
+    animation: round-out 0.4s var(--ease-out) forwards;
+  }
+
+  .modal-overlay.is-open .modal__content {
+    animation: round-in 0.4s var(--ease-out) backwards;
+    /* animation-delay: 100ms; */
+  }
+
+  .modal-overlay.is-open .modal__close-button {
+    animation: fade-right 200ms 350ms var(--ease-out) forwards;
+
+    @media (--laptop-and-up) {
+      animation: fade-up 200ms 350ms var(--ease-out) forwards;
+    }
+  }
+
   .modal {
     position: relative;
 
-    width: 93.2%;
+    width: 90%;
     max-width: 62.5rem;
   }
 
   .modal__close-button {
+    /* TEMP */
+    /* display: none; */
+
+    --_icon-size: 24px;
+
     position: absolute;
-    top: -1.5rem;
-    right: -1.5rem;
-    padding: 1rem 1rem;
+    top: 0rem;
+    right: 0rem;
+    padding-inline: 8px;
     font-size: 1rem;
     border-radius: 50%;
+    opacity: 0;
     /* border: 2px solid var(--blue-grey-400); */
     /* background: var(--blue-grey-400); */
-    color: var(--color-black);
+    color: var(--color-white);
+
+    transform: translateX(100%);
+
+    & svg {
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+    }
+
+    @media (--laptop-and-up) {
+      padding: 1rem;
+      transform: translateY(-100%);
+
+      --_icon-size: 32px;
+    }
+  }
+
+  .modal__content > :global(.video-container) {
+    aspect-ratio: 16 / 9;
+    /* width: 1000px; */
+    /* background-color: red; */
+
+    & :global(iframe),
+    & :global(video) {
+      width: 100%;
+      height: 100%;
+
+      border: 0;
+      border-radius: var(--rounded-lg);
+    }
+  }
+
+  @keyframes round-in {
+    0% {
+      clip-path: inset(50% round 0.5rem);
+    }
+    100% {
+      clip-path: inset(0% round 0.5rem);
+    }
+  }
+
+  @keyframes round-out {
+    0% {
+      clip-path: inset(0% round 1.5rem);
+    }
+    100% {
+      clip-path: inset(50% round 1.5rem);
+    }
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(calc(-100% + 1rem));
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes fade-right {
+    0% {
+      opacity: 0;
+      transform: translateX(calc(100% - 1rem));
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
   }
 </style>

@@ -18,5 +18,5 @@ export function getBreakpoints(prefix, prop) {
  * @returns Parsed title
  */
 export function parseTitle(title) {
-  return string.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
+  return title.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
 }

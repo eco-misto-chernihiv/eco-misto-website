@@ -1,17 +1,18 @@
 ---
 // Tools
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "../compositions/Center.astro";
 import Row from "../compositions/Row.astro";
-import Stack from "../compositions/Stack.astro";
 
 // Components
 import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
-import Donors from "./Donors.astro";
 import Shape from "../ui/Shape.astro";
+import VideoModal from "../ui/VideoModal.astro";
+import Button from "../ui/Button.astro";
 
 // Assets
 import heroImg from "@/assets/images/hero.jpg";
@@ -44,7 +45,21 @@ import heroImg from "@/assets/images/hero.jpg";
           <Image src={heroImg} alt="" />
         </div>
 
-        <div class="action"></div>
+        <div class="action">
+          <Button
+            data-open-modal
+            aria-label="Open ecomisto showreel modal"
+            aria-expanded="false"
+          >
+            <Icon name="icon-play" size={32} />
+          </Button>
+
+          <VideoModal>
+            <div class="video-container">
+              <video src="/ecomisto-showreel.mp4" controls></video>
+            </div>
+          </VideoModal>
+        </div>
 
         <div class="about-text tablet">
           <Shape color="black" class="left" translateX="-100%" />
@@ -75,6 +90,7 @@ import heroImg from "@/assets/images/hero.jpg";
   .hero {
     padding-block-start: var(--space-4-fixed);
     padding-block-end: var(--space-8-fixed);
+
     background-color: var(--color-secondary);
 
     border-bottom-left-radius: var(--rounded-2xl);
@@ -88,6 +104,7 @@ import heroImg from "@/assets/images/hero.jpg";
       /* height: 100vh; */
       padding-block-start: var(--space-17-fixed);
       padding-block-end: var(--space-12-fixed);
+
       border-bottom-left-radius: var(--rounded-3xl);
       border-bottom-right-radius: var(--rounded-3xl);
     }
@@ -158,12 +175,15 @@ import heroImg from "@/assets/images/hero.jpg";
       /* Fixed width to prevent shape shift, if text is translated to english */
       width: 51.875rem;
 
-      transform: translateX(40%) translateY(-50%);
-
-      background-color: var(--color-secondary);
       padding-inline-start: var(--space-7-fixed);
       padding-block-end: var(--space-2-fixed);
+
+      
+      background-color: var(--color-secondary);
+      
       border-bottom-left-radius: var(--rounded-3xl);
+      
+      transform: translateX(40%) translateY(-50%);
 
       & h1 {
         white-space: nowrap;
@@ -174,6 +194,7 @@ import heroImg from "@/assets/images/hero.jpg";
         left: 0;
         margin-left: 2px;
       }
+
       & .shape.bottom {
         bottom: 0;
         right: 20.6rem;
@@ -183,16 +204,20 @@ import heroImg from "@/assets/images/hero.jpg";
     }
   }
 
+  /* TEMP */
   .action {
-    /* TEMP */
     position: absolute;
     inset: 0;
     margin: auto;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 120px;
     height: 120px;
-    border-radius: 50%;
     background-color: var(--color-primary);
+    border-radius: 50%;
   }
 
   .about-text {
@@ -230,10 +255,10 @@ import heroImg from "@/assets/images/hero.jpg";
       padding-inline-start: var(--space-7-fixed);
       padding-block-end: var(--space-4-fixed);
 
-      transform: translateY(-50%) translateX(25%);
-
       background-color: var(--color-secondary);
       border-bottom-left-radius: var(--rounded-2xl);
+      
+      transform: translateY(-50%) translateX(25%);
 
       & p {
         /* Override text with fluid font-size */
