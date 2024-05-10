@@ -1,11 +1,42 @@
 ---
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13"
+  | "space-14"
+  | "space-15"
+  | "space-16"
+  | "space-17"
+  | "space-18"
+  | "space-19";
+
 type Props = {
   class?: string;
+  space?: spaceOptions;
   direction?: "left" | "right";
   duration?: "slow" | "fast";
   [key: string]: any;
 };
-const { class: classList, direction = "left", duration, ...rest } = Astro.props;
+const {
+  space = "space-4",
+  class: classList,
+  direction = "left",
+  duration,
+  ...rest
+} = Astro.props;
+
+const marqueeGap = `var(--${space}-fixed)`;
 ---
 
 <div
@@ -18,7 +49,7 @@ const { class: classList, direction = "left", duration, ...rest } = Astro.props;
   <slot />
 </div>
 
-<style is:global>
+<style is:global define:vars={{ marqueeGap }}>
   /* Based on this tutorial:
     * https://www.youtube.com/watch?v=iLmBy-HKIAw
      */
@@ -27,10 +58,9 @@ const { class: classList, direction = "left", duration, ...rest } = Astro.props;
   }
 
   .marquee > .marquee-inner {
-    --marquee-gap: 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--marquee-gap);
+    gap: var(--marqueeGap);
   }
 
   .marquee[data-animated="true"] {
@@ -76,7 +106,7 @@ const { class: classList, direction = "left", duration, ...rest } = Astro.props;
   /* Animation Duration */
 
   .marquee[data-duration="slow"] {
-    --_animation-duration: 100s;
+    --_animation-duration: 60s;
   }
 
   .marquee[data-duration="fast"] {
@@ -85,7 +115,7 @@ const { class: classList, direction = "left", duration, ...rest } = Astro.props;
 
   @keyframes marquee {
     to {
-      transform: translateX(calc(-50% - 0.5rem));
+      transform: translateX(calc(-50% - var(--marqueeGap) / 2));
     }
   }
 </style>

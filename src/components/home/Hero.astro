@@ -19,7 +19,7 @@ import heroImg from "@/assets/images/hero.jpg";
 ---
 
 <section class="hero">
-  <Center maxWidth="87.5rem" space="space-6">
+  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Row
       class="hero-grid"
       rowGap={{ default: "space-6", tablet: "space-12", laptop: "space-0" }}
@@ -178,11 +178,10 @@ import heroImg from "@/assets/images/hero.jpg";
       padding-inline-start: var(--space-7-fixed);
       padding-block-end: var(--space-2-fixed);
 
-      
       background-color: var(--color-secondary);
-      
+
       border-bottom-left-radius: var(--rounded-3xl);
-      
+
       transform: translateX(40%) translateY(-50%);
 
       & h1 {
@@ -257,7 +256,7 @@ import heroImg from "@/assets/images/hero.jpg";
 
       background-color: var(--color-secondary);
       border-bottom-left-radius: var(--rounded-2xl);
-      
+
       transform: translateY(-50%) translateX(25%);
 
       & p {

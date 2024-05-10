@@ -10,7 +10,7 @@ import TeamMembers from "./TeamMembers.astro";
 ---
 
 <Section class="team" isRoundTop color="white">
-  <Center maxWidth="87.5rem" space="space-9">
+  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Stack space="space-9">
       <Heading tagName="h3" size="h4" class="font-heading">Команда</Heading>
       <TeamMembers />

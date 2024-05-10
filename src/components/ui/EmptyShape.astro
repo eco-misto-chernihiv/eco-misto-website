@@ -1,0 +1,26 @@
+---
+type Props = {
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  class?: string;
+  [key: string]: any;
+};
+
+const { top, left, right, bottom, class: classList, ...rest } = Astro.props;
+---
+
+<div class:list={["empty-shape", classList]} {...rest}>
+  <slot />
+</div>
+
+<style define:vars={{ top, left, right, bottom }}>
+  .empty-shape {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    right: var(--right);
+    bottom: var(--bottom);
+  }
+</style>

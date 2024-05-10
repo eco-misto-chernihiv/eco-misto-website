@@ -21,7 +21,10 @@ import Achievments from "./Achievments.astro";
 
 <Section color="secondary" isRound class="mission">
   <Stack space="space-12">
-    <Center maxWidth="87.5rem" space="space-6">
+    <Center
+      maxWidth="87.5rem"
+      space={{ default: "space-6", tablet: "space-7" }}
+    >
       <Row>
         <Stack space="space-4" class="col-12 tablet:col-9 laptop:col-8">
           <Text tagName="div" size="large" class="color-primary">Місія</Text>
@@ -42,9 +45,16 @@ import Achievments from "./Achievments.astro";
 </Section>
 
 <style>
+  @import "@styles/03-utilities/breakpoints.css";
+
   .mission {
-    padding-block-start: var(--space-15-fixed);
-    padding-block-end: var(--space-17-fixed);
+    padding-block-start: var(--space-11-fixed);
+    padding-block-end: var(--space-15-fixed);
+
+    @media (--laptop-and-up) {
+      padding-block-start: var(--space-15-fixed);
+      padding-block-end: var(--space-17-fixed);
+    }
   }
 
   .mission-text {

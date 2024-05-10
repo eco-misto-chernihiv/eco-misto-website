@@ -1,4 +1,6 @@
 ---
+import { getBreakpoints } from "@/lib/helpers";
+
 type spaceOptions =
   | "space-0"
   | "space-1"
@@ -15,8 +17,15 @@ type spaceOptions =
   | "space-12"
   | "space-13";
 
+interface SpaceObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
 type Props = {
-  space?: spaceOptions;
+  space?: SpaceObject | spaceOptions;
   maxWidth?: string;
   class?: string;
   andText?: boolean;
@@ -32,6 +41,8 @@ const {
   intrinsic = false,
   ...rest
 } = Astro.props;
+
+const responsiveSpace = getBreakpoints("pi", space);
 ---
 
 <div
@@ -40,7 +51,7 @@ const {
     classList,
     { "text-center": andText },
     { intrinsic: intrinsic },
-    { ["pi-" + space]: space },
+    responsiveSpace,
   ]}
   {...rest}
 >

@@ -11,7 +11,7 @@ import Marquee from "../ui/Marquee.astro";
 import Text from "../ui/Text.astro";
 
 // Assets
-import tolocar from "@/assets/partners/tolocar-black.png";
+import usaid from "@/assets/donors/USAID.svg";
 ---
 
 <section class="donors">
@@ -20,19 +20,19 @@ import tolocar from "@/assets/partners/tolocar-black.png";
       <Text tagName="div" size="large">Наші донори</Text>
     </Center>
 
-    <Marquee direction="left">
+    <Marquee direction="left" space="space-10" duration="slow">
       <div class="marquee-inner">
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
-        <Image src={tolocar} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
+        <Image src={usaid} alt="" />
       </div>
     </Marquee>
   </Stack>
@@ -42,5 +42,14 @@ import tolocar from "@/assets/partners/tolocar-black.png";
   .donors {
     padding-block: var(--space-11-fixed);
     /* background-color: rebeccapurple; */
+
+    & img {
+      width: 144px;
+      height: auto;
+    }
+  }
+
+  .red {
+    border: 1px solid red;
   }
 </style>

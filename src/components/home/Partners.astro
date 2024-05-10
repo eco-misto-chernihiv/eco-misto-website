@@ -1,0 +1,149 @@
+---
+// Tools
+import { Image } from "astro:assets";
+
+// Compositions
+import Center from "../compositions/Center.astro";
+import Row from "../compositions/Row.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Button from "../ui/Button.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import Section from "../ui/Section.astro";
+import Marquee from "../ui/Marquee.astro";
+
+// Assets
+import tolocar from "../../assets/partners/tolocar-black.png";
+import sendpulse from "../../assets/partners/sendpulse.png";
+import EmptyShape from "../ui/EmptyShape.astro";
+import Shape from "../ui/Shape.astro";
+---
+
+<Section class="partners">
+  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
+    <div class="inner">
+      <EmptyShape class="partners-shape" top="0" left="0">
+        <Shape color="white" class="top" translateX="100%" rotate="270deg" />
+        <Shape color="white" class="bottom" translateY="100%" rotate="270deg" />
+      </EmptyShape>
+
+      <Stack space="space-10">
+        <Row>
+          <Stack
+            space="space-6"
+            class="col-12 col-start-1 tablet:col-7 tablet:col-start-5 laptop:col-6 laptop:col-start-6"
+          >
+            <Text tagName="div" size="large" class="color-primary"
+              >Партнери</Text
+            >
+            <Stack space="space-5">
+              <Stack space="space-4">
+                <Heading
+                  tagName="h3"
+                  size="h5"
+                  class="color-primary font-heading"
+                >
+                  Заголовок про партнерів
+                </Heading>
+                <Text tagName="p" size="large" class="color-accent"
+                  >Партнери грають важливу роль у будь-якому бізнесі, спільно
+                  працюючи для досягнення спільних цілей та успіху. Вони
+                  сприяють розвитку інновацій, обміну ресурсами та знаннями, що
+                  допомагає зміцнити позиції на ринку та забезпечити
+                  стабільність у діяльності компанії.
+                </Text>
+              </Stack>
+              <Button>Співпрацювати</Button>
+            </Stack>
+          </Stack>
+        </Row>
+
+        <Stack space="space-8">
+          <Marquee direction="left" space="space-11">
+            <div class="marquee-inner">
+              <Image src={tolocar} alt="" />
+              <Image src={tolocar} alt="" />
+              <Image src={tolocar} alt="" />
+              <Image src={tolocar} alt="" />
+              <Image src={tolocar} alt="" />
+            </div>
+          </Marquee>
+          <Marquee direction="right" space="space-11">
+            <div class="marquee-inner">
+              <Image src={sendpulse} alt="" />
+              <Image src={sendpulse} alt="" />
+              <Image src={sendpulse} alt="" />
+              <Image src={sendpulse} alt="" />
+              <Image src={sendpulse} alt="" />
+            </div>
+          </Marquee>
+        </Stack>
+      </Stack>
+    </div>
+  </Center>
+</Section>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .partners {
+    & button {
+      color: var(--color-primary);
+    }
+  }
+
+  .partners .inner {
+    position: relative;
+
+    --_border-radius: var(--rounded-2xl);
+
+    padding-block: var(--space-11-fixed);
+    padding-inline: var(--space-6-fixed);
+
+    background-color: var(--color-secondary);
+
+    border-radius: var(--_border-radius);
+
+    @media (--tablet-and-up) {
+    }
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+
+      padding-block: var(--space-14-fixed);
+    }
+  }
+
+  .partners-shape {
+    height: 3rem;
+    width: 31%;
+    background-color: var(--color-white);
+
+    border-bottom-right-radius: var(--_border-radius);
+
+    & .shape.top {
+      top: -1px;
+      right: 1px;
+    }
+    & .shape.bottom {
+      bottom: 1px;
+      left: -1px;
+    }
+
+    @media (--tablet-and-up) {
+      height: 4rem;
+      width: 25%;
+    }
+
+    @media (--laptop-and-up) {
+      height: 5rem;
+      width: 19%;
+    }
+  }
+
+  .red {
+    border: 1px solid red;
+  }
+</style>
