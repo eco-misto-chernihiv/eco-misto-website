@@ -31,7 +31,7 @@ const {
     rotate={rightRotate}
   />
   <div class="content">
-    <Heading tagName="h4" size="h4">{title}</Heading>
+    <Heading tagName="h4" size="h3" class="font-heading">{title}</Heading>
     <Text tagName="p" size="large">{description}</Text>
   </div>
 </div>
@@ -69,6 +69,10 @@ const {
   }
 
   .achievment .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     width: 8rem;
     height: 8rem;
 

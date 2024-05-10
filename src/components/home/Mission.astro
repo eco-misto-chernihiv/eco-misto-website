@@ -5,6 +5,7 @@
 
 // Compositions
 import Center from "../compositions/Center.astro";
+import Row from "../compositions/Row.astro";
 import Stack from "../compositions/Stack.astro";
 
 // Components
@@ -20,21 +21,19 @@ import Achievments from "./Achievments.astro";
 
 <Section color="secondary" isRound class="mission">
   <Stack space="space-12">
-    <Center maxWidth="56rem" space="space-7">
-      <Stack space="space-6">
-        <Text tagName="div" size="xxx-large" class="text-center color-primary"
-          >Місія</Text
-        >
-        <Heading tagName="h3" size="h4" class="color-primary">
-          Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та
-          креативних рішень, залучаючи спільноту на всіх рівнях.
-        </Heading>
-      </Stack>
+    <Center maxWidth="87.5rem" space="space-6">
+      <Row>
+        <Stack space="space-4" class="col-12 tablet:col-9 laptop:col-8">
+          <Text tagName="div" size="large" class="color-primary">Місія</Text>
+          <Heading tagName="h3" size="h4" class="color-primary font-heading">
+            Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних
+            та креативних рішень, залучаючи спільноту на всіх рівнях.
+          </Heading>
+        </Stack>
+      </Row>
     </Center>
 
-    <Center maxWidth="87.5rem" space="space-7">
-      <Achievments />
-    </Center>
+    <Achievments />
   </Stack>
 </Section>
 
@@ -47,7 +46,16 @@ import Achievments from "./Achievments.astro";
   .mission h3 {
     /* text-align: center; */
     /* text-indent: 3em; */
-    line-height: 1;
+
+    /* 23px (320) -> 48.8px (1400) */
+    font-size: 1.44rem;
+    font-size: clamp(
+      1.44rem,
+      0.962962962962963rem + 2.385185185185185vw,
+      3.05rem
+    );
+
+    line-height: 1.1;
     text-wrap: wrap;
 
     overflow-wrap: break-word;
