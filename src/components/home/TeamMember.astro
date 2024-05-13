@@ -38,46 +38,45 @@ const { name, position, picture } = member.data;
   @import "../../styles/03-utilities/breakpoints.css";
 
   .team-member {
+    --_border-radius: var(--rounded-2xl);
+
     width: 250px;
     position: relative;
 
-    border-top-left-radius: var(--rounded-2xl);
-    border-top-right-radius: var(--rounded-2xl);
-    border-bottom-right-radius: var(--rounded-2xl);
+    border-top-left-radius: var(--_border-radius);
+    border-top-right-radius: var(--_border-radius);
+    border-bottom-right-radius: var(--_border-radius);
 
-    /* To enable border-radius  */
-    overflow: hidden;
+    background-color: var(--color-primary);
 
     @media (--tablet-and-up) {
       width: auto;
     }
 
     @media (--laptop-and-up) {
-      border-top-left-radius: var(--rounded-3xl);
-      border-top-right-radius: var(--rounded-3xl);
-      border-bottom-right-radius: var(--rounded-3xl);
+      --_border-radius: var(--rounded-3xl);
     }
   }
 
   .member-photo {
     aspect-ratio: 3 / 4;
-    background-color: var(--color-primary);
 
     & img {
       object-fit: cover;
       width: 100%;
       height: 100%;
+      border-bottom-right-radius: var(--_border-radius);
     }
   }
 
   .member-info {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: -1px;
+    bottom: -1px;
 
     padding-block-start: var(--space-3-fixed);
     padding-inline-end: var(--space-6-fixed);
-    border-top-right-radius: var(--rounded-3xl);
+    border-top-right-radius: var(--_border-radius);
     color: var(--color-secondary);
     background-color: var(--color-white);
   }

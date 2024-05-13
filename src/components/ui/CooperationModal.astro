@@ -31,16 +31,14 @@ import Button from "@ui/Button.astro";
 
   .modal-overlay {
     position: fixed;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     opacity: 0;
     z-index: -1;
-    /* padding: var(--space-4-fixed); */
+
     background-color: rgba(0, 0, 0, 0.8);
     visibility: hidden;
     transition:
@@ -89,23 +87,12 @@ import Button from "@ui/Button.astro";
     justify-content: center;
 
     height: 100%;
+    height: 100svh;
 
     padding: var(--space-7-fixed);
-    /* animation: round-out 0.4s var(--ease-out) forwards; */
+
+    padding-block-start: var(--space-10-fixed);
   }
-
-  /* .modal-overlay.is-open .modal__content {
-    animation: round-in 0.4s var(--ease-out) backwards;
-  } */
-
-  /* 
-  .modal-overlay.is-open .modal__close-button {
-    animation: fade-right 200ms 350ms var(--ease-out) forwards;
-
-    @media (--laptop-and-up) {
-      animation: fade-up 200ms 350ms var(--ease-out) forwards;
-    }
-  } */
 
   .modal__close-button {
     /* TEMP */
@@ -115,16 +102,13 @@ import Button from "@ui/Button.astro";
 
     position: absolute;
     top: calc(var(--space-7-fixed) - 12px);
-    left: calc(var(--space-7-fixed) - 4px);
+    left: calc(var(--space-7-fixed) - 8px);
+
     padding: 4px;
 
-    /* font-size: 1rem; */
-    border-radius: 8px;
-    /* opacity: 0; */
-    /* border: 2px solid var(--blue-grey-400); */
     color: var(--color-black);
 
-    /* transform: translateX(100%); */
+    border-radius: 8px;
 
     & svg {
       width: var(--_icon-size);
@@ -139,7 +123,6 @@ import Button from "@ui/Button.astro";
       --_icon-size: 24px;
 
       padding: 8px;
-      /* transform: translateY(calc(-100% + 8px)); */
     }
   }
 

@@ -15,7 +15,7 @@ import Text from "./ui/Text.astro";
 
 <form action="">
   <Stack space="space-6">
-    <Stack space="space-5">
+    <Stack space="space-5" class="inputs">
       {cooperationData.map((data) => <InputGroup data={data} />)}
     </Stack>
 
@@ -30,6 +30,17 @@ import Text from "./ui/Text.astro";
 </form>
 
 <style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .inputs {
+    overflow-y: auto;
+    max-height: 50vh;
+
+    @media (--tablet-and-up) {
+      /* overflow-y: visible; */
+      max-height: 55vh;
+    }
+  }
   .checkbox-group {
     display: flex;
     gap: var(--space-4-fixed);
