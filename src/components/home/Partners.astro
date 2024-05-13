@@ -13,12 +13,14 @@ import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
 import Section from "../ui/Section.astro";
 import Marquee from "../ui/Marquee.astro";
+import EmptyShape from "../ui/EmptyShape.astro";
+import Shape from "../ui/Shape.astro";
+import CooperationModal from "../ui/CooperationModal.astro";
+import Cooperation from "../Cooperation.astro";
 
 // Assets
 import tolocar from "../../assets/partners/tolocar-black.png";
 import sendpulse from "../../assets/partners/sendpulse.png";
-import EmptyShape from "../ui/EmptyShape.astro";
-import Shape from "../ui/Shape.astro";
 ---
 
 <Section class="partners">
@@ -55,7 +57,15 @@ import Shape from "../ui/Shape.astro";
                   стабільність у діяльності компанії.
                 </Text>
               </Stack>
-              <Button>Співпрацювати</Button>
+              <Button
+                data-open-modal
+                aria-label="Open cooperation form modal"
+                aria-expanded="false">Співпрацювати</Button
+              >
+
+              <CooperationModal>
+                <Cooperation />
+              </CooperationModal>
             </Stack>
           </Stack>
         </Row>

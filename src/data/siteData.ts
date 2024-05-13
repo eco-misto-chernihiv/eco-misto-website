@@ -57,3 +57,48 @@ export const contactsData = [
     icon: "icon-pin",
   },
 ];
+
+export const cooperationData = [
+  {
+    label: "Мене звати *",
+    formControl: "input",
+    name: "name",
+    placeholder: "Аянамі Рей",
+    type: "text",
+    required: true,
+    pattern: "^[A-Za-zА-Яа-я0-9]{2,20}",
+  },
+  {
+    label: "Я з організації *",
+    formControl: "input",
+    name: "organization",
+    placeholder: "Nerv",
+    type: "text",
+    required: true,
+    pattern: "^[A-Za-zА-Яа-я0-9]{2,40}",
+  },
+  {
+    label: "Я хотів/ла би обговорити *",
+    formControl: "textarea",
+    name: "message",
+    placeholder: "Розкажіть про вашу ідею",
+    required: true,
+    rows: "3",
+  },
+  {
+    label: "Я дізнався/дізналася про вашу організацію",
+    formControl: "input",
+    name: "source",
+    placeholder: "Я дізнався з соцмереж.",
+    type: "text",
+  },
+  {
+    label: "Дайте відповідь мені на мою пошту *",
+    formControl: "input",
+    name: "email",
+    placeholder: "unit00@nerv.com",
+    type: "email",
+    required: true,
+    pattern: "^[^s@]+@[^s@]+.[^s@]+$",
+  },
+];

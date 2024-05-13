@@ -16,7 +16,7 @@ type Props = {
   size: keyof typeof sizeOptions;
   class?: string;
   isBolded?: boolean;
-  rest?: any;
+  [key: string]: any;
 };
 
 const {

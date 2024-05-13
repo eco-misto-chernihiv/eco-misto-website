@@ -44,9 +44,9 @@ import Button from "@ui/Button.astro";
     background-color: rgba(0, 0, 0, 0.8);
     visibility: hidden;
     transition:
-      opacity 0.4s ease-out,
-      z-index 0s 0.4s,
-      visibility 0s 0.4s;
+      opacity 200ms ease-out,
+      z-index 0s 200ms,
+      visibility 0s 200ms;
   }
 
   .modal-overlay.is-open {
@@ -57,12 +57,13 @@ import Button from "@ui/Button.astro";
   }
 
   .modal__content {
+    animation: fade-out 0.4s var(--ease-out) forwards;
     animation: round-out 0.4s var(--ease-out) forwards;
   }
 
   .modal-overlay.is-open .modal__content {
+    animation: fade-in 0.4s var(--ease-out) backwards;
     animation: round-in 0.4s var(--ease-out) backwards;
-    /* animation-delay: 100ms; */
   }
 
   .modal-overlay.is-open .modal__close-button {
@@ -89,12 +90,12 @@ import Button from "@ui/Button.astro";
     position: absolute;
     top: 0rem;
     right: 0rem;
-    padding-inline: 8px;
-    font-size: 1rem;
-    border-radius: 50%;
+    padding: 4px;
+    /* font-size: 1rem; */
+    border-radius: 8px;
     opacity: 0;
     /* border: 2px solid var(--blue-grey-400); */
-    /* background: var(--blue-grey-400); */
+
     color: var(--color-white);
 
     transform: translateX(100%);
@@ -105,11 +106,16 @@ import Button from "@ui/Button.astro";
     }
 
     @media (--laptop-and-up) {
-      padding: 1rem;
-      transform: translateY(-100%);
+      padding: 8px;
+      transform: translateY(calc(-100% + 8px));
 
       --_icon-size: 32px;
     }
+  }
+
+  .modal__close-button:hover {
+    /* TODO: Pick a neutral color, add transition */
+    background-color: var(--color-secondary);
   }
 
   .modal__content > :global(.video-container) {
@@ -148,24 +154,44 @@ import Button from "@ui/Button.astro";
   @keyframes fade-up {
     0% {
       opacity: 0;
-      transform: translateY(calc(-100% + 1rem));
+      transform: translateY(calc(-100% + 8px + 1rem));
     }
 
     100% {
       opacity: 1;
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - 8px));
     }
   }
 
   @keyframes fade-right {
     0% {
       opacity: 0;
-      transform: translateX(calc(100% - 1rem));
+      transform: translateX(calc(100% - 1rem + 4px));
     }
 
     100% {
       opacity: 1;
-      transform: translateX(100%);
+      transform: translateX(calc(100% + 4px));
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
     }
   }
 </style>

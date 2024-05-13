@@ -1,0 +1,23 @@
+---
+// Tools
+
+// Compositions
+import Stack from "./compositions/Stack.astro";
+import Button from "./ui/Button.astro";
+
+// Components
+import InputGroup from "./ui/InputGroup.astro";
+
+// Data
+import { cooperationData } from "@/data/siteData";
+---
+
+<form action="">
+  <Stack space="space-6">
+    <Stack space="space-5">
+      {cooperationData.map((data) => <InputGroup data={data} />)}
+    </Stack>
+
+    <Button type="submit"> Надіслати </Button>
+  </Stack>
+</form>

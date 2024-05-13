@@ -6,6 +6,7 @@
 :root {
   /* Brand colors */
   --color-primary: hsl(146, 82%, 74%);
+  --color-primary-03: hsl(146 82% 74% / 0.3);
   --color-secondary: hsl(166, 100%, 14%);
   --color-accent: hsl(47, 100%, 96%);
 
@@ -14,6 +15,8 @@
   --color-white: hsl(255 100% 100%);
 
   --color-gray-100: hsl(0, 0%, 93%);
+  --color-gray-200: hsl(0, 0%, 90%);
+  --color-gray-400: hsl(0, 0%, 64%);
   --color-dark-gray: hsl(0, 0%, 22%);
 
   --color-text: hsl(168 96% 51% / 0.8);

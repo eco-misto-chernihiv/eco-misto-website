@@ -16,6 +16,8 @@ type Props = {
   class?: string;
   thumbColor: colorOptions;
   trackColor: colorOptions;
+  isScrollSnapped?: boolean;
+  scrollSnapAlign?: "start" | "center" | "end";
   [key: string]: any;
 };
 
@@ -24,6 +26,8 @@ const {
   class: classList,
   thumbColor,
   trackColor,
+  isScrollSnapped = false,
+  scrollSnapAlign,
   ...rest
 } = Astro.props;
 
@@ -31,22 +35,31 @@ const thumb = `var(--color-${thumbColor})`;
 const track = `var(--color-${trackColor})`;
 ---
 
-<div class:list={["reel", classList, { ["gap-" + space]: space }]} {...rest}>
+<div
+  class:list={[
+    "reel",
+    classList,
+    { ["gap-" + space]: space },
+    { ["scroll-snap"]: isScrollSnapped },
+  ]}
+  {...rest}
+>
   <slot />
 </div>
 
-<style define:vars={{ thumb, track }}>
+<style define:vars={{ thumb, track, scrollSnapAlign }}>
   .reel {
     display: flex;
 
     /* We want horizontal scrolling */
-    overflow-x: auto;
+    overflow: scroll;
 
     /** Space to move scrollbar away */
     padding-block-end: var(--space-4-fixed);
 
     scrollbar-color: var(--thumb) var(--track);
     scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
   }
 
   .reel::-webkit-scrollbar {
@@ -68,5 +81,13 @@ const track = `var(--color-${trackColor})`;
       var(--thumb) 0.75rem,
       var(--track) 0.75rem
     );
+  }
+
+  .reel.scroll-snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  .reel.scroll-snap > :global(.reel-item) {
+    scroll-snap-align: var(--scrollSnapAlign);
   }
 </style>

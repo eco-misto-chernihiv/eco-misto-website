@@ -1,0 +1,24 @@
+---
+// Composition
+
+// Components
+import CooperationForm from "./CooperationForm.astro";
+import Stack from "./compositions/Stack.astro";
+import Heading from "./ui/Heading.astro";
+import Text from "./ui/Text.astro";
+---
+
+<aside class="cooperation">
+  <Stack space="space-5">
+    <Stack space="space-2">
+      <Heading tagName="h3" size="h6">Готові до співпраці?</Heading>
+      <Text tagName="p" size="medium">Текст про співпрацю</Text>
+    </Stack>
+    <CooperationForm />
+  </Stack>
+</aside>
+
+<style>
+  .cooperation {
+  }
+</style>

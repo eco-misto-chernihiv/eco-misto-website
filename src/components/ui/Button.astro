@@ -19,11 +19,12 @@ const { class: classList, ...rest } = Astro.props;
     font: inherit;
     color: inherit;
 
-    /* &:focus {
-      outline-offset: 2px;
+    &:focus {
+      /* outline-offset: 2px; */
+      outline-color: var(--color-primary);
     }
 
-    &:focus:not(:focus-visible) {
+    /* &:focus:not(:focus-visible) {
       outline: none;
     } */
   }

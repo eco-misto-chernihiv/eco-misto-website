@@ -56,7 +56,12 @@ import heroImg from "@/assets/images/hero.jpg";
 
           <VideoModal>
             <div class="video-container">
-              <video src="/ecomisto-showreel.mp4" controls></video>
+              <video
+                src="/ecomisto-showreel.mp4"
+                controls
+                autoplay
+                playsinline
+                muted></video>
             </div>
           </VideoModal>
         </div>
@@ -206,7 +211,10 @@ import heroImg from "@/assets/images/hero.jpg";
   /* TEMP */
   .action {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: auto;
 
     display: flex;

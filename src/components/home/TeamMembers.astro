@@ -13,11 +13,18 @@ import TeamMember from "./TeamMember.astro";
 const members = await getCollection("members");
 ---
 
-<Reel role="list" thumbColor="secondary" trackColor="white" class="members">
+<Reel
+  role="list"
+  thumbColor="secondary"
+  trackColor="white"
+  isScrollSnapped
+  scrollSnapAlign="center"
+  class="members"
+>
   {
     members.map((member) => {
       return (
-        <div role="listitem">
+        <div role="listitem" class="reel-item">
           <TeamMember member={member} />
         </div>
       );
@@ -44,6 +51,9 @@ const members = await getCollection("members");
 
 <style>
   @import "../../styles/03-utilities/breakpoints.css";
+
+  div[role="listitem"] {
+  }
 
   .members {
     @media (--tablet-and-up) {
