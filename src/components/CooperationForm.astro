@@ -10,6 +10,7 @@ import InputGroup from "./ui/InputGroup.astro";
 
 // Data
 import { cooperationData } from "@/data/siteData";
+import Text from "./ui/Text.astro";
 ---
 
 <form action="">
@@ -18,6 +19,34 @@ import { cooperationData } from "@/data/siteData";
       {cooperationData.map((data) => <InputGroup data={data} />)}
     </Stack>
 
+    <div class="checkbox-group">
+      <Text tagName="label" size="medium" for="consent"
+        >Даю згоду на обробку персональних даних</Text
+      >
+      <input type="checkbox" name="consent" id="consent" required />
+    </div>
     <Button type="submit"> Надіслати </Button>
   </Stack>
 </form>
+
+<style>
+  .checkbox-group {
+    display: flex;
+    gap: var(--space-4-fixed);
+    align-items: center;
+
+    & label {
+      order: 2;
+    }
+
+    & input[type="checkbox"] {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+
+      accent-color: var(--color-primary);
+
+      order: 1;
+    }
+  }
+</style>
