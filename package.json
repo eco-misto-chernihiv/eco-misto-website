@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/netlify": "^5.2.1",
     "@astrojs/react": "^3.2.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@types/react": "^18.2.60",
@@ -24,10 +25,12 @@
     "purgecss": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sanitize-html": "^2.13.0",
     "sharp": "^0.33.3",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/sanitize-html": "^2.11.0",
     "autoprefixer": "^10.4.17",
     "cssnano": "^6.0.5",
     "postcss-custom-media": "^10.0.3",

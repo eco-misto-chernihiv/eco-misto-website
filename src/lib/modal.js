@@ -130,8 +130,6 @@ function BaseModal(settings) {
     },
 
     disableScroll() {
-      console.log("disable scroll");
-
       const scrollBarWidth = modal.scrollbarWidth;
 
       document.body.style.overflow = "hidden";
@@ -139,8 +137,6 @@ function BaseModal(settings) {
     },
 
     enableScroll() {
-      console.log("enable scroll");
-
       document.body.style.paddingRight = "0";
       document.body.style.overflow = "";
 

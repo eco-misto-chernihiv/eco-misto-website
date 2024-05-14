@@ -1,0 +1,195 @@
+---
+// Tools
+
+// Compositions
+import Stack from "./compositions/Stack.astro";
+import Button from "./ui/Button.astro";
+
+// Components
+import InputGroup from "./ui/InputGroup.astro";
+
+// Data
+import { cooperationData } from "@/data/siteData";
+import Text from "./ui/Text.astro";
+---
+
+<aside class="partnership">
+  <form action="" data-form="partnership">
+    <div class="filler"></div>
+
+    <div class="inputs-container">
+      <div class="inputs">
+        {cooperationData.map((data) => <InputGroup data={data} />)}
+      </div>
+    </div>
+    <Stack space="space-6" class="bottom">
+      <div class="checkbox-group">
+        <Text tagName="label" size="medium" for="consent"
+          >Даю згоду на обробку персональних даних</Text
+        >
+        <input type="checkbox" name="consent" id="consent" required />
+      </div>
+      <Button type="submit"> Надіслати </Button>
+    </Stack>
+  </form>
+</aside>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .partnership {
+    height: 100%;
+  }
+
+  form[data-form="partnership"] {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: var(--space-4-fixed);
+    height: 100%;
+  }
+
+  .filler {
+    flex: 1;
+    min-height: var(--space-12-fixed);
+  }
+
+  .inputs-container {
+    /* height 100% to enable overflow, when there is no space */
+    height: 100%;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-inline: var(--space-7-fixed);
+  }
+
+  .inputs {
+    margin-block: auto;
+  }
+
+  .inputs > :global(*) + :global(*) {
+    margin-block-start: var(--space-5-fixed);
+  }
+
+  .checkbox-group {
+    display: flex;
+    gap: var(--space-4-fixed);
+    align-items: center;
+
+    & label {
+      order: 2;
+    }
+
+    & input[type="checkbox"] {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+
+      outline-color: var(--color-primary);
+      accent-color: var(--color-primary);
+
+      order: 1;
+    }
+  }
+
+  .bottom {
+    flex: 1;
+    padding-inline: var(--space-7-fixed);
+  }
+</style>
+
+<script>
+  import sanitizeHtml from "sanitize-html";
+
+  type FormValues = {
+    name: string;
+    organization: string;
+    message: string;
+    source?: string;
+    email: string;
+  };
+
+  const form = document.querySelector(
+    '[data-form="partnership"]'
+  ) as HTMLFormElement;
+  const submitButton = form?.querySelector(
+    "button[type='submit']"
+  ) as HTMLButtonElement;
+
+  function resetForm() {
+    form.reset();
+    form.removeAttribute("data-submitting");
+    submitButton.innerText = "Надіслати";
+  }
+
+  async function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+
+    // If form is submitted, ignore
+    if (form.hasAttribute("data-submitting")) return;
+
+    // Get data
+    const data = new FormData(form);
+    let {
+      name,
+      organization,
+      message,
+      source = "",
+      email,
+    } = Object.fromEntries(data) as FormValues;
+
+    // If no values do nohing
+    if (!name || !organization || !message || !email) {
+      // TODO: Show errors in the UI
+      console.log("Please include all required values");
+      return;
+    }
+
+    // Sanitize values
+    name = sanitizeHtml(name.trim());
+    organization = sanitizeHtml(organization.trim());
+    message = sanitizeHtml(message.trim());
+    source = sanitizeHtml(source?.trim());
+    email = sanitizeHtml(email.trim());
+
+    try {
+      // Disable form
+      form.setAttribute("data-submitting", "true");
+      submitButton.innerText = "Надсилаю...";
+
+      const request = await fetch("/api/requestPartnership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          organization,
+          message,
+          source,
+          email,
+        }),
+      });
+
+      if (!request.ok) {
+        throw new Error("Something went wrong with request");
+      }
+
+      const response = await request.json();
+
+      console.log(response);
+
+      // Enable form
+      resetForm();
+    } catch (error) {
+      console.log(error);
+
+      // Enable form
+      resetForm();
+    }
+  }
+
+  form?.addEventListener("submit", handleSubmit);
+</script>

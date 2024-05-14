@@ -99,6 +99,6 @@ export const cooperationData = [
     placeholder: "kostya@gmail.com",
     type: "email",
     required: true,
-    pattern: "^[^s@]+@[^s@]+.[^s@]+$",
+    pattern: "^[^@]+@[^@]+.[^@]+$",
   },
 ];
