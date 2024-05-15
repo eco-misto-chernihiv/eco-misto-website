@@ -13,14 +13,7 @@ import TeamMember from "./TeamMember.astro";
 const members = await getCollection("members");
 ---
 
-<Reel
-  role="list"
-  thumbColor="secondary"
-  trackColor="white"
-  isScrollSnapped
-  scrollSnapAlign="center"
-  class="members"
->
+<Reel role="list" thumbColor="secondary" trackColor="white" class="members">
   {
     members.map((member) => {
       return (
@@ -33,7 +26,8 @@ const members = await getCollection("members");
 </Reel>
 
 <AutoGrid
-  minItemWidth="265px"
+  minItemWidth="220px"
+  maxColumns="4"
   space="space-6"
   role="list"
   class="members tablet"

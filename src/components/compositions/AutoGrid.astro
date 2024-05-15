@@ -14,26 +14,40 @@ type Props = {
   space?: spaceOptions;
   class?: string;
   minItemWidth?: string;
+  maxColumns?: string;
   [key: string]: any;
 };
 const {
   space = "space-4",
   class: classList,
   minItemWidth = "250px",
+  maxColumns,
   ...rest
 } = Astro.props;
+
+const gap = `var(--${space}-fixed)`;
 ---
 
-<div
-  class:list={["auto-grid", { ["gap-" + space]: space }, classList]}
-  {...rest}
->
+<div class:list={["auto-grid", classList]} {...rest}>
   <slot />
 </div>
 
-<style define:vars={{ minItemWidth }}>
+<style define:vars={{ minItemWidth, gap, maxColumns }}>
+  /* 
+* AutoGrid by this example 
+* https://9elements.com/blog/building-a-rock-solid-auto-grid/?utm_source=convertkit&utm_medium=email&utm_campaign=Examining%20light-dark(),%20Debating%20masonry%20%7C%20ModernCSS%20Newsletter%20#75%20-%2013890373
+*/
+
   .auto-grid {
+    --_max-column-count: calc(100% / var(--maxColumns, infinity) - var(--gap));
+
+    --_column-width: max(
+      var(--_max-column-count),
+      min(var(--minItemWidth), 100%)
+    );
+
     display: grid;
+    gap: var(--gap);
   }
 
   /* Auto columns if min() is supported */
@@ -41,7 +55,7 @@ const {
     .auto-grid {
       grid-template-columns: repeat(
         auto-fit,
-        minmax(min(var(--minItemWidth), 100%), 1fr)
+        minmax(var(--_column-width), 1fr)
       );
     }
   }
