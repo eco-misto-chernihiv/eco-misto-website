@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 // Components
 import Text from "../ui/Text.astro";
 import Shape from "../ui/Shape.astro";
+import Frame from "../compositions/Frame.astro";
 
 // Data
 type Props = {
@@ -19,9 +20,9 @@ const { name, position, picture } = member.data;
 ---
 
 <figure class="team-member">
-  <div class="member-photo">
+  <Frame ratio="3:4" class="member-photo">
     <Image src={picture} alt="" />
-  </div>
+  </Frame>
   <figcaption class="member-info">
     <div class="wrapper">
       <Shape color="white" class="top" translateY="-100%" rotate="180deg" />
@@ -59,14 +60,7 @@ const { name, position, picture } = member.data;
   }
 
   .member-photo {
-    aspect-ratio: 3 / 4;
-
-    & img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      border-bottom-right-radius: var(--_border-radius);
-    }
+    border-bottom-right-radius: var(--_border-radius);
   }
 
   .member-info {
