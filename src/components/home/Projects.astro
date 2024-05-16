@@ -1,0 +1,84 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+// Compositions
+import Center from "../compositions/Center.astro";
+
+// Components
+import Section from "../ui/Section.astro";
+import Heading from "../ui/Heading.astro";
+import Frame from "../compositions/Frame.astro";
+import { Image } from "astro:assets";
+import Text from "../ui/Text.astro";
+import Link from "@ui/Link.astro";
+import AutoGrid from "../compositions/AutoGrid.astro";
+
+// Data
+const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+---
+
+<Section class="projects">
+  <Center maxWidth="87.5rem" space="space-6">
+    <div>
+      <Heading tagName="h3" size="h4" class="font-heading"
+        >Активні проекти</Heading
+      >
+      <AutoGrid maxColumns="2" space="space-7">
+        {
+          projects
+            .filter(({ data }) => data.active)
+            .map((project) => {
+              return (
+                <article>
+                  <Link href={`/projects/${project.slug}`}>
+                    <Frame ratio="4:3" class="project-image">
+                      <Image src={project.data.image} alt="" />
+                    </Frame>
+                    <Heading tagName="h4" size="h5" class="font-heading">
+                      {project.data.title}
+                    </Heading>
+                    <Text tagName="p" size="medium">
+                      {project.data.description}
+                    </Text>
+                  </Link>
+                </article>
+              );
+            })
+        }
+      </AutoGrid>
+    </div>
+
+    <!-- <div>
+      <Heading tagName="h3" size="h4">Архівні проекти</Heading>
+      {
+        projects
+          .filter(({ data }) => !data.active)
+          .map((project) => {
+            return (
+              <div>
+                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+              </div>
+            );
+          })
+      }
+    </div> -->
+  </Center>
+</Section>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .project-image {
+    /* height: 28.5rem; */
+    --_border-radius: var(--rounded-2xl);
+
+    padding: var(--space-10-fixed);
+    background-color: var(--color-accent);
+    border-radius: var(--_border-radius);
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+    }
+  }
+</style>

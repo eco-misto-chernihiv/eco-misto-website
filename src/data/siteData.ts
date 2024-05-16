@@ -11,7 +11,7 @@ export const navData = [
   },
   {
     title: "Проєкти",
-    href: "#",
+    href: "/projects",
   },
   {
     title: "Контакти",
