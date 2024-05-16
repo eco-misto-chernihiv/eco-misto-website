@@ -12,6 +12,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 // Components
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
+import Frame from "@/components/compositions/Frame.astro";
+import { Image } from "astro:assets";
+import Center from "@/components/compositions/Center.astro";
+import Stack from "@/components/compositions/Stack.astro";
+import Shape from "@/components/ui/Shape.astro";
 
 // Data
 export const getStaticPaths = (async () => {
@@ -36,13 +41,154 @@ type Props = {
 const { project } = Astro.props;
 
 const { Content } = await project.render();
-const { title, description, image } = project.data;
+const { title, description, color = "accent", image } = project.data;
+
+const heroBackgroundColor = `var(--color-${color})`;
 ---
 
 <BaseLayout>
-  <Heading tagName="h1" size="h3">{title}</Heading>
-  <Text tagName="p" size="large">{description}</Text>
+  <section class="hero">
+    <Center
+      maxWidth="87.5rem"
+      space={{ default: "space-6", tablet: "space-7" }}
+    >
+      <div class="wrapper">
+        <div class="img-wrapper">
+          <div class="hero-img">
+            <Image src={image} alt="" />
+          </div>
+        </div>
+
+        <div class="text-wrapper">
+          <Shape color="white" class="top" />
+          <Shape
+            color="white"
+            class="bottom"
+            translateY="100%"
+            rotate="270deg"
+          />
+          <Stack space="space-2" class="hero-text">
+            <Text tagName="p" size="large">{description}</Text>
+            <Heading tagName="h1" size="h3" class="font-heading"
+              >{title}</Heading
+            >
+          </Stack>
+        </div>
+      </div>
+    </Center>
+  </section>
+
   <div>
     <Content />
   </div>
 </BaseLayout>
+
+<style define:vars={{ heroBackgroundColor }}>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .hero {
+    --_border-radius: var(--rounded-2xl);
+    --_offset-left: 20%;
+
+    padding-block: var(--space-11-fixed);
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+    }
+  }
+  .wrapper {
+    position: relative;
+  }
+
+  .text-wrapper {
+    @media (--tablet-and-up) {
+      position: absolute;
+      top: 0;
+
+      transform: translateY(-25%);
+
+      & .shape.top {
+        top: -0.25rem;
+        right: 1px;
+        transform: translateY(calc(100% - 25%)) translateX(100%) rotate(270deg);
+      }
+
+      & .shape.bottom {
+        bottom: 1px;
+        left: -1px;
+      }
+    }
+
+    @media (--laptop-and-up) {
+      position: absolute;
+      top: 5rem;
+
+      width: 100%;
+      transform: translateY(0);
+
+      & .shape.top {
+        top: 1px;
+        left: var(--_offset-left);
+        margin-left: -1px;
+        transform: translateY(-100%) rotate(180deg);
+      }
+      & .shape.bottom {
+        bottom: 1px;
+        left: var(--_offset-left);
+        margin-left: -1px;
+      }
+    }
+  }
+
+  .hero-text {
+    @media (--tablet-and-up) {
+      padding-inline-end: var(--space-6-fixed);
+      padding-block-end: var(--space-4-fixed);
+      background-color: var(--color-white);
+
+      border-bottom-right-radius: var(--_border-radius);
+    }
+
+    @media (--laptop-and-up) {
+      /* TODO: adjust max width */
+      width: fit-content;
+      padding-inline-end: var(--space-9-fixed);
+      padding-block: var(--space-7-fixed);
+      background-color: var(--color-white);
+
+      border-top-right-radius: var(--_border-radius);
+      border-bottom-right-radius: var(--_border-radius);
+    }
+  }
+
+  .img-wrapper {
+    @media (--laptop-and-up) {
+      padding-left: var(--_offset-left);
+    }
+  }
+
+  .hero-img {
+    --_height: 24rem;
+
+    inline-size: 100%;
+    block-size: var(--_height);
+    background-color: var(--heroBackgroundColor);
+
+    border-radius: var(--_border-radius);
+
+    & img {
+      object-fit: contain;
+      inline-size: 100%;
+      block-size: 100%;
+      object-position: right 50%;
+    }
+
+    @media (--tablet-and-up) {
+      --_height: 35rem;
+    }
+
+    @media (--laptop-and-up) {
+      --_height: 40rem;
+    }
+  }
+</style>

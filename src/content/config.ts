@@ -13,6 +13,8 @@ const members = defineCollection({
     }),
 });
 
+const colorOptions = ["primary", "secondary", "accent "] as const;
+
 const projects = defineCollection({
   type: "content",
   schema: ({ image }) =>
@@ -27,6 +29,7 @@ const projects = defineCollection({
       image: image().refine((img) => img.width >= 500, {
         message: "Image should be at least 1000px wide or more",
       }),
+      color: z.enum(colorOptions).optional(),
       pubDate: z.date(),
       active: z.boolean(),
       isDraft: z.boolean().optional(),
