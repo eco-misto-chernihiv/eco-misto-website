@@ -14,43 +14,58 @@ import Heading from "../ui/Heading.astro";
 import Text from "../ui/Text.astro";
 import Link from "@ui/Link.astro";
 import ActiveProjectCard from "../ActiveProjectCard.astro";
+import Stack from "../compositions/Stack.astro";
+import ArchiveProjectCard from "../ArchiveProjectCard.astro";
 
 // Data
+
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+// TODO: How project should be sorted?
 ---
 
 <Section class="projects">
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
-    <div>
-      <Heading tagName="h3" size="h4" class="font-heading"
-        >Активні проекти</Heading
-      >
-      <AutoGrid maxColumns="2" space="space-7">
-        {
-          projects
-            .filter(({ data }) => data.active)
-            .map((project) => {
-              return <ActiveProjectCard project={project} />;
-            })
-        }
-      </AutoGrid>
-    </div>
+    <Stack space="space-16">
+      <Stack space="space-10">
+        <Heading tagName="h3" size="h4" class="font-heading"
+          >Активні проекти</Heading
+        >
+        <AutoGrid maxColumns="2" space="space-7">
+          {
+            projects
+              .filter(({ data }) => data.isActive)
+              .map((project) => {
+                return <ActiveProjectCard project={project} />;
+              })
+          }
+        </AutoGrid>
+      </Stack>
 
-    <!-- <div>
-      <Heading tagName="h3" size="h4">Архівні проекти</Heading>
-      {
-        projects
-          .filter(({ data }) => !data.active)
-          .map((project) => {
-            return (
-              <div>
-                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
-              </div>
-            );
-          })
-      }
-    </div> -->
+      <Stack space="space-10">
+        <Heading tagName="h3" size="h5" class="font-heading"
+          >Реалізовані проекти</Heading
+        >
+        <Stack space="space-10">
+          <Stack space="space-7">
+            {
+              projects
+                .filter((project, index) => !project.data.isActive && index > 2)
+                .map((project) => {
+                  return <ArchiveProjectCard project={project} />;
+                })
+            }
+          </Stack>
+
+          <Link href="/projects" class="text-center">Дивитись усі</Link>
+        </Stack>
+      </Stack>
+    </Stack>
   </Center>
 </Section>
 
-<style></style>
+<style>
+  .projects {
+    padding-block: var(--space-11-fixed);
+  }
+</style>

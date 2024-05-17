@@ -10,6 +10,7 @@ import Frame from "./compositions/Frame.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import Text from "./ui/Text.astro";
+import Stack from "./compositions/Stack.astro";
 
 // Data
 type Props = {
@@ -24,15 +25,20 @@ const backgroundColor = `var(--color-${color})`;
 
 <article>
   <Link href={`/projects/${project.slug}`}>
-    <Frame ratio="4:3" class="project-image">
-      <Image src={image} alt="" />
-    </Frame>
-    <Heading tagName="h4" size="h5" class="font-heading">
-      {title}
-    </Heading>
-    <Text tagName="p" size="medium">
-      {description}
-    </Text>
+    <Stack space="space-8">
+      <Frame ratio="4:3" class="project-image">
+        <Image src={image} alt="" />
+      </Frame>
+
+      <Stack space="space-3">
+        <Heading tagName="h4" size="h5" class="font-heading">
+          {title}
+        </Heading>
+        <Text tagName="p" size="medium">
+          {description}
+        </Text>
+      </Stack>
+    </Stack>
   </Link>
 </article>
 

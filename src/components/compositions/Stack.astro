@@ -76,6 +76,12 @@ const responsiveSpace = getBreakpoints("mbs", space);
 
   /* Space */
 
+  .stack.mbs-space-0 > * + *,
+  .stack.default\:mbs-space-0 > * + *,
+  .stack.recursive.mbs-space-0 * + * {
+    margin-block-start: var(--space-0-fixed);
+  }
+
   .stack.mbs-space-1 > * + *,
   .stack.default\:mbs-space-1 > * + *,
   .stack.recursive.mbs-space-1 * + * {
@@ -193,6 +199,11 @@ const responsiveSpace = getBreakpoints("mbs", space);
   /* Breakpoints */
 
   @media (--tablet-and-up) {
+    .stack.tablet\:mbs-space-0 > * + *,
+    .stack.recursive.tablet\:mbs-space-0 * + * {
+      margin-block-start: var(--space-0-fixed);
+    }
+
     .stack.tablet\:mbs-space-1 > * + *,
     .stack.recursive.tablet\:mbs-space-1 * + * {
       margin-block-start: var(--space-1-fixed);
@@ -270,6 +281,11 @@ const responsiveSpace = getBreakpoints("mbs", space);
   }
 
   @media (--laptop-and-up) {
+    .stack.laptop\:mbs-space-0 > * + *,
+    .stack.recursive.laptop\:mbs-space-0 * + * {
+      margin-block-start: var(--space-0-fixed);
+    }
+
     .stack.laptop\:mbs-space-1 > * + *,
     .stack.recursive.laptop\:mbs-space-1 * + * {
       margin-block-start: var(--space-1-fixed);

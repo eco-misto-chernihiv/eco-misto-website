@@ -41,7 +41,13 @@ type Props = {
 const { project } = Astro.props;
 
 const { Content } = await project.render();
-const { title, description, color = "accent", image } = project.data;
+const {
+  title,
+  description,
+  color = "accent",
+  image,
+  isCollage = false,
+} = project.data;
 
 const heroBackgroundColor = `var(--color-${color})`;
 ---
@@ -52,9 +58,9 @@ const heroBackgroundColor = `var(--color-${color})`;
       maxWidth="87.5rem"
       space={{ default: "space-6", tablet: "space-7" }}
     >
-      <div class="wrapper">
+      <Stack space={{ default: "space-6", tablet: "space-0" }} class="wrapper">
         <div class="img-wrapper">
-          <div class="hero-img">
+          <div class:list={["hero-img", { collage: isCollage }]}>
             <Image src={image} alt="" />
           </div>
         </div>
@@ -69,18 +75,20 @@ const heroBackgroundColor = `var(--color-${color})`;
           />
           <Stack space="space-2" class="hero-text">
             <Text tagName="p" size="large">{description}</Text>
-            <Heading tagName="h1" size="h3" class="font-heading"
-              >{title}</Heading
+            <Heading
+              tagName="h1"
+              size="h3"
+              class="title font-heading color-secondary">{title}</Heading
             >
           </Stack>
         </div>
-      </div>
+      </Stack>
     </Center>
   </section>
 
-  <div>
+  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Content />
-  </div>
+  </Center>
 </BaseLayout>
 
 <style define:vars={{ heroBackgroundColor }}>
@@ -92,25 +100,40 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     padding-block: var(--space-11-fixed);
 
+    @media (--tablet-and-up) {
+      padding-block: var(--space-13-fixed);
+    }
+
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-3xl);
+
+      padding-block: var(--space-11-fixed);
     }
   }
+
   .wrapper {
     position: relative;
   }
 
   .text-wrapper {
+    & .shape {
+      display: none;
+    }
+
     @media (--tablet-and-up) {
       position: absolute;
       top: 0;
 
       transform: translateY(-25%);
 
+      & .shape {
+        display: block;
+      }
+
       & .shape.top {
-        top: -0.25rem;
+        top: 1px;
         right: 1px;
-        transform: translateY(calc(100% - 25%)) translateX(100%) rotate(270deg);
+        transform: translateY(calc(100%)) translateX(100%) rotate(270deg);
       }
 
       & .shape.bottom {
@@ -121,7 +144,7 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     @media (--laptop-and-up) {
       position: absolute;
-      top: 5rem;
+      top: 6rem;
 
       width: 100%;
       transform: translateY(0);
@@ -141,8 +164,12 @@ const heroBackgroundColor = `var(--color-${color})`;
   }
 
   .hero-text {
+    & .title {
+    }
     @media (--tablet-and-up) {
-      padding-inline-end: var(--space-6-fixed);
+      /* min-width: fit-content; */
+      max-width: 26rem;
+      padding-inline-end: var(--space-9-fixed);
       padding-block-end: var(--space-4-fixed);
       background-color: var(--color-white);
 
@@ -151,13 +178,17 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     @media (--laptop-and-up) {
       /* TODO: adjust max width */
-      width: fit-content;
-      padding-inline-end: var(--space-9-fixed);
+
+      max-width: 30.5rem;
+
+      padding-inline-end: var(--space-4-fixed);
       padding-block: var(--space-7-fixed);
       background-color: var(--color-white);
 
       border-top-right-radius: var(--_border-radius);
       border-bottom-right-radius: var(--_border-radius);
+
+      /* transform: translateX(10%); */
     }
   }
 
@@ -177,6 +208,13 @@ const heroBackgroundColor = `var(--color-${color})`;
     border-radius: var(--_border-radius);
 
     & img {
+      object-fit: cover;
+      inline-size: 100%;
+      block-size: 100%;
+      border-radius: var(--_border-radius);
+    }
+
+    &.collage img {
       object-fit: contain;
       inline-size: 100%;
       block-size: 100%;

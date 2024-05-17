@@ -19,8 +19,8 @@ const projects = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(35, {
-        message: "Title cannot be longer that 35 characters",
+      title: z.string().max(38, {
+        message: "Title cannot be longer that 38 characters",
       }),
       description: z.string().max(65, {
         message: "Description cannot be longer that 65 characters",
@@ -29,9 +29,10 @@ const projects = defineCollection({
       image: image().refine((img) => img.width >= 500, {
         message: "Image should be at least 1000px wide or more",
       }),
+      isCollage: z.boolean().optional(),
       color: z.enum(colorOptions).optional(),
       pubDate: z.date(),
-      active: z.boolean(),
+      isActive: z.boolean(),
       isDraft: z.boolean().optional(),
     }),
 });
