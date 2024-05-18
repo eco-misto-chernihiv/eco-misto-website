@@ -179,11 +179,17 @@ function BaseModal(settings) {
 
       // Get iframe or video element, within a modal
       const videoElement = getVideoElement(contentElement);
+      if (!videoElement) return;
 
-      // If it exists reset the src, to stop video from playing
-      if (videoElement) {
+      // If videoElement is iframe, reset src
+      if (videoElement instanceof HTMLIFrameElement) {
         const src = videoElement.src;
         videoElement.src = src;
+      }
+
+      // If videoElement is video, set video on pause
+      if (videoElement instanceof HTMLVideoElement) {
+        videoElement.pause();
       }
     },
   };
