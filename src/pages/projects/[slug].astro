@@ -66,8 +66,8 @@ const heroBackgroundColor = `var(--color-${color})`;
         </div>
 
         <div class="text-wrapper">
-          <Shape color="black" class="top" />
-          <Shape color="black" class="bottom" rotate="270deg" />
+          <Shape color="white" class="top" />
+          <Shape color="white" class="bottom" rotate="270deg" />
           <Stack space="space-2" class="hero-text">
             <Text tagName="p" size="large">{description}</Text>
             <Heading
@@ -117,35 +117,35 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     @media (--tablet-and-up) {
       position: absolute;
-      top: 0;
+      top: -3rem;
 
-      min-height: 14.5rem;
-
-      transform: translateY(-25%);
+      /* min-height: 14.5rem; */
 
       & .shape {
         display: block;
       }
 
       & .shape.top {
-        top: -3px;
-        right: 1px;
-        transform: translateY(calc(100% + 20px)) translateX(100%) rotate(270deg);
+        top: 0px;
+        right: 0px;
+        transform: translateY(calc(100% + 0.5rem)) translateX(100%)
+          rotate(270deg);
+        margin-block-start: -1px;
+        margin-inline-end: 1px;
       }
 
       & .shape.bottom {
-        bottom: 3px;
+        bottom: 1px;
         left: -1px;
-        transform: translateY(calc(-100% + 20px)) rotate(270deg);
+        transform: translateY(100%) rotate(270deg);
       }
     }
 
     @media (--laptop-and-up) {
+      width: 100%;
+
       position: absolute;
       top: 6rem;
-
-      width: 100%;
-      transform: translateY(0);
 
       & .shape.top {
         top: 1px;
