@@ -70,11 +70,11 @@
   --font-black: 900;
 
   @media (--tablet-and-up) {
-    --heading-ratio: 1.25;
     --body-base-text: 1.125rem; /* This means 18px */
   }
 
   @media (--laptop-and-up) {
+    --heading-ratio: 1.25;
     --body-base-text: 1.25rem; /* This means 20px */
   }
 }

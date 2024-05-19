@@ -3,19 +3,18 @@
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 // Compositions
+import Center from "@/components/compositions/Center.astro";
+import Stack from "@/components/compositions/Stack.astro";
 
 // Components
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
-import Frame from "@/components/compositions/Frame.astro";
-import { Image } from "astro:assets";
-import Center from "@/components/compositions/Center.astro";
-import Stack from "@/components/compositions/Stack.astro";
 import Shape from "@/components/ui/Shape.astro";
 
 // Data

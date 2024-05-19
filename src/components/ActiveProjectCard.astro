@@ -15,15 +15,17 @@ import Stack from "./compositions/Stack.astro";
 // Data
 type Props = {
   project: CollectionEntry<"projects">;
+  class?: string;
+  [key: string]: any;
 };
 
-const { project } = Astro.props;
+const { project, class: classList, ...rest } = Astro.props;
 const { title, description, image, color = "accent" } = project.data;
 
 const backgroundColor = `var(--color-${color})`;
 ---
 
-<article>
+<article class:list={[classList]} {...rest}>
   <Link href={`/projects/${project.slug}`}>
     <Stack space="space-8">
       <Frame ratio="4:3" class="project-image">
@@ -45,16 +47,20 @@ const backgroundColor = `var(--color-${color})`;
 <style define:vars={{ backgroundColor }}>
   @import "@styles/03-utilities/breakpoints.css";
 
+  
+
   .project-image {
     /* height: 28.5rem; */
     --_border-radius: var(--rounded-2xl);
+    --_img-padding: var(----space-4-fixed);
 
-    padding: var(--space-10-fixed);
+    padding: var(--_img-padding);
     background-color: var(--backgroundColor);
     border-radius: var(--_border-radius);
 
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-3xl);
+      --_img-padding: var(----space-10-fixed);
     }
   }
 </style>
