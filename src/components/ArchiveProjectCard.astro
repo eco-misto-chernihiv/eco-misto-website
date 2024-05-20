@@ -10,7 +10,7 @@ import Frame from "./compositions/Frame.astro";
 // Components
 import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
-import Cluster from "./compositions/Cluster.astro";
+import Link from "./ui/Link.astro";
 
 // Assets
 
@@ -25,33 +25,63 @@ const { title, description, image } = project.data;
 ---
 
 <article class="archive-project-item">
-  <a href={`/projects/${project.slug}`}>
-    <Cluster space="space-7" alignItems="center">
-      <Frame ratio="1:1" class="archive-project-img">
-        <Image src={image} alt="" />
-      </Frame>
-      <Stack space="space-3">
-        <Heading tagName="h4" size="h5" class="font-heading">{title}</Heading>
-        <Text tagName="p" size="medium">{description}</Text>
-      </Stack>
-    </Cluster>
-  </a>
+  <Link href={`/projects/${project.slug}`} class="wrapper">
+    <Frame ratio="1:1" class="archive-project-img">
+      <Image src={image} alt="" />
+    </Frame>
+    <Stack space="space-3">
+      <Heading tagName="h4" size="h5" class="font-heading color-secondary"
+        >{title}</Heading
+      >
+      <Text tagName="p" size="medium" class="color-dark-gray"
+        >{description}</Text
+      >
+    </Stack>
+  </Link>
 </article>
 
 <style>
   @import "@styles/03-utilities/breakpoints.css";
 
   .archive-project-item {
-    padding-block-end: var(--space-7-fixed);
+  }
+
+  .archive-project-item::after {
+    content: "";
+    display: block;
+    padding-block-start: var(--space-7-fixed);
     border-block-end: 1px solid var(--color-gray-200);
+  }
+
+  /* Hide all items after 3rd item */
+  .archive-project-item:nth-child(3) ~ .archive-project-item {
+    display: none;
+  }
+
+  .wrapper {
+    --_gap: var(--space-4-fixed);
+
+    text-decoration: none;
+    display: flex;
+
+    gap: var(--_gap);
+    align-items: center;
+
+    @media (--tablet-and-up) {
+      --_gap: var(--space-7-fixed);
+    }
   }
 
   .archive-project-img {
     --_border-radius: var(--rounded-xl);
-    --_img-size: 8rem;
+    --_img-size: 6.5rem;
+
+    /* Keep image from stretching */
+    flex-shrink: 0;
 
     width: var(--_img-size);
     border-radius: var(--_border-radius);
+    align-self: flex-start;
 
     @media (--tablet-and-up) {
       --_img-size: 12rem;

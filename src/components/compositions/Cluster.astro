@@ -1,4 +1,6 @@
 ---
+import { getBreakpoints } from "@/lib/helpers";
+
 type spaceOptions =
   | "space-0"
   | "space-1"
@@ -48,6 +50,8 @@ const {
   ...rest
 } = Astro.props as Props;
 
+const responsiveSpace = getBreakpoints("gap", space);
+
 const Tag = tagName;
 ---
 
@@ -55,7 +59,7 @@ const Tag = tagName;
   class:list={[
     "cluster",
     classList,
-    { ["gap-" + space]: space },
+    responsiveSpace,
     { ["justify-" + justify]: justify },
     { ["items-" + alignItems]: alignItems },
     { "center-middle": isCenterMiddle },

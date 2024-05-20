@@ -26,17 +26,17 @@ const backgroundColor = `var(--color-${color})`;
 ---
 
 <article class:list={[classList]} {...rest}>
-  <Link href={`/projects/${project.slug}`}>
+  <Link href={`/projects/${project.slug}`} class="wrapper">
     <Stack space="space-8">
       <Frame ratio="4:3" class="project-image">
         <Image src={image} alt="" />
       </Frame>
 
       <Stack space="space-3">
-        <Heading tagName="h4" size="h5" class="font-heading">
+        <Heading tagName="h4" size="h5" class="font-heading color-secondary">
           {title}
         </Heading>
-        <Text tagName="p" size="medium">
+        <Text tagName="p" size="medium" class="color-dark-gray font-medium">
           {description}
         </Text>
       </Stack>
@@ -47,7 +47,9 @@ const backgroundColor = `var(--color-${color})`;
 <style define:vars={{ backgroundColor }}>
   @import "@styles/03-utilities/breakpoints.css";
 
-  
+  .wrapper {
+    text-decoration: none;
+  }
 
   .project-image {
     /* height: 28.5rem; */

@@ -1,0 +1,83 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+import Stack from "./compositions/Stack.astro";
+import Heading from "./ui/Heading.astro";
+import Link from "./ui/Link.astro";
+import ArchiveProjectCard from "./ArchiveProjectCard.astro";
+
+// Compositions
+
+// Components
+
+// Data
+const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+// TODO: How project should be sorted?
+---
+
+<Stack space="space-10">
+  <Heading tagName="h3" size="h5" class="font-heading"
+    >Реалізовані проекти</Heading
+  >
+  <Stack space="space-10">
+    <Stack space="space-7" class="archive-projects-list">
+      {
+        projects
+          .filter((project, index) => !project.data.isActive)
+          .map((project) => {
+            return <ArchiveProjectCard project={project} />;
+          })
+      }
+    </Stack>
+
+    <Link href="#" class="text-center" data-load-more>Дивитись більше</Link>
+  </Stack>
+</Stack>
+
+<style>
+  [data-load-more][data-loaded] {
+    display: none;
+  }
+</style>
+
+<script>
+  const archiveProjectsList = document.querySelector(
+    ".archive-projects-list"
+  ) as HTMLDivElement;
+
+  const loadMore = document.querySelector(
+    "[data-load-more]"
+  ) as HTMLLinkElement;
+
+  // Current visible items
+  // Hides all items after first 3 in css using nth-child(3) selector
+  let currentItems = 3;
+
+  function handleClick(event: Event) {
+    event.preventDefault();
+
+    // Select all items
+    const archiveItems = [...archiveProjectsList.children] as HTMLElement[];
+
+    // Loop through visible items + 3
+    for (let index = 0; index < currentItems + 3; index++) {
+      // If item exists
+      if (archiveItems[index]) {
+        // Set display to block
+        archiveItems[index].style.display = "block";
+      }
+    }
+
+    // Add +3 to current visible items
+    currentItems += 3;
+
+    // If current items more or equal all visible items in the dom
+    if (currentItems >= archiveItems.length) {
+      // hide load more button
+      loadMore.setAttribute("data-loaded", "true");
+    }
+  }
+
+  loadMore?.addEventListener("click", handleClick);
+</script>

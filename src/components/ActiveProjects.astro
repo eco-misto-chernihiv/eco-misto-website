@@ -1,0 +1,113 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+// Compositions
+import Row from "./compositions/Row.astro";
+import Stack from "./compositions/Stack.astro";
+
+// Components
+import ActiveProjectCard from "./ActiveProjectCard.astro";
+import Heading from "./ui/Heading.astro";
+
+// Data
+
+const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+// TODO: How project should be sorted?
+---
+
+<Stack space="space-10">
+  <Heading tagName="h3" size="h4" class="font-heading">Активні проекти</Heading>
+  <Row
+    columnGap={{
+      default: "space-0",
+      tablet: "space-4",
+      laptop: "space-7",
+    }}
+    rowGap={{
+      default: "space-10",
+      tablet: "space-12",
+      laptop: "space-14",
+    }}
+    class="active-projects"
+  >
+    {
+      projects
+        .filter(({ data }) => data.isActive)
+        .map((project) => {
+          return (
+            <ActiveProjectCard
+              project={project}
+              class="active-project-item col-12 tablet:col-6"
+            />
+          );
+        })
+    }
+  </Row>
+</Stack>
+
+<style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .active-projects {
+    --_offset: 25;
+
+    @media (--tablet-and-up) {
+      /* Set padding bottom to offset of the item height in px to avoid vertical overflow, 
+      e.g item height 500px * 0.25 offset */
+      padding-block-end: calc(var(--item-height) * var(--_offset) / 100 * 1px);
+    }
+  }
+
+  .active-project-item:nth-of-type(2n) {
+    @media (--tablet-and-up) {
+      /* Set the offset in % */
+      transform: translateY(calc(var(--_offset) * 1%));
+    }
+  }
+</style>
+
+<script>
+  const activeProjects = document.querySelector(
+    ".active-projects"
+  ) as HTMLElement;
+
+  const activeProjectItem = activeProjects.querySelector(
+    ".active-project-item"
+  ) as HTMLElement;
+
+  // if items number is odd, then do nothing
+  const items = [...activeProjects.children] as HTMLElement[];
+
+  /**
+   * Checks if items are even
+   * @param {Array} items
+   * @returns {Boolean}
+   */
+  function isEven(items: HTMLElement[]): boolean {
+    return items.length % 2 !== 1;
+  }
+
+  /**
+   * Set item height as a css property on active projects element
+   */
+  function setItemHeight() {
+    const itemRect = activeProjectItem?.getBoundingClientRect();
+
+    activeProjects.style.setProperty("--item-height", `${itemRect.height}`);
+  }
+
+  // If items are even numbers
+  if (isEven(items)) {
+    /**
+     * Set initial item height on document load
+     */
+    setItemHeight();
+
+    /**
+     * Recalculate item height in window resize
+     */
+    window.addEventListener("resize", setItemHeight);
+  }
+</script>
