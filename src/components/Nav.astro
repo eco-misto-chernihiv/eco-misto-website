@@ -7,6 +7,14 @@ import Link from "./ui/Link.astro";
 
 // Data
 import { navData } from "@/data/siteData";
+
+type Props = {
+  color?: "primary" | "secondary" | "accent";
+};
+
+const { color = "accent" } = Astro.props;
+
+const linkColor = `var(--color-${color})`;
 ---
 
 <nav>
@@ -23,8 +31,12 @@ import { navData } from "@/data/siteData";
   </Cluster>
 </nav>
 
-<style>
+<style define:vars={{ linkColor }}>
+  nav {
+    color: var(--linkColor);
+  }
+
   nav li a {
-    color: var(--color-accent);
+    color: inherit;
   }
 </style>

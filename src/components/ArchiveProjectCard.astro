@@ -46,11 +46,11 @@ const { title, description, image } = project.data;
   .archive-project-item {
   }
 
-  .archive-project-item::after {
+  .archive-project-item:not(:first-child)::before {
     content: "";
     display: block;
     padding-block-start: var(--space-7-fixed);
-    border-block-end: 1px solid var(--color-gray-200);
+    border-block-start: 1px solid var(--color-gray-200);
   }
 
   /* Hide all items after 3rd item */

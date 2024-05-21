@@ -16,6 +16,7 @@ import Stack from "@/components/compositions/Stack.astro";
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
 import Shape from "@/components/ui/Shape.astro";
+import SecondaryLayout from "@/layouts/SecondaryLayout.astro";
 
 // Data
 export const getStaticPaths = (async () => {
@@ -51,7 +52,7 @@ const {
 const heroBackgroundColor = `var(--color-${color})`;
 ---
 
-<BaseLayout>
+<SecondaryLayout>
   <section class="hero">
     <Center
       maxWidth="87.5rem"
@@ -85,7 +86,7 @@ const heroBackgroundColor = `var(--color-${color})`;
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Content />
   </Center>
-</BaseLayout>
+</SecondaryLayout>
 
 <style define:vars={{ heroBackgroundColor }}>
   @import "@styles/03-utilities/breakpoints.css";
