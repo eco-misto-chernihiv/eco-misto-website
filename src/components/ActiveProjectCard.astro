@@ -85,11 +85,12 @@ const backgroundColor = `var(--color-${color})`;
 
     & img {
       transition: transform 300ms var(--ease-out);
+      object-fit: contain;
     }
 
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-3xl);
-      --_img-padding: var(--space-10-fixed);
+      --_img-padding: var(--space-9-fixed);
     }
   }
 </style>
