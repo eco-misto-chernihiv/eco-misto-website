@@ -26,22 +26,24 @@ const { title, description, image } = project.data;
 ---
 
 <article class="archive-project-item">
-  <Link href={`/projects/${project.slug}`} class="wrapper">
-    <Frame ratio="1:1" class="img-wrapper">
-      <Image src={image} alt="" />
-    </Frame>
-    <Stack space="space-3" class="info">
-      <Heading
-        tagName="h4"
-        size={{ default: "h6", tablet: "h5" }}
-        class="title font-heading color-secondary">{title}</Heading
-      >
-      <Text tagName="p" size="medium" class="color-dark-gray"
-        >{description}</Text
-      >
-    </Stack>
-    <div class="arrow-right">
-      <Icon name="icon-arrow-right" size={32} />
+  <Link href={`/projects/${project.slug}`}>
+    <div class="wrapper">
+      <Frame ratio="1:1" class="img-wrapper">
+        <Image src={image} alt="" />
+      </Frame>
+      <Stack space="space-3" class="info">
+        <Heading
+          tagName="h4"
+          size={{ default: "h6", tablet: "h5" }}
+          class="title font-heading color-secondary">{title}</Heading
+        >
+        <Text tagName="p" size="medium" class="color-dark-gray"
+          >{description}</Text
+        >
+      </Stack>
+      <div class="arrow-right">
+        <Icon name="icon-arrow-right" size={32} />
+      </div>
     </div>
   </Link>
 </article>
@@ -58,6 +60,10 @@ const { title, description, image } = project.data;
     background-color: var(--color-accent);
     border-radius: var(--rounded-3xl);
     transition: background-color var(--transition-default);
+
+    & a {
+      width: 100%;
+    }
 
     @media (--tablet-and-up) {
       --_offset: var(--space-5-fixed);
