@@ -23,7 +23,9 @@ const linkColor = `var(--color-${color})`;
       navData.map((navItem) => {
         return (
           <li>
-            <Link href={navItem.href}>{navItem.title}</Link>
+            <Link href={navItem.href} isHovered>
+              {navItem.title}
+            </Link>
           </li>
         );
       })

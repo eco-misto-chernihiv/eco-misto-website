@@ -4,19 +4,63 @@ type Props = {
   rel?: string;
   isExternal?: boolean;
   class?: string;
+  isHovered?: boolean;
+  hoverHeight?: string;
   [key: string]: any;
 };
 
-const { href, rel = "", isExternal, class: classList, ...rest } = Astro.props;
+const {
+  href,
+  rel = "",
+  isExternal,
+  class: classList,
+  isHovered = false,
+  hoverHeight = "2px",
+  ...rest
+} = Astro.props;
 ---
 
 <a
   href={href}
   rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
-  class:list={["link", classList]}
+  class:list={["link", classList, { hovered: isHovered }]}
   {...rest}
 >
   <slot />
 </a>
 
-<style></style>
+<style define:vars={{ hoverHeight }}>
+  .link {
+    /* Enable vertical space */
+    display: inline-block;
+
+    position: relative;
+    text-decoration: none;
+  }
+
+  .link.hovered::after,
+  .link.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: var(--hoverHeight);
+    width: 100%;
+
+    background-color: currentColor;
+  }
+
+  .link.hovered::after {
+    transform: scaleX(0);
+
+    transform-origin: right;
+    transition: transform 300ms var(--ease);
+  }
+
+  .link.hovered:hover::after,
+  .link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+</style>

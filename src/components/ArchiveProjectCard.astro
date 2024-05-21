@@ -11,6 +11,7 @@ import Frame from "./compositions/Frame.astro";
 import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
+import { Icon } from "astro-icon/components";
 
 // Assets
 
@@ -26,17 +27,22 @@ const { title, description, image } = project.data;
 
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`} class="wrapper">
-    <Frame ratio="1:1" class="archive-project-img">
+    <Frame ratio="1:1" class="img-wrapper">
       <Image src={image} alt="" />
     </Frame>
-    <Stack space="space-3">
-      <Heading tagName="h4" size="h5" class="font-heading color-secondary"
-        >{title}</Heading
+    <Stack space="space-3" class="info">
+      <Heading
+        tagName="h4"
+        size={{ default: "h6", tablet: "h5" }}
+        class="title font-heading color-secondary">{title}</Heading
       >
       <Text tagName="p" size="medium" class="color-dark-gray"
         >{description}</Text
       >
     </Stack>
+    <div class="arrow-right">
+      <Icon name="icon-arrow-right" size={32} />
+    </div>
   </Link>
 </article>
 
@@ -44,13 +50,29 @@ const { title, description, image } = project.data;
   @import "@styles/03-utilities/breakpoints.css";
 
   .archive-project-item {
+    --_offset: var(--space-4-fixed);
+
+    margin: calc(var(--_offset) * -1);
+    padding: var(--_offset);
+
+    background-color: var(--color-accent);
+    border-radius: var(--rounded-3xl);
+    transition: background-color var(--transition-default);
+
+    @media (--tablet-and-up) {
+      --_offset: var(--space-5-fixed);
+    }
+  }
+
+  .archive-project-item:hover {
+    background-color: var(--color-primary-light);
   }
 
   .archive-project-item:not(:first-child)::before {
     content: "";
     display: block;
-    padding-block-start: var(--space-7-fixed);
-    border-block-start: 1px solid var(--color-gray-200);
+    /* padding-block-start: var(--space-7-fixed); */
+    /* border-block-start: 1px solid var(--color-gray-200); */
   }
 
   /* Hide all items after 3rd item */
@@ -72,7 +94,27 @@ const { title, description, image } = project.data;
     }
   }
 
-  .archive-project-img {
+  .archive-project-item:hover .info {
+    transform: translateX(0.5rem);
+
+    @media (--tablet-and-up) {
+      transform: translateX(1rem);
+    }
+
+    @media (--laptop-and-up) {
+      transform: translateX(2rem);
+    }
+  }
+
+  .title {
+    transition: color var(--transition-default);
+  }
+
+  .info {
+    transition: transform 500ms var(--ease-out);
+  }
+
+  .img-wrapper {
     --_border-radius: var(--rounded-xl);
     --_img-size: 6.5rem;
 
@@ -83,6 +125,8 @@ const { title, description, image } = project.data;
     border-radius: var(--_border-radius);
     align-self: flex-start;
 
+    transition: filter 300ms var(--ease-out);
+
     @media (--tablet-and-up) {
       --_img-size: 12rem;
     }
@@ -90,6 +134,48 @@ const { title, description, image } = project.data;
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-2xl);
       --_img-size: 15rem;
+    }
+  }
+
+  .arrow-right {
+    --_size: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    align-self: flex-end;
+
+    padding: var(--space-1-fixed);
+    margin-inline-start: auto;
+
+    color: var(--color-primary);
+
+    background-color: var(--color-secondary);
+    border-radius: 9999px;
+
+    & svg {
+      width: var(--_size);
+      height: var(--_size);
+      transform: rotate(-45deg);
+      transition: transform var(--transition-default);
+    }
+
+    @media (--tablet-and-up) {
+      --_size: 24px;
+
+      align-self: auto;
+    }
+
+    @media (--laptop-and-up) {
+      --_size: 28px;
+    }
+  }
+
+  .archive-project-item:hover .arrow-right {
+    & svg {
+      transform: rotate(0deg);
     }
   }
 </style>

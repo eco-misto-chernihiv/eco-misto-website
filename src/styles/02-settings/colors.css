@@ -7,6 +7,7 @@
   /* Brand colors */
   --color-primary: hsl(146, 82%, 74%);
   --color-primary-03: hsl(146 82% 74% / 0.3);
+  --color-primary-light: hsl(148, 100%, 92%);
   --color-secondary: hsl(166, 100%, 14%);
   --color-accent: hsl(47, 100%, 96%);
 

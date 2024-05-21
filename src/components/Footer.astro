@@ -64,7 +64,9 @@ import { navData } from "@/data/siteData";
                         navData.map(({ title, href }) => {
                           return (
                             <li>
-                              <Link href={href}>{title}</Link>
+                              <Link href={href} isHovered>
+                                {title}
+                              </Link>
                             </li>
                           );
                         })
@@ -86,7 +88,9 @@ import { navData } from "@/data/siteData";
             <div>
               <Text tagName="span" size="small">Усі права захищені</Text>
               <Text tagName="span" size="small" class="separator">|</Text>
-              <Link href="#" class="copy">Політика конфіденційності</Link>
+              <Link href="#" class="copy" isHovered hoverHeight="1px"
+                >Політика конфіденційності</Link
+              >
             </div>
           </Cluster>
         </Stack>

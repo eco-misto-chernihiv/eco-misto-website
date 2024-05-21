@@ -21,7 +21,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     >Реалізовані проекти</Heading
   >
   <Stack space="space-10">
-    <Stack space="space-7" class="archive-projects-list">
+    <div class="archive-projects-list">
       {
         projects
           .filter((project, index) => !project.data.isActive)
@@ -29,13 +29,29 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
             return <ArchiveProjectCard project={project} />;
           })
       }
-    </Stack>
+    </div>
 
     <Link href="#" class="text-center" data-load-more>Дивитись більше</Link>
   </Stack>
 </Stack>
 
 <style>
+  @import "@styles/03-utilities/breakpoints.css";
+
+  .archive-projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-9-fixed);
+
+    @media (--tablet-and-up) {
+      gap: calc(var(--space-10-fixed) - 10px);
+    }
+
+    @media (--laptop-and-up) {
+      gap: var(--space-10-fixed);
+    }
+  }
+
   [data-load-more][data-loaded] {
     display: none;
   }

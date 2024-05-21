@@ -1,24 +1,24 @@
 ---
+import { getBreakpoints } from "@/lib/helpers";
+
 // import { type HTMLAttributes } from "astro/types";
 
 type tagOptions = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-const sizeOptions = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-} as const;
+interface sizeObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
 
-type Props = {
+interface Props {
   tagName: tagOptions;
-  size: keyof typeof sizeOptions;
+  size: sizeObject | tagOptions;
   isBolded?: boolean;
   class?: string;
   rest?: any;
-};
+}
 
 const {
   tagName,
@@ -30,15 +30,12 @@ const {
 
 // Assigning tagName to a capital Tag (so Astro knows it's a component)
 const Tag = tagName;
+
+const responsiveSize = getBreakpoints("size", size);
 ---
 
 <Tag
-  class:list={[
-    "heading",
-    sizeOptions[size],
-    { "font-bold": isBolded },
-    classList,
-  ]}
+  class:list={["heading", responsiveSize, { "font-bold": isBolded }, classList]}
   {...rest}
 >
   <slot />

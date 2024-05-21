@@ -16,7 +16,11 @@ import Button from "./ui/Button.astro";
 ---
 
 <header>
-  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
+  <Center
+    maxWidth="87.5rem"
+    space={{ default: "space-6", tablet: "space-7" }}
+    class="header-inner"
+  >
     <Cluster isCenterMiddle alignItems="center" class="desktop">
       <Logo
         name="ecomisto-logo"
@@ -49,8 +53,9 @@ import Button from "./ui/Button.astro";
   @import "@styles/03-utilities/breakpoints.css";
 
   header {
-    background-color: var(--color-secondary);
     padding-block: var(--space-7-fixed);
+
+    background-color: var(--color-secondary);
   }
 
   header .mobile {
