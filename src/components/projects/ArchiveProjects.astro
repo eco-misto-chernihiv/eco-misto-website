@@ -1,14 +1,14 @@
 ---
 // Tools
 import { getCollection } from "astro:content";
-import Stack from "./compositions/Stack.astro";
-import Heading from "./ui/Heading.astro";
-import Link from "./ui/Link.astro";
-import ArchiveProjectCard from "./ArchiveProjectCard.astro";
 
 // Compositions
+import Stack from "../compositions/Stack.astro";
 
 // Components
+import Heading from "../ui/Heading.astro";
+import Link from "../ui/Link.astro";
+import ArchiveProjectCard from "./ArchiveProjectCard.astro";
 
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);

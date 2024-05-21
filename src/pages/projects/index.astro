@@ -6,8 +6,12 @@ import { getCollection } from "astro:content";
 
 // Components
 import SecondaryLayout from "@/layouts/SecondaryLayout.astro";
+import Projects from "@/components/projects/Projects.astro";
+import Center from "@/components/compositions/Center.astro";
 
 // Data
 ---
 
-<SecondaryLayout title="Проекти"> Проекти </SecondaryLayout>
+<SecondaryLayout title="Проекти">
+  <Projects />
+</SecondaryLayout>
