@@ -17,6 +17,7 @@ import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
 import Shape from "@/components/ui/Shape.astro";
 import SecondaryLayout from "@/layouts/SecondaryLayout.astro";
+import Section from "@/components/ui/Section.astro";
 
 // Data
 export const getStaticPaths = (async () => {
@@ -52,8 +53,8 @@ const {
 const heroBackgroundColor = `var(--color-${color})`;
 ---
 
-<SecondaryLayout>
-  <section class="hero">
+<BaseLayout>
+  <Section class="hero" isRoundBottom color="secondary">
     <Center
       maxWidth="87.5rem"
       space={{ default: "space-6", tablet: "space-7" }}
@@ -66,27 +67,27 @@ const heroBackgroundColor = `var(--color-${color})`;
         </div>
 
         <div class="text-wrapper">
-          <Shape color="white" class="top" />
-          <Shape color="white" class="bottom" rotate="270deg" />
+          <Shape color="secondary" class="top" />
+          <Shape color="secondary" class="bottom" rotate="270deg" />
           <Stack space="space-2" class="hero-text">
-            <Text tagName="p" size="large" class="font-medium"
+            <Text tagName="p" size="large" class="font-medium color-accent"
               >{description}</Text
             >
             <Heading
               tagName="h1"
               size="h3"
-              class="title font-heading color-secondary">{title}</Heading
+              class="title font-heading color-primary">{title}</Heading
             >
           </Stack>
         </div>
       </Stack>
     </Center>
-  </section>
+  </Section>
 
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Content />
   </Center>
-</SecondaryLayout>
+</BaseLayout>
 
 <style define:vars={{ heroBackgroundColor }}>
   @import "@styles/03-utilities/breakpoints.css";
@@ -94,17 +95,19 @@ const heroBackgroundColor = `var(--color-${color})`;
   .hero {
     --_border-radius: var(--rounded-2xl);
     --_offset-left: 20%;
+    --_padding: var(--space-11-fixed);
 
-    padding-block: var(--space-11-fixed);
+    padding-block-start: calc(var(--_padding) + var(--header-height));
+    padding-block-end: var(--_padding);
 
+    background-color: var(--color-secondary);
     @media (--tablet-and-up) {
-      padding-block: var(--space-13-fixed);
+      --_padding: var(--space-13-fixed);
     }
 
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-3xl);
-
-      padding-block: var(--space-11-fixed);
+      --_padding: var(--space-11-fixed);
     }
   }
 
@@ -172,7 +175,8 @@ const heroBackgroundColor = `var(--color-${color})`;
       max-width: 26rem;
       padding-inline-end: var(--space-9-fixed);
       padding-block-end: var(--space-4-fixed);
-      background-color: var(--color-white);
+
+      background-color: var(--color-secondary);
 
       border-bottom-right-radius: var(--_border-radius);
     }
@@ -184,7 +188,6 @@ const heroBackgroundColor = `var(--color-${color})`;
 
       padding-inline-end: var(--space-4-fixed);
       padding-block: var(--space-7-fixed);
-      background-color: var(--color-white);
 
       border-top-right-radius: var(--_border-radius);
       border-bottom-right-radius: var(--_border-radius);

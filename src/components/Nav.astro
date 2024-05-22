@@ -12,18 +12,16 @@ type Props = {
   color?: "primary" | "secondary" | "accent";
 };
 
-const { color = "accent" } = Astro.props;
-
-const linkColor = `var(--color-${color})`;
+const { color } = Astro.props;
 ---
 
-<nav>
-  <Cluster tagName="ul" role="list">
+<nav class:list={["nav", { ["color-" + color]: color }]}>
+  <Cluster tagName="ul" role="list" space="space-6">
     {
       navData.map((navItem) => {
         return (
           <li>
-            <Link href={navItem.href} isHovered>
+            <Link href={navItem.href} isHovered class="nav-link">
               {navItem.title}
             </Link>
           </li>
@@ -33,12 +31,12 @@ const linkColor = `var(--color-${color})`;
   </Cluster>
 </nav>
 
-<style define:vars={{ linkColor }}>
+<style>
   nav {
-    color: var(--linkColor);
   }
 
-  nav li a {
+  .nav-link {
+    font-size: var(--text-minus-1);
     color: inherit;
   }
 </style>

@@ -1,3 +1,4 @@
+import autoHideNav from "@/lib/autoHideNav.js";
 import Modal from "../lib/modal.js";
 
 const modalOverlays = document.querySelectorAll("[data-modal]");
@@ -22,3 +23,5 @@ modalOverlays.forEach((overlay, index) => {
     type: "normal",
   });
 });
+
+autoHideNav("header", 400);

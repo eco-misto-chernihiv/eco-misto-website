@@ -16,9 +16,10 @@ import Button from "../ui/Button.astro";
 
 // Assets
 import heroImg from "@/assets/images/hero.jpg";
+import Section from "../ui/Section.astro";
 ---
 
-<section class="hero">
+<Section class="hero" isRoundBottom color="secondary">
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
     <Row
       class="hero-grid"
@@ -27,7 +28,7 @@ import heroImg from "@/assets/images/hero.jpg";
     >
       <div class="hero-text col-12">
         <Heading tagName="h1" size="h1" class="font-heading"
-          >Події. Простори. Спільнота.</Heading
+          >Події. Простори.<br />Спільнота.</Heading
         >
       </div>
 
@@ -87,31 +88,33 @@ import heroImg from "@/assets/images/hero.jpg";
       </div>
     </Row>
   </Center>
-</section>
+</Section>
 
 <style>
   @import "../../styles/03-utilities/breakpoints.css";
 
   .hero {
-    padding-block-start: var(--space-4-fixed);
-    padding-block-end: var(--space-8-fixed);
+    --_border-radius: var(--rounded-2xl);
+    --_padding-top: var(--space-4-fixed);
+    --_padding-bottom: var(--space-8-fixed);
+
+    padding-block-start: calc(var(--_padding-top) + var(--header-height));
+    padding-block-end: var(--_padding-bottom);
 
     background-color: var(--color-secondary);
 
-    border-bottom-left-radius: var(--rounded-2xl);
-    border-bottom-right-radius: var(--rounded-2xl);
+    /* border-bottom-left-radius: var(--_border-radius); */
+    /* border-bottom-right-radius: var(--_border-radius); */
 
     @media (--tablet-and-up) {
-      padding-block: var(--space-10-fixed);
+      --_padding-top: var(--space-10-fixed);
+      --_padding-bottom: var(--space-10-fixed);
     }
 
     @media (--laptop-and-up) {
-      /* height: 100vh; */
-      padding-block-start: var(--space-17-fixed);
-      padding-block-end: var(--space-12-fixed);
-
-      border-bottom-left-radius: var(--rounded-3xl);
-      border-bottom-right-radius: var(--rounded-3xl);
+      --_border-radius: var(--rounded-3xl);
+      --_padding-top: var(--space-17-fixed);
+      --_padding-bottom: var(--space-12-fixed);
     }
   }
 

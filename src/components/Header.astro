@@ -16,18 +16,14 @@ import Button from "./ui/Button.astro";
 ---
 
 <header>
-  <Center
-    maxWidth="87.5rem"
-    space={{ default: "space-6", tablet: "space-7" }}
-    class="header-inner"
-  >
-    <Cluster isCenterMiddle alignItems="center" class="desktop">
+  <div class="wrapper">
+    <Cluster isCenterMiddle alignItems="center" class="header-inner desktop">
       <Logo
         name="ecomisto-logo"
         color="primary"
         style={{ "--width": "160px" }}
       />
-      <Nav />
+      <Nav color="accent" />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
           <ButtonLink href="/donate">Підтримати</ButtonLink>
@@ -35,7 +31,7 @@ import Button from "./ui/Button.astro";
       </div>
     </Cluster>
 
-    <Cluster alignItems="center" justify="between" class="mobile">
+    <Cluster alignItems="center" justify="between" class="header-inner mobile">
       <Logo
         name="ecomisto-symbol"
         color="primary"
@@ -46,16 +42,60 @@ import Button from "./ui/Button.astro";
         <Icon name="icon-menu" size={32} />
       </Button>
     </Cluster>
-  </Center>
+  </div>
 </header>
 
 <style>
   @import "@styles/03-utilities/breakpoints.css";
 
-  header {
-    padding-block: var(--space-7-fixed);
+  @custom-media --tablet-l-and-up (width >= 48em);
 
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    max-width: 125rem;
+    height: var(--header-height);
+
+    padding-inline: var(--space-6-fixed);
+    background-color: transparent;
+
+    transition: max-width 300ms var(--ease);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-7-fixed);
+    }
+  }
+
+  .wrapper {
+    width: 100%;
+    padding-block: var(--space-4-fixed);
+    padding-inline: var(--space-7-fixed);
+  }
+
+  header.fixed {
+    max-width: 60rem;
+  }
+
+  header.fixed .wrapper {
     background-color: var(--color-secondary);
+
+    border-radius: 9999px;
+
+    transition:
+      background-color 300ms var(--ease),
+      border-radius 300ms var(--ease);
   }
 
   header .mobile {
@@ -63,7 +103,7 @@ import Button from "./ui/Button.astro";
       color: var(--color-primary);
     }
 
-    @media (--tablet-and-up) {
+    @media (--tablet-l-and-up) {
       display: none;
     }
   }
@@ -71,8 +111,24 @@ import Button from "./ui/Button.astro";
   header .desktop {
     display: none;
 
-    @media (--tablet-and-up) {
+    @media (--tablet-l-and-up) {
       display: flex;
     }
   }
 </style>
+
+<script>
+  const header = document.querySelector("header") as HTMLElement;
+
+  const THRESHOLD = 8 as number;
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > THRESHOLD) {
+      header?.classList.add("fixed");
+    } else {
+      header?.classList.remove("fixed");
+    }
+  });
+</script>

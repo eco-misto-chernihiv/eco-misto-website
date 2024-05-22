@@ -2,12 +2,15 @@
  * Auto hides and reveal navigation or header on scroll
  * Used with position: sticky or position: fixed
  * @param {String} navSelector Nav or Header element
+ * @param {Number} hideThreshold Threshold when to hide header
  */
 
-function autoHideNav(navSelector) {
+function autoHideNav(navSelector, hideThreshold) {
   const nav = document.querySelector(navSelector);
   // Get nav height
   const navHeight = nav.getBoundingClientRect().height;
+
+  const HEADER_HIDE_THRESHOLD = hideThreshold;
 
   // Store previous scroll position
   let previousScrollPosition = window.scrollY;
@@ -26,7 +29,10 @@ function autoHideNav(navSelector) {
     // Get current nav top position
     const currentNavTop = parseFloat(getComputedStyle(nav).top);
 
-    if (direction === "downwards") {
+    if (
+      direction === "downwards" &&
+      currentScrollPosition > HEADER_HIDE_THRESHOLD
+    ) {
       // Store new nav top value and convert it to a positive number
       const navTopValue = Math.abs(currentNavTop - difference);
 
