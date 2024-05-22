@@ -5,6 +5,7 @@ import Stack from "../compositions/Stack.astro";
 import Heading from "../ui/Heading.astro";
 import Link from "../ui/Link.astro";
 import ArchiveProjectCard from "../home/ArchiveProjectCard.astro";
+import AutoGrid from "../compositions/AutoGrid.astro";
 
 // Compositions
 
@@ -24,7 +25,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     <div class="archive-projects-list">
       {
         projects
-          .filter((project, index) => !project.data.isActive && index > 2)
+          .filter((project, index) => !project.data.isActive && index < 3)
           .map((project) => {
             return <ArchiveProjectCard project={project} />;
           })
