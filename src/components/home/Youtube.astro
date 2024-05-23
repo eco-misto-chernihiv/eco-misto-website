@@ -7,13 +7,12 @@ import { parseTitle } from "@/lib/helpers";
 // Compositions
 import Center from "@compositions/Center.astro";
 import AutoGrid from "@compositions/AutoGrid.astro";
+import Stack from "../compositions/Stack.astro";
 
 // Components
 import Heading from "@ui/Heading.astro";
 import YoutubeVideo from "./YoutubeVideo.astro";
-import Stack from "../compositions/Stack.astro";
 import DummyVideo from "./DummyVideo.astro";
-import Button from "../ui/Button.astro";
 
 // Data
 const apiKey = import.meta.env.YOUTUBE_API_KEY;
@@ -88,6 +87,8 @@ try {
 </section>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .youtube {
     padding-block: var(--space-11-fixed);
   }

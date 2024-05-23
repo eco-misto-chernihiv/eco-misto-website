@@ -1,6 +1,6 @@
 ---
 // Tools
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -11,16 +11,20 @@ import Marquee from "../ui/Marquee.astro";
 import Text from "../ui/Text.astro";
 
 // Assets
-import usaid from "@/assets/donors/USAID.svg";
-import { Icon } from "astro-icon/components";
 ---
 
 <section class="donors">
   <Center maxWidth="125rem" space="space-4">
-    <Stack space="space-7">
-      <Text tagName="div" size="large" class="text-center color-dark-gray"
-        >Наші донори</Text
-      >
+    <Stack space="space-9">
+      <div class="title">
+        <Text
+          tagName="div"
+          size="medium"
+          class="color-dark-gray"
+          isBadge
+          variant="outline">Донори</Text
+        >
+      </div>
 
       <Marquee direction="left" space="space-10" duration="slow">
         <div class="marquee-inner">
@@ -42,9 +46,13 @@ import { Icon } from "astro-icon/components";
 </section>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .donors {
+    --_padding: var(--space-10-fixed);
+
     color: var(--color-secondary);
-    padding-block: var(--space-11-fixed);
+    padding-block: var(--_padding);
     /* background-color: rebeccapurple; */
 
     & svg {
@@ -52,6 +60,15 @@ import { Icon } from "astro-icon/components";
       height: auto;
       fill: currentColor;
     }
+
+    @media (--tablet-and-up) {
+      --_padding: var(--space-11-fixed);
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
   }
 
   .red {

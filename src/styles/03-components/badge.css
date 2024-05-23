@@ -1,0 +1,18 @@
+/*
+* BADGE 
+*/
+
+.badge {
+  width: fit-content;
+  border-radius: 9999px;
+  padding-inline: var(--space-6-fixed);
+  padding-block-start: 3px;
+}
+
+.badge-accent {
+  background-color: var(--color-accent);
+}
+
+.badge-outline {
+  border: 1px solid currentColor;
+}

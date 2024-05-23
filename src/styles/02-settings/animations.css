@@ -2,7 +2,7 @@
 * ANIMATIONS
 */
 
-@import "../03-utilities/breakpoints.css";
+@import "../04-utilities/breakpoints.css";
 
 :root {
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);

@@ -2,13 +2,15 @@
 // Tools
 import { Image } from "astro:assets";
 
+// Compositions
+import Center from "../compositions/Center.astro";
+
 // Components
 import Achievment from "./Achievment.astro";
+import Section from "../ui/Section.astro";
 
 // Assets
 import missionBgDesktop from "../../assets/images/achievments-bg.jpg";
-import Center from "../compositions/Center.astro";
-import Section from "../ui/Section.astro";
 
 // Data
 const achievments = [
@@ -53,7 +55,7 @@ const achievments = [
 </Section>
 
 <style>
-  @import "../../styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .achievments {
     /* padding-block-start: var(--space-7-fixed); */

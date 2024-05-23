@@ -1,15 +1,14 @@
 ---
 // Tools
 import { getCollection } from "astro:content";
+
+// Compositions
 import Stack from "../compositions/Stack.astro";
+
+// Components
 import Heading from "../ui/Heading.astro";
 import Link from "../ui/Link.astro";
 import ArchiveProjectCard from "../home/ArchiveProjectCard.astro";
-import AutoGrid from "../compositions/AutoGrid.astro";
-
-// Compositions
-
-// Components
 
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
@@ -37,7 +36,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 </Stack>
 
 <style>
-  @import "@styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .archive-projects-list {
     display: flex;

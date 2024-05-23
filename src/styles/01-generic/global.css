@@ -1,4 +1,4 @@
-@import "../03-utilities/breakpoints.css";
+@import "../04-utilities/breakpoints.css";
 
 :root {
   --header-height: 6.5rem;

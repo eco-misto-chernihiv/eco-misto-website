@@ -5,12 +5,12 @@ import { Image } from "astro:assets";
 
 // Compositions
 import Frame from "./compositions/Frame.astro";
+import Stack from "./compositions/Stack.astro";
 
 // Components
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import Text from "./ui/Text.astro";
-import Stack from "./compositions/Stack.astro";
 
 // Data
 type Props = {
@@ -49,7 +49,7 @@ const backgroundColor = `var(--color-${color})`;
 </article>
 
 <style define:vars={{ backgroundColor }}>
-  @import "@styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .wrapper {
     width: 100%;

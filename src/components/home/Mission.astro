@@ -27,7 +27,13 @@ import Achievments from "./Achievments.astro";
     >
       <Row>
         <Stack space="space-4" class="col-12 tablet:col-9 laptop:col-8">
-          <Text tagName="div" size="large" class="color-primary">Місія</Text>
+          <Text
+            tagName="div"
+            size="large"
+            class="color-secondary font-medium"
+            variant="accent"
+            isBadge>Місія</Text
+          >
           <Heading
             tagName="h3"
             size="h4"
@@ -45,7 +51,7 @@ import Achievments from "./Achievments.astro";
 </Section>
 
 <style>
-  @import "@styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .mission {
     padding-block-start: var(--space-11-fixed);

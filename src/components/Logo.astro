@@ -2,10 +2,10 @@
 // Tools
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
 
 // Components
 import Link from "./ui/Link.astro";
-import { Icon } from "astro-icon/components";
 
 type Props = {
   name: "ecomisto-logo" | "ecomisto-symbol";
@@ -26,6 +26,8 @@ const { name, class: classList, color, ...rest } = Astro.props;
 </Link>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   /* In astro you can't use define:vars, if the component is dynamic, 
   * like we have here (Link tag), so instead we're using inline style and css variables 
   */

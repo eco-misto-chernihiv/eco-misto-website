@@ -16,6 +16,8 @@ type Props = {
   size: keyof typeof sizeOptions;
   class?: string;
   isBolded?: boolean;
+  isBadge?: boolean;
+  variant?: "accent" | "outline";
   [key: string]: any;
 };
 
@@ -24,6 +26,8 @@ const {
   size,
   class: classList,
   isBolded = false,
+  isBadge,
+  variant,
   ...rest
 } = Astro.props;
 
@@ -33,7 +37,14 @@ const Tag = tagName;
 
 <Tag
   {...rest}
-  class:list={["text", classList, sizeOptions[size], { "font-bold": isBolded }]}
+  class:list={[
+    "text",
+    classList,
+    sizeOptions[size],
+    { ["badge-" + variant]: variant },
+    { "font-bold": isBolded },
+    { badge: isBadge },
+  ]}
 >
   <slot />
 </Tag>

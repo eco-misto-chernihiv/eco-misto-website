@@ -13,10 +13,10 @@ import Text from "../ui/Text.astro";
 import Shape from "../ui/Shape.astro";
 import VideoModal from "../ui/VideoModal.astro";
 import Button from "../ui/Button.astro";
+import Section from "../ui/Section.astro";
 
 // Assets
 import heroImg from "@/assets/images/hero.jpg";
-import Section from "../ui/Section.astro";
 ---
 
 <Section class="hero" isRoundBottom color="secondary">
@@ -92,7 +92,7 @@ import Section from "../ui/Section.astro";
 </Section>
 
 <style>
-  @import "../../styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .hero {
     --_border-radius: var(--rounded-2xl);

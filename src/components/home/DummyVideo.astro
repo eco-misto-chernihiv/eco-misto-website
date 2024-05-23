@@ -1,12 +1,18 @@
 ---
+// Tools
 import { Image } from "astro:assets";
-import Stack from "../compositions/Stack.astro";
-import Heading from "../ui/Heading.astro";
-import VideoModal from "@ui/VideoModal.astro";
-import Link from "../ui/Link.astro";
 
-import thumbnail from "@/assets/images/tolocar_056.jpg";
+// Compositions
+import Stack from "../compositions/Stack.astro";
+
+// Components
 import Button from "../ui/Button.astro";
+import Heading from "../ui/Heading.astro";
+
+// Data
+
+// Assets
+import thumbnail from "@/assets/images/tolocar_056.jpg";
 
 const { title } = Astro.props;
 ---
@@ -30,7 +36,7 @@ const { title } = Astro.props;
 </div>
 
 <style>
-  @import "../../styles/03-utilities/breakpoints.css";
+  @import "@styles/04-utilities/breakpoints.css";
 
   .video-item {
     display: flex;
