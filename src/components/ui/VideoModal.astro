@@ -7,17 +7,15 @@ import Button from "@ui/Button.astro";
 ---
 
 <div class="modal-overlay jsModalOverlay" data-modal>
-  <div
-    class="modal"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Youtube video modal"
-  >
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Video modal">
     <Button
+      style="icon"
       class="modal__close-button jsModalClose"
-      aria-label="Close youtube video"
+      aria-label="Close video"
+      isDefault={false}
     >
       <Icon name="icon-close" size={32} />
+      <span class="sr-only">Close video</span>
     </Button>
 
     <div class="modal__content">

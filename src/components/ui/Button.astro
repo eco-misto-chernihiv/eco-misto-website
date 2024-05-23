@@ -1,31 +1,30 @@
 ---
+const styleOptions = {
+  icon: "icon",
+  primary: "primary",
+  secondary: "secondary",
+} as const;
+
 type Props = {
   class?: string;
+  style: keyof typeof styleOptions;
+
+  isDefault?: boolean;
   [key: string]: any;
 };
-const { class: classList, ...rest } = Astro.props;
+const { class: classList, style, isDefault = true, ...rest } = Astro.props;
 ---
 
-<button class:list={["unstyled", classList]} {...rest}>
+<button
+  class:list={[
+    "button",
+    classList,
+    styleOptions[style],
+    { default: isDefault },
+  ]}
+  {...rest}
+>
   <slot />
 </button>
 
-<style>
-  .unstyled {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    text-align: left;
-    font: inherit;
-    color: inherit;
-
-    &:focus {
-      /* outline-offset: 2px; */
-      outline-color: var(--color-primary);
-    }
-
-    /* &:focus:not(:focus-visible) {
-      outline: none;
-    } */
-  }
-</style>
+<style></style>

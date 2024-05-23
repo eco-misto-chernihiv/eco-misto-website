@@ -11,10 +11,17 @@ type Props = {
   name: "ecomisto-logo" | "ecomisto-symbol";
   color: "primary" | "secondary" | "white" | "black";
   class?: string;
+
   [key: string]: any;
 };
 
-const { name, class: classList, color, ...rest } = Astro.props;
+const {
+  name,
+  class: classList,
+  color,
+  isHovered = false,
+  ...rest
+} = Astro.props;
 ---
 
 <Link
@@ -34,6 +41,12 @@ const { name, class: classList, color, ...rest } = Astro.props;
 
   .logo {
     --width: initial;
+
+    transition: opacity var(--transition-default);
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   .logo svg {

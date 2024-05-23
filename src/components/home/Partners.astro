@@ -21,6 +21,7 @@ import Partnership from "../Partnership.astro";
 // Assets
 import tolocar from "../../assets/partners/tolocar-black.png";
 import sendpulse from "../../assets/partners/sendpulse.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <Section class="partners">
@@ -62,10 +63,12 @@ import sendpulse from "../../assets/partners/sendpulse.png";
                 </Text>
               </Stack>
               <Button
+                style="primary"
                 data-open-modal
                 aria-label="Open cooperation form modal"
-                aria-expanded="false">Співпрацювати</Button
-              >
+                aria-expanded="false"
+                >Співпрацювати
+              </Button>
 
               <PartnershipModal>
                 <Partnership />
@@ -104,7 +107,7 @@ import sendpulse from "../../assets/partners/sendpulse.png";
 
   .partners {
     & button {
-      color: var(--color-primary);
+      align-self: flex-start;
     }
   }
 

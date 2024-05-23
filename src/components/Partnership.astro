@@ -29,7 +29,7 @@ import Text from "./ui/Text.astro";
         >
         <input type="checkbox" name="consent" id="consent" required />
       </div>
-      <Button type="submit"> Надіслати </Button>
+      <Button style="secondary" type="submit"> Надіслати </Button>
     </Stack>
   </form>
 </aside>
@@ -47,6 +47,12 @@ import Text from "./ui/Text.astro";
 
     row-gap: var(--space-4-fixed);
     height: 100%;
+
+    @media (--tablet-and-up) {
+      & button[type="submit"] {
+        align-self: flex-start;
+      }
+    }
   }
 
   .filler {

@@ -11,13 +11,16 @@ import Button from "@ui/Button.astro";
     class="modal"
     role="dialog"
     aria-modal="true"
-    aria-label="Cooperation form"
+    aria-label="partnership form"
   >
     <Button
+      style="icon"
       class="modal__close-button jsModalClose"
-      aria-label="Close cooperation form"
+      aria-label="Close partnership form"
+      isDefault={false}
     >
       <Icon name="icon-close" size={32} />
+      <span class="sr-only">Close partnership form</span>
     </Button>
 
     <div class="modal__content">
@@ -102,11 +105,11 @@ import Button from "@ui/Button.astro";
     top: calc(var(--space-7-fixed) - 12px);
     left: calc(var(--space-7-fixed) - 8px);
 
-    padding: 4px;
+    /* padding: 4px; */
 
     color: var(--color-black);
 
-    border-radius: 8px;
+    /* border-radius: 8px; */
 
     & svg {
       width: var(--_icon-size);
@@ -120,7 +123,7 @@ import Button from "@ui/Button.astro";
     @media (--laptop-and-up) {
       --_icon-size: 24px;
 
-      padding: 8px;
+      /* padding: 8px; */
     }
   }
 
