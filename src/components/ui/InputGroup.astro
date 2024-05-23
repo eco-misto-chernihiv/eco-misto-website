@@ -29,10 +29,13 @@ const Tag = formControl;
 
       outline: none;
 
+      transition: border var(--transition-default);
+
       &::placeholder {
         color: var(--color-gray-400);
       }
 
+      &:hover,
       &:focus {
         border-color: var(--color-primary);
       }

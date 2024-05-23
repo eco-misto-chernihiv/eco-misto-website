@@ -53,6 +53,8 @@ function BaseModal(settings) {
   const { modalElement } = settings;
   const overlayElement = modalElement.parentElement;
   const contentElement = modalElement.querySelector(".modal__content");
+  const body = document.body;
+  const header = body.querySelector("header");
 
   /**
    * Helper functions
@@ -132,13 +134,19 @@ function BaseModal(settings) {
     disableScroll() {
       const scrollBarWidth = modal.scrollbarWidth;
 
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
+      body.style.overflow = "hidden";
+      body.style.paddingRight = `${scrollBarWidth}px`;
+
+      // Only works if position is non static
+      header.style.right = `${scrollBarWidth}px`;
     },
 
     enableScroll() {
-      document.body.style.paddingRight = "0";
-      document.body.style.overflow = "";
+      body.style.paddingRight = "0";
+      body.style.overflow = "";
+
+      // Only works if position is non static
+      header.style.right = "0";
 
       // Remove transition animation
       overlayElement.removeEventListener("transitionend", modal.enableScroll);
