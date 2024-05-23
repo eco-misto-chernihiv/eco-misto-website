@@ -81,7 +81,11 @@ import Button from "./ui/Button.astro";
   .wrapper {
     width: 100%;
     padding-block: var(--space-4-fixed);
-    padding-inline: var(--space-7-fixed);
+
+    transition:
+      background-color 300ms var(--ease),
+      padding 300ms var(--ease),
+      border-radius 300ms var(--ease);
   }
 
   header.fixed {
@@ -89,12 +93,15 @@ import Button from "./ui/Button.astro";
   }
 
   header.fixed .wrapper {
+    padding-inline: var(--space-7-fixed);
+
     background-color: var(--color-secondary);
 
     border-radius: 9999px;
 
     transition:
       background-color 300ms var(--ease),
+      padding 300ms var(--ease),
       border-radius 300ms var(--ease);
   }
 
