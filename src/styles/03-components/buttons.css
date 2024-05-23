@@ -21,15 +21,6 @@
   text-decoration: none;
 }
 
-.button.default svg {
-  inline-size: 1.5em;
-  block-size: 1.5em;
-
-  display: inline-block;
-  vertical-align: middle;
-  margin-inline-start: 0.25em;
-}
-
 .button.icon {
   padding: var(--space-2-fixed);
   border-radius: var(--rounded-md);
@@ -42,7 +33,7 @@
 .button.default {
   min-width: 6.25em;
   font-weight: var(--font-medium);
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-2) var(--space-5);
   border-radius: var(--rounded-md);
 
   transition: color var(--transition-default),
@@ -56,6 +47,17 @@
   /* &:focus:not(:focus-visible) {
       outline: none;
     } */
+}
+
+.button.default svg {
+  --_size: var(--space-6);
+
+  inline-size: var(--_size);
+  block-size: var(--_size);
+
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-start: 0.25em;
 }
 
 .button.primary {

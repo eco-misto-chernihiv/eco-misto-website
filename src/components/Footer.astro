@@ -17,6 +17,7 @@ import FooterSocial from "./FooterSocial.astro";
 
 // Data
 import { navData } from "@/data/siteData";
+import Button from "./ui/Button.astro";
 
 // Assets
 ---
@@ -47,13 +48,15 @@ import { navData } from "@/data/siteData";
               />
             </div>
 
-            <Cluster justify="between" space="space-6">
-              <div class="support">
+            <Cluster justify="between" space="space-8">
+              <Stack space="space-6" class="support">
                 <Heading tagName="h5" size="h5" class="font-heading">
                   Подобається<br />що ми робимо?
                 </Heading>
-                <ButtonLink href="/donate">Підтримати</ButtonLink>
-              </div>
+                <Button tagName="a" style="secondary" href="/donate"
+                  >Підтримати</Button
+                >
+              </Stack>
 
               <div class="right">
                 <nav>

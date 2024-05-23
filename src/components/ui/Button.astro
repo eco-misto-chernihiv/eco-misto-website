@@ -6,16 +6,25 @@ const styleOptions = {
 } as const;
 
 type Props = {
+  tagName?: "a" | "button";
   class?: string;
   style: keyof typeof styleOptions;
 
   isDefault?: boolean;
   [key: string]: any;
 };
-const { class: classList, style, isDefault = true, ...rest } = Astro.props;
+const {
+  class: classList,
+  tagName = "button",
+  style,
+  isDefault = true,
+  ...rest
+} = Astro.props;
+
+const Tag = tagName;
 ---
 
-<button
+<Tag
   class:list={[
     "button",
     classList,
@@ -25,6 +34,6 @@ const { class: classList, style, isDefault = true, ...rest } = Astro.props;
   {...rest}
 >
   <slot />
-</button>
+</Tag>
 
 <style></style>
