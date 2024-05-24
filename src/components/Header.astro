@@ -8,7 +8,7 @@ import Cluster from "./compositions/Cluster.astro";
 
 // Componnets
 import Logo from "./Logo.astro";
-import Nav from "./Nav.astro";
+import Nav from "./MainNav.astro";
 import ButtonLink from "./ui/ButtonLink.astro";
 import Button from "./ui/Button.astro";
 
@@ -26,7 +26,12 @@ import Button from "./ui/Button.astro";
       <Nav color="accent" />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
-          <Button tagName="a" style="primary" size="small" href="/donate"
+          <Button
+            tagName="a"
+            style="primary"
+            size="small"
+            href="/donate"
+            class="support"
             >Підтримати <Icon
               name="icon-heart"
               aria-hidden="true"
@@ -61,6 +66,7 @@ import Button from "./ui/Button.astro";
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
+  /* Custom breakpoint */
   @custom-media --tablet-l-and-up (width >= 48em);
 
   header {
@@ -105,6 +111,22 @@ import Button from "./ui/Button.astro";
     }
   }
 
+  .open-menu {
+    color: var(--color-primary);
+    transition: opacity var(--transition-default);
+    padding: 0;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  /*
+  * STATES 
+  */
+
+  /* Fixed header  */
+
   header.fixed {
     max-width: 60rem;
   }
@@ -112,7 +134,7 @@ import Button from "./ui/Button.astro";
   header.fixed .wrapper {
     padding-inline: var(--space-5-fixed);
 
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
 
     border-radius: 9999px;
 
@@ -126,11 +148,16 @@ import Button from "./ui/Button.astro";
     }
   }
 
-  header .mobile {
-    & button {
-      color: var(--color-primary);
-    }
+  /* Somehow i can't target nav from here, so is use :global directive */
+  header.fixed .logo,
+  header.fixed :global(.main-nav),
+  header.fixed .open-menu {
+    color: var(--color-secondary);
+  }
 
+  /* Responsive header */
+
+  header .mobile {
     @media (--tablet-l-and-up) {
       display: none;
     }
@@ -143,19 +170,11 @@ import Button from "./ui/Button.astro";
       display: flex;
     }
   }
-
-  header .open-menu {
-    padding: 0;
-    transition: opacity var(--transition-default);
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
 </style>
 
 <script>
   const header = document.querySelector("header") as HTMLElement;
+  const supportButton = header.querySelector(".support");
 
   const THRESHOLD = 8 as number;
 
@@ -164,8 +183,12 @@ import Button from "./ui/Button.astro";
 
     if (scrollTop > THRESHOLD) {
       header?.classList.add("fixed");
+      supportButton?.classList.add("secondary");
+      supportButton?.classList.remove("primary");
     } else {
       header?.classList.remove("fixed");
+      supportButton?.classList.remove("secondary");
+      supportButton?.classList.add("primary");
     }
   });
 </script>

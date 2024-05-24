@@ -15,7 +15,7 @@ type Props = {
 const { color } = Astro.props;
 ---
 
-<nav class:list={["nav", { ["color-" + color]: color }]}>
+<nav class:list={["main-nav", { ["color-" + color]: color }]}>
   <Cluster tagName="ul" role="list" space="space-6">
     {
       navData.map((navItem) => {
@@ -32,9 +32,6 @@ const { color } = Astro.props;
 </nav>
 
 <style>
-  nav {
-  }
-
   .nav-link {
     font-size: var(--text-minus-1);
     color: inherit;
