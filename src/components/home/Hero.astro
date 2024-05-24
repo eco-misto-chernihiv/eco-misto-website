@@ -46,16 +46,17 @@ import heroImg from "@/assets/images/hero.jpg";
           <Image src={heroImg} alt="" />
         </div>
 
-        <div class="action">
+        <div class="play-video">
           <Button
             style="icon"
+            isDefault={false}
             data-open-modal
             aria-label="Open ecomisto showreel modal"
             aria-expanded="false"
           >
-            <Icon name="play-video" class="play-video" size={120} />
+            <Icon name="play-video" class="icon-play-video" size={120} />
           </Button>
-          <Icon name="icon-play" class="play-icon" size={32} />
+          <Icon name="icon-play" class="icon-play" size={32} />
 
           <VideoModal>
             <div class="video-container">
@@ -214,7 +215,7 @@ import heroImg from "@/assets/images/hero.jpg";
   }
 
   /* TEMP */
-  .action {
+  .play-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -231,13 +232,13 @@ import heroImg from "@/assets/images/hero.jpg";
       animation: rotate 12s linear infinite;
     }
 
-    & .play-video {
+    & .icon-play-video {
       --_size: var(--space-11-fixed);
       inline-size: var(--_size);
       block-size: var(--_size);
     }
 
-    & .play-icon {
+    & .icon-play {
       --_size: var(--space-5-fixed);
 
       inline-size: var(--_size);
@@ -253,26 +254,26 @@ import heroImg from "@/assets/images/hero.jpg";
       transition: opacity var(--transition-default);
     }
 
-    & button:hover + .play-icon {
+    & button:hover + .icon-play {
       opacity: 0.7;
     }
 
     @media (--tablet-and-up) {
-      & .play-video {
+      & .icon-play-video {
         --_size: var(--space-12-fixed);
       }
 
-      & .play-icon {
+      & .icon-play {
         --_size: var(--space-6-fixed);
       }
     }
 
     @media (--laptop-and-up) {
-      & .play-video {
+      & .icon-play-video {
         --_size: var(--space-14-fixed);
       }
 
-      & .play-icon {
+      & .icon-play {
         --_size: var(--space-7-fixed);
       }
     }
