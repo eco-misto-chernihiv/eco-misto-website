@@ -5,10 +5,17 @@ const styleOptions = {
   secondary: "secondary",
 } as const;
 
+const sizeOptions = {
+  small: "small",
+  large: "large",
+  "x-large": "x-large",
+} as const;
+
 type Props = {
   tagName?: "a" | "button";
   class?: string;
   style: keyof typeof styleOptions;
+  size?: keyof typeof sizeOptions;
 
   isDefault?: boolean;
   [key: string]: any;
@@ -17,6 +24,7 @@ const {
   class: classList,
   tagName = "button",
   style,
+  size = "large",
   isDefault = true,
   ...rest
 } = Astro.props;
@@ -29,6 +37,7 @@ const Tag = tagName;
     "button",
     classList,
     styleOptions[style],
+    sizeOptions[size],
     { default: isDefault },
   ]}
   {...rest}

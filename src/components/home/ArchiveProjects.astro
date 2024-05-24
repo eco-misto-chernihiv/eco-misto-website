@@ -20,19 +20,16 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
   <Heading tagName="h3" size="h5" class="font-heading"
     >Реалізовані проекти</Heading
   >
-  <Stack space="space-10">
-    <div class="archive-projects-list">
-      {
-        projects
-          .filter((project, index) => !project.data.isActive && index < 3)
-          .map((project) => {
-            return <ArchiveProjectCard project={project} />;
-          })
-      }
-    </div>
 
-    <Link href="/projects" class="text-center">Усі проекти</Link>
-  </Stack>
+  <div class="archive-projects-list">
+    {
+      projects
+        .filter((project, index) => !project.data.isActive && index < 3)
+        .map((project) => {
+          return <ArchiveProjectCard project={project} />;
+        })
+    }
+  </div>
 </Stack>
 
 <style>

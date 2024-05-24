@@ -26,7 +26,13 @@ import Button from "./ui/Button.astro";
       <Nav color="accent" />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
-          <ButtonLink href="/donate">Підтримати</ButtonLink>
+          <Button tagName="a" style="primary" size="small" href="/donate"
+            >Підтримати <Icon
+              name="icon-heart"
+              aria-hidden="true"
+              focusable="false"
+            /></Button
+          >
         </Cluster>
       </div>
     </Cluster>

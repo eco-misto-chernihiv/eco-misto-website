@@ -11,8 +11,10 @@ const { title, href, icon } = socialItem;
 ---
 
 <li>
-  <Link href={href} class="social-link" isExternal target="_blank">
-    <Icon name={icon} size={20} />
+  <Link href={href} isExternal target="_blank">
+    <span class="social-link">
+      <Icon name={icon} size={20} />
+    </span>
   </Link>
 </li>
 

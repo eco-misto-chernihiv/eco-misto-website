@@ -9,6 +9,7 @@ import Stack from "../compositions/Stack.astro";
 import Heading from "../ui/Heading.astro";
 import VideoModal from "@ui/VideoModal.astro";
 import Button from "../ui/Button.astro";
+import ButtonArrow from "../ui/ButtonArrow.astro";
 
 // Data
 const { video } = Astro.props;
@@ -24,14 +25,14 @@ const { thumbnail, title, videoId } = video;
       >{title}</Heading
     >
 
-    <Button
+    <ButtonArrow
       style="primary"
       data-open-modal
       aria-label="Open youtube video modal"
       aria-expanded="false"
     >
       Дивитись
-    </Button>
+    </ButtonArrow>
 
     <VideoModal>
       <div class="video-container">
@@ -61,6 +62,10 @@ const { thumbnail, title, videoId } = video;
       height: 100%;
       object-fit: cover;
     }
+  }
+
+  button[data-open-modal] {
+    align-self: flex-start;
   }
 
   .title {

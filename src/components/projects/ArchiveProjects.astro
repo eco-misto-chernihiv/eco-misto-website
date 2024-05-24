@@ -9,6 +9,7 @@ import Stack from "../compositions/Stack.astro";
 import Heading from "../ui/Heading.astro";
 import Link from "../ui/Link.astro";
 import ArchiveProjectCard from "./ArchiveProjectCard.astro";
+import ButtonArrow from "../ui/ButtonArrow.astro";
 
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
@@ -20,6 +21,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
   <Heading tagName="h3" size="h5" class="font-heading"
     >Реалізовані проекти</Heading
   >
+
   <Stack space="space-10">
     <div class="archive-projects-list">
       {
@@ -31,7 +33,9 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
       }
     </div>
 
-    <Link href="#" class="text-center" data-load-more>Дивитись більше</Link>
+    <ButtonArrow style="primary" noArrow data-load-more
+      >Дивитись більше</ButtonArrow
+    >
   </Stack>
 </Stack>
 
@@ -52,7 +56,11 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     }
   }
 
-  [data-load-more][data-loaded] {
+  button[data-load-more] {
+    align-self: center;
+  }
+
+  button[data-load-more][data-loaded] {
     display: none;
   }
 </style>

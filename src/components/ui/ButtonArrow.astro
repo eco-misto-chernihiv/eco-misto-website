@@ -1,0 +1,106 @@
+---
+import { Icon } from "astro-icon/components";
+
+const styleOptions = {
+  primary: "primary",
+  secondary: "secondary",
+} as const;
+
+type Props = {
+  tagName?: "a" | "button";
+  class?: string;
+  style: keyof typeof styleOptions;
+  noArrow?: boolean;
+  [key: string]: any;
+};
+
+const {
+  class: classList,
+  tagName = "button",
+  style,
+  noArrow = false,
+  ...rest
+} = Astro.props;
+
+const Tag = tagName;
+---
+
+<Tag
+  class:list={[
+    "button-arrow",
+    classList,
+    styleOptions[style],
+    { ["no-arrow"]: noArrow },
+  ]}
+  {...rest}
+>
+  <slot />
+  <Icon name="icon-arrow-right" aria-hidden="true" focusable="false" />
+</Tag>
+
+<style>
+  .button-arrow {
+    --_color: initial;
+    position: relative;
+    display: inline-block;
+
+    font-weight: var(--font-medium);
+
+    color: var(--_color);
+
+    transition: transform var(--transition-default);
+
+    & svg {
+      margin-inline-start: 0;
+      transform: translateY(-2px) rotate(-45deg);
+
+      transition: transform var(--transition-default);
+    }
+
+    /* &:hover {
+      transform: translateX(-4px);
+    } */
+
+    &:hover svg {
+      transform: translateY(-2px) rotate(0deg);
+    }
+  }
+
+  .button-arrow.no-arrow {
+    & svg {
+      display: none;
+    }
+  }
+
+  .button-arrow::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+
+    background-color: currentColor;
+  }
+
+  .button-arrow::after {
+    transform: scaleX(0);
+
+    transform-origin: right;
+    transition: transform 300ms var(--ease);
+  }
+
+  .button-arrow:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .button-arrow.primary {
+    --_color: var(--color-primary);
+  }
+
+  .button-arrow.secondary {
+    --_color: var(--color-secondary);
+  }
+</style>

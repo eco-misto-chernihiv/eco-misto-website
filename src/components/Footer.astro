@@ -18,6 +18,7 @@ import FooterSocial from "./FooterSocial.astro";
 // Data
 import { navData } from "@/data/siteData";
 import Button from "./ui/Button.astro";
+import { Icon } from "astro-icon/components";
 
 // Assets
 ---
@@ -54,7 +55,11 @@ import Button from "./ui/Button.astro";
                   Подобається<br />що ми робимо?
                 </Heading>
                 <Button tagName="a" style="secondary" href="/donate"
-                  >Підтримати</Button
+                  >Підтримати <Icon
+                    name="icon-heart"
+                    aria-hidden="true"
+                    focusable="false"
+                  /></Button
                 >
               </Stack>
 
@@ -86,7 +91,7 @@ import Button from "./ui/Button.astro";
           <Cluster space="space-6" justify="between" alignItems="center">
             <div>
               <Text tagName="span" size="small"
-                >© 2024 Події. Простори. Спільнота – Екомісто</Text
+                >© 2024 Громадська організація «Еко Місто Чернігів»</Text
               >
             </div>
 

@@ -9,17 +9,28 @@ import Stack from "../compositions/Stack.astro";
 import Section from "../ui/Section.astro";
 import ActiveProjects from "../ActiveProjects.astro";
 import ArchiveProjects from "./ArchiveProjects.astro";
+import ButtonArrow from "../ui/ButtonArrow.astro";
+import { Icon } from "astro-icon/components";
 
 // Data
 ---
 
 <Section class="projects">
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
-    <Stack
-      space={{ default: "space-12", tablet: "space-14", laptop: "space-16" }}
-    >
-      <ActiveProjects />
-      <ArchiveProjects />
+    <Stack space="space-10">
+      <Stack
+        space={{ default: "space-12", tablet: "space-14", laptop: "space-16" }}
+      >
+        <ActiveProjects />
+        <ArchiveProjects />
+      </Stack>
+      <ButtonArrow
+        tagName="a"
+        style="primary"
+        href="/projects"
+        class="all-projects"
+        >Усі проекти
+      </ButtonArrow>
     </Stack>
   </Center>
 </Section>
@@ -29,5 +40,9 @@ import ArchiveProjects from "./ArchiveProjects.astro";
 
   .projects {
     padding-block: var(--space-11-fixed);
+  }
+
+  .all-projects {
+    align-self: center;
   }
 </style>

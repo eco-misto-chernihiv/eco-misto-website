@@ -10,6 +10,7 @@ import Section from "../ui/Section.astro";
 import ActiveProjects from "../ActiveProjects.astro";
 import ArchiveProjects from "./ArchiveProjects.astro";
 import Heading from "../ui/Heading.astro";
+import Link from "../ui/Link.astro";
 
 // Data
 ---
@@ -20,12 +21,15 @@ import Heading from "../ui/Heading.astro";
 
 <Section class="projects">
   <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
-    <Stack
-      space={{ default: "space-12", tablet: "space-14", laptop: "space-16" }}
-    >
-      <ActiveProjects />
-      <ArchiveProjects />
-    </Stack>
+ 
+      <Stack
+        space={{ default: "space-12", tablet: "space-14", laptop: "space-16" }}
+      >
+        <ActiveProjects />
+        <ArchiveProjects />
+      </Stack>
+
+
   </Center>
 </Section>
 
@@ -52,5 +56,9 @@ import Heading from "../ui/Heading.astro";
 
   .projects {
     padding-block: var(--space-11-fixed);
+  }
+
+  [data-load-more][data-loaded] {
+    display: none;
   }
 </style>

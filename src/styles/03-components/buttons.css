@@ -2,7 +2,8 @@
 * BADGE 
 */
 
-.button {
+.button,
+.button-arrow {
   --_text-color: inherit;
   --_background-color: transparent;
 
@@ -49,7 +50,8 @@
     } */
 }
 
-.button.default svg {
+.button.default svg,
+.button-arrow svg {
   --_size: var(--space-6);
 
   inline-size: var(--_size);
@@ -59,6 +61,8 @@
   vertical-align: middle;
   margin-inline-start: 0.25em;
 }
+
+/* STYLES */
 
 .button.primary {
   --_text-color: var(--color-secondary);
@@ -80,4 +84,18 @@
     --_background-color: transparent;
     border-color: var(--_text-color);
   }
+}
+
+/* SIZES */
+
+.button.small {
+  font-size: var(--text-minus-1);
+}
+
+.button.large {
+  font-size: var(--text-base);
+}
+
+.button.x-large {
+  font-size: var(--text-1);
 }
