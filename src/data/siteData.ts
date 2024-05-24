@@ -6,10 +6,6 @@ export const baseData = {
 
 export const navData = [
   {
-    title: "Головна",
-    href: "/",
-  },
-  {
     title: "Проєкти",
     href: "/projects",
   },
@@ -52,8 +48,7 @@ export const contactsData = [
     icon: "icon-mail",
   },
   {
-    description:
-      "вулиця Шевченка, 95, Чернігів, Чернігівська область, Україна, 14027",
+    description: "вул. Шевченка, 95, Чернігів, Україна.",
     icon: "icon-pin",
   },
 ];
