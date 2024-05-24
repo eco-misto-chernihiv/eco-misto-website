@@ -90,15 +90,16 @@ import { Icon } from "astro-icon/components";
 
           <Cluster space="space-6" justify="between" alignItems="center">
             <div>
-              <Text tagName="span" size="small"
-                >© 2024 Громадська організація «Еко Місто Чернігів»</Text
+              <Text tagName="p" size="small" class="copyright"
+                >&copy; <span>{new Date().getFullYear()}</span> Громадська організація
+                «Еко Місто Чернігів»</Text
               >
             </div>
 
             <div>
               <Text tagName="span" size="small">Усі права захищені</Text>
               <Text tagName="span" size="small" class="separator">|</Text>
-              <Link href="#" class="copy" isHovered hoverHeight="1px"
+              <Link href="#" class="privacy" isHovered hoverHeight="1px"
                 >Політика конфіденційності</Link
               >
             </div>
@@ -204,7 +205,7 @@ import { Icon } from "astro-icon/components";
     }
   }
 
-  .copy {
+  .privacy {
     color: var(--color-secondary);
     font-size: var(--text-minus-2);
   }
@@ -219,3 +220,10 @@ import { Icon } from "astro-icon/components";
     color: var(--color-secondary);
   }
 </style>
+
+<script>
+  const copyrightDate = document.querySelector(
+    ".copyright span"
+  ) as HTMLSpanElement;
+  copyrightDate.textContent = new Date().getFullYear().toString();
+</script>

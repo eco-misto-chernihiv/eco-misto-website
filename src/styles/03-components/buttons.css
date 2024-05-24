@@ -60,6 +60,12 @@
   display: inline-block;
   vertical-align: middle;
   margin-inline-start: 0.25em;
+
+  transition: transform var(--transition-default);
+}
+
+.button.default:hover svg {
+  transform: scale(1.1);
 }
 
 /* STYLES */
