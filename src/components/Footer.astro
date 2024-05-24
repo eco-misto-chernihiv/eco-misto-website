@@ -68,6 +68,7 @@ import { Icon } from "astro-icon/components";
                   <Stack space="space-4">
                     <Text tagName="div" size="small">Меню</Text>
                     <Stack tagName="ul" space="space-3" role="list">
+                      <li><Link href="/" isHovered> Головна </Link></li>
                       {
                         navData.map(({ title, href }) => {
                           return (

@@ -40,3 +40,26 @@ const { color } = Astro.props;
     color: inherit;
   }
 </style>
+
+<script>
+  const { pathname } = window.location;
+
+  function getBasePath(path: string) {
+    const parts = path.split("/");
+
+    if (parts.length >= 2) {
+      return `/${parts[1]}`;
+    }
+
+    return "";
+  }
+
+  // TODO: Adjust to select a mobile navigation
+  const activeNavigationElement = document.querySelector(
+    `header nav a[href="${getBasePath(pathname)}"]`
+  );
+
+  if (activeNavigationElement) {
+    activeNavigationElement.classList.add("active");
+  }
+</script>
