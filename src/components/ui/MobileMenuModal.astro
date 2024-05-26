@@ -1,0 +1,208 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Components
+import Button from "@ui/Button.astro";
+import Cluster from "../compositions/Cluster.astro";
+import Logo from "../Logo.astro";
+---
+
+<div class="modal-overlay jsModalOverlay" data-modal>
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile menu modal"
+  >
+    <div class="modal__header-wrapper">
+      <Cluster alignItems="center" justify="between" class="modal__header">
+        <Logo
+          name="ecomisto-logo"
+          color="secondary"
+          style={{ "--width": "136px" }}
+        />
+
+        <Button
+          style="icon"
+          class="modal__close-button jsModalClose"
+          aria-label="Close menu"
+          isDefault={false}
+        >
+          <Icon name="icon-close" size={32} />
+          <span class="sr-only">Close menu</span>
+        </Button>
+      </Cluster>
+    </div>
+
+    <div class="modal__content">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    opacity: 0;
+    z-index: -1;
+    /* padding: var(--space-4-fixed); */
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    transition:
+      opacity 200ms ease-out,
+      z-index 0s 200ms,
+      visibility 0s 200ms;
+  }
+
+  .modal-overlay.is-open {
+    opacity: 1;
+    z-index: 1;
+    transition-delay: 0s;
+    visibility: visible;
+  }
+
+  .modal {
+    --_padding: var(--space-6-fixed);
+
+    position: relative;
+
+    padding-inline-start: var(--_padding);
+    padding-inline-end: calc(var(--_padding) + var(--scrollbar-width));
+
+    @media (--tablet-and-up) {
+      --_padding: var(--space-7-fixed);
+    }
+  }
+
+  .modal__header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+  }
+
+  .modal__header {
+    width: 100%;
+
+    padding-block: var(--space-1-fixed);
+    padding-inline: var(--space-5-fixed);
+
+    border-start-end-radius: var(--rounded-3xl);
+    border-start-start-radius: var(--rounded-3xl);
+    /* border-radius: var(--rounded-3xl); */
+
+    background-color: var(--color-primary);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-7-fixed);
+    }
+  }
+
+  .modal__content {
+    height: 26rem;
+    margin-block-start: -22px;
+    background-color: var(--color-primary);
+    border-end-end-radius: var(--rounded-3xl);
+    border-end-start-radius: var(--rounded-3xl);
+
+    animation: roll-up 0.4s var(--ease-out) forwards;
+
+    /* height: 100%; */
+    /* animation: fade-out 0.4s var(--ease-out) forwards; */
+    /* animation: round-out 0.4s var(--ease-out) forwards; */
+  }
+
+  .modal__close-button {
+    /* TEMP */
+    /* display: none; */
+
+    --_icon-size: 32px;
+    --_padding: var(--space-1-fixed);
+    /* 
+    position: absolute;
+    top: 0rem;
+    right: 0rem; */
+    /* padding: var(--_padding); */
+    /* font-size: 1rem; */
+    border-radius: var(--rounded-md);
+    opacity: 1;
+    /* border: 2px solid var(--blue-grey-400); */
+
+    color: var(--color-secondary);
+
+    & svg {
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+    }
+  }
+
+  .modal__close-button:hover {
+    /* TODO: Pick a neutral color, add transition */
+    /* background-color: var(--color-secondary); */
+  }
+
+  /** 
+  * STATE
+   */
+
+  .modal-overlay.is-open .modal__header {
+  }
+
+  .modal-overlay.is-open .modal__content {
+    animation: roll-down 0.4s var(--ease-out) backwards;
+  }
+
+  .modal-overlay.is-open .modal__close-button {
+  }
+
+  /**
+   * ANIMATIONS
+   */
+
+  @keyframes roll-down {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 26rem;
+    }
+  }
+
+  @keyframes roll-up {
+    0% {
+      height: 26rem;
+    }
+    100% {
+      height: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

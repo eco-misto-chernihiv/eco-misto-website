@@ -11,11 +11,12 @@ import Logo from "./Logo.astro";
 import Nav from "./MainNav.astro";
 import ButtonLink from "./ui/ButtonLink.astro";
 import Button from "./ui/Button.astro";
+import MobileMenuModal from "./ui/MobileMenuModal.astro";
 
 // Assets
 ---
 
-<header>
+<header class="is-visible">
   <div class="wrapper">
     <Cluster isCenterMiddle alignItems="center" class="header-inner desktop">
       <Logo
@@ -44,21 +45,24 @@ import Button from "./ui/Button.astro";
 
     <Cluster alignItems="center" justify="between" class="header-inner mobile">
       <Logo
-        name="ecomisto-symbol"
+        name="ecomisto-logo"
         color="primary"
-        style={{ "--width": "32px" }}
+        style={{ "--width": "136px" }}
       />
 
       <Button
         style="icon"
         aria-label="Open main menu"
         aria-expanded="false"
+        data-open-modal
         isDefault={false}
         class="open-menu"
       >
         <Icon name="icon-menu" size={32} />
         <span class="sr-only">Open main menu</span>
       </Button>
+
+      <MobileMenuModal> Mobile menu </MobileMenuModal>
     </Cluster>
   </div>
 </header>
@@ -90,7 +94,10 @@ import Button from "./ui/Button.astro";
     padding-inline: var(--space-6-fixed);
     background-color: transparent;
 
-    transition: max-width 300ms var(--ease);
+    transform: translateY(-100%);
+    transition:
+      transform 340ms var(--ease),
+      max-width 200ms var(--ease);
 
     @media (--tablet-and-up) {
       padding-inline: var(--space-7-fixed);
@@ -99,15 +106,17 @@ import Button from "./ui/Button.astro";
 
   .wrapper {
     width: 100%;
-    padding-block: var(--space-3-fixed);
+    padding-block: var(--space-1-fixed);
+
+    border-radius: var(--rounded-3xl);
 
     transition:
-      background-color 300ms var(--ease),
-      padding 300ms var(--ease),
-      border-radius 300ms var(--ease);
+      background-color 200ms var(--ease),
+      padding 200ms var(--ease),
+      border-radius 200ms var(--ease);
 
-    @media (--tablet-and-up) {
-      padding-block: var(--space-4-fixed);
+    @media (--tablet-l-and-up) {
+      padding-block: var(--space-3-fixed);
     }
   }
 
@@ -136,12 +145,10 @@ import Button from "./ui/Button.astro";
 
     background-color: var(--color-primary);
 
-    border-radius: 9999px;
-
-    transition:
+    /* transition:
       background-color 300ms var(--ease),
       padding 300ms var(--ease),
-      border-radius 300ms var(--ease);
+      border-radius 300ms var(--ease); */
 
     @media (--tablet-and-up) {
       padding-inline: var(--space-7-fixed);
@@ -155,9 +162,16 @@ import Button from "./ui/Button.astro";
     color: var(--color-secondary);
   }
 
+  /* Show/hide header */
+
+  header.is-visible {
+    transform: translateY(0);
+  }
+
   /* Responsive header */
 
   header .mobile {
+    /* display: none; */
     @media (--tablet-l-and-up) {
       display: none;
     }

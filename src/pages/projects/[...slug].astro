@@ -59,12 +59,6 @@ const heroBackgroundColor = `var(--color-${color})`;
       space={{ default: "space-6", tablet: "space-7" }}
     >
       <Stack space={{ default: "space-6", tablet: "space-0" }} class="wrapper">
-        <div class="img-wrapper">
-          <div class:list={["hero-img", { collage: isCollage }]}>
-            <Image src={image} alt="" />
-          </div>
-        </div>
-
         <div class="text-wrapper">
           <Shape color="secondary" class="top" />
           <Shape color="secondary" class="bottom" rotate="270deg" />
@@ -78,6 +72,12 @@ const heroBackgroundColor = `var(--color-${color})`;
               class="title font-heading color-primary">{title}</Heading
             >
           </Stack>
+        </div>
+
+        <div class="img-wrapper">
+          <div class:list={["hero-img", { collage: isCollage }]}>
+            <Image src={image} alt="" />
+          </div>
         </div>
       </Stack>
     </Center>

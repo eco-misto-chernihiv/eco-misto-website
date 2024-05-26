@@ -33,31 +33,32 @@ function autoHideNav(navSelector, hideThreshold) {
       direction === "downwards" &&
       currentScrollPosition > HEADER_HIDE_THRESHOLD
     ) {
-      // Store new nav top value and convert it to a positive number
-      const navTopValue = Math.abs(currentNavTop - difference);
+      nav.classList.remove("is-visible");
+      // // Store new nav top value and convert it to a positive number
+      // const navTopValue = Math.abs(currentNavTop - difference);
 
-      // If new nav top value is more than nav height
-      if (navTopValue > navHeight) {
-        // Set to nav height
-        nav.style.top = `-${navHeight}px`;
-      } else {
-        // Otherwise set to new nav top value
-        nav.style.top = `-${navTopValue}px`;
-      }
+      // // If new nav top value is more than nav height
+      // if (navTopValue > navHeight) {
+      //   // Set to nav height
+      //   nav.style.top = `-${navHeight}px`;
+      // } else {
+      //   // Otherwise set to new nav top value
+      //   nav.style.top = `-${navTopValue}px`;
+      // }
     }
 
     if (direction === "upwards") {
-      // Store new nav top value
-      const navTopValue = currentNavTop - difference;
-
-      // If new nav top value is more than 0
-      if (navTopValue > 0) {
-        // Set nav top to 0
-        nav.style.top = 0;
-      } else {
-        // Otherwise set it a new nav top value
-        nav.style.top = `${navTopValue}px`;
-      }
+      nav.classList.add("is-visible");
+      // // Store new nav top value
+      // const navTopValue = currentNavTop - difference;
+      // // If new nav top value is more than 0
+      // if (navTopValue > 0) {
+      //   // Set nav top to 0
+      //   nav.style.top = 0;
+      // } else {
+      //   // Otherwise set it a new nav top value
+      //   nav.style.top = `${navTopValue}px`;
+      // }
     }
 
     // Set previous scroll position to a current scroll position
