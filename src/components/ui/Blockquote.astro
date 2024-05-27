@@ -1,0 +1,77 @@
+---
+import Center from "../compositions/Center.astro";
+import EmptyShape from "./EmptyShape.astro";
+import Shape from "./Shape.astro";
+---
+
+<blockquote>
+  <Center maxWidth="62.5rem" space="space-7">
+    <slot />
+  </Center>
+  <EmptyShape class="blockquote-shape" bottom="0px" right="0px">
+    <Shape color="white" class="top" translateY="-100%" rotate="90deg" />
+    <Shape color="white" class="bottom" translateX="-100%" rotate="90deg" />
+  </EmptyShape>
+</blockquote>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  blockquote {
+    --_border-radius: var(--rounded-2xl);
+
+    position: relative;
+
+    padding-block-start: var(--space-13-fixed);
+    padding-block-end: var(--space-14-fixed);
+
+    font-family: var(--font-heading);
+    font-size: var(--heading-3);
+    line-height: 1.1;
+
+    color: var(--color-secondary);
+    background-color: var(--color-primary-light);
+
+    border-radius: var(--_border-radius);
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+    }
+  }
+
+  blockquote :global(p) {
+    text-wrap: balance;
+  }
+
+  blockquote :global(p + p) {
+    margin-block-start: var(--space-7-fixed);
+  }
+
+  .blockquote-shape {
+    height: 3rem;
+    width: 31%;
+    background-color: var(--color-white);
+
+    border-start-start-radius: var(--_border-radius);
+
+    & .shape.top {
+      top: 1px;
+      right: -1px;
+    }
+
+    & .shape.bottom {
+      bottom: -1px;
+      left: 1px;
+    }
+
+    @media (--tablet-and-up) {
+      height: 4rem;
+      width: 25%;
+    }
+
+    @media (--laptop-and-up) {
+      height: 5rem;
+      width: 19%;
+    }
+  }
+</style>

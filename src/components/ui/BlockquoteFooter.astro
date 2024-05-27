@@ -1,0 +1,29 @@
+---
+
+---
+
+<footer class="blockquote-footer">
+  <slot />
+</footer>
+
+<style>
+  .blockquote-footer {
+    font-family: var(--font-text);
+    text-align: left;
+    margin-block-start: var(--space-9-fixed);
+  }
+
+  .blockquote-footer :global(p + p) {
+    margin-block-start: var(--space-1-fixed);
+  }
+
+  .blockquote-footer :global(p:first-child) {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+  }
+
+  .blockquote-footer :global(p:last-child) {
+    font-size: var(--text-minus-1);
+    font-weight: var(--font-regular);
+  }
+</style>
