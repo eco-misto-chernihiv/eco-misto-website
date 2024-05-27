@@ -24,4 +24,5 @@ modalOverlays.forEach((overlay, index) => {
   });
 });
 
+// Auto hide navigation on scroll
 autoHideNav("header", 400);

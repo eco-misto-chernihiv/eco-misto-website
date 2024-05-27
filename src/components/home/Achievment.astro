@@ -31,8 +31,8 @@ const {
     rotate={rightRotate}
   />
   <div class="content">
-    <Heading tagName="h4" size="h3" class="font-heading">{title}</Heading>
-    <Text tagName="p" size="large">{description}</Text>
+    <Heading tagName="h4" size="h3" class="numner font-heading">{title}</Heading>
+    <Text tagName="p" size="medium" class="description">{description}</Text>
   </div>
 </div>
 
@@ -203,5 +203,12 @@ const {
     @media (--laptop-and-up) {
       padding: var(--space-6-fixed);
     }
+  }
+
+  .achievment .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 </style>

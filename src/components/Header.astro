@@ -8,10 +8,10 @@ import Cluster from "./compositions/Cluster.astro";
 
 // Componnets
 import Logo from "./Logo.astro";
-import Nav from "./MainNav.astro";
-import ButtonLink from "./ui/ButtonLink.astro";
+import MainNav from "./MainNav.astro";
 import Button from "./ui/Button.astro";
 import MobileMenuModal from "./ui/MobileMenuModal.astro";
+import MobileNav from "./MobileNav.astro";
 
 // Assets
 ---
@@ -24,7 +24,7 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
         color="primary"
         style={{ "--width": "160px" }}
       />
-      <Nav color="accent" />
+      <MainNav color="accent" />
       <div class="support-action">
         <Cluster space="space-0" justify="end">
           <Button
@@ -62,7 +62,9 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
         <span class="sr-only">Open main menu</span>
       </Button>
 
-      <MobileMenuModal> Mobile menu </MobileMenuModal>
+      <MobileMenuModal>
+        <MobileNav/> 
+         </MobileMenuModal>
     </Cluster>
   </div>
 </header>
@@ -105,10 +107,12 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
   }
 
   .wrapper {
+    --_border-radius: var(--rounded-3xl);
+    
     width: 100%;
     padding-block: var(--space-1-fixed);
 
-    border-radius: var(--rounded-3xl);
+    border-radius: var(  --_border-radius);
 
     transition:
       background-color 200ms var(--ease),
@@ -116,6 +120,7 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
       border-radius 200ms var(--ease);
 
     @media (--tablet-l-and-up) {
+      
       padding-block: var(--space-3-fixed);
     }
   }
@@ -187,6 +192,7 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
 </style>
 
 <script>
+  // Fixed header
   const header = document.querySelector("header") as HTMLElement;
   const supportButton = header.querySelector(".support");
 
@@ -205,4 +211,31 @@ import MobileMenuModal from "./ui/MobileMenuModal.astro";
       supportButton?.classList.add("primary");
     }
   });
+
+// Set active state on site-nav
+const { pathname } = window.location;
+
+function getBasePath(path: string) {
+  const parts = path.split("/");
+
+  if (parts.length >= 2) {
+    return `/${parts[1]}`;
+  }
+
+  return "";
+}
+
+// TODO: Adjust to select a mobile navigation
+const activeNavigationElements = [...document.querySelectorAll(
+  `.site-nav a[href="${getBasePath(pathname)}"]`
+)];
+
+activeNavigationElements.forEach((navElement) => {
+
+  if (navElement) {
+    navElement.classList.add("active");
+  }
+})
+
+
 </script>

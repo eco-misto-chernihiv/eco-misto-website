@@ -1,0 +1,16 @@
+---
+
+import { navData } from "@/data/siteData";
+import Link from "./ui/Link.astro";
+---
+
+<nav class="site-nav mobile-nav">
+    <ul>
+        {navData.map((navItem) => {
+            return (
+                <li><Link href={navItem.href} isHovered>{navItem.title}</Link></li>
+            )
+        })}
+    </ul>
+</nav>
+
