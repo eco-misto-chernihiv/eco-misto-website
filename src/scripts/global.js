@@ -1,5 +1,6 @@
 import autoHideNav from "@/lib/autoHideNav.js";
 import Modal from "../lib/modal.js";
+import "../lib/swiper.js";
 
 const modalOverlays = document.querySelectorAll("[data-modal]");
 const buttonModals = document.querySelectorAll("[data-open-modal]");

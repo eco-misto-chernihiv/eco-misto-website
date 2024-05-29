@@ -1,6 +1,6 @@
 import { e as createComponent, r as renderTemplate, m as maybeRenderHead, k as renderComponent, h as createAstro, j as renderSlot, q as Fragment, _ as __astro_tag_component__, x as createVNode } from './astro_UArVnpDr.mjs';
 import { $ as $$Image } from './pages/generic_BveTtuLk.mjs';
-import { $ as $$Frame, a as $$Cluster, b as $$ArrowIcon, c as $$Center, d as $$EmptyShape, e as $$Shape } from './prerender_CxxUzmJ3.mjs';
+import { $ as $$Frame, a as $$Cluster, b as $$ArrowIcon, c as $$Center, d as $$EmptyShape, e as $$Shape } from './prerender_BDmDLCIk.mjs';
 /* empty css                                                               */
 /* empty css                                                                  */
 /* empty css                                                                        */
