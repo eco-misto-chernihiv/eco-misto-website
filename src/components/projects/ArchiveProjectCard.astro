@@ -22,14 +22,14 @@ type Props = {
 };
 
 const { project } = Astro.props;
-const { title, description, image } = project.data;
+const { title, description, cover } = project.data;
 ---
 
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
     <div class="wrapper">
       <Frame ratio="1:1" class="img-wrapper">
-        <Image src={image} alt="" />
+        <Image src={cover} alt="" />
       </Frame>
       <Stack space="space-3" class="info">
         <Heading

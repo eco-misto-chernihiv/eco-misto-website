@@ -45,7 +45,7 @@ const {
   title,
   description,
   color = "accent",
-  image,
+  cover,
   isCollage = false,
 } = project.data;
 
@@ -76,16 +76,14 @@ const heroBackgroundColor = `var(--color-${color})`;
 
         <div class="img-wrapper">
           <div class:list={["hero-img", { collage: isCollage }]}>
-            <Image src={image} alt="" />
+            <Image src={cover} alt="" />
           </div>
         </div>
       </Stack>
     </Center>
   </Section>
 
-  <Center maxWidth="87.5rem" space={{ default: "space-6", tablet: "space-7" }}>
-    <Content />
-  </Center>
+  <Content />
 </BaseLayout>
 
 <style define:vars={{ heroBackgroundColor }}>

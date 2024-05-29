@@ -40,6 +40,7 @@ interface Props {
   alignItems?: PropObject | alignOptions;
   class?: string;
   isCenterMiddle?: boolean;
+  noWrap?: boolean;
   [key: string]: any;
 }
 
@@ -50,6 +51,7 @@ const {
   alignItems = "stretch",
   isCenterMiddle = false,
   class: classList,
+  noWrap = false,
   ...rest
 } = Astro.props as Props;
 
@@ -66,6 +68,7 @@ const Tag = tagName;
     { ["justify-" + justify]: justify },
     { ["items-" + alignItems]: alignItems },
     { "center-middle": isCenterMiddle },
+    { nowrap: noWrap },
   ]}
   {...rest}
 >
@@ -80,6 +83,10 @@ const Tag = tagName;
   .cluster {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .cluster.nowrap {
+    flex-wrap: nowrap;
   }
 
   .cluster.center-middle > :first-child,

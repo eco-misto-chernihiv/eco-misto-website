@@ -12,6 +12,7 @@ import Frame from "../compositions/Frame.astro";
 import Text from "../ui/Text.astro";
 import Heading from "../ui/Heading.astro";
 import Link from "../ui/Link.astro";
+import ArrowIcon from "../ui/ArrowIcon.astro";
 
 // Assets
 
@@ -22,14 +23,14 @@ type Props = {
 };
 
 const { project } = Astro.props;
-const { title, description, image } = project.data;
+const { title, description, cover } = project.data;
 ---
 
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
     <div class="wrapper">
       <Frame ratio="1:1" class="img-wrapper">
-        <Image src={image} alt="" />
+        <Image src={cover} alt="" />
       </Frame>
       <Stack space="space-3" class="info">
         <Heading
@@ -41,9 +42,10 @@ const { title, description, image } = project.data;
           >{description}</Text
         >
       </Stack>
-      <div class="arrow-right">
+      <!-- <div class="arrow-right">
         <Icon name="icon-arrow-right" size={32} />
-      </div>
+      </div> -->
+      <ArrowIcon style="secondary" class="arrow-right" />
     </div>
   </Link>
 </article>
@@ -139,43 +141,32 @@ const { title, description, image } = project.data;
   }
 
   .arrow-right {
-    --_size: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+    --_size: 28px;
 
     align-self: flex-end;
 
-    padding: var(--space-1-fixed);
     margin-inline-start: auto;
 
-    color: var(--color-primary);
-
-    background-color: var(--color-secondary);
-    border-radius: 9999px;
-
-    & svg {
-      width: var(--_size);
-      height: var(--_size);
+    width: var(--_size);
+    height: var(--_size);
+    & :global(svg) {
       transform: rotate(-45deg);
       transition: transform var(--transition-default);
     }
 
     @media (--tablet-and-up) {
-      --_size: 24px;
+      --_size: 32px;
 
       align-self: auto;
     }
 
     @media (--laptop-and-up) {
-      --_size: 28px;
+      --_size: 40px;
     }
   }
 
   .archive-project-item:hover .arrow-right {
-    & svg {
+    & :global(svg) {
       transform: rotate(0deg);
     }
   }

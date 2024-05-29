@@ -1,0 +1,83 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+const styleOptions = {
+  primary: "primary",
+  secondary: "secondary",
+};
+
+const directionOptions = {
+  left: "left",
+  right: "right",
+};
+
+type Props = {
+  style: keyof typeof styleOptions;
+  direction?: keyof typeof directionOptions;
+  class?: string;
+  [key: string]: any;
+};
+
+const { class: classList, style, direction = "right", ...rest } = Astro.props;
+---
+
+<div
+  class:list={[
+    "arrow",
+    classList,
+    styleOptions[style],
+    directionOptions[direction],
+  ]}
+  {...rest}
+>
+  <Icon name="icon-arrow-right" size={32} />
+</div>
+
+<style>
+  .arrow {
+    --_color: initial;
+    --_bg-color: initial;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    padding: var(--space-1-fixed);
+
+    color: var(--_color);
+    background-color: var(--_bg-color);
+
+    border-radius: 9999px;
+
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /**
+  * Style
+   */
+
+  .arrow.primary {
+    --_color: var(--color-secondary);
+    --_bg-color: var(--color-primary);
+  }
+
+  .arrow.secondary {
+    --_color: var(--color-primary);
+    --_bg-color: var(--color-secondary);
+  }
+
+  /**
+  * Direction
+   */
+
+  .arrow.left {
+    & svg {
+      transform: rotate(-180deg);
+    }
+  }
+</style>

@@ -19,6 +19,7 @@ const projects = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
+      id: z.string().optional(),
       title: z.string().max(38, {
         message: "Title cannot be longer that 38 characters",
       }),
@@ -26,8 +27,8 @@ const projects = defineCollection({
         message: "Description cannot be longer that 65 characters",
       }),
       // validate as a local image
-      image: image().refine((img) => img.width >= 500, {
-        message: "Image should be at least 1000px wide or more",
+      cover: image().refine((img) => img.width >= 500, {
+        message: "Cover should be at least 500px wide or more",
       }),
       isCollage: z.boolean().optional(),
       color: z.enum(colorOptions).optional(),

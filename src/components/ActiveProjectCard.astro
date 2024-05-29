@@ -20,7 +20,7 @@ type Props = {
 };
 
 const { project, class: classList, ...rest } = Astro.props;
-const { title, description, image, color = "accent" } = project.data;
+const { title, description, cover, color = "accent" } = project.data;
 
 const backgroundColor = `var(--color-${color})`;
 ---
@@ -29,7 +29,7 @@ const backgroundColor = `var(--color-${color})`;
   <Link href={`/projects/${project.slug}`} class="wrapper">
     <Stack space="space-8">
       <Frame ratio="4:3" class="img-wrapper">
-        <Image src={image} alt="" />
+        <Image src={cover} alt="" />
       </Frame>
 
       <Stack space="space-3">

@@ -1,17 +1,29 @@
 ---
+id: maysternya-mista
 title: Майстерня міста
 description: краудфандингова платформа
 pubDate: 2024-05-14
-image: ./images/velokuhnya.png
+cover: ./images/velokuhnya.png
 color: primary
 isActive: true
 isCollage: true
 ---
 
-import Blockquote from "@ui/Blockquote.astro";
-import BlockquoteFooter from "@ui/BlockquoteFooter.astro";
+import Gallery from "@/components/project/Gallery.astro";
+import Blockquote from "@/components/project/Blockquote.astro";
+import BlockquoteFooter from "@/components/project/BlockquoteFooter.astro";
+
+{/* Should start with 'images' */}
+export const maysternyaImages = [
+"images/maysternya-mista/maysternya_mista_001.jpg",
+"images/maysternya-mista/maysternya_mista_002.jpg",
+"images/maysternya-mista/maysternya_mista_003.jpg",
+"images/maysternya-mista/maysternya_mista_004.jpg",
+];
 
 # Heading
+
+<Gallery imagePaths={maysternyaImages} />
 
 <Blockquote>
 <span>“</span>Це була перша ініціатива, яку ми розробили у рамках програми Glovo Acts. 
