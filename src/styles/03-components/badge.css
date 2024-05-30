@@ -3,14 +3,31 @@
 */
 
 .badge {
+  --_bg-color: initial;
+  --_color: initial;
+
   width: fit-content;
   border-radius: 9999px;
   padding-inline: var(--space-5-fixed);
   padding-block-start: 1px;
+
+  color: var(--_color);
+  background-color: var(--_bg-color);
 }
 
 .badge-accent {
-  background-color: var(--color-accent);
+  --_color: var(--color-secondary);
+  --_bg-color: var(--color-accent);
+}
+
+.badge-primary {
+  --_color: var(--color-secondary);
+  --_bg-color: var(--color-primary);
+}
+
+.badge-secondary {
+  --_color: var(--color-primary);
+  --_bg-color: var(--color-secondary);
 }
 
 .badge-outline {

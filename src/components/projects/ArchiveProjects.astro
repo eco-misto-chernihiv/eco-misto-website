@@ -75,7 +75,8 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
   // Current visible items
   // Hides all items after first 3 in css using nth-child(3) selector
-  let currentItems = 3;
+  const ITEMS_TO_SHOW = 4;
+  let currentItems = 4;
 
   function handleClick(event: Event) {
     event.preventDefault();
@@ -83,8 +84,8 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     // Select all items
     const archiveItems = [...archiveProjectsList.children] as HTMLElement[];
 
-    // Loop through visible items + 3
-    for (let index = 0; index < currentItems + 3; index++) {
+    // Loop through visible items + 4
+    for (let index = 0; index < currentItems + ITEMS_TO_SHOW; index++) {
       // If item exists
       if (archiveItems[index]) {
         // Set display to block
@@ -93,7 +94,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     }
 
     // Add +3 to current visible items
-    currentItems += 3;
+    currentItems += ITEMS_TO_SHOW;
 
     // If current items more or equal all visible items in the dom
     if (currentItems >= archiveItems.length) {

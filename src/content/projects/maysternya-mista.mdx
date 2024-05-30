@@ -9,6 +9,7 @@ isActive: true
 isCollage: true
 ---
 
+import Text from "@ui/Text.astro";
 import Gallery from "@/components/project/Gallery.astro";
 import Blockquote from "@/components/project/Blockquote.astro";
 import BlockquoteFooter from "@/components/project/BlockquoteFooter.astro";
@@ -22,7 +23,9 @@ export const maysternyaImages = [
 "images/maysternya-mista/maysternya_mista_004.jpg",
 ];
 
-# Heading
+<Text tagName="div" size="medium" class="font-medium" isBadge variant="primary">
+  Мета
+</Text>
 
 <Gallery imagePaths={maysternyaImages} />
 

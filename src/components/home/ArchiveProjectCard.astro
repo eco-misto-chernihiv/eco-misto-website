@@ -29,23 +29,21 @@ const { title, description, cover } = project.data;
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
     <div class="wrapper">
-      <Frame ratio="1:1" class="img-wrapper">
-        <Image src={cover} alt="" />
-      </Frame>
-      <Stack space="space-3" class="info">
-        <Heading
-          tagName="h4"
-          size={{ default: "h6", tablet: "h5" }}
-          class="title font-heading color-secondary">{title}</Heading
-        >
-        <Text tagName="p" size="medium" class="color-dark-gray"
-          >{description}</Text
-        >
+      <Stack space="space-7">
+        <Frame ratio="16:9" class="img-wrapper">
+          <Image src={cover} alt="" />
+        </Frame>
+        <Stack space="space-2" class="info">
+          <Heading
+            tagName="h4"
+            size={{ default: "h6" }}
+            class="title font-heading color-secondary">{title}</Heading
+          >
+          <Text tagName="p" size="medium" class="color-dark-gray"
+            >{description}</Text
+          >
+        </Stack>
       </Stack>
-      <!-- <div class="arrow-right">
-        <Icon name="icon-arrow-right" size={32} />
-      </div> -->
-      <ArrowIcon style="secondary" class="arrow-right" />
     </div>
   </Link>
 </article>
@@ -54,59 +52,20 @@ const { title, description, cover } = project.data;
   @import "@styles/04-utilities/breakpoints.css";
 
   .archive-project-item {
-    --_offset: var(--space-4-fixed);
-
-    margin: calc(var(--_offset) * -1);
-    padding: var(--_offset);
-
-    background-color: var(--color-accent);
-    border-radius: var(--rounded-3xl);
-    transition: background-color var(--transition-default);
-
     & a {
       width: 100%;
-    }
-
-    @media (--tablet-and-up) {
-      --_offset: var(--space-5-fixed);
     }
   }
 
   .archive-project-item:hover {
-    background-color: var(--color-primary-light);
-  }
-
-  .archive-project-item:not(:first-child)::before {
-    content: "";
-    display: block;
-    /* padding-block-start: var(--space-7-fixed); */
-    /* border-block-start: 1px solid var(--color-gray-200); */
+    & img {
+      transform: scale3d(1.05, 1.05, 1.05);
+      will-change: transform;
+    }
   }
 
   .wrapper {
-    --_gap: var(--space-4-fixed);
-
     text-decoration: none;
-    display: flex;
-
-    gap: var(--_gap);
-    align-items: center;
-
-    @media (--tablet-and-up) {
-      --_gap: var(--space-7-fixed);
-    }
-  }
-
-  .archive-project-item:hover .info {
-    transform: translateX(0.5rem);
-
-    @media (--tablet-and-up) {
-      transform: translateX(1rem);
-    }
-
-    @media (--laptop-and-up) {
-      transform: translateX(2rem);
-    }
   }
 
   .title {
@@ -114,29 +73,33 @@ const { title, description, cover } = project.data;
   }
 
   .info {
-    transition: transform 500ms var(--ease-out);
+    /* --_border-radius: var(--rounded-lg);
+
+    padding: var(--space-8-fixed) var(--space-6-fixed);
+
+    border-bottom-left-radius: var(--_border-radius);
+    border-bottom-right-radius: var(--_border-radius);
+
+    background-color: var(--color-primary);
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-xl);
+    } */
   }
 
   .img-wrapper {
-    --_border-radius: var(--rounded-xl);
-    --_img-size: 6.5rem;
+    --_border-radius: var(--rounded-lg);
 
-    /* Keep image from stretching */
-    flex-shrink: 0;
-
-    width: var(--_img-size);
     border-radius: var(--_border-radius);
-    align-self: flex-start;
+    /* border-top-left-radius: var(--_border-radius); */
+    /* border-top-right-radius: var(--_border-radius); */
 
-    transition: filter 300ms var(--ease-out);
-
-    @media (--tablet-and-up) {
-      --_img-size: 12rem;
+    & img {
+      transition: transform 300ms var(--ease-out);
     }
 
     @media (--laptop-and-up) {
-      --_border-radius: var(--rounded-2xl);
-      --_img-size: 15rem;
+      --_border-radius: var(--rounded-xl);
     }
   }
 
