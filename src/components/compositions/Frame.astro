@@ -44,6 +44,11 @@ const [left, right] = ratio.split(":");
     object-fit: cover;
   }
 
+  .frame > iframe {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
   /* Control aspect ratio in different orientation */
   /* @media (orientation: portrait) {
     .frame {
