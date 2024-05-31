@@ -1,0 +1,29 @@
+---
+
+---
+
+<section class="content">
+  <slot />
+</section>
+
+<style>
+  .content {
+    padding-block: var(--space-11-fixed);
+  }
+
+  .content :global(.project-row + .project-row) {
+    margin-block-start: var(--space-12-fixed);
+  }
+
+  .content :global(.badge) {
+    margin-block-end: var(--space-3-fixed);
+  }
+
+  .content :global(h3) {
+    margin-block-end: var(--space-6-fixed);
+  }
+
+  .content :global(p + p) {
+    margin-block-start: var(--space-7-fixed);
+  }
+</style>

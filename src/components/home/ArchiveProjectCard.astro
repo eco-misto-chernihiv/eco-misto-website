@@ -39,7 +39,7 @@ const { title, description, cover } = project.data;
             size={{ default: "h6" }}
             class="title font-heading color-secondary">{title}</Heading
           >
-          <Text tagName="p" size="medium" class="color-dark-gray"
+          <Text tagName="p" size="medium" class="color-black"
             >{description}</Text
           >
         </Stack>
@@ -61,6 +61,10 @@ const { title, description, cover } = project.data;
     & img {
       transform: scale3d(1.05, 1.05, 1.05);
       will-change: transform;
+    }
+
+    & .title {
+      color: var(--color-primary);
     }
   }
 

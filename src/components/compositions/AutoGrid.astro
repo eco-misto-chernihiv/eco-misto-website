@@ -21,11 +21,14 @@ type spaceOptions =
   | "space-18"
   | "space-19";
 
+type justifyOptions = "start" | "end" | "center" | "stretch";
+
 type Props = {
   space?: spaceOptions;
   class?: string;
   minItemWidth?: string;
   maxColumns?: string;
+  justifyItems?: justifyOptions;
   [key: string]: any;
 };
 const {
@@ -33,13 +36,21 @@ const {
   class: classList,
   minItemWidth = "250px",
   maxColumns,
+  justifyItems,
   ...rest
 } = Astro.props;
 
 const gap = `var(--${space}-fixed)`;
 ---
 
-<div class:list={["auto-grid", classList]} {...rest}>
+<div
+  class:list={[
+    "auto-grid",
+    classList,
+    { ["justify-items-" + justifyItems]: justifyItems },
+  ]}
+  {...rest}
+>
   <slot />
 </div>
 
@@ -59,6 +70,8 @@ const gap = `var(--${space}-fixed)`;
 
     display: grid;
     gap: var(--gap);
+
+    /* justify-items: center; */
   }
 
   /* Auto columns if min() is supported */

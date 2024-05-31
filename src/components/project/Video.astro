@@ -1,0 +1,32 @@
+---
+import Center from "../compositions/Center.astro";
+import Frame from "../compositions/Frame.astro";
+
+type Props = {
+  src: string;
+};
+
+const { src } = Astro.props;
+---
+
+<div class="video">
+  <Frame ratio="16:9">
+    <iframe
+      src={src}
+      width="640"
+      height="360"
+      frameborder="0"
+      allow="fullscreen; picture-in-picture"
+      loading="lazy"
+      allowfullscreen></iframe>
+  </Frame>
+</div>
+<style>
+  .video {
+    /* padding-block: var(--space-11-fixed); */
+  }
+
+  iframe {
+    border-radius: var(--rounded-lg);
+  }
+</style>

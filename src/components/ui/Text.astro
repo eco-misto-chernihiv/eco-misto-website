@@ -41,9 +41,9 @@ const Tag = tagName;
     "text",
     classList,
     sizeOptions[size],
+    { badge: isBadge },
     { ["badge-" + variant]: variant },
     { "font-bold": isBolded },
-    { badge: isBadge },
   ]}
 >
   <slot />

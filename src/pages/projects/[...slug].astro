@@ -17,6 +17,8 @@ import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
 import Shape from "@/components/ui/Shape.astro";
 import Section from "@/components/ui/Section.astro";
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import H3 from "../../components/project/H3.astro";
 
 // Data
 export const getStaticPaths = (async () => {
@@ -83,7 +85,9 @@ const heroBackgroundColor = `var(--color-${color})`;
     </Center>
   </Section>
 
-  <Content />
+  <ProjectLayout>
+    <Content components={{ h3: H3 }} />
+  </ProjectLayout>
 </BaseLayout>
 
 <style define:vars={{ heroBackgroundColor }}>

@@ -9,6 +9,7 @@ import Stack from "./compositions/Stack.astro";
 // Components
 import ActiveProjectCard from "./ActiveProjectCard.astro";
 import Heading from "./ui/Heading.astro";
+import Text from "./ui/Text.astro";
 
 // Data
 
@@ -18,6 +19,13 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 ---
 
 <Stack space="space-10">
+  <!-- <Stack space="space-3">
+    <Text tagName="p" size="medium" isBadge variant="secondary"
+      >Наша робота</Text
+    >
+    <Heading tagName="h3" size="h5">Активні проєкти</Heading>
+  </Stack> -->
+
   <Heading tagName="h3" size="h5">Активні проєкти</Heading>
   <Row
     columnGap={{

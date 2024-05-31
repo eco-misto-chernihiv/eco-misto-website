@@ -1,0 +1,21 @@
+---
+import Center from "../compositions/Center.astro";
+---
+
+<Center maxWidth="40ch" class="text-content">
+  <slot />
+</Center>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .text-content {
+    @media (--tablet-and-up) {
+      max-width: 60ch;
+    }
+
+    @media (--laptop-and-up) {
+      max-width: 70ch;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import AutoFlex from "../compositions/AutoFlex.astro";
+import AutoGrid from "../compositions/AutoGrid.astro";
+import Stack from "../compositions/Stack.astro";
+import Text from "../ui/Text.astro";
+import TextContent from "./TextContent.astro";
+---
+
+<div class="logos">
+  <Stack space="space-4">
+    <TextContent class="color-gray-200">
+      <Text tagName="p" size="small" class="color-gray-400"
+        >За підтримки донорів та партнерів</Text
+      >
+    </TextContent>
+
+    <AutoGrid
+      minItemWidth="128px"
+      space="space-5"
+      class="logos-container"
+      justifyItems="center"
+    >
+      <slot />
+    </AutoGrid>
+  </Stack>
+</div>
+
+<style>
+  .logos-container {
+    color: var(--color-secondary);
+
+    & :global(svg) {
+      width: auto;
+      height: 56px;
+      fill: currentColor;
+    }
+  }
+</style>
