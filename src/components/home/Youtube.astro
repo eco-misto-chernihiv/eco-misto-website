@@ -37,6 +37,8 @@ try {
 
   const data = await response.json();
 
+  console.log(data);
+
   // Get desired data shape
   // &#39;
   youtubeVideos = data.items.map((item: any) => {
@@ -55,7 +57,7 @@ try {
 <section class="youtube">
   <Center maxWidth="87.5rem" space="space-6">
     <Stack space="space-10">
-      <Heading tagName="h3" size="h6" class="font-heading">Відеоархів</Heading>
+      <Heading tagName="h3" size="h6">Відеоархів</Heading>
 
       <AutoGrid role="list" minItemWidth="265px">
         {
