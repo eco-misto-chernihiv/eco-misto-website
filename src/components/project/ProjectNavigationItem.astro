@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Link from "../ui/Link.astro";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+const { title, color, cover, isCollage } = project.data;
+---
+
+<article>
+  <Link href={project.slug}>{title} </Link>
+</article>

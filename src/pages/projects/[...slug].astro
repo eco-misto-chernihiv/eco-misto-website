@@ -19,8 +19,12 @@ import Shape from "@/components/ui/Shape.astro";
 import Section from "@/components/ui/Section.astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import H3 from "../../components/project/H3.astro";
+import Link from "@/components/ui/Link.astro";
+import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
+import AutoGrid from "@/components/compositions/AutoGrid.astro";
 
 // Data
+
 export const getStaticPaths = (async () => {
   // filter actual posts, not drafts
   const projects = await getCollection("projects", ({ data }) => !data.isDraft);
@@ -32,15 +36,17 @@ export const getStaticPaths = (async () => {
     },
     props: {
       project,
+      projects,
     },
   }));
 }) satisfies GetStaticPaths;
 
 type Props = {
   project: CollectionEntry<"projects">;
+  projects: CollectionEntry<"projects">[];
 };
 
-const { project } = Astro.props;
+const { project, projects } = Astro.props;
 
 const { Content } = await project.render();
 const {
@@ -50,6 +56,11 @@ const {
   cover,
   isCollage = false,
 } = project.data;
+
+// Get index of current project
+const index = projects.findIndex((p) => p.id === project.id);
+const previousProject = projects[index - 1];
+const nextProject = projects[index + 1];
 
 const heroBackgroundColor = `var(--color-${color})`;
 ---
@@ -88,6 +99,17 @@ const heroBackgroundColor = `var(--color-${color})`;
   <ProjectLayout>
     <Content components={{ h3: H3 }} />
   </ProjectLayout>
+
+  <Center
+    maxWidth="87.5rem"
+    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+  >
+    <Heading tagName="h3" size="h5">Інші проєкти</Heading>
+    <AutoGrid maxColumns="2" space="space-7" class="pagination">
+      {previousProject && <ProjectNavigationItem project={previousProject} />}
+      {nextProject && <ProjectNavigationItem project={nextProject} />}
+    </AutoGrid>
+  </Center>
 </BaseLayout>
 
 <style define:vars={{ heroBackgroundColor }}>
