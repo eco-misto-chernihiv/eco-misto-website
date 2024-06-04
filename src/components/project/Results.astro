@@ -1,0 +1,15 @@
+---
+import AutoGrid from "../compositions/AutoGrid.astro";
+
+
+---
+
+<AutoGrid maxColumns="2" space="space-8" class="results">
+    <slot/>
+</AutoGrid>
+
+<style>
+    .results {
+        padding-block: var(--space-4-fixed);
+    }
+</style>

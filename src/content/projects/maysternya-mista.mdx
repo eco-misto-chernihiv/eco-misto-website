@@ -20,6 +20,9 @@ import Badge from "@/components/project/Badge.astro";
 import Centered from "@/components/project/Centered.astro";
 import TextContent from "@/components/project/TextContent.astro";
 import Logos from "@/components/project/Logos.astro";
+import Results from "@/components/project/Results.astro";
+import ResultItem from "@/components/project/ResultItem.astro";
+import ResultIcon from "@/components/project/ResultIcon.astro";
 
 {/* Should start with 'images' */}
 export const maysternyaImages = [
@@ -52,6 +55,30 @@ export const maysternyaImages = [
 </Centered>
 
 <Centered>
+  <TextContent>
+    <Badge>Результат</Badge>
+    <Results>
+      <ResultItem>
+        <ResultIcon name="icon-heart" />
+        Розроблено новий проєкт Організації дорожнього руху
+      </ResultItem>
+      <ResultItem>
+        <ResultIcon name="icon-heart" />
+        Нанесено 200 метрів велодоріжки, включаючи 4 велопереїзди
+      </ResultItem>
+      <ResultItem>
+        <ResultIcon name="icon-heart" />
+        Виготовлено павільйон з вело-СТО для самостійного обслуговування велосипедів
+      </ResultItem>
+      <ResultItem>
+        <ResultIcon name="icon-heart" />
+        Встановлено контейнерне озеленення та малі архітектурні форми
+      </ResultItem>
+    </Results>
+  </TextContent>
+</Centered>
+
+<Centered>
 <Blockquote>
 <span>“</span>Це була перша ініціатива, яку ми розробили у рамках програми Glovo Acts. 
 Почати вирішили саме з Чернігова, який серйозно постраждав внаслідок бойових дій<span>”</span>
@@ -73,14 +100,14 @@ export const maysternyaImages = [
   </TextContent>
 </Centered>
 
-<Gallery imagePaths={maysternyaImages} />
-
 <Centered>
-  <Logos>
-    <Icon name="donors-usaid" />
-    <Icon name="donors-usaid" />
-    <Icon name="donors-usaid" />
-    <Icon name="donors-usaid" />
-    <Icon name="donors-usaid" />
-  </Logos>
+  <TextContent>
+    <Logos>
+      <Icon name="donors-usaid" />
+      <Icon name="donors-usaid" />
+      <Icon name="donors-usaid" />
+      <Icon name="donors-usaid" />
+      <Icon name="donors-usaid" />
+    </Logos>
+  </TextContent>
 </Centered>

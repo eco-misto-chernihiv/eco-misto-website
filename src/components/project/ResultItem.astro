@@ -1,0 +1,18 @@
+---
+import Stack from "../compositions/Stack.astro";
+
+
+---
+
+<Stack space="space-4" class="result-item">
+    <slot/>
+</Stack>
+
+<style>
+    .result-item {
+        & :global(p) {
+            /* font-size: var(--text-2);
+            font-weight: var(--font-medium); */
+        }
+    }
+</style>

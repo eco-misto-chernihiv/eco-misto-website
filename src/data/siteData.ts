@@ -15,6 +15,35 @@ export const navData = [
   },
 ];
 
+export const achievmentsData = [
+  {
+    title: "424",
+    description: "креативних заходів організовано",
+    id: "primary",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "right-rotate": "270deg",
+  },
+  {
+    title: "710",
+    description: "велосипедів видано в рамках кампанії #BikesForUkraine",
+    id: "primary-light",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "left-rotate": "90deg",
+    "right-rotate": "180deg",
+  },
+  {
+    title: "7",
+    description: "просторів ревіталізовано",
+    id: "accent",
+    "left-translateX": "-100%",
+    "right-translateX": "100%",
+    "left-rotate": "90deg",
+    "right-rotate": "180deg",
+  },
+];
+
 export const socialData = [
   {
     title: "Instagram",

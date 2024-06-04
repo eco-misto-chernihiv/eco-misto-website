@@ -13,34 +13,7 @@ import Section from "../ui/Section.astro";
 import missionBgDesktop from "../../assets/images/achievments-bg.jpg";
 
 // Data
-const achievments = [
-  {
-    title: "424",
-    description: "креативних заходів організовано",
-    id: "green",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "right-rotate": "270deg",
-  },
-  {
-    title: "710",
-    description: "велосипедів видано в рамках кампанії #BikesForUkraine",
-    id: "black",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "left-rotate": "90deg",
-    "right-rotate": "180deg",
-  },
-  {
-    title: "7",
-    description: "просторів ревіталізовано",
-    id: "gray",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "left-rotate": "90deg",
-    "right-rotate": "180deg",
-  },
-];
+import { achievmentsData } from "@/data/siteData";
 ---
 
 <Section class="achievments">
@@ -52,7 +25,7 @@ const achievments = [
       <div class="bg-image">
         <Image src={missionBgDesktop} alt="" />
       </div>
-      {achievments.map((achievment) => <Achievment achievment={achievment} />)}
+      {achievmentsData.map((achievment) => <Achievment achievment={achievment} />)}
     </div>
   </Center>
 </Section>

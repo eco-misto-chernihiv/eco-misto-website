@@ -22,6 +22,7 @@ import H3 from "../../components/project/H3.astro";
 import Link from "@/components/ui/Link.astro";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
 import AutoGrid from "@/components/compositions/AutoGrid.astro";
+import Row from "@/components/compositions/Row.astro";
 
 // Data
 
@@ -101,14 +102,16 @@ const heroBackgroundColor = `var(--color-${color})`;
   </ProjectLayout>
 
   <Center
-    maxWidth="87.5rem"
-    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+  maxWidth="75rem"
+  space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
   >
+  <Stack space="space-10">
     <Heading tagName="h3" size="h5">Інші проєкти</Heading>
-    <AutoGrid maxColumns="2" space="space-7" class="pagination">
-      {previousProject && <ProjectNavigationItem project={previousProject} />}
-      {nextProject && <ProjectNavigationItem project={nextProject} />}
-    </AutoGrid>
+    <Row columnGap="space-7" rowGap={{default: "space-8", tablet: "space-0"}} class="pagination">
+      {previousProject && <ProjectNavigationItem project={previousProject} class="col-12 tablet:col-6"/>}
+      {nextProject && <ProjectNavigationItem project={nextProject} class="col-12 tablet:col-6"/>}
+    </Row>
+  </Stac>
   </Center>
 </BaseLayout>
 
@@ -243,8 +246,8 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     &.collage img {
       object-fit: contain;
-      inline-size: 100%;
-      block-size: 100%;
+      /* inline-size: 100%;
+      block-size: 100%; */
       object-position: right 50%;
     }
 
@@ -255,5 +258,9 @@ const heroBackgroundColor = `var(--color-${color})`;
     @media (--laptop-and-up) {
       --_height: 40rem;
     }
+  }
+
+  .pagination {
+    padding-block-end: var(--space-11-fixed)
   }
 </style>

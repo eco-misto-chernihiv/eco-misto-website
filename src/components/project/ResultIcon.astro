@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+    name: string;
+}
+
+const {name} = Astro.props;
+---
+
+<div class="result-icon">
+    <Icon name={name} size={32} />
+</div>
+
+<style>
+    .result-icon {
+        padding: var(--space-4-fixed);
+        inline-size: fit-content;
+        color: var(--color-primary);
+        background-color: var(--color-secondary);
+        border-radius: var(--rounded-full);
+    }
+</style>

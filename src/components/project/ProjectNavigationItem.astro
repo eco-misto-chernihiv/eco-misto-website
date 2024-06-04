@@ -1,15 +1,53 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Link from "../ui/Link.astro";
+import Frame from "../compositions/Frame.astro";
+import { Image } from "astro:assets";
+import Heading from "../ui/Heading.astro";
+import Stack from "../compositions/Stack.astro";
 
 type Props = {
   project: CollectionEntry<"projects">;
+  class?: string;
 };
 
-const { project } = Astro.props;
-const { title, color, cover, isCollage } = project.data;
+const { project, class: classList } = Astro.props;
+const { title, color = "accent", cover, isCollage } = project.data;
+
+const backgroundColor = `var(--color-${color})`;
 ---
 
-<article>
-  <Link href={project.slug}>{title} </Link>
+<article class:list={[classList]}>
+  <Link href={project.slug} class="project-navigation-link">
+    <Stack space="space-6">
+    <Frame ratio="3:2" class:list={['img-wrapper',{collage:isCollage}]}>
+      <Image src={cover} alt="" />
+    </Frame>
+    <Heading tagName="h4" size="h6">{title}</Heading>
+  </Stack>
+   </Link>
 </article>
+
+<style define:vars={{backgroundColor}}>
+.project-navigation-link {
+  inline-size: 100%;
+  block-size: 100%;
+}
+  .img-wrapper{
+
+    background-color: var(--backgroundColor);
+    border-radius: var(--rounded-2xl);
+
+    & img {
+      object-fit: cover;
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    &.collage img {
+      object-fit: contain;
+    }
+
+   
+  }
+</style>
