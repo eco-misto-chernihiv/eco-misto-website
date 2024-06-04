@@ -1,4 +1,14 @@
 ---
+type justifyOptions =
+  | "normal"
+  | "start"
+  | "end"
+  | "center"
+  | "between"
+  | "around"
+  | "evenly"
+  | "stretch";
+
 type spaceOptions =
   | "space-0"
   | "space-1"
@@ -12,6 +22,7 @@ type spaceOptions =
 type Props = {
   gap?: spaceOptions;
   class?: string;
+  justify?: justifyOptions;
   minItemWidth?: string;
   noStretch?: boolean;
   [key: string]: any;
@@ -20,6 +31,7 @@ type Props = {
 const {
   space = "space-4",
   class: classList,
+  justify = "center",
   minItemWidth = "0px",
   noStretch = false,
   ...rest
@@ -31,6 +43,7 @@ const {
     "auto-flex",
     { ["gap-" + space]: space },
     { "no-stretch": noStretch },
+    { ["justify-" + justify]: justify },
     classList,
   ]}
   {...rest}
@@ -42,7 +55,6 @@ const {
   .auto-flex {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
   .auto-flex > * {

@@ -102,16 +102,34 @@ const heroBackgroundColor = `var(--color-${color})`;
   </ProjectLayout>
 
   <Center
-  maxWidth="75rem"
-  space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+    maxWidth="75rem"
+    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
   >
-  <Stack space="space-10">
-    <Heading tagName="h3" size="h5">Інші проєкти</Heading>
-    <Row columnGap="space-7" rowGap={{default: "space-8", tablet: "space-0"}} class="pagination">
-      {previousProject && <ProjectNavigationItem project={previousProject} class="col-12 tablet:col-6"/>}
-      {nextProject && <ProjectNavigationItem project={nextProject} class="col-12 tablet:col-6"/>}
-    </Row>
-  </Stac>
+    <Stack space="space-10">
+      <Heading tagName="h3" size="h5">Інші проєкти</Heading>
+      <Row
+        columnGap={{ default: "space-0", tablet: "space-7" }}
+        rowGap={{ default: "space-8", tablet: "space-0" }}
+        class="pagination"
+      >
+        {
+          previousProject && (
+            <ProjectNavigationItem
+              project={previousProject}
+              class="col-12 tablet:col-6"
+            />
+          )
+        }
+        {
+          nextProject && (
+            <ProjectNavigationItem
+              project={nextProject}
+              class="col-12 tablet:col-6"
+            />
+          )
+        }
+      </Row>
+    </Stack>
   </Center>
 </BaseLayout>
 
@@ -261,6 +279,6 @@ const heroBackgroundColor = `var(--color-${color})`;
   }
 
   .pagination {
-    padding-block-end: var(--space-11-fixed)
+    padding-block-end: var(--space-11-fixed);
   }
 </style>

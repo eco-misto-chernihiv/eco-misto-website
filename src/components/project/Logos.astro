@@ -8,24 +8,40 @@ import TextContent from "./TextContent.astro";
 
 <div class="logos">
   <Stack space="space-5">
-   
-      <Text tagName="p" size="small" class="color-gray-400"
-        >За підтримки донорів та партнерів</Text
-      >
-  
+    <Text tagName="p" size="small" class="color-gray-400"
+      >За підтримки донорів та партнерів</Text
+    >
 
-    <AutoGrid
+    <!-- <AutoGrid
       minItemWidth="128px"
       space="space-7"
       class="logos-container"
       justifyItems="center"
     >
       <slot />
-    </AutoGrid>
+    </AutoGrid> -->
+    <AutoFlex
+      minItemWidth="128px"
+      space="space-6"
+      class="logos-container"
+      noStretch
+      justify="start"
+    >
+      <slot />
+    </AutoFlex>
   </Stack>
 </div>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .logos {
+    /* text-align: center;
+
+    @media (--tablet-and-up) {
+      text-align: left;
+    } */
+  }
   .logos-container {
     color: var(--color-secondary);
 
