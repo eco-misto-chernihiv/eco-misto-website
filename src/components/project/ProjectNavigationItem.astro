@@ -15,6 +15,8 @@ const { project, class: classList } = Astro.props;
 const { title, color = "accent", cover, isCollage } = project.data;
 
 const backgroundColor = `var(--color-${color})`;
+
+console.log(Astro.url);
 ---
 
 <article class:list={[classList]}>
