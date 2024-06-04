@@ -18,23 +18,25 @@ const backgroundColor = `var(--color-${color})`;
 ---
 
 <article class:list={[classList]}>
-  <Link href={project.slug} class="project-navigation-link">
+  <Link
+    href={`${Astro.url.origin}/projects/${project.slug}`}
+    class="project-navigation-link"
+  >
     <Stack space="space-6">
-    <Frame ratio="3:2" class:list={['img-wrapper',{collage:isCollage}]}>
-      <Image src={cover} alt="" />
-    </Frame>
-    <Heading tagName="h4" size="h6">{title}</Heading>
-  </Stack>
-   </Link>
+      <Frame ratio="3:2" class:list={["img-wrapper", { collage: isCollage }]}>
+        <Image src={cover} alt="" />
+      </Frame>
+      <Heading tagName="h4" size="h6">{title}</Heading>
+    </Stack>
+  </Link>
 </article>
 
-<style define:vars={{backgroundColor}}>
-.project-navigation-link {
-  inline-size: 100%;
-  block-size: 100%;
-}
-  .img-wrapper{
-
+<style define:vars={{ backgroundColor }}>
+  .project-navigation-link {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+  .img-wrapper {
     background-color: var(--backgroundColor);
     border-radius: var(--rounded-2xl);
 
@@ -47,7 +49,5 @@ const backgroundColor = `var(--color-${color})`;
     &.collage img {
       object-fit: contain;
     }
-
-   
   }
 </style>
