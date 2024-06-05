@@ -26,7 +26,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     <Heading tagName="h3" size="h5">Активні проєкти</Heading>
   </Stack> -->
 
-  <Heading tagName="h3" size="h5">Активні проєкти</Heading>
+  <Heading tagName="h3" size="h5">Основні проєкти</Heading>
   <Row
     columnGap={{
       default: "space-0",
@@ -114,7 +114,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     setItemHeight();
 
     /**
-     * Recalculate item height in window resize
+     * Recalculate item height on window resize
      */
     window.addEventListener("resize", setItemHeight);
   }

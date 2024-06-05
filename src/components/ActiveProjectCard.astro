@@ -40,7 +40,7 @@ const backgroundColor = `var(--color-${color})`;
         >
           {title}
         </Heading>
-        <Text tagName="p" size="medium" class="color-black">
+        <Text tagName="p" size="medium" class="color-black description">
           {description}
         </Text>
       </Stack>
@@ -71,6 +71,10 @@ const backgroundColor = `var(--color-${color})`;
 
   .title {
     transition: color var(--transition-default);
+  }
+
+  .description {
+    max-width: 28rem;
   }
 
   .img-wrapper {
