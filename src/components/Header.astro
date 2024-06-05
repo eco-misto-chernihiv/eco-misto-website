@@ -12,6 +12,7 @@ import MainNav from "./MainNav.astro";
 import Button from "./ui/Button.astro";
 import MobileMenuModal from "./ui/MobileMenuModal.astro";
 import MobileNav from "./MobileNav.astro";
+import MobileMenu from "./MobileMenu.astro";
 
 // Assets
 ---
@@ -63,8 +64,8 @@ import MobileNav from "./MobileNav.astro";
       </Button>
 
       <MobileMenuModal>
-        <MobileNav/> 
-         </MobileMenuModal>
+        <MobileMenu />
+      </MobileMenuModal>
     </Cluster>
   </div>
 </header>
@@ -108,11 +109,11 @@ import MobileNav from "./MobileNav.astro";
 
   .wrapper {
     --_border-radius: var(--rounded-3xl);
-    
+
     width: 100%;
     padding-block: var(--space-1-fixed);
 
-    border-radius: var(  --_border-radius);
+    border-radius: var(--_border-radius);
 
     transition:
       background-color 200ms var(--ease),
@@ -120,7 +121,6 @@ import MobileNav from "./MobileNav.astro";
       border-radius 200ms var(--ease);
 
     @media (--tablet-l-and-up) {
-      
       padding-block: var(--space-3-fixed);
     }
   }
@@ -212,30 +212,29 @@ import MobileNav from "./MobileNav.astro";
     }
   });
 
-// Set active state on site-nav
-const { pathname } = window.location;
+  // Set active state on site-nav
+  const { pathname } = window.location;
 
-function getBasePath(path: string) {
-  const parts = path.split("/");
+  function getBasePath(path: string) {
+    const parts = path.split("/");
 
-  if (parts.length >= 2) {
-    return `/${parts[1]}`;
+    if (parts.length >= 2) {
+      return `/${parts[1]}`;
+    }
+
+    return "";
   }
 
-  return "";
-}
+  // TODO: Adjust to select a mobile navigation
+  const activeNavigationElements = [
+    ...document.querySelectorAll(
+      `.site-nav a[href="${getBasePath(pathname)}"]`
+    ),
+  ];
 
-// TODO: Adjust to select a mobile navigation
-const activeNavigationElements = [...document.querySelectorAll(
-  `.site-nav a[href="${getBasePath(pathname)}"]`
-)];
-
-activeNavigationElements.forEach((navElement) => {
-
-  if (navElement) {
-    navElement.classList.add("active");
-  }
-})
-
-
+  activeNavigationElements.forEach((navElement) => {
+    if (navElement) {
+      navElement.classList.add("active");
+    }
+  });
 </script>

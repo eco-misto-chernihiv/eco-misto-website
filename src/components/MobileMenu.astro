@@ -1,0 +1,53 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Compositions
+import Stack from "./compositions/Stack.astro";
+
+// Componnets
+import MobileNav from "./MobileNav.astro";
+import SocialList from "./SocialList.astro";
+import Button from "./ui/Button.astro";
+import Filler from "./ui/Filler.astro";
+---
+
+<div class="mobile-menu">
+  <Filler />
+  <Stack space="space-7">
+    <MobileNav />
+    <Button
+      tagName="a"
+      style="secondary"
+      size="small"
+      href="/donate"
+      class="support"
+      >Підтримати <Icon
+        name="icon-heart"
+        aria-hidden="true"
+        focusable="false"
+      /></Button
+    >
+  </Stack>
+  <SocialList class="mobile-menu-socials" />
+</div>
+
+<style>
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+
+    text-align: center;
+
+    padding-block-end: var(--space-6-fixed);
+  }
+
+  .mobile-menu-socials {
+    flex: 1;
+
+    align-items: flex-end;
+  }
+</style>

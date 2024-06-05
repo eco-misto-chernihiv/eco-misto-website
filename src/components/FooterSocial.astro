@@ -1,10 +1,7 @@
 ---
 // Components
-import SocialItem from "./SocialItem.astro";
+import SocialList from "./SocialList.astro";
 import Shape from "./ui/Shape.astro";
-
-// Data
-import { socialData } from "@/data/siteData";
 ---
 
 <div class="footer-social">
@@ -14,9 +11,7 @@ import { socialData } from "@/data/siteData";
   <Shape class="right" color="white" translateY="100%" />
   <Shape class="left" color="white" translateX="-100%" />
 
-  <ul class="social-list" role="list">
-    {socialData.map((socialItem) => <SocialItem socialItem={socialItem} />)}
-  </ul>
+  <SocialList />
 </div>
 
 <style>
@@ -57,11 +52,5 @@ import { socialData } from "@/data/siteData";
       left: 1px;
       top: -1px;
     }
-  }
-
-  .social-list {
-    display: flex;
-    /* flex-direction: column; */
-    gap: var(--space-4-fixed);
   }
 </style>

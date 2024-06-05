@@ -1,0 +1,25 @@
+---
+// Data
+import { socialData } from "@/data/siteData";
+
+// Components
+import SocialItem from "./SocialItem.astro";
+
+type Props = {
+  class?: string;
+};
+
+const { class: classList, ...rest } = Astro.props;
+---
+
+<ul class:list={["social-list", classList]} role="list" {...rest}>
+  {socialData.map((socialItem) => <SocialItem socialItem={socialItem} />)}
+</ul>
+
+<style>
+  .social-list {
+    display: flex;
+    /* flex-direction: column; */
+    gap: var(--space-4-fixed);
+  }
+</style>

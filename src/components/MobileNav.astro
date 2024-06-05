@@ -1,16 +1,28 @@
 ---
-
 import { navData } from "@/data/siteData";
 import Link from "./ui/Link.astro";
+import Stack from "./compositions/Stack.astro";
 ---
 
 <nav class="site-nav mobile-nav">
-    <ul>
-        {navData.map((navItem) => {
-            return (
-                <li><Link href={navItem.href} isHovered>{navItem.title}</Link></li>
-            )
-        })}
-    </ul>
+  <Stack tagName="ul" space="space-2" role="list">
+    {
+      navData.map((navItem) => {
+        return (
+          <li>
+            <Link href={navItem.href} isHovered class="mobile-nav-link">
+              {navItem.title}
+            </Link>
+          </li>
+        );
+      })
+    }
+  </Stack>
 </nav>
 
+<style>
+  .mobile-nav-link {
+    color: var(--color-secondary);
+    font-size: var(--text-3);
+  }
+</style>
