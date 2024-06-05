@@ -77,13 +77,13 @@ const heroBackgroundColor = `var(--color-${color})`;
           <Shape color="secondary" class="top" />
           <Shape color="secondary" class="bottom" rotate="270deg" />
           <Stack space="space-2" class="hero-text">
-            <Text tagName="p" size="large" class="font-medium color-accent"
-              >{description}</Text
-            >
             <Heading
               tagName="h1"
               size="h3"
               class="title font-heading color-primary">{title}</Heading
+            >
+            <Text tagName="p" size="large" class="color-accent"
+              >{description}</Text
             >
           </Stack>
         </div>

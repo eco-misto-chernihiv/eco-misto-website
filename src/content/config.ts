@@ -23,8 +23,8 @@ const projects = defineCollection({
       title: z.string().max(38, {
         message: "Title cannot be longer that 38 characters",
       }),
-      description: z.string().max(65, {
-        message: "Description cannot be longer that 65 characters",
+      description: z.string().max(280, {
+        message: "Description cannot be longer that 280 characters",
       }),
       // validate as a local image
       cover: image().refine((img) => img.width >= 500, {

@@ -10,7 +10,7 @@ import Achievment from "./Achievment.astro";
 import Section from "../ui/Section.astro";
 
 // Assets
-import missionBgDesktop from "../../assets/images/achievments-bg.jpg";
+import missionBgDesktop from "../../assets/images/achievments-bg-cool.jpg";
 
 // Data
 import { achievmentsData } from "@/data/siteData";
@@ -25,7 +25,11 @@ import { achievmentsData } from "@/data/siteData";
       <div class="bg-image">
         <Image src={missionBgDesktop} alt="" />
       </div>
-      {achievmentsData.map((achievment) => <Achievment achievment={achievment} />)}
+      {
+        achievmentsData.map((achievment) => (
+          <Achievment achievment={achievment} />
+        ))
+      }
     </div>
   </Center>
 </Section>
