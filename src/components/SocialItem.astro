@@ -38,9 +38,12 @@ const { title, href, icon } = socialItem;
 
     border-radius: 99999px;
 
+    opacity: 1;
+
     transition:
       color var(--transition-default),
-      background-color var(--transition-default);
+      background-color var(--transition-default),
+      opacity var(--transition-default);
 
     & svg {
       stroke: currentColor;
@@ -58,7 +61,8 @@ const { title, href, icon } = socialItem;
   }
 
   .social-link:hover {
-    --_icon-background: var(--color-primary);
-    --_icon-color: var(--color-secondary);
+    opacity: 0.7;
+    /* --_icon-background: var(--color-secondary-10); */
+    /* --_icon-color: var(--color-secondary); */
   }
 </style>
