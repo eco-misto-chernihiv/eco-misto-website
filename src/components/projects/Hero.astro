@@ -1,0 +1,35 @@
+---
+// Tools
+
+// Compositions
+
+// Components
+import Heading from "../ui/Heading.astro";
+import Section from "../ui/Section.astro";
+---
+
+<Section class="hero" isRoundBottom>
+    <Heading tagName="h1" size="h3" class="color-primary">Проєкти</Heading>
+  </Section>
+
+  <style>
+     @import "@styles/04-utilities/breakpoints.css";
+
+.hero {
+  --_hero-height: calc(17rem + var(--header-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--_hero-height);
+  padding-block: var(--header-height);
+  background-color: var(--color-secondary);
+
+  @media (--tablet-and-up) {
+    --_hero-height: calc(19rem + var(--header-height));
+  }
+
+  @media (--laptop-and-up) {
+    --_hero-height: calc(25rem + var(--header-height));
+  }
+}
+  </style>

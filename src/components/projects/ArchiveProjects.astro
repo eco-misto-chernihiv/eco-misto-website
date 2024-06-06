@@ -4,11 +4,13 @@ import { getCollection } from "astro:content";
 
 // Compositions
 import Stack from "../compositions/Stack.astro";
+import AutoGrid from "../compositions/AutoGrid.astro";
+
 
 // Components
 import Heading from "../ui/Heading.astro";
-import ArchiveProjectCard from "./ArchiveProjectCard.astro";
 import ButtonArrow from "../ui/ButtonArrow.astro";
+import ArchiveProjectCard from "../ArchiveProjectCard.astro";
 
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
@@ -22,15 +24,17 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
   >
 
   <Stack space="space-10">
-    <div class="archive-projects-list">
+    <AutoGrid maxColumns="2" space="space-9" minItemWidth="320px" class="archive-projects-list">
       {
         projects
-          .filter((project, index) => !project.data.isActive)
+          .filter((project, index) => {
+            return !project.data.isActive;
+          })
           .map((project) => {
             return <ArchiveProjectCard project={project} />;
           })
       }
-    </div>
+    </AutoGri>
 
     <ButtonArrow style="primary" noArrow data-load-more
       >Дивитись більше</ButtonArrow
@@ -41,7 +45,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .archive-projects-list {
+  /* .archive-projects-list {
     display: flex;
     flex-direction: column;
     gap: var(--space-9-fixed);
@@ -53,7 +57,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     @media (--laptop-and-up) {
       gap: var(--space-10-fixed);
     }
-  }
+  } */
 
   button[data-load-more] {
     align-self: center;

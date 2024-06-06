@@ -5,13 +5,14 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 // Compositions
-import Stack from "../compositions/Stack.astro";
-import Frame from "../compositions/Frame.astro";
+import Stack from "./compositions/Stack.astro";
+import Frame from "./compositions/Frame.astro";
 
 // Components
-import Text from "../ui/Text.astro";
-import Heading from "../ui/Heading.astro";
-import Link from "../ui/Link.astro";
+import Text from "./ui/Text.astro";
+import Heading from "./ui/Heading.astro";
+import Link from "./ui/Link.astro";
+import ArrowIcon from "./ui/ArrowIcon.astro";
 
 // Assets
 
@@ -41,9 +42,10 @@ const { title, description, cover } = project.data;
           >{description}</Text
         >
       </Stack>
-      <div class="arrow-right">
+      <!-- <div class="arrow-right">
         <Icon name="icon-arrow-right" size={32} />
-      </div>
+      </div> -->
+      <ArrowIcon style="secondary" class="arrow-right" />
     </div>
   </Link>
 </article>
@@ -79,11 +81,6 @@ const { title, description, cover } = project.data;
     display: block;
     /* padding-block-start: var(--space-7-fixed); */
     /* border-block-start: 1px solid var(--color-gray-200); */
-  }
-
-  /* Hide all items after 3rd item */
-  .archive-project-item:nth-child(4) ~ .archive-project-item {
-    display: none;
   }
 
   .wrapper {
@@ -139,47 +136,37 @@ const { title, description, cover } = project.data;
 
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-2xl);
+      --_img-size: 15rem;
     }
   }
 
   .arrow-right {
-    --_size: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+    --_size: 28px;
 
     align-self: flex-end;
 
-    padding: var(--space-1-fixed);
     margin-inline-start: auto;
 
-    color: var(--color-primary);
-
-    background-color: var(--color-secondary);
-    border-radius: 9999px;
-
-    & svg {
-      width: var(--_size);
-      height: var(--_size);
+    width: var(--_size);
+    height: var(--_size);
+    & :global(svg) {
       transform: rotate(-45deg);
       transition: transform var(--transition-default);
     }
 
     @media (--tablet-and-up) {
-      --_size: 24px;
+      --_size: 32px;
 
       align-self: auto;
     }
 
     @media (--laptop-and-up) {
-      --_size: 28px;
+      --_size: 40px;
     }
   }
 
   .archive-project-item:hover .arrow-right {
-    & svg {
+    & :global(svg) {
       transform: rotate(0deg);
     }
   }

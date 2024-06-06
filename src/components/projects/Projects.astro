@@ -9,15 +9,11 @@ import Stack from "../compositions/Stack.astro";
 import Section from "../ui/Section.astro";
 import ActiveProjects from "../ActiveProjects.astro";
 import ArchiveProjects from "./ArchiveProjects.astro";
-import Heading from "../ui/Heading.astro";
-import Link from "../ui/Link.astro";
 
 // Data
 ---
 
-<Section class="hero" isRoundBottom>
-  <Heading tagName="h1" size="h3" class="color-primary">Проєкти</Heading>
-</Section>
+
 
 <Section class="projects">
   <Center
@@ -36,29 +32,8 @@ import Link from "../ui/Link.astro";
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .hero {
-    --_hero-height: calc(17rem + var(--header-height));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: var(--_hero-height);
-    padding-block: var(--header-height);
-    background-color: var(--color-secondary);
-
-    @media (--tablet-and-up) {
-      --_hero-height: calc(19rem + var(--header-height));
-    }
-
-    @media (--laptop-and-up) {
-      --_hero-height: calc(25rem + var(--header-height));
-    }
-  }
-
   .projects {
     padding-block: var(--space-11-fixed);
   }
 
-  [data-load-more][data-loaded] {
-    display: none;
-  }
 </style>

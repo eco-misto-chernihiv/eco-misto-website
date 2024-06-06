@@ -8,7 +8,7 @@ import Stack from "../compositions/Stack.astro";
 // Components
 import Heading from "../ui/Heading.astro";
 import Link from "../ui/Link.astro";
-import ArchiveProjectCard from "../home/ArchiveProjectCard.astro";
+import ArchiveProjectCard from "../ArchiveProjectCard.astro";
 import AutoGrid from "../compositions/AutoGrid.astro";
 
 // Data
@@ -33,20 +33,3 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
   </AutoGrid>
 </Stack>
 
-<style>
-  @import "@styles/04-utilities/breakpoints.css";
-
-  .archive-projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-9-fixed);
-
-    @media (--tablet-and-up) {
-      gap: calc(var(--space-10-fixed) - 10px);
-    }
-
-    @media (--laptop-and-up) {
-      gap: var(--space-10-fixed);
-    }
-  }
-</style>

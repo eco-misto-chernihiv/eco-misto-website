@@ -3,12 +3,12 @@
 import { getCollection } from "astro:content";
 
 // Compositions
-import Stack from "../compositions/Stack.astro";
+import Stack from "./compositions/Stack.astro";
 
 // Components
-import Heading from "../ui/Heading.astro";
-import Link from "../ui/Link.astro";
-import ArchiveProjectCard from "../home/ArchiveProjectCard.astro";
+import Heading from "./ui/Heading.astro";
+import Link from "./ui/Link.astro";
+import ArchiveProjectCard from "./ArchiveProjectCard-variant-3.astro";
 
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
