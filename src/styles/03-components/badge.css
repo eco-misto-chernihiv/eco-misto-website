@@ -9,7 +9,8 @@
   width: fit-content;
   border-radius: 9999px;
   padding-inline: var(--space-5-fixed);
-  padding-block-start: 1px;
+  padding-block-start: calc(var(--space-1-fixed) + 1px);
+  padding-block-end: var(--space-1-fixed);
 
   color: var(--_color);
   background-color: var(--_bg-color);
