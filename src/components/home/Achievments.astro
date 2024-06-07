@@ -1,6 +1,6 @@
 ---
 // Tools
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -10,7 +10,7 @@ import Achievment from "./Achievment.astro";
 import Section from "../ui/Section.astro";
 
 // Assets
-import missionBgDesktop from "../../assets/images/achievments-bg-cool.jpg";
+import achievmentsBg from "../../assets/images/achievments-bg-cool.jpg";
 
 // Data
 import { achievmentsData } from "@/data/siteData";
@@ -23,7 +23,7 @@ import { achievmentsData } from "@/data/siteData";
   >
     <div class="achievments-container">
       <div class="bg-image">
-        <Image src={missionBgDesktop} alt="" />
+        <Picture src={achievmentsBg}  formats={['avif', 'webp']} densities={[1.5, 2]} alt="" />
       </div>
       {
         achievmentsData.map((achievment) => (
