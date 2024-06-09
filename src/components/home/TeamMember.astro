@@ -9,6 +9,7 @@ import Frame from "../compositions/Frame.astro";
 // Components
 import Text from "../ui/Text.astro";
 import Shape from "../ui/Shape.astro";
+import MyPicture from "../MyPicture.astro";
 
 // Data
 type Props = {
@@ -21,7 +22,7 @@ const { name, position, picture } = member.data;
 
 <figure class="team-member">
   <Frame ratio="3:4" class="member-photo">
-    <Image src={picture} alt="" />
+    <MyPicture src={picture} alt="" />
   </Frame>
   <figcaption class="member-info">
     <div class="wrapper">

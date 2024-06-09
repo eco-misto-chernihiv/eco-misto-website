@@ -1,6 +1,6 @@
 ---
 // Tools
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Frame from "../compositions/Frame.astro";
 import ArrowIcon from "../ui/ArrowIcon.astro";
@@ -45,7 +45,13 @@ imagePaths.forEach((imagePath) => {
           return (
             <div class="swiper-slide">
               <Frame ratio="3:2" class="img-wrapper">
-                <Image src={images[newPath]()} alt="" />
+                <Picture
+                  src={images[newPath]()}
+                  width={1000}
+                  formats={["avif", "webp"]}
+                  alt=""
+                  densities={[1.5, 2]}
+                />
               </Frame>
             </div>
           );
@@ -94,7 +100,8 @@ imagePaths.forEach((imagePath) => {
     & .img-wrapper {
     }
 
-    & img {
+    & :global(img),
+    & :global(picture) {
       border-radius: var(--rounded-xl);
     }
   }

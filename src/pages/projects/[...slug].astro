@@ -20,6 +20,7 @@ import Section from "@/components/ui/Section.astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import H3 from "../../components/project/H3.astro";
 import { components } from "@/components/mdxComponents.js";
+import MyPicture from "@/components/MyPicture.astro";
 
 // Data
 
@@ -87,7 +88,7 @@ const heroBackgroundColor = `var(--color-${color})`;
 
         <div class="img-wrapper">
           <div class:list={["hero-img", { collage: isCollage }]}>
-            <Image src={cover} alt="" />
+            <MyPicture src={cover} alt="" width={1120} />
           </div>
         </div>
       </Stack>
@@ -252,14 +253,20 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     border-radius: var(--_border-radius);
 
-    & img {
+    & > :global(picture) {
+      height: 100%;
+    }
+
+    & > :global(picture),
+    & > :global(picture) > :global(img) {
       object-fit: cover;
       inline-size: 100%;
       block-size: 100%;
       border-radius: var(--_border-radius);
     }
 
-    &.collage img {
+    &.collage > :global(picture),
+    &.collage > :global(picture) > :global(img) {
       object-fit: contain;
       /* inline-size: 100%;
       block-size: 100%; */

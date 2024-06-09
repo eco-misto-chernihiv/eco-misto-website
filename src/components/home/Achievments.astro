@@ -10,10 +10,11 @@ import Achievment from "./Achievment.astro";
 import Section from "../ui/Section.astro";
 
 // Assets
-import achievmentsBg from "../../assets/images/achievments-bg-cool.jpg";
+import achievmentsBg from "../../assets/images/achievments-bg-cool-crop-compressed.jpg";
 
 // Data
 import { achievmentsData } from "@/data/siteData";
+import MyPicture from "../MyPicture.astro";
 ---
 
 <Section class="achievments">
@@ -23,7 +24,7 @@ import { achievmentsData } from "@/data/siteData";
   >
     <div class="achievments-container">
       <div class="bg-image">
-        <Picture src={achievmentsBg}  formats={['avif', 'webp']} densities={[1.5, 2]} alt="" />
+        <MyPicture src={achievmentsBg} width={1400} alt="" />
       </div>
       {
         achievmentsData.map((achievment) => (

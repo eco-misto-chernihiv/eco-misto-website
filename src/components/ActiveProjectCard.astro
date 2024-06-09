@@ -11,6 +11,7 @@ import Stack from "./compositions/Stack.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import Text from "./ui/Text.astro";
+import MyPicture from "./MyPicture.astro";
 
 // Data
 type Props = {
@@ -29,7 +30,7 @@ const backgroundColor = `var(--color-${color})`;
   <Link href={`/projects/${project.slug}`} class="wrapper">
     <Stack space="space-8">
       <Frame ratio="4:3" class="img-wrapper">
-        <Image src={cover} alt="" />
+        <MyPicture src={cover} width={600} alt="" />
       </Frame>
 
       <Stack space="space-3">

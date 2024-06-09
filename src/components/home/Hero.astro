@@ -1,6 +1,6 @@
 ---
 // Tools
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 // Compositions
@@ -17,6 +17,7 @@ import Section from "../ui/Section.astro";
 
 // Assets
 import heroImg from "@/assets/images/hero.jpg";
+import MyPicture from "../MyPicture.astro";
 ---
 
 <Section class="hero" isRoundBottom color="secondary">
@@ -46,7 +47,7 @@ import heroImg from "@/assets/images/hero.jpg";
 
       <div class="hero-image col-12 tablet:col-10 laptop:col-8">
         <div class="img-wrapper">
-          <Image src={heroImg} alt="" />
+          <MyPicture src={heroImg} width={850} alt="" />
         </div>
 
         <div class="play-video">
