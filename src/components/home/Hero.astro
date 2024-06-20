@@ -18,6 +18,7 @@ import Section from "../ui/Section.astro";
 // Assets
 import heroImg from "@/assets/images/hero.jpg";
 import MyPicture from "../MyPicture.astro";
+import Stack from "../compositions/Stack.astro";
 ---
 
 <Section class="hero" isRoundBottom color="secondary">
@@ -27,7 +28,7 @@ import MyPicture from "../MyPicture.astro";
   >
     <Row
       class="hero-grid"
-      rowGap={{ default: "space-6", tablet: "space-13", laptop: "space-0" }}
+      rowGap={{ default: "space-6", tablet: "space-14", laptop: "space-0" }}
       alignItems="center"
     >
       <div class="hero-text col-12">
@@ -37,9 +38,19 @@ import MyPicture from "../MyPicture.astro";
       </div>
 
       <div class="about-text col-12">
-        <Text tagName="p" size="large" class="color-accent"
-          > ГО “Еко Місто Чернігів” — це урбаністична ініціатива, спрямована на покращення якості життя в Чернігові через різноманітні проєкти та активності. Наша діяльність включає популяризацію сталих підходів через розвиток мейкерства, проєкти тактичного урбанізму і підтримку велосипедної спільноти.</Text
-        >
+        <Stack space="space-4">
+          <Text tagName="p" size="large" class="color-accent">
+            Громадська організація "Еко Місто Чернігів" — це урбаністична
+            ініціатива, спрямована на покращення якості життя через проєкти
+            тактичного урбанізму та формування спільнот.
+          </Text>
+
+          <Text tagName="p" size="large" class="color-accent">
+            Наша діяльність включає популяризацію сталих підходів, а саме
+            розвиток мейкерства, ресайклінг та підтримку велосипедного руху в
+            Чернігові.
+          </Text>
+        </Stack>
       </div>
 
       <div class="hero-image col-12 tablet:col-10 laptop:col-8">
@@ -74,9 +85,19 @@ import MyPicture from "../MyPicture.astro";
         <div class="about-text tablet">
           <Shape color="secondary" class="left" translateX="-100%" />
           <Shape color="secondary" class="bottom" translateY="100%" />
-          <Text tagName="p" size="medium" class="color-accent"
-            >ГО “Еко Місто Чернігів” — це урбаністична ініціатива, спрямована на покращення якості життя в Чернігові через різноманітні проєкти та активності. Наша діяльність включає популяризацію сталих підходів через розвиток мейкерства, проєкти тактичного урбанізму і підтримку велосипедної спільноти.</Text
-          >
+          <Stack space="space-4">
+            <Text tagName="p" size="medium" class="color-accent">
+              Громадська організація "Еко Місто Чернігів" — це урбаністична
+              ініціатива, спрямована на покращення якості життя через проєкти
+              тактичного урбанізму та формування спільнот.
+            </Text>
+
+            <Text tagName="p" size="medium" class="color-accent">
+              Наша діяльність включає популяризацію сталих підходів, а саме
+              розвиток мейкерства, ресайклінг та підтримку велосипедного руху в
+              Чернігові.
+            </Text>
+          </Stack>
         </div>
 
         <div class="hero-text laptop">
@@ -305,7 +326,7 @@ import MyPicture from "../MyPicture.astro";
       top: 0;
       right: 0;
 
-      height: 11.5rem;
+      height: 13.5rem;
 
       /* Fluid max-width */
       max-width: 24rem;
@@ -327,7 +348,7 @@ import MyPicture from "../MyPicture.astro";
 
       & .shape.left {
         /* TODO: fluid top */
-        bottom: 3.3rem;
+        bottom: 4.3rem;
         left: 0;
         margin-top: -1px;
         margin-left: 1px;

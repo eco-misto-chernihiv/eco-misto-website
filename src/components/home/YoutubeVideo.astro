@@ -16,38 +16,50 @@ const { video } = Astro.props;
 const { thumbnail, title, videoId } = video;
 ---
 
-<Stack space="space-5">
-  <Stack space="space-7" class="video-item">
+<div class="video-item">
+  <Stack space="space-7">
     <div class="img-container">
       <Image src={thumbnail} alt="" width={480} height={360} />
     </div>
     <Heading tagName="h4" size="h6" class="title color-secondary"
       >{title}</Heading
     >
-
-    <ButtonArrow
-      style="primary"
-      data-open-modal
-      aria-label="Open youtube video modal"
-      aria-expanded="false"
-    >
-      Дивитись
-    </ButtonArrow>
-
-    <VideoModal>
-      <div class="video-container">
-        <iframe
-          width="480"
-          height="360"
-          src={`https://www.youtube.com/embed/${videoId}`}
-          loading="lazy"></iframe>
-      </div>
-    </VideoModal>
   </Stack>
-</Stack>
+
+  <ButtonArrow
+    style="primary"
+    data-open-modal
+    aria-label="Open youtube video modal"
+    aria-expanded="false"
+    class="open-btn"
+  >
+    Дивитись
+  </ButtonArrow>
+
+  <VideoModal>
+    <div class="video-container">
+      <iframe
+        width="480"
+        height="360"
+        src={`https://www.youtube.com/embed/${videoId}`}
+        loading="lazy"></iframe>
+    </div>
+  </VideoModal>
+</div>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
+  .video-item {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    & button[data-open-modal] {
+      margin-block-start: auto;
+      padding-block-start: var(--space-5-fixed);
+    }
+  }
 
   .img-container {
     aspect-ratio: 1.8;
@@ -66,6 +78,8 @@ const { thumbnail, title, videoId } = video;
 
   button[data-open-modal] {
     align-self: flex-start;
+
+    font-size: var(--text-minus-1);
   }
 
   .title {
@@ -73,6 +87,8 @@ const { thumbnail, title, videoId } = video;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+
+    font-size: var(--text-1);
   }
 </style>
 
