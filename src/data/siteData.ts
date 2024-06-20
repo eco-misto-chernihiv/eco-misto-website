@@ -25,8 +25,8 @@ export const achievmentsData = [
     "right-rotate": "270deg",
   },
   {
-    title: "710",
-    description: "велосипедів видано в рамках кампанії #BikesForUkraine",
+    title: "712",
+    description: "соціальних велосипедів видано",
     id: "primary-light",
     "left-translateX": "-100%",
     "right-translateX": "100%",
@@ -35,7 +35,7 @@ export const achievmentsData = [
   },
   {
     title: "7",
-    description: "просторів ревіталізовано",
+    description: "публічних просторів ревіталізовано",
     id: "accent",
     "left-translateX": "-100%",
     "right-translateX": "100%",
