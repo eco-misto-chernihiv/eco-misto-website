@@ -27,7 +27,7 @@ import MyPicture from "../MyPicture.astro";
   >
     <Row
       class="hero-grid"
-      rowGap={{ default: "space-6", tablet: "space-12", laptop: "space-0" }}
+      rowGap={{ default: "space-6", tablet: "space-13", laptop: "space-0" }}
       alignItems="center"
     >
       <div class="hero-text col-12">
@@ -38,10 +38,7 @@ import MyPicture from "../MyPicture.astro";
 
       <div class="about-text col-12">
         <Text tagName="p" size="large" class="color-accent"
-          >Організація функціонує в Чернігові з 2016 року і реалізувала понад 50
-          проєктів в напрямку сталого розвитку, урбаністики та мейкерства. Також
-          перетворюємо колишній кінотеатр "Перемога" на центр стартапів та
-          інновацій Peremoha Lab.</Text
+          > ГО “Еко Місто Чернігів” — це урбаністична ініціатива, спрямована на покращення якості життя в Чернігові через різноманітні проєкти та активності. Наша діяльність включає популяризацію сталих підходів через розвиток мейкерства, проєкти тактичного урбанізму і підтримку велосипедної спільноти.</Text
         >
       </div>
 
@@ -75,13 +72,10 @@ import MyPicture from "../MyPicture.astro";
         </div>
 
         <div class="about-text tablet">
-          <Shape color="black" class="left" translateX="-100%" />
+          <Shape color="secondary" class="left" translateX="-100%" />
           <Shape color="secondary" class="bottom" translateY="100%" />
-          <Text tagName="p" size="medium" class="color-primary"
-            >Організація функціонує в Чернігові з 2016 року і реалізувала понад
-            50 проєктів в напрямку сталого розвитку, урбаністики та мейкерства.
-            Також перетворюємо колишній кінотеатр "Перемога" на центр стартапів
-            та інновацій Peremoha Lab.</Text
+          <Text tagName="p" size="medium" class="color-accent"
+            >ГО “Еко Місто Чернігів” — це урбаністична ініціатива, спрямована на покращення якості життя в Чернігові через різноманітні проєкти та активності. Наша діяльність включає популяризацію сталих підходів через розвиток мейкерства, проєкти тактичного урбанізму і підтримку велосипедної спільноти.</Text
           >
         </div>
 
@@ -311,9 +305,11 @@ import MyPicture from "../MyPicture.astro";
       top: 0;
       right: 0;
 
+      height: 11.5rem;
+
       /* Fluid max-width */
-      max-width: 21rem;
-      max-width: clamp(21rem, 10rem + 32vw, 32rem);
+      max-width: 24rem;
+      max-width: clamp(24rem, 10rem + 32vw, 32rem);
 
       padding-inline-start: var(--space-7-fixed);
       padding-block-end: var(--space-4-fixed);
@@ -331,7 +327,7 @@ import MyPicture from "../MyPicture.astro";
 
       & .shape.left {
         /* TODO: fluid top */
-        top: 4.7rem;
+        bottom: 3.3rem;
         left: 0;
         margin-top: -1px;
         margin-left: 1px;
@@ -340,8 +336,8 @@ import MyPicture from "../MyPicture.astro";
         bottom: 0;
 
         /* Fluid right to synchronize with font size */
-        right: 5.2rem;
-        right: clamp(5.2rem, 2.4000000000000004rem + 8.145454545454545vw, 8rem);
+        right: 5.9rem;
+        right: clamp(5.9rem, 2.4000000000000004rem + 8.145454545454545vw, 8rem);
 
         margin-bottom: 1px;
         margin-right: -1px;
