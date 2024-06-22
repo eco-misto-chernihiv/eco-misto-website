@@ -1,6 +1,6 @@
 ---
 // Tools
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -19,9 +19,6 @@ import PartnershipModal from "../ui/PartnershipModal.astro";
 import Partnership from "../Partnership.astro";
 
 // Assets
-import tolocar from "../../assets/partners/tolocar-black.png";
-import sendpulse from "../../assets/partners/sendpulse.png";
-import { Icon } from "astro-icon/components";
 ---
 
 <Section class="partners">
@@ -81,22 +78,54 @@ import { Icon } from "astro-icon/components";
         </Row>
 
         <Stack space="space-8">
-          <Marquee direction="left" space="space-11">
-            <div class="marquee-inner">
-              <Image src={tolocar} alt="" />
-              <Image src={tolocar} alt="" />
-              <Image src={tolocar} alt="" />
-              <Image src={tolocar} alt="" />
-              <Image src={tolocar} alt="" />
+          <Marquee direction="left" space="space-11" duration="slow">
+            <div class="partner-logos marquee-inner">
+              <div class="partner-logo">
+                <Icon name="partners-sendpulse" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-ahalar" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-tolocar" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-u-cycle" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-agenciya" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-chernigiv-it" />
+              </div>
             </div>
           </Marquee>
-          <Marquee direction="right" space="space-11">
-            <div class="marquee-inner">
-              <Image src={sendpulse} alt="" />
-              <Image src={sendpulse} alt="" />
-              <Image src={sendpulse} alt="" />
-              <Image src={sendpulse} alt="" />
-              <Image src={sendpulse} alt="" />
+          <Marquee direction="right" space="space-11" duration="slow">
+            <div class="partner-logos marquee-inner">
+              <div class="partner-logo">
+                <Icon name="partners-mart" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-ostriv" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-politehnika" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-uma" />
+              </div>
+
+              <div class="partner-logo">
+                <Icon name="partners-zelenew" />
+              </div>
             </div>
           </Marquee>
         </Stack>
@@ -161,6 +190,27 @@ import { Icon } from "astro-icon/components";
       height: 5rem;
       width: 19%;
     }
+  }
+
+  .partner-logos {
+    color: var(--color-accent);
+
+    & svg {
+      width: 100%;
+      height: 56px;
+      fill: currentColor;
+    }
+  }
+
+  .partner-logo {
+    width: 300px;
+    height: 96px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* padding-block: var(--space-5-fixed); */
   }
 
   .red {
