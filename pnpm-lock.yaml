@@ -60,6 +60,9 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
     devDependencies:
+      '@droppyjs/svgstore':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@types/sanitize-html':
         specifier: ^2.11.0
         version: 2.11.0
@@ -586,6 +589,9 @@ packages:
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
+
+  '@droppyjs/svgstore@1.0.1':
+    resolution: {integrity: sha512-d8y1TR0GVKo6VyPusykeG8F3uIYEEIp/nOsjL5jlO0JvSCgFUVV5ljWpjFGf0N66Va619AUeVw4UPyyoLIRE1A==}
 
   '@emmetio/abbreviation@2.3.3':
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
@@ -4394,6 +4400,10 @@ snapshots:
   '@csstools/utilities@1.0.0(postcss@8.4.38)':
     dependencies:
       postcss: 8.4.38
+
+  '@droppyjs/svgstore@1.0.1':
+    dependencies:
+      cheerio: 1.0.0-rc.12
 
   '@emmetio/abbreviation@2.3.3':
     dependencies:

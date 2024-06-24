@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -9,6 +10,9 @@ import Stack from "../compositions/Stack.astro";
 // Components
 import Marquee from "../ui/Marquee.astro";
 import Text from "../ui/Text.astro";
+
+import svg from "../../icons/partners-ostriv.svg";
+import MyIcon from "../ui/MyIcon.astro";
 
 // Assets
 const donors = [
@@ -36,7 +40,6 @@ const donors = [
   {
     name: "donors-tolocar",
   },
-
   {
     name: "donors-undp",
   },
@@ -62,7 +65,7 @@ const donors = [
             donors.map((donor) => {
               return (
                 <div class="donor-logo">
-                  <Icon name={donor.name} />
+                  <MyIcon name={donor.name} />
                 </div>
               );
             })
@@ -71,48 +74,53 @@ const donors = [
       </Marquee>
     </Stack>
   </Center>
+
+  <style>
+    @import "@styles/04-utilities/breakpoints.css";
+
+    .donors {
+      --_padding: var(--space-10-fixed);
+
+      color: var(--color-secondary);
+      padding-block: var(--_padding);
+      /* background-color: rebeccapurple; */
+
+      @media (--tablet-and-up) {
+        --_padding: var(--space-11-fixed);
+      }
+    }
+
+    .donor-logos {
+      & :global(svg) {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+      }
+    }
+
+    .donor-logo {
+      width: 160px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (--tablet-and-up) {
+        width: 300px;
+        height: 64px;
+      }
+
+      /* padding-block: var(--space-5-fixed); */
+    }
+
+    .title {
+      display: flex;
+      justify-content: center;
+    }
+
+    .red {
+      border: 1px solid red;
+    }
+  </style>
 </section>
-
-<style>
-  @import "@styles/04-utilities/breakpoints.css";
-
-  .donors {
-    --_padding: var(--space-10-fixed);
-
-    color: var(--color-secondary);
-    padding-block: var(--_padding);
-    /* background-color: rebeccapurple; */
-
-    @media (--tablet-and-up) {
-      --_padding: var(--space-11-fixed);
-    }
-  }
-
-  .donor-logos {
-    & svg {
-      width: 100%;
-      height: 56px;
-      fill: currentColor;
-    }
-  }
-
-  .donor-logo {
-    width: 300px;
-    height: 96px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* padding-block: var(--space-5-fixed); */
-  }
-
-  .title {
-    display: flex;
-    justify-content: center;
-  }
-
-  .red {
-    border: 1px solid red;
-  }
-</style>

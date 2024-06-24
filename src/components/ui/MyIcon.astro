@@ -1,0 +1,11 @@
+---
+type Props = {
+  name: string;
+};
+
+const { name } = Astro.props;
+---
+
+<svg>
+  <use href={`./sprite.svg#${name}`}></use>
+</svg>

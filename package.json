@@ -32,6 +32,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@droppyjs/svgstore": "^1.0.1",
     "@types/sanitize-html": "^2.11.0",
     "autoprefixer": "^10.4.17",
     "cssnano": "^6.0.5",
