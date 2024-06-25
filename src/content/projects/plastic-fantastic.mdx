@@ -7,6 +7,123 @@ isActive: true
 isCollage: true
 ---
 
-# Heading
+import { Image } from "astro:assets";
+import MyPicture from "@ui/MyPicture.astro";
+import Row from "@compositions/Row.astro";
+import Frame from "@compositions/Frame.astro";
 
-Some text
+{/* Assets */}
+import product1 from "./images/plastic-fantastic/plastic_fantastic_product_001.jpg";
+import product2 from "./images/plastic-fantastic/plastic_fantastic_product_002.jpg";
+import product3 from "./images/plastic-fantastic/plastic_fantastic_product_003.jpg";
+import product4 from "./images/plastic-fantastic/plastic_fantastic_product_004.jpg";
+import product5 from "./images/plastic-fantastic/plastic_fantastic_product_005.jpg";
+import plasticTypes from "./images//plastic-fantastic/plastic_types.jpg";
+
+{/* Should start with 'images' */}
+export const workshopImages = [
+"images/plastic-fantastic/plastic_fantastic_001.jpg",
+"images/plastic-fantastic/plastic_fantastic_002.jpg",
+"images/plastic-fantastic/plastic_fantastic_003.jpg",
+"images/plastic-fantastic/plastic_fantastic_004.jpg",
+"images/plastic-fantastic/plastic_fantastic_005.jpg",
+"images/plastic-fantastic/plastic_fantastic_006.jpg",
+"images/plastic-fantastic/plastic_fantastic_007.jpg",
+"images/plastic-fantastic/plastic_fantastic_008.jpg",
+"images/plastic-fantastic/plastic_fantastic_009.jpg",
+"images/plastic-fantastic/plastic_fantastic_010.jpg",
+"images/plastic-fantastic/plastic_fantastic_011.jpg",
+];
+
+<Centered>
+  <TextContent>
+    Plastic Fantastic – це бренд, що об'єднує екоактивістів, дизайнерів та
+    мейкерів задля дослідження процесів переробки пластику і використання його
+    як ресурсу для предметного дизайну.
+  </TextContent>
+</Centered>
+
+<Centered>
+  <TextContent>
+    <Badge>Проблема</Badge>
+    Створення великих сміттєпереробних заводів в Україні – це дуже актуально, проте,
+    на жаль, дорого і довго. Чинні муніципальні моделі збору твердих побутових відходів
+    виключають сортування й переробку. Відходи захоронюються поблизу міст на полігонах,
+    що переповнені й, насправді, мали би бути давно зачиненими.
+  </TextContent>
+</Centered>
+
+<Centered>
+  <Blockquote>
+    <span>“</span>Ми бачимо майбутнє за локальними майстернями й сортувальними
+    станціями, що займатимуться переробкою вторсировини і формуватимуть навколо
+    себе свідомі спільноти.<span>”</span>
+  </Blockquote>
+</Centered>
+
+<Centered>
+  <TextContent>
+### З чого складається наш сміттєвий кошик?
+
+Майже 50% – це органіка, яку можна компостувати, 45% – паковання, що можна повернути в цикл переробки й отримати цінний ресурс. І лише близько 5% побутових відходів підлягають захороненню чи високотемпературній утилізації.
+
+Як виявилося з практики роздільного збору, більше всього проблем і запитань стосуються пластика. По-перше, на пакованні можна знайти 7 різних маркувань, а по-друге, не весь пластик підлягає переробці та, відповідно, може здаватися до пунктів прийому.
+
+  </TextContent>
+</Centered>
+
+<Centered>
+  <PhotoGrid>
+    <Full src={plasticTypes} orientation="square" />
+  </PhotoGrid>
+</Centered>
+
+<Centered>
+<TextContent>
+  <Badge>Підхід</Badge>
+
+Майстерня Plastic Fantastic у Чернігові працює у форматі Fab Lab при мейкерському просторі Peremoha lab Національного університету “Чернігівська політехніка”. У розпорядженні дизайнерів, архітекторів і винахідників є шредер для подрібнення пластику, термопрес, інжектор та екструдер для виготовлення нових “фантастичних” виробів.
+
+Ми проводимо відкриті екскурсії та воркшопи по роботі зі вторинним пластиком для всіх охочих, популяризуючи його роздільний збір і відповідальне споживання.
+
+</TextContent>
+
+</Centered>
+
+<Centered>
+  <TextContent>ТУТ ФОТО ОБЛАДНАННЯ</TextContent>
+</Centered>
+
+<Centered>
+  <TextContent>
+    Теми ресайклінгу та свідомого споживання — ключові у проєкті. Існує багато
+    прикладів того, як різні світові бренди роблять стильні елементи гардеробу
+    зі вторсировини. Втім, в інших галузях якісних продуктів не так багато. У
+    більшості випадків перероблене сміття перетворюється на інше “сміття”, що
+    ніяк не покращує наш побут і не вирішує проблеми із забрудненням. Аби
+    уникнути цього ми керуємось не лише естетичним, а й системним підходом до
+    втілення ідей.
+  </TextContent>
+</Centered>
+
+<Centered>
+  <PhotoGrid>
+
+    <Half src={product1} orientation="portrait"/>
+    <Half src={product2} orientation="portrait"/>
+    <Half src={product3} orientation="portrait"/>
+    <Half src={product4} orientation="portrait"/>
+
+  </PhotoGrid>
+</Centered>
+
+<Centered>
+  <TextContent>
+    Назва “Plastic Fantastic” одночасно зародилася й у наших київських друзів з платформи "Острів". Оскільки маємо схожі цінності, ми прийняли рішення об'єднати зусилля й рухатись спільно на шляху до виконання цілей.
+
+    В перспективі, ми мріємо про платформу, що об'єднуватиме майстерні і митців по всій Україні, допомогатиме обмінюватись досвідом, а також підтримувати тих, хто починає свій шлях у ресайклінгу.
+
+  </TextContent>
+</Centered>
+
+<Gallery imagePaths={workshopImages} />

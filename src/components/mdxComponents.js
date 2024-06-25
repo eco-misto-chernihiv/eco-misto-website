@@ -9,6 +9,9 @@ import Logos from "@/components/project/Logos.astro";
 import Results from "@/components/project/Results.astro";
 import ResultItem from "@/components/project/ResultItem.astro";
 import ResultIcon from "@/components/project/ResultIcon.astro";
+import PhotoGrid from "@/components/project/PhotoGrid.astro";
+import Half from "@/components/project/Half.astro";
+import Full from "@/components/project/Full.astro";
 
 export const components = {
   Gallery,
@@ -22,4 +25,7 @@ export const components = {
   Results,
   ResultItem,
   ResultIcon,
+  PhotoGrid,
+  Half,
+  Full,
 };

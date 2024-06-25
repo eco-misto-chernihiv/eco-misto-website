@@ -3,7 +3,6 @@
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { Image } from "astro:assets";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -18,9 +17,10 @@ import Text from "@/components/ui/Text.astro";
 import Shape from "@/components/ui/Shape.astro";
 import Section from "@/components/ui/Section.astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import H2 from "../../components/project/H2.astro";
 import H3 from "../../components/project/H3.astro";
+import MyPicture from "@/components/ui/MyPicture.astro";
 import { components } from "@/components/mdxComponents.js";
-import MyPicture from "@/components/MyPicture.astro";
 
 // Data
 
@@ -96,7 +96,7 @@ const heroBackgroundColor = `var(--color-${color})`;
   </Section>
 
   <ProjectLayout>
-    <Content components={{ ...components, h3: H3 }} />
+    <Content components={{ ...components, h2: H2, h3: H3 }} />
   </ProjectLayout>
 
   <!-- <Center

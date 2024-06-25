@@ -20,3 +20,22 @@ export function getBreakpoints(prefix, prop) {
 export function parseTitle(title) {
   return title.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
 }
+
+/**
+ * Returns aspect ratio based on orientation
+ * @param {String} orientation
+ * @returns {String} Aspect ratio
+ */
+export function getRatio(orientation) {
+  if (orientation === "landscape") {
+    return "3:2";
+  }
+
+  if (orientation === "portrait") {
+    return "4:5";
+  }
+
+  if (orientation === "square") {
+    return "1:1";
+  }
+}

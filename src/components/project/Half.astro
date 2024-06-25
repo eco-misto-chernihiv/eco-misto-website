@@ -1,0 +1,20 @@
+---
+import { type ImageMetadata } from "astro";
+import { getRatio } from "@/lib/helpers";
+import Frame from "../compositions/Frame.astro";
+import MyPicture from "../ui/MyPicture.astro";
+
+type Props = {
+  src: ImageMetadata;
+  alt?: string;
+  orientation?: "landscape" | "portrait";
+};
+
+const { src, alt = "Image", orientation = "landscape" } = Astro.props;
+
+const ratio = getRatio(orientation);
+---
+
+<Frame ratio={ratio} class="col-6">
+  <MyPicture src={src} width={600} alt={alt} />
+</Frame>

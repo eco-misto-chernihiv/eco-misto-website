@@ -7,24 +7,44 @@
 </section>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .content {
     padding-block-start: var(--space-11-fixed);
     /* padding-block-end: var(--space-14-fixed); */
   }
 
   .content :global(.project-row + .project-row) {
-    margin-block-start: var(--space-12-fixed);
+    margin-block-start: var(--space-10-fixed);
+
+    @media (--tablet-and-up) {
+      margin-block-start: var(--space-12-fixed);
+    }
   }
 
   .content :global(.badge) {
     margin-block-end: var(--space-3-fixed);
   }
 
-  .content :global(h3) {
+  .content :global(h2) {
     margin-block-end: var(--space-6-fixed);
+  }
+
+  .content :global(h3) {
+    margin-block-start: var(--space-8-fixed);
+    margin-block-end: var(--space-5-fixed);
   }
 
   .content :global(p + p) {
     margin-block-start: var(--space-7-fixed);
+  }
+
+  .content :global(img),
+  .content :global(picture) {
+    border-radius: var(--rounded-lg);
+
+    @media (--tablet-and-up) {
+      border-radius: var(--rounded-xl);
+    }
   }
 </style>

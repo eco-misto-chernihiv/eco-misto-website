@@ -2,6 +2,9 @@ import autoHideNav from "@/lib/autoHideNav.js";
 import Modal from "../lib/modal.js";
 import "../lib/swiper.js";
 
+/**
+ * MODALS
+ */
 const modalOverlays = document.querySelectorAll("[data-modal]");
 const buttonModals = document.querySelectorAll("[data-open-modal]");
 
@@ -25,5 +28,7 @@ modalOverlays.forEach((overlay, index) => {
   });
 });
 
-// Auto hide navigation on scroll
+/**
+ * AUTOHIDE NAV ON SCROLL
+ */
 autoHideNav("header", 400);

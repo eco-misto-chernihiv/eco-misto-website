@@ -11,7 +11,7 @@ import Stack from "./compositions/Stack.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import Text from "./ui/Text.astro";
-import MyPicture from "./MyPicture.astro";
+import MyPicture from "./ui/MyPicture.astro";
 
 // Data
 type Props = {
@@ -64,7 +64,7 @@ const backgroundColor = `var(--color-${color})`;
   .wrapper:hover .img-wrapper {
     filter: brightness(103%);
 
-    & img {
+    & :global(img) {
       /* transform: scale(1.03); */
       transform: scale3d(1.05, 1.05, 1.05);
     }
@@ -89,7 +89,7 @@ const backgroundColor = `var(--color-${color})`;
 
     transition: filter 300ms var(--ease-out);
 
-    & img {
+    & :global(img) {
       transition: transform 300ms var(--ease-out);
       object-fit: contain;
     }
