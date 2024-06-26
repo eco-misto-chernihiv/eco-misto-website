@@ -1,4 +1,3 @@
-import loadDirective from "astro/runtime/client/load.js";
 import { defineCollection, z } from "astro:content";
 
 const members = defineCollection({
