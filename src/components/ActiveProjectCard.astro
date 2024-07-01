@@ -12,6 +12,9 @@ import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import Text from "./ui/Text.astro";
 import MyPicture from "./ui/MyPicture.astro";
+import ArrowIcon from "./ui/ArrowIcon.astro";
+import Cluster from "./compositions/Cluster.astro";
+import { Icon } from "astro-icon/components";
 
 // Data
 type Props = {
@@ -33,18 +36,26 @@ const backgroundColor = `var(--color-${color})`;
         <MyPicture src={cover} width={600} alt="" />
       </Frame>
 
-      <Stack space="space-3">
-        <Heading
-          tagName="h4"
-          size="h5"
-          class="title font-heading color-secondary"
-        >
-          {title}
-        </Heading>
-        <Text tagName="p" size="medium" class="color-black description">
-          {description}
-        </Text>
-      </Stack>
+      <Cluster noWrap justify="between" alignItems="end" space="space-7">
+        <Stack space="space-3">
+          <Heading
+            tagName="h4"
+            size="h5"
+            class="title font-heading color-secondary"
+          >
+            {title}
+          </Heading>
+          <Text tagName="p" size="medium" class="color-black description">
+            {description}
+          </Text>
+        </Stack>
+        <Icon
+          name="icon-arrow-right"
+          aria-hidden="true"
+          focusable="false"
+          class="color-primary"
+        />
+      </Cluster>
     </Stack>
   </Link>
 </article>
@@ -55,6 +66,18 @@ const backgroundColor = `var(--color-${color})`;
   .wrapper {
     width: 100%;
     text-decoration: none;
+
+    & svg {
+      --_size: var(--space-6);
+
+      inline-size: var(--_size);
+      block-size: var(--_size);
+
+      flex-shrink: 0;
+      transform: translateY(-2px) rotate(-45deg);
+
+      transition: transform var(--transition-default);
+    }
   }
 
   .wrapper:hover .title {
@@ -70,12 +93,26 @@ const backgroundColor = `var(--color-${color})`;
     }
   }
 
+  .wrapper:hover svg {
+    transform: translateY(-2px) rotate(0deg);
+  }
+
   .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
     transition: color var(--transition-default);
   }
 
   .description {
     max-width: 28rem;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 
   .img-wrapper {

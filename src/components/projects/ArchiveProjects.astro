@@ -6,7 +6,6 @@ import { getCollection } from "astro:content";
 import Stack from "../compositions/Stack.astro";
 import AutoGrid from "../compositions/AutoGrid.astro";
 
-
 // Components
 import Heading from "../ui/Heading.astro";
 import ButtonArrow from "../ui/ButtonArrow.astro";
@@ -24,7 +23,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
   >
 
   <Stack space="space-10">
-    <AutoGrid maxColumns="2" space="space-9" minItemWidth="320px" class="archive-projects-list">
+    <Stack space="space-9" class="archive-projects-list">
       {
         projects
           .filter((project, index) => {
@@ -34,7 +33,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
             return <ArchiveProjectCard project={project} />;
           })
       }
-    </AutoGri>
+    </Stack>
 
     <ButtonArrow style="primary" noArrow data-load-more
       >Дивитись більше</ButtonArrow
@@ -79,8 +78,8 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
   // Current visible items
   // Hides all items after first 3 in css using nth-child(3) selector
-  const ITEMS_TO_SHOW = 4;
-  let currentItems = 4;
+  const ITEMS_TO_SHOW = 3;
+  let currentItems = 3;
 
   function handleClick(event: Event) {
     event.preventDefault();
@@ -88,7 +87,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     // Select all items
     const archiveItems = [...archiveProjectsList.children] as HTMLElement[];
 
-    // Loop through visible items + 4
+    // Loop through visible items + 3
     for (let index = 0; index < currentItems + ITEMS_TO_SHOW; index++) {
       // If item exists
       if (archiveItems[index]) {

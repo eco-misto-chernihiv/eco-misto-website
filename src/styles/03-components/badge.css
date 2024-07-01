@@ -30,3 +30,7 @@
 .badge-secondary {
   --_color: var(--color-secondary);
 }
+
+.badge-neutral {
+  --_color: var(--color-gray-400);
+}

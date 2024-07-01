@@ -20,16 +20,15 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 <Stack space="space-10">
   <Heading tagName="h3" size="h5">Реалізовані проєкти</Heading>
 
-  <AutoGrid maxColumns="2" space="space-9" minItemWidth="320px">
+  <Stack space="space-8">
     {
       projects
         .filter((project, index) => {
-          return !project.data.isActive && index < 5;
+          return !project.data.isActive && index < 3;
         })
         .map((project) => {
           return <ArchiveProjectCard project={project} />;
         })
     }
-  </AutoGrid>
+  </Stack>
 </Stack>
-

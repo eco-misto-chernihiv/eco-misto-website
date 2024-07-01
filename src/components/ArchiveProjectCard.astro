@@ -2,15 +2,17 @@
 // Tools
 import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Stack from "./compositions/Stack.astro";
 import Frame from "./compositions/Frame.astro";
 
 // Components
+import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
-import MyPicture from "./ui/MyPicture.astro";
+import ArrowIcon from "./ui/ArrowIcon.astro";
 
 // Assets
 
@@ -27,18 +29,33 @@ const { title, description, cover } = project.data;
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
     <div class="wrapper">
-      <Stack space="space-7">
-        <Frame ratio="16:9" class="img-wrapper">
-          <MyPicture src={cover} width={680} alt="" />
-        </Frame>
-        <Stack space="space-2" class="info">
-          <Heading
-            tagName="h4"
-            size={{ default: "h6" }}
-            class="title font-heading color-secondary">{title}</Heading
+      <Frame ratio="1:1" class="img-wrapper">
+        <Image src={cover} alt="" />
+      </Frame>
+      <Stack space="space-3" class="info">
+        <div class="period">
+          <Text tagName="div" size="small" class="color-secondary font-medium"
+            >Березень – Жовтень 2020 р.</Text
           >
-        </Stack>
+        </div>
+        <Heading
+          tagName="h4"
+          size="h6"
+          class="title font-heading color-secondary">{title}</Heading
+        >
+        <Text tagName="p" size="medium" class="color-dark-gray description"
+          >{description}</Text
+        >
       </Stack>
+      <!-- <div class="arrow-right">
+        <Icon name="icon-arrow-right" size={32} />
+      </div> -->
+      <Icon
+        name="icon-arrow-right"
+        aria-hidden="true"
+        focusable="false"
+        class="color-primary arrow-right"
+      />
     </div>
   </Link>
 </article>
@@ -47,63 +64,145 @@ const { title, description, cover } = project.data;
   @import "@styles/04-utilities/breakpoints.css";
 
   .archive-project-item {
+    padding: var(--_offset);
+
+    border-radius: var(--rounded-3xl);
+    transition: background-color var(--transition-default);
+
     & a {
       width: 100%;
     }
   }
 
   /* TODO: rewatch video for a proper selector */
-  .archive-project-item:nth-child(n + 5) {
+  .archive-project-item:nth-child(n + 4) {
     display: none;
   }
 
-  .archive-project-item:hover {
-    & :global(img) {
-      transform: scale3d(1.05, 1.05, 1.05);
-      will-change: transform;
-    }
-
-    & .title {
-      color: var(--color-primary);
-    }
+  .archive-project-item:not(:first-child)::before {
+    content: "";
+    display: block;
+    /* padding-block-start: var(--space-7-fixed); */
+    /* border-block-start: 1px solid var(--color-gray-200); */
   }
 
   .wrapper {
+    --_gap: var(--space-4-fixed);
+
     text-decoration: none;
+    display: flex;
+
+    gap: var(--_gap);
+    align-items: center;
+
+    @media (--tablet-and-up) {
+      --_gap: var(--space-7-fixed);
+    }
+  }
+
+  .period {
+    width: fit-content;
+
+    background-color: var(--color-accent);
+    border-radius: 9999px;
+
+    padding-inline: var(--space-5);
+    padding-block: calc(var(--space-1) + 1px);
+
+    & div {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
   }
 
   .title {
     transition: color var(--transition-default);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   .info {
-    /* --_border-radius: var(--rounded-lg);
+    max-width: 70ch;
+    transition: transform 500ms var(--ease-out);
 
-    padding: var(--space-8-fixed) var(--space-6-fixed);
+    @media (--tablet-and-up) {
+      padding-inline-end: var(--space-6-fixed);
+    }
+  }
 
-    border-bottom-left-radius: var(--_border-radius);
-    border-bottom-right-radius: var(--_border-radius);
-
-    background-color: var(--color-primary);
-
-    @media (--laptop-and-up) {
-      --_border-radius: var(--rounded-xl);
-    } */
+  .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .img-wrapper {
-    --_border-radius: var(--rounded-lg);
+    --_border-radius: var(--rounded-xl);
+    --_img-size: 6.5rem;
 
+    /* Keep image from stretching */
+    flex-shrink: 0;
+
+    width: var(--_img-size);
     border-radius: var(--_border-radius);
-    /* border-top-left-radius: var(--_border-radius); */
-    /* border-top-right-radius: var(--_border-radius); */
+    align-self: flex-start;
 
-    & :global(img) {
-      transition: transform 300ms var(--ease-out);
+    transition: filter 300ms var(--ease-out);
+
+    @media (--tablet-and-up) {
+      --_img-size: 12rem;
     }
 
     @media (--laptop-and-up) {
-      --_border-radius: var(--rounded-xl);
+      --_border-radius: var(--rounded-2xl);
+      --_img-size: 15rem;
     }
+  }
+
+  .arrow-right {
+    --_size: var(--space-6);
+
+    align-self: flex-end;
+    flex-shrink: 0;
+
+    margin-inline-start: auto;
+
+    width: var(--_size);
+    height: var(--_size);
+
+    transform: translateY(-2px) rotate(-45deg);
+    transition: transform var(--transition-default);
+
+    @media (--tablet-and-up) {
+      align-self: auto;
+    }
+  }
+
+  /* State */
+
+  .archive-project-item:hover .title {
+    color: var(--color-primary);
+  }
+
+  .archive-project-item:hover .info {
+    transform: translateX(0.5rem);
+
+    @media (--tablet-and-up) {
+      transform: translateX(1rem);
+    }
+
+    @media (--laptop-and-up) {
+      transform: translateX(2rem);
+    }
+  }
+
+  .archive-project-item:hover .arrow-right {
+    transform: translateY(-2px) rotate(0deg);
   }
 </style>
