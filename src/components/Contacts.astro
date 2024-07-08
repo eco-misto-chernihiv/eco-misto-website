@@ -10,6 +10,7 @@ import Text from "./ui/Text.astro";
 
 // Data
 import { contactsData } from "@/data/siteData";
+import Link from "./ui/Link.astro";
 ---
 
 <div class="contacts">
@@ -21,9 +22,10 @@ import { contactsData } from "@/data/siteData";
           return (
             <li class="contact-item">
               <Icon name={contact.icon} size={14} />
-              <Text tagName="p" size="medium" class="font-medium">
+              {/* <Text tagName="p" size="medium" class="font-medium">
                 {contact.description}
-              </Text>
+              </Text> */}
+              <Link href={contact.href} isHovered isExternal target="_blank">{contact.description}</Link>
             </li>
           );
         })
@@ -38,20 +40,30 @@ import { contactsData } from "@/data/siteData";
   .contacts {
     max-width: 14rem;
   }
+
   .contact-item {
     display: flex;
     align-items: baseline;
     gap: var(--space-3-fixed);
-    color: var(--color-secondary);
+    
 
     & svg {
-      min-width: 16px;
-      height: 16px;
+      --_size: var(--space-4-fixed);
+
+     flex-shrink: 0;
+      inline-size: var(--_size);
+      block-size: var(--_size);
 
       fill: currentColor;
       stroke: currentColor;
 
       transform: translateY(2px);
+    }
+
+    & a {
+      font-size: var(--text-minus-1);
+      font-weight: var(--font-medium);
+      color: var(--color-secondary);
     }
   }
 </style>

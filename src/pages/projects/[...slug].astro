@@ -239,6 +239,7 @@ const heroBackgroundColor = `var(--color-${color})`;
   }
 
   .img-wrapper {
+    
     @media (--laptop-and-up) {
       padding-left: var(--_offset-left);
     }
@@ -249,6 +250,9 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     inline-size: 100%;
     block-size: var(--_height);
+
+    padding: var(--space-4-fixed);
+    
     background-color: var(--heroBackgroundColor);
 
     border-radius: var(--_border-radius);

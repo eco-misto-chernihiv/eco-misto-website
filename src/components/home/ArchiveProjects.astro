@@ -20,7 +20,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 <Stack space="space-10">
   <Heading tagName="h3" size="h5">Реалізовані проєкти</Heading>
 
-  <Stack space="space-8">
+  <Stack space="space-7">
     {
       projects
         .filter((project, index) => {

@@ -13,6 +13,8 @@ import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
 import ArrowIcon from "./ui/ArrowIcon.astro";
+import Cluster from "./compositions/Cluster.astro";
+import ButtonArrow from "./ui/ButtonArrow.astro";
 
 // Assets
 
@@ -28,7 +30,7 @@ const { title, description, cover } = project.data;
 
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
-    <div class="wrapper">
+    <Cluster class="wrapper" alignItems="center" space={{default: "space-4", tablet: "space-7"}} noWrap>
       <Frame ratio="1:1" class="img-wrapper">
         <Image src={cover} alt="" />
       </Frame>
@@ -50,13 +52,26 @@ const { title, description, cover } = project.data;
       <!-- <div class="arrow-right">
         <Icon name="icon-arrow-right" size={32} />
       </div> -->
-      <Icon
+      <!-- <Icon
+        name="icon-arrow-right"
+        aria-hidden="true"
+        focusable="false"
+        class="color-primary arrow-right"
+      /> -->
+
+   
+
+      <div class="arrow-right-container">
+        <span class="arrow-right-text">Дивитись</span>
+        <Icon
         name="icon-arrow-right"
         aria-hidden="true"
         focusable="false"
         class="color-primary arrow-right"
       />
-    </div>
+      </div>
+ 
+    </Cluster>
   </Link>
 </article>
 
@@ -74,6 +89,10 @@ const { title, description, cover } = project.data;
     }
   }
 
+  .archive-project-item  {
+    /* border-bottom: 2px solid var(--color-gray-400); */
+  }
+
   /* TODO: rewatch video for a proper selector */
   .archive-project-item:nth-child(n + 4) {
     display: none;
@@ -82,22 +101,12 @@ const { title, description, cover } = project.data;
   .archive-project-item:not(:first-child)::before {
     content: "";
     display: block;
-    /* padding-block-start: var(--space-7-fixed); */
-    /* border-block-start: 1px solid var(--color-gray-200); */
+    padding-block-start: var(--space-7-fixed);
+    border-block-start: 2px solid var(--color-gray-200);
   }
 
   .wrapper {
-    --_gap: var(--space-4-fixed);
-
     text-decoration: none;
-    display: flex;
-
-    gap: var(--_gap);
-    align-items: center;
-
-    @media (--tablet-and-up) {
-      --_gap: var(--space-7-fixed);
-    }
   }
 
   .period {
@@ -106,7 +115,7 @@ const { title, description, cover } = project.data;
     background-color: var(--color-accent);
     border-radius: 9999px;
 
-    padding-inline: var(--space-5);
+    padding-inline: var(--space-3);
     padding-block: calc(var(--space-1) + 1px);
 
     & div {
@@ -161,17 +170,44 @@ const { title, description, cover } = project.data;
 
     @media (--laptop-and-up) {
       --_border-radius: var(--rounded-2xl);
-      --_img-size: 15rem;
+      /* --_img-size: 15rem; */
+    }
+  }
+
+  .arrow-right-container {
+    align-self: flex-end;
+    flex-shrink: 0;
+
+    display: flex;
+    gap:var(--space-1);
+
+
+
+    color: var(--color-primary);
+
+    margin-inline-start: auto;
+
+    @media (--tablet-and-up) {
+      align-self: auto;
+    }
+
+  }
+
+  .arrow-right-text {
+    display: none;
+
+    @media (--laptop-and-up) {
+      display: inline;
     }
   }
 
   .arrow-right {
     --_size: var(--space-6);
 
-    align-self: flex-end;
-    flex-shrink: 0;
+    
+   
 
-    margin-inline-start: auto;
+  
 
     width: var(--_size);
     height: var(--_size);
@@ -179,9 +215,7 @@ const { title, description, cover } = project.data;
     transform: translateY(-2px) rotate(-45deg);
     transition: transform var(--transition-default);
 
-    @media (--tablet-and-up) {
-      align-self: auto;
-    }
+    
   }
 
   /* State */

@@ -12,7 +12,7 @@ const members = defineCollection({
     }),
 });
 
-const colorOptions = ["primary", "secondary", "accent "] as const;
+const colorOptions = ["primary", "secondary", "accent"] as const;
 
 const projects = defineCollection({
   type: "content",

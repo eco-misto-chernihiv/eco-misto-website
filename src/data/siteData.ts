@@ -69,16 +69,19 @@ export const socialData = [
 
 export const contactsData = [
   {
-    description: "+3 067 000 44 33",
+    description: "+3 093 790 90 94",
     icon: "icon-phone",
+    href: "tel:+30937909094",
   },
   {
-    description: "hello@ecomisto.com",
+    description: "info@ecomisto.org",
     icon: "icon-mail",
+    href: "mailto:info@ecomisto.org",
   },
   {
-    description: "вул. Шевченка, 95, Чернігів, Україна.",
+    description: "м. Чернігів, проспект Левка Лук'яненка 2А",
     icon: "icon-pin",
+    href: "https://maps.app.goo.gl/6NF8PMSFEzigDxkg7",
   },
 ];
 
