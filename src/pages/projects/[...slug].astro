@@ -140,11 +140,11 @@ const heroBackgroundColor = `var(--color-${color})`;
     --_padding: var(--space-11-fixed);
 
     padding-block-start: calc(var(--_padding) + var(--header-height));
-    padding-block-end: var(--_padding);
+    padding-block-end: var(--space-11-fixed);
 
     background-color: var(--color-secondary);
     @media (--tablet-and-up) {
-      --_padding: var(--space-13-fixed);
+      --_padding: var(--space-16-fixed);
     }
 
     @media (--laptop-and-up) {
@@ -164,7 +164,7 @@ const heroBackgroundColor = `var(--color-${color})`;
 
     @media (--tablet-and-up) {
       position: absolute;
-      top: -3rem;
+      top: -6rem;
 
       /* min-height: 14.5rem; */
 
@@ -175,7 +175,7 @@ const heroBackgroundColor = `var(--color-${color})`;
       & .shape.top {
         top: 0px;
         right: 0px;
-        transform: translateY(calc(100% + 0.5rem)) translateX(100%)
+        transform: translateY(calc(100% + 3.5rem)) translateX(100%)
           rotate(270deg);
         margin-block-start: -1px;
         margin-inline-end: 1px;
@@ -212,6 +212,7 @@ const heroBackgroundColor = `var(--color-${color})`;
   .hero-text {
     & .title {
     }
+
     @media (--tablet-and-up) {
       /* min-width: fit-content; */
       max-width: 26rem;
@@ -239,7 +240,6 @@ const heroBackgroundColor = `var(--color-${color})`;
   }
 
   .img-wrapper {
-    
     @media (--laptop-and-up) {
       padding-left: var(--_offset-left);
     }
@@ -251,8 +251,6 @@ const heroBackgroundColor = `var(--color-${color})`;
     inline-size: 100%;
     block-size: var(--_height);
 
-    padding: var(--space-4-fixed);
-    
     background-color: var(--heroBackgroundColor);
 
     border-radius: var(--_border-radius);
@@ -269,11 +267,13 @@ const heroBackgroundColor = `var(--color-${color})`;
       border-radius: var(--_border-radius);
     }
 
+    &.collage {
+      padding: var(--space-4-fixed);
+    }
+
     &.collage > :global(picture),
     &.collage > :global(picture) > :global(img) {
       object-fit: contain;
-      /* inline-size: 100%;
-      block-size: 100%; */
       object-position: right 50%;
     }
 
