@@ -32,7 +32,7 @@ export function getRatio(orientation) {
   }
 
   if (orientation === "portrait") {
-    return "4:5";
+    return "3:4";
   }
 
   if (orientation === "square") {

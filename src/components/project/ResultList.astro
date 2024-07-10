@@ -1,41 +1,41 @@
 ---
+// Build using this tutorial
+// https://zellwk.com/blog/astro-fancy-list-item/
+
+// Tools
 import { parse } from "node-html-parser";
-import MyIcon from "../ui/MyIcon.astro";
 import { Icon } from "astro-icon/components";
+import Stack from "../compositions/Stack.astro";
 
 const html = await Astro.slots.render("default");
 
 const root = parse(html);
 const listItems = root.querySelectorAll("li");
-
-console.log(listItems);
 ---
 
-<ul class="list" role="list">
+<Stack space="space-2" tagName="ul" class="list" role="result-list">
   {
     listItems.map((item) => {
       return (
-        <li class="list-item">
+        <li class="result-item">
           <Icon name="icon-check" />
           <Fragment set:html={item.innerHTML} />
         </li>
       );
     })
   }
-</ul>
+</Stack>
 
 <style>
-  .list {
+  .result-item {
+    display: flex;
+    gap: var(--space-2-fixed);
+    align-items: baseline;
+
     & :global(svg) {
       color: var(--color-primary);
       width: 0.75em;
       height: 0.75em;
     }
-  }
-
-  .list-item {
-    display: flex;
-    gap: var(--space-2-fixed);
-    align-items: baseline;
   }
 </style>
