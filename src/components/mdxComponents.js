@@ -12,6 +12,7 @@ import ResultIcon from "@/components/project/ResultIcon.astro";
 import PhotoGrid from "@/components/project/PhotoGrid.astro";
 import Half from "@/components/project/Half.astro";
 import Full from "@/components/project/Full.astro";
+import List from "@/components/project/List.astro";
 
 export const components = {
   Gallery,
@@ -28,4 +29,5 @@ export const components = {
   PhotoGrid,
   Half,
   Full,
+  List,
 };

@@ -30,21 +30,28 @@ const { title, description, cover } = project.data;
 
 <article class="archive-project-item">
   <Link href={`/projects/${project.slug}`}>
-    <Cluster class="wrapper" alignItems="center" space={{default: "space-4", tablet: "space-7"}} noWrap>
+    <Cluster
+      class="wrapper"
+      alignItems="center"
+      space={{ default: "space-4", tablet: "space-7" }}
+      noWrap
+    >
       <Frame ratio="1:1" class="img-wrapper">
         <Image src={cover} alt="" />
       </Frame>
       <Stack space="space-3" class="info">
-        <div class="period">
-          <Text tagName="div" size="small" class="color-secondary font-medium"
-            >Березень – Жовтень 2020 р.</Text
+        <Stack space="space-2">
+          <div class="period">
+            <Text tagName="div" size="small" class="color-secondary font-medium"
+              >Березень – Жовтень 2020 р.</Text
+            >
+          </div>
+          <Heading
+            tagName="h4"
+            size="h6"
+            class="title font-heading color-secondary">{title}</Heading
           >
-        </div>
-        <Heading
-          tagName="h4"
-          size="h6"
-          class="title font-heading color-secondary">{title}</Heading
-        >
+        </Stack>
         <Text tagName="p" size="medium" class="color-dark-gray description"
           >{description}</Text
         >
@@ -59,18 +66,15 @@ const { title, description, cover } = project.data;
         class="color-primary arrow-right"
       /> -->
 
-   
-
       <div class="arrow-right-container">
         <span class="arrow-right-text">Дивитись</span>
         <Icon
-        name="icon-arrow-right"
-        aria-hidden="true"
-        focusable="false"
-        class="color-primary arrow-right"
-      />
+          name="icon-arrow-right"
+          aria-hidden="true"
+          focusable="false"
+          class="color-primary arrow-right"
+        />
       </div>
- 
     </Cluster>
   </Link>
 </article>
@@ -89,7 +93,7 @@ const { title, description, cover } = project.data;
     }
   }
 
-  .archive-project-item  {
+  .archive-project-item {
     /* border-bottom: 2px solid var(--color-gray-400); */
   }
 
@@ -179,9 +183,7 @@ const { title, description, cover } = project.data;
     flex-shrink: 0;
 
     display: flex;
-    gap:var(--space-1);
-
-
+    gap: var(--space-1);
 
     color: var(--color-primary);
 
@@ -190,7 +192,6 @@ const { title, description, cover } = project.data;
     @media (--tablet-and-up) {
       align-self: auto;
     }
-
   }
 
   .arrow-right-text {
@@ -204,18 +205,11 @@ const { title, description, cover } = project.data;
   .arrow-right {
     --_size: var(--space-6);
 
-    
-   
-
-  
-
     width: var(--_size);
     height: var(--_size);
 
     transform: translateY(-2px) rotate(-45deg);
     transition: transform var(--transition-default);
-
-    
   }
 
   /* State */

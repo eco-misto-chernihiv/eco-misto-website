@@ -36,6 +36,7 @@
     "@types/sanitize-html": "^2.11.0",
     "autoprefixer": "^10.4.17",
     "cssnano": "^6.0.5",
+    "node-html-parser": "^6.1.13",
     "postcss-custom-media": "^10.0.3",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.4.0"

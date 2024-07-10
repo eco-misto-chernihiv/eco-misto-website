@@ -14,6 +14,12 @@ import AutoGrid from "../compositions/AutoGrid.astro";
 // Data
 const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
+// sort so that recent proejcts showed up first
+// valueOf() returns the number of milliseconds since January 1, 1970, 00:00:00 UTC
+// const sortedProjects = [...projects].sort(
+//   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+// );
+
 // TODO: How project should be sorted?
 ---
 
@@ -24,7 +30,7 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     {
       projects
         .filter((project, index) => {
-          return !project.data.isActive && index < 3;
+          return !project.data.isActive && index < 4;
         })
         .map((project) => {
           return <ArchiveProjectCard project={project} />;
