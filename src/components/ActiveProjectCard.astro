@@ -24,9 +24,7 @@ type Props = {
 };
 
 const { project, class: classList, ...rest } = Astro.props;
-const { title, description, cover, color = "accent" } = project.data;
-
-const backgroundColor = `var(--color-${color})`;
+const { title, description, cover } = project.data;
 ---
 
 <article class:list={[classList]} {...rest}>
@@ -60,7 +58,7 @@ const backgroundColor = `var(--color-${color})`;
   </Link>
 </article>
 
-<style define:vars={{ backgroundColor }}>
+<style>
   @import "@styles/04-utilities/breakpoints.css";
 
   .wrapper {
@@ -104,7 +102,7 @@ const backgroundColor = `var(--color-${color})`;
     --_img-padding: var(--space-4-fixed);
 
     padding: var(--_img-padding);
-    background-color: var(--backgroundColor);
+    background-color: var(--color-accent);
     border-radius: var(--_border-radius);
 
     transition: filter 300ms var(--ease-out);
