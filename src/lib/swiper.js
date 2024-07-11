@@ -4,8 +4,8 @@ import { Navigation, Pagination } from "swiper/modules";
 // import Swiper styles
 import "swiper/css";
 
-// init Swiper:
-const swiper = new Swiper(".swiper", {
+// Init Multi Slide Swiper
+const swiper1 = new Swiper(".multi-slide-swiper", {
   // configure Swiper to use modules
   modules: [Navigation, Pagination],
   slidesPerView: 1.9,
@@ -35,3 +35,19 @@ const swiper = new Swiper(".swiper", {
     },
   },
 });
+
+// Init Single Slide Swiper
+
+// init Swiper:
+// const swiper2 = new Swiper(".single-slide-swiper", {
+//   // configure Swiper to use modules
+//   modules: [Navigation],
+
+//   // Navigation arrows
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// });
+
+const swiper2 = new Swiper(".single-slide-swiper", {});

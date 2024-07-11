@@ -1,0 +1,177 @@
+---
+// Tools
+import { Picture } from "astro:assets";
+
+import Frame from "../compositions/Frame.astro";
+import ArrowIcon from "../ui/ArrowIcon.astro";
+import Center from "../compositions/Center.astro";
+import Cluster from "../compositions/Cluster.astro";
+
+// Compositions
+
+// Components
+
+// Data
+
+type Props = {
+  imagePaths: string[];
+};
+const { imagePaths } = Astro.props;
+
+// Assets
+
+// Collect all images in given path
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/content/projects/images/**/*.{jpeg,jpg}"
+);
+
+imagePaths.forEach((imagePath) => {
+  const newPath = `/src/content/projects/${imagePath}`;
+
+  if (!images[newPath])
+    throw new Error(
+      `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+    );
+});
+---
+
+<div class="multi-slide-gallery">
+  <div class="multi-slide-swiper">
+    <div class="swiper-wrapper">
+      {
+        imagePaths?.map((imagePath) => {
+          const newPath = `/src/content/projects/${imagePath}`;
+
+          return (
+            <div class="swiper-slide">
+              <Frame ratio="3:2" class="img-wrapper">
+                <Picture
+                  src={images[newPath]()}
+                  width={1000}
+                  formats={["avif", "webp"]}
+                  alt=""
+                  densities={[1.5, 2]}
+                />
+              </Frame>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="swiper-navigation">
+      <Center
+        maxWidth="87.5rem"
+        space={{ default: "space-6", tablet: "space-7" }}
+      >
+        <Cluster space="space-10" alignItems="center" noWrap>
+          <Cluster alignItems="center" noWrap class="swiper-pagination-wrapper">
+            <div class="swiper-pagination">
+              <span class="swiper-pagination-progressbar-fill"></span>
+            </div>
+            <div class="round-corner"></div>
+          </Cluster>
+
+          <div class="swiper-buttons">
+            <div class="swiper-button swiper-button-prev">
+              <ArrowIcon
+                style="primary"
+                direction="left"
+                class="swiper-button"
+              />
+            </div>
+            <div class="swiper-button swiper-button-next">
+              <ArrowIcon style="primary" />
+            </div>
+          </div>
+        </Cluster>
+      </Center>
+    </div>
+  </div>
+</div>
+
+<style>
+  .multi-slide-gallery {
+    padding-block: var(--space-12-fixed);
+  }
+
+  .swiper-slide {
+    overflow: hidden;
+    height: auto;
+
+    & .img-wrapper {
+    }
+  }
+
+  .swiper-navigation {
+    margin-block-start: var(--space-9-fixed);
+  }
+
+  .swiper-pagination-wrapper {
+    flex: 1;
+
+    position: relative;
+  }
+
+  .swiper-pagination {
+    width: 100%;
+    height: 4px;
+
+    background-color: var(--color-gray-200);
+    border-radius: var(--rounded-full);
+  }
+
+  .round-corner {
+    position: absolute;
+    left: -4px;
+
+    width: 8px;
+    height: 4px;
+    background-color: var(--color-secondary);
+
+    border-start-start-radius: var(--rounded-full);
+    border-end-start-radius: var(--rounded-full);
+  }
+
+  .swiper-buttons {
+    display: flex;
+    gap: var(--space-2-fixed);
+  }
+
+  .swiper-button {
+    --_size: 40px;
+
+    height: var(--_size);
+    width: var(--_size);
+
+    cursor: pointer;
+
+    transition:
+      color var(--transition-default),
+      background-color var(--transition-default),
+      transform var(--transition-default);
+
+    & :global(.arrow) {
+      transition: transform var(--transition-default);
+    }
+
+    &:hover :global(.arrow) {
+      color: var(--color-primary);
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .swiper-button-prev {
+    &:hover :global(.arrow) {
+      transform: translateX(-4px);
+    }
+  }
+
+  .swiper-button-next {
+    &:hover :global(.arrow) {
+      transform: translateX(4px);
+    }
+  }
+</style>
+
+<script></script>

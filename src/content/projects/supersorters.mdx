@@ -16,6 +16,14 @@ export const supersortersImages = [
   "images/supersorters/gallery_supersorters_007.jpg",
 ];
 
+export const supersortersPosters = [
+  "images/supersorters/single_gallery_supersorters_001.jpg",
+  "images/supersorters/single_gallery_supersorters_002.jpg",
+  "images/supersorters/single_gallery_supersorters_003.jpg",
+  "images/supersorters/single_gallery_supersorters_004.jpg",
+  "images/supersorters/single_gallery_supersorters_005.jpg",
+];
+
 {/* prettier-ignore */}
 <TextContent>
   <Badge>Мета</Badge>
@@ -36,6 +44,10 @@ export const supersortersImages = [
 </TextContent>
 
 <Video src="https://www.youtube.com/embed/MZV63u6nNrQ?si=JPlnr3CQVr-mLiM6" />
+
+<TextContent>
+  <SingleSlideGallery imagePaths={supersortersPosters} />
+</TextContent>
 
 {/* prettier-ignore */}
   <TextContent>
@@ -71,4 +83,4 @@ export const supersortersImages = [
   </Logos>
 </TextContent>
 
-<Gallery imagePaths={supersortersImages} />
+<MultiSlideGallery imagePaths={supersortersImages} />

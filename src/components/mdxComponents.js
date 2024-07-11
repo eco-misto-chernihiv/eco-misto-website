@@ -1,6 +1,7 @@
 import { Icon } from "astro-icon/components";
 
-import Gallery from "@/components/project/Gallery.astro";
+import MultiSlideGallery from "@/components/project/MultiSlideGallery.astro";
+import SingleSlideGallery from "@/components/project/SingleSlideGallery.astro";
 import Blockquote from "@/components/project/Blockquote.astro";
 import BlockquoteFooter from "@/components/project/BlockquoteFooter.astro";
 import Video from "@/components/project/Video.astro";
@@ -17,7 +18,8 @@ import Full from "@/components/project/Full.astro";
 import ResultList from "@/components/project/ResultList.astro";
 
 export const components = {
-  Gallery,
+  MultiSlideGallery,
+  SingleSlideGallery,
   Blockquote,
   BlockquoteFooter,
   Video,
