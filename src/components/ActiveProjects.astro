@@ -1,6 +1,7 @@
 ---
 // Tools
 import { getCollection } from "astro:content";
+import { getSortedProjects } from "@/lib/helpers.js";
 
 // Compositions
 import Row from "./compositions/Row.astro";
@@ -13,9 +14,11 @@ import Text from "./ui/Text.astro";
 
 // Data
 
-const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+const projects = (
+  await getCollection("projects", ({ data }) => !data.isDraft)
+).filter(({ data }) => data.isActive);
 
-// TODO: How project should be sorted?
+const sortedProjects = getSortedProjects(projects);
 ---
 
 <Stack space="space-10">
@@ -41,16 +44,14 @@ const projects = await getCollection("projects", ({ data }) => !data.isDraft);
     class="active-projects"
   >
     {
-      projects
-        .filter(({ data }) => data.isActive)
-        .map((project) => {
-          return (
-            <ActiveProjectCard
-              project={project}
-              class="active-project-item col-12 tablet:col-6"
-            />
-          );
-        })
+      sortedProjects.map((project) => {
+        return (
+          <ActiveProjectCard
+            project={project}
+            class="active-project-item col-12 tablet:col-6"
+          />
+        );
+      })
     }
   </Row>
 </Stack>

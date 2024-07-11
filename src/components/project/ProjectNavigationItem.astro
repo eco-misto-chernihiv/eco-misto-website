@@ -12,11 +12,7 @@ type Props = {
 };
 
 const { project, class: classList } = Astro.props;
-const { title, color = "accent", cover, isCollage } = project.data;
-
-const backgroundColor = `var(--color-${color})`;
-
-console.log(Astro.url);
+const { title, cover, isCollage } = project.data;
 ---
 
 <article class:list={[classList]}>
@@ -33,13 +29,13 @@ console.log(Astro.url);
   </Link>
 </article>
 
-<style define:vars={{ backgroundColor }}>
+<style>
   .project-navigation-link {
     inline-size: 100%;
     block-size: 100%;
   }
   .img-wrapper {
-    background-color: var(--backgroundColor);
+    background-color: var(--color-accent);
     border-radius: var(--rounded-2xl);
 
     & img {

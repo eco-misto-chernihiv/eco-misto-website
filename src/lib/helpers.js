@@ -43,3 +43,24 @@ export function getRatio(orientation) {
     return "16:9";
   }
 }
+
+/**
+ * Sort projects by publish date from newest to oldest
+ * @param {Array} projects
+ * @returns {Array} Sorted projects
+ */
+export function getSortedProjects(projects) {
+  return [...projects].sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+}
+
+/**
+ * Get project index in a projects array
+ * @param {Array} projects
+ * @param {Object} project
+ * @returns {Number} Index number
+ */
+export function getProjectIndex(projects, project) {
+  return projects.findIndex((p) => p.id === project.id);
+}

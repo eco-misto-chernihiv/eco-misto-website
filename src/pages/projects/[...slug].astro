@@ -3,6 +3,7 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import { getProjectIndex, getSortedProjects } from "@/lib/helpers.js";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -21,6 +22,8 @@ import H2 from "../../components/project/H2.astro";
 import H3 from "../../components/project/H3.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import { components } from "@/components/mdxComponents.js";
+import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
+import Row from "@/components/compositions/Row.astro";
 
 // Data
 
@@ -48,20 +51,31 @@ type Props = {
 const { project, projects } = Astro.props;
 
 const { Content } = await project.render();
-const {
-  title,
-  description,
-  color = "accent",
-  cover,
-  isCollage = false,
-} = project.data;
+const { title, description, cover, isCollage = false } = project.data;
+
+// Sort projects
+const sortedProjects = getSortedProjects(projects);
+
+// Get active and archive projects
+const activeProjects = sortedProjects.filter(({ data }) => data.isActive);
+console.log(activeProjects);
+const archiveProjects = sortedProjects.filter(({ data }) => !data.isActive);
+
+const isActive = project.data.isActive;
 
 // Get index of current project
-const index = projects.findIndex((p) => p.id === project.id);
-const previousProject = projects[index - 1];
-const nextProject = projects[index + 1];
+const index = isActive
+  ? getProjectIndex(activeProjects, project)
+  : getProjectIndex(archiveProjects, project);
 
-const heroBackgroundColor = `var(--color-${color})`;
+// Set previous and next projects
+const previousProject = isActive
+  ? activeProjects[index - 1]
+  : archiveProjects[index - 1];
+
+const nextProject = isActive
+  ? activeProjects[index + 1]
+  : archiveProjects[index + 1];
 ---
 
 <BaseLayout>
@@ -114,7 +128,7 @@ const heroBackgroundColor = `var(--color-${color})`;
           previousProject && (
             <ProjectNavigationItem
               project={previousProject}
-              class="col-12 tablet:col-6"
+              class="previous-project col-12 col-start-1 tablet:col-6"
             />
           )
         }
@@ -122,7 +136,7 @@ const heroBackgroundColor = `var(--color-${color})`;
           nextProject && (
             <ProjectNavigationItem
               project={nextProject}
-              class="col-12 tablet:col-6"
+              class="next-project col-12 col-start-1 tablet:col-6 tablet:col-start-7"
             />
           )
         }
@@ -131,7 +145,7 @@ const heroBackgroundColor = `var(--color-${color})`;
   </Center> -->
 </BaseLayout>
 
-<style define:vars={{ heroBackgroundColor }}>
+<style>
   @import "@styles/04-utilities/breakpoints.css";
 
   .hero {
@@ -251,7 +265,7 @@ const heroBackgroundColor = `var(--color-${color})`;
     inline-size: 100%;
     block-size: var(--_height);
 
-    background-color: var(--heroBackgroundColor);
+    background-color: var(--color-accent);
 
     border-radius: var(--_border-radius);
 

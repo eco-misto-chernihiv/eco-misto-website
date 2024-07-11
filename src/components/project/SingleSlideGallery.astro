@@ -36,14 +36,14 @@ imagePaths.forEach((imagePath) => {
 ---
 
 <div class="single-slide-gallery">
-  <div class="single-slide-swiper">
+  <div class="single-slide-swiper swiper">
     <div class="swiper-wrapper">
       {
         imagePaths?.map((imagePath) => {
           const newPath = `/src/content/projects/${imagePath}`;
 
           return (
-            <div class="swiper-slide">
+            <div class="swiper-slide ">
               <Frame ratio="3:4" class="img-wrapper">
                 <Picture
                   src={images[newPath]()}

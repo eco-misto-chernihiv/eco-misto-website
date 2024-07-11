@@ -12,7 +12,21 @@ const members = defineCollection({
     }),
 });
 
-const colorOptions = ["primary", "secondary", "accent"] as const;
+// const colorOptions = ["primary", "secondary", "accent"] as const;
+const monthOptions = [
+  "Січень",
+  "Лютий",
+  "Березень",
+  "Квітень",
+  "Травень",
+  "Червень",
+  "Липень",
+  "Серпень",
+  "Вересень",
+  "Жовтень",
+  "Листопад",
+  "Грудень",
+] as const;
 
 const projects = defineCollection({
   type: "content",
@@ -25,18 +39,22 @@ const projects = defineCollection({
       description: z
         .string()
         .max(280, {
-          message: "Description cannot be longer that 280 characters",
+          message: "Description cannot be longer than 280 characters",
         })
         .optional(),
       // validate as a local image
-      cover: image().refine((img) => img.width >= 500, {
-        message: "Cover should be at least 500px wide or more",
+      cover: image().refine((img) => img.width >= 1120, {
+        message: "Cover should be at least 1120px wide or more",
       }),
-      isCollage: z.boolean().optional(),
-      color: z.enum(colorOptions).optional(),
+      // color: z.enum(colorOptions).optional(),
       pubDate: z.date(),
       isActive: z.boolean(),
+      isCollage: z.boolean().optional(),
       isDraft: z.boolean().optional(),
+      startYear: z.number().optional(),
+      startMonth: z.enum(monthOptions).optional(),
+      endYear: z.number().optional(),
+      endMonth: z.enum(monthOptions).optional(),
     }),
 });
 

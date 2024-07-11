@@ -12,9 +12,7 @@ import Frame from "./compositions/Frame.astro";
 import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
 import Link from "./ui/Link.astro";
-import ArrowIcon from "./ui/ArrowIcon.astro";
 import Cluster from "./compositions/Cluster.astro";
-import ButtonArrow from "./ui/ButtonArrow.astro";
 
 // Assets
 
@@ -25,7 +23,11 @@ type Props = {
 };
 
 const { project } = Astro.props;
-const { title, description, cover } = project.data;
+const { title, description, cover, startYear, startMonth, endYear, endMonth } =
+  project.data;
+
+const isStartYear = startYear === endYear ? "" : startYear;
+const periodString = `${startMonth} ${isStartYear} — ${endMonth} ${endYear} р.`;
 ---
 
 <article class="archive-project-item">
@@ -43,7 +45,7 @@ const { title, description, cover } = project.data;
         <Stack space="space-2">
           <div class="period">
             <Text tagName="div" size="small" class="color-secondary font-medium"
-              >Березень – Жовтень 2020 р.</Text
+              >{periodString}</Text
             >
           </div>
           <Heading
@@ -56,15 +58,6 @@ const { title, description, cover } = project.data;
           >{description}</Text
         >
       </Stack>
-      <!-- <div class="arrow-right">
-        <Icon name="icon-arrow-right" size={32} />
-      </div> -->
-      <!-- <Icon
-        name="icon-arrow-right"
-        aria-hidden="true"
-        focusable="false"
-        class="color-primary arrow-right"
-      /> -->
 
       <div class="arrow-right-container">
         <span class="arrow-right-text">Дивитись</span>
@@ -93,11 +86,9 @@ const { title, description, cover } = project.data;
     }
   }
 
-  .archive-project-item {
-    /* border-bottom: 2px solid var(--color-gray-400); */
-  }
-
-  /* TODO: rewatch video for a proper selector */
+  /* TODO: rewatch video for a proper selector 
+  * Show only 3 first projects 
+  */
   .archive-project-item:nth-child(n + 4) {
     display: none;
   }
