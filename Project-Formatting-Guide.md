@@ -43,14 +43,14 @@ import product1 from "./images/plastic-fantastic/plastic_fantastic_product_001.j
 </Centered>
 ```
 
-За налаштуванням орієнтація фото landscape (2:3), це можна змінити, додавши `orientation="portrait"`, відтак фото буде 4:5 або `orientation="square"`
+За налаштуванням орієнтація фото landscape (2:3), це можна змінити, додавши `orientation="portrait"`, відтак фото буде 3:4 або `orientation="square"` (1:1) та `orientation="panoramic"` (16:9).
 
 ```
 <Centered>
   <PhotoGrid>
     <Full src={product1} orientation="square" />
     <Half src={product1} orientation="portrait" />
-    <Half src={product2} orientation="portrait" />
+    <Half src={product2} orientation="panoramic" />
   </PhotoGrid>
 </Centered>
 ```
@@ -78,7 +78,5 @@ https://www.youtube.com/embed/onmfc5VQ8Pc?si=DjsS7P4aK0TbfDei
 Приклад
 
 ```
-<Centered>
     <Video src="https://www.youtube.com/embed/onmfc5VQ8Pc?si=DjsS7P4aK0TbfDei" />
-</Centered>
 ```

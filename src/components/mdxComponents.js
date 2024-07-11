@@ -1,3 +1,5 @@
+import { Icon } from "astro-icon/components";
+
 import Gallery from "@/components/project/Gallery.astro";
 import Blockquote from "@/components/project/Blockquote.astro";
 import BlockquoteFooter from "@/components/project/BlockquoteFooter.astro";
@@ -30,4 +32,5 @@ export const components = {
   Half,
   Full,
   ResultList,
+  Icon,
 };

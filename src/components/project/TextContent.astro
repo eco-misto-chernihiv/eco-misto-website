@@ -1,10 +1,13 @@
 ---
 import Center from "../compositions/Center.astro";
+import Centered from "./Centered.astro";
 ---
 
-<Center maxWidth="40ch" class="text-content">
-  <slot />
-</Center>
+<Centered>
+  <Center maxWidth="40ch" class="text-content">
+    <slot />
+  </Center>
+</Centered>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";

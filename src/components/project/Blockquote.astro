@@ -2,17 +2,23 @@
 import Center from "../compositions/Center.astro";
 import EmptyShape from "../ui/EmptyShape.astro";
 import Shape from "../ui/Shape.astro";
+import Centered from "./Centered.astro";
 ---
 
-<blockquote>
-  <Center maxWidth="62.5rem" space={{ default: "space-7", tablet: "space-8" }}>
-    <slot />
-  </Center>
-  <EmptyShape class="blockquote-shape" bottom="0px" right="0px">
-    <Shape color="white" class="top" translateY="-100%" rotate="90deg" />
-    <Shape color="white" class="bottom" translateX="-100%" rotate="90deg" />
-  </EmptyShape>
-</blockquote>
+<Centered>
+  <blockquote>
+    <Center
+      maxWidth="62.5rem"
+      space={{ default: "space-7", tablet: "space-8" }}
+    >
+      <slot />
+    </Center>
+    <EmptyShape class="blockquote-shape" bottom="0px" right="0px">
+      <Shape color="white" class="top" translateY="-100%" rotate="90deg" />
+      <Shape color="white" class="bottom" translateX="-100%" rotate="90deg" />
+    </EmptyShape>
+  </blockquote>
+</Centered>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
