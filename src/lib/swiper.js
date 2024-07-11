@@ -39,15 +39,13 @@ const swiper1 = new Swiper(".multi-slide-swiper", {
 // Init Single Slide Swiper
 
 // init Swiper:
-// const swiper2 = new Swiper(".single-slide-swiper", {
-//   // configure Swiper to use modules
-//   modules: [Navigation],
+const swiper2 = new Swiper(".single-slide-swiper", {
+  // configure Swiper to use modules
+  modules: [Navigation],
 
-//   // Navigation arrows
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-// });
-
-const swiper2 = new Swiper(".single-slide-swiper", {});
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});

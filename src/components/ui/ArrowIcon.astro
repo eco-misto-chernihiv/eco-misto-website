@@ -16,10 +16,17 @@ type Props = {
   style: keyof typeof styleOptions;
   direction?: keyof typeof directionOptions;
   class?: string;
+  isOutline?: boolean;
   [key: string]: any;
 };
 
-const { class: classList, style, direction = "right", ...rest } = Astro.props;
+const {
+  class: classList,
+  style,
+  direction = "right",
+  isOutline = false,
+  ...rest
+} = Astro.props;
 ---
 
 <div
@@ -28,6 +35,7 @@ const { class: classList, style, direction = "right", ...rest } = Astro.props;
     classList,
     styleOptions[style],
     directionOptions[direction],
+    { outline: isOutline },
   ]}
   {...rest}
 >
@@ -50,6 +58,7 @@ const { class: classList, style, direction = "right", ...rest } = Astro.props;
     background-color: var(--_bg-color);
 
     border-radius: 9999px;
+    border: 2px solid transparent;
 
     & svg {
       width: 100%;
@@ -69,6 +78,19 @@ const { class: classList, style, direction = "right", ...rest } = Astro.props;
   .arrow.secondary {
     --_color: var(--color-primary);
     --_bg-color: var(--color-secondary);
+  }
+
+  .arrow.outline {
+    --_bg-color: transparent;
+    border-color: currentColor;
+  }
+
+  .arrow.primary.outline {
+    color: var(--color-primary);
+  }
+
+  .arrow.secondary.outline {
+    color: var(--color-secondary);
   }
 
   /**
