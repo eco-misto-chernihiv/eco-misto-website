@@ -54,6 +54,7 @@ imagePaths.forEach((imagePath) => {
                   densities={[1.5, 2]}
                 />
               </Frame>
+              <div class="slide-gradient" />
             </div>
           );
         })
@@ -63,15 +64,10 @@ imagePaths.forEach((imagePath) => {
     <div class="swiper-navigation">
       <div class="swiper-buttons">
         <div class="swiper-button swiper-button-prev">
-          <ArrowIcon
-            style="primary"
-            direction="left"
-            class="swiper-button"
-            isOutline
-          />
+          <ArrowIcon style="primary" direction="left" class="swiper-button" />
         </div>
         <div class="swiper-button swiper-button-next">
-          <ArrowIcon style="primary" isOutline />
+          <ArrowIcon style="primary" />
         </div>
       </div>
     </div>
@@ -83,9 +79,43 @@ imagePaths.forEach((imagePath) => {
 </div>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .single-slide-swiper {
     position: relative;
     isolation: isolate;
+  }
+
+  .swiper-slide {
+    position: relative;
+  }
+
+  .slide-gradient {
+    --_radius: var(--rounded-lg);
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 40%;
+    opacity: 0.4;
+
+    background-image: linear-gradient(
+      0deg,
+      var(--color-black),
+      35%,
+      transparent
+    );
+
+    border-end-start-radius: var(--_radius);
+    border-end-end-radius: var(--_radius);
+
+    transition: opacity var(--transition-default);
+
+    @media (--tablet-and-up) {
+      --_radius: var(--rounded-xl);
+    }
   }
 
   .swiper-buttons {
@@ -94,15 +124,36 @@ imagePaths.forEach((imagePath) => {
   }
 
   .swiper-button {
+    --_size: 40px;
+
+    height: var(--_size);
+    width: var(--_size);
+
     cursor: pointer;
   }
 
+  .swiper-button-disabled {
+    opacity: 0;
+    cursor: auto;
+    pointer-events: none;
+  }
+
   .swiper-navigation {
-    --_position: var(--space-8-fixed);
+    --_position: var(--space-4-fixed);
+
     position: absolute;
     right: var(--_position);
     bottom: var(--_position);
+
     z-index: 10;
+
+    @media (--tablet-and-up) {
+      --_position: var(--space-6-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      --_position: var(--space-8-fixed);
+    }
   }
 
   .annotation {
@@ -110,8 +161,14 @@ imagePaths.forEach((imagePath) => {
     text-align: center;
 
     & > :global(p) {
-      font-size: var(--text-minus-1);
+      font-size: var(--text-minus-2);
       color: var(--color-gray-400);
     }
+  }
+
+  /* State */
+
+  .swiper-slide:hover .slide-gradient {
+    /* opacity: 0; */
   }
 </style>
