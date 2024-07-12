@@ -1,24 +1,27 @@
 ---
-import Center from "../compositions/Center.astro";
 import Centered from "./Centered.astro";
 ---
 
 <Centered>
-  <Center maxWidth="40ch" class="text-content">
+  <div class="text-content">
     <slot />
-  </Center>
+  </div>
 </Centered>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
   .text-content {
+    box-sizing: content-box;
+    margin-inline: auto;
+    max-inline-size: 40ch;
+
     @media (--tablet-and-up) {
-      max-width: 60ch;
+      max-inline-size: 60ch;
     }
 
     @media (--laptop-and-up) {
-      max-width: 70ch;
+      max-inline-size: 70ch;
     }
   }
 </style>
