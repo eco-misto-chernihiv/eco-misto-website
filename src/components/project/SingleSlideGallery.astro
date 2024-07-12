@@ -8,6 +8,7 @@ import Frame from "../compositions/Frame.astro";
 
 // Components
 import ArrowIcon from "../ui/ArrowIcon.astro";
+import SwiperButtons from "./SwiperButtons.astro";
 
 // Data
 
@@ -62,14 +63,15 @@ const ratio = getRatio(orientation);
     </div>
 
     <div class="swiper-navigation">
-      <div class="swiper-buttons">
+      <!-- <div class="swiper-buttons">
         <div class="swiper-button swiper-button-prev">
           <ArrowIcon style="primary" direction="left" />
         </div>
         <div class="swiper-button swiper-button-next">
           <ArrowIcon style="primary" />
         </div>
-      </div>
+      </div> -->
+      <SwiperButtons />
     </div>
   </div>
 
@@ -116,26 +118,6 @@ const ratio = getRatio(orientation);
     @media (--tablet-and-up) {
       --_radius: var(--rounded-xl);
     }
-  }
-
-  .swiper-buttons {
-    display: flex;
-    gap: var(--space-2-fixed);
-  }
-
-  .swiper-button {
-    --_size: 40px;
-
-    height: var(--_size);
-    width: var(--_size);
-
-    cursor: pointer;
-  }
-
-  .swiper-button-disabled {
-    opacity: 0;
-    cursor: auto;
-    pointer-events: none;
   }
 
   .swiper-navigation {
