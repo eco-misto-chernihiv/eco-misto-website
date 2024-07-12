@@ -1,23 +1,21 @@
 ---
 // Tools
 import { Picture } from "astro:assets";
-
-import Frame from "../compositions/Frame.astro";
-import ArrowIcon from "../ui/ArrowIcon.astro";
-import Center from "../compositions/Center.astro";
-import Cluster from "../compositions/Cluster.astro";
-import Stack from "../compositions/Stack.astro";
+import { getRatio } from "@/lib/helpers";
 
 // Compositions
+import Frame from "../compositions/Frame.astro";
 
 // Components
+import ArrowIcon from "../ui/ArrowIcon.astro";
 
 // Data
 
 type Props = {
+  orientation: "landscape" | "portrait" | "wide" | "square";
   imagePaths: string[];
 };
-const { imagePaths } = Astro.props;
+const { imagePaths, orientation } = Astro.props;
 
 // Assets
 
@@ -34,6 +32,8 @@ imagePaths.forEach((imagePath) => {
       `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
     );
 });
+
+const ratio = getRatio(orientation);
 ---
 
 <div class="single-slide-gallery">
@@ -45,7 +45,7 @@ imagePaths.forEach((imagePath) => {
 
           return (
             <div class="swiper-slide ">
-              <Frame ratio="3:4" class="img-wrapper">
+              <Frame ratio={ratio} class="img-wrapper">
                 <Picture
                   src={images[newPath]()}
                   width={1100}
@@ -64,7 +64,7 @@ imagePaths.forEach((imagePath) => {
     <div class="swiper-navigation">
       <div class="swiper-buttons">
         <div class="swiper-button swiper-button-prev">
-          <ArrowIcon style="primary" direction="left" class="swiper-button" />
+          <ArrowIcon style="primary" direction="left" />
         </div>
         <div class="swiper-button swiper-button-next">
           <ArrowIcon style="primary" />
@@ -99,7 +99,7 @@ imagePaths.forEach((imagePath) => {
     bottom: 0;
 
     height: 40%;
-    opacity: 0.4;
+    opacity: 0.6;
 
     background-image: linear-gradient(
       0deg,

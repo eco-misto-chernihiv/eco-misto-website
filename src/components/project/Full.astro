@@ -1,13 +1,18 @@
 ---
+// Tools
 import { type ImageMetadata } from "astro";
 import { getRatio } from "@/lib/helpers";
+
+// Compositions
 import Frame from "../compositions/Frame.astro";
+
+// Components
 import MyPicture from "../ui/MyPicture.astro";
 
 type Props = {
   src: ImageMetadata;
   alt?: string;
-  orientation?: "landscape" | "portrait";
+  orientation?: "landscape" | "portrait" | "wide" | "square";
 };
 
 const { src, alt = "Image", orientation = "landscape" } = Astro.props;

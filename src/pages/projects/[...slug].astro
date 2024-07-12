@@ -7,23 +7,23 @@ import { getProjectIndex, getSortedProjects } from "@/lib/helpers.js";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
 
 // Compositions
 import Center from "@/components/compositions/Center.astro";
 import Stack from "@/components/compositions/Stack.astro";
+import Row from "@/components/compositions/Row.astro";
 
 // Components
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
 import Shape from "@/components/ui/Shape.astro";
 import Section from "@/components/ui/Section.astro";
-import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import H2 from "../../components/project/H2.astro";
 import H3 from "../../components/project/H3.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
-import { components } from "@/components/mdxComponents.js";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
-import Row from "@/components/compositions/Row.astro";
+import { components } from "@/components/mdxComponents.js";
 
 // Data
 
@@ -58,7 +58,7 @@ const sortedProjects = getSortedProjects(projects);
 
 // Get active and archive projects
 const activeProjects = sortedProjects.filter(({ data }) => data.isActive);
-console.log(activeProjects);
+
 const archiveProjects = sortedProjects.filter(({ data }) => !data.isActive);
 
 const isActive = project.data.isActive;

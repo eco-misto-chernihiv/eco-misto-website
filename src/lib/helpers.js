@@ -39,7 +39,7 @@ export function getRatio(orientation) {
     return "1:1";
   }
 
-  if (orientation === "panoramic") {
+  if (orientation === "wide") {
     return "16:9";
   }
 }
