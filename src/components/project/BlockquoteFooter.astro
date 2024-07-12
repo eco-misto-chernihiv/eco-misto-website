@@ -19,12 +19,13 @@
     margin-block-start: var(--space-1-fixed);
   }
 
-  .blockquote-footer :global(p:first-child) {
+  /* Using nth-child, to lock styles on 1st and 2nd p tags */
+  .blockquote-footer :global(p:nth-child(1)) {
     font-size: var(--text-base);
     font-weight: var(--font-medium);
   }
 
-  .blockquote-footer :global(p:last-child) {
+  .blockquote-footer :global(p:nth-child(2)) {
     font-size: var(--text-minus-1);
     font-weight: var(--font-regular);
   }
