@@ -1,5 +1,6 @@
 ---
 // Tools
+import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "./compositions/Center.astro";
@@ -17,7 +18,6 @@ import FooterSocial from "./FooterSocial.astro";
 // Data
 import { navData } from "@/data/siteData";
 import Button from "./ui/Button.astro";
-import { Icon } from "astro-icon/components";
 
 // Assets
 ---
@@ -56,6 +56,7 @@ import { Icon } from "astro-icon/components";
                 <Heading tagName="h5" size="h5" class="font-heading">
                   Подобається<br />що ми робимо?
                 </Heading>
+
                 <Button tagName="a" style="secondary" href="/donate"
                   >Підтримати <Icon
                     name="icon-heart"

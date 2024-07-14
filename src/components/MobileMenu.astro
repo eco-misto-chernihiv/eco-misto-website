@@ -10,6 +10,8 @@ import MobileNav from "./MobileNav.astro";
 import SocialList from "./SocialList.astro";
 import Button from "./ui/Button.astro";
 import Filler from "./ui/Filler.astro";
+import SideModal from "./ui/SideModal.astro";
+import Partnership from "./Partnership.astro";
 ---
 
 <div class="mobile-menu">
@@ -17,17 +19,20 @@ import Filler from "./ui/Filler.astro";
   <Stack space="space-7">
     <MobileNav />
     <Button
-      tagName="a"
       style="secondary"
       size="small"
-      href="/donate"
       class="support"
+      data-open-modal
+      aria-label="Open cooperation form modal"
+      aria-expanded="false"
       >Підтримати <Icon
         name="icon-heart"
         aria-hidden="true"
         focusable="false"
       /></Button
     >
+
+    <SideModal> Donate </SideModal>
   </Stack>
   <SocialList class="mobile-menu-socials" />
 </div>
@@ -51,3 +56,14 @@ import Filler from "./ui/Filler.astro";
     align-items: flex-end;
   }
 </style>
+
+<script>
+  // const openModal = document.querySelector(".mobile-menu [data-open-modal]");
+  // console.log(openModal);
+  // const close = document.querySelector(".jsModalClose") as HTMLButtonElement;
+
+  // openModal?.addEventListener("click", () => {
+  //   // console.log(close);
+  //   close?.click();
+  // });
+</script>
