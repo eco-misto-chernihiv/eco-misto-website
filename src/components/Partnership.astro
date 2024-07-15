@@ -11,20 +11,33 @@ import InputGroup from "./ui/InputGroup.astro";
 // Data
 import { cooperationData } from "@/data/siteData";
 import Text from "./ui/Text.astro";
+import Heading from "./ui/Heading.astro";
 ---
 
-<aside class="partnership">
+<aside class="partnership aside-modal">
   <form action="" data-form="partnership">
-    <div class="filler"></div>
+    <!-- <div class="filler"></div> -->
+
+    <Stack space="space-4" class="header">
+      <Heading tagName="h2" size="h6" class="color-secondary font-heading"
+        >Запрошуємо до співпраці</Heading
+      >
+      <Text tagName="p" size="small"
+        >Усі кошти будуть витрачені на забезпечення адміністративної діяльності
+        громадської організації “Еко Місто Чернігів” та нові інноваційні проєкту
+        для розвитку міста.</Text
+      >
+    </Stack>
 
     <div class="inputs-container">
-      <div class="inputs">
+      <Stack space="space-5" class="inputs">
         {cooperationData.map((data) => <InputGroup data={data} />)}
-      </div>
+      </Stack>
     </div>
-    <Stack space="space-6" class="bottom">
+
+    <Stack space="space-7" class="footer">
       <div class="checkbox-group">
-        <Text tagName="label" size="medium" for="consent"
+        <Text tagName="label" size="small" for="consent" class="color-gray-400"
           >Даю згоду на обробку персональних даних</Text
         >
         <input type="checkbox" name="consent" id="consent" required />
@@ -37,47 +50,9 @@ import Text from "./ui/Text.astro";
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .partnership {
-    height: 100%;
-  }
-
-  form[data-form="partnership"] {
-    display: flex;
-    flex-direction: column;
-
-    row-gap: var(--space-4-fixed);
-    height: 100%;
-
-    @media (--tablet-and-up) {
-      & button[type="submit"] {
-        align-self: flex-start;
-      }
-    }
-  }
-
   .filler {
     flex: 1;
     min-height: var(--space-11-fixed);
-  }
-
-  .inputs-container {
-    /* height 100% to enable overflow, when there is no space */
-    height: 100%;
-    overflow-y: auto;
-
-    display: flex;
-    flex-direction: column;
-
-    padding-inline: var(--space-7-fixed);
-  }
-
-  .inputs {
-    margin-block: auto;
-    padding-block: var(--space-1-fixed);
-  }
-
-  .inputs > :global(*) + :global(*) {
-    margin-block-start: var(--space-5-fixed);
   }
 
   .checkbox-group {
@@ -99,11 +74,6 @@ import Text from "./ui/Text.astro";
 
       order: 1;
     }
-  }
-
-  .bottom {
-    flex: 1;
-    padding-inline: var(--space-7-fixed);
   }
 </style>
 

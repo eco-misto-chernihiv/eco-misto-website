@@ -34,6 +34,7 @@ interface Props {
   tagName?: "section" | "div" | "ul";
   space: SpaceObject | spaceOptions;
   isRecursive?: boolean;
+  isOnlyChild?: boolean;
   [key: string]: any;
 }
 
@@ -41,6 +42,7 @@ const {
   tagName = "div",
   space,
   isRecursive,
+  isOnlyChild = false,
   class: classList,
   ...rest
 } = Astro.props as Props;
@@ -51,7 +53,13 @@ const responsiveSpace = getBreakpoints("mbs", space);
 ---
 
 <Tag
-  class:list={["stack", classList, responsiveSpace, { recursive: isRecursive }]}
+  class:list={[
+    "stack",
+    classList,
+    responsiveSpace,
+    { recursive: isRecursive },
+    { ["only-child"]: isOnlyChild },
+  ]}
   {...rest}
 >
   <slot />
@@ -66,7 +74,7 @@ const responsiveSpace = getBreakpoints("mbs", space);
     justify-content: flex-start;
   }
 
-  .stack:only-child {
+  .only-child:only-child {
     height: 100%;
   }
 

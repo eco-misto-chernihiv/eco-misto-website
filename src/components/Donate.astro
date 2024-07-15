@@ -1,0 +1,25 @@
+---
+// Tools
+
+// Compositions
+import Stack from "./compositions/Stack.astro";
+
+// Components
+import Heading from "./ui/Heading.astro";
+import Text from "./ui/Text.astro";
+---
+
+<aside class="donate aside-modal">
+  <form action="" data-form="donate">
+    <Stack space="space-4" class="header">
+      <Heading tagName="h2" size="h6" class="color-secondary font-heading"
+        >Зробити внесок</Heading
+      >
+      <Text tagName="p" size="small"
+        >Усі кошти будуть витрачені на забезпечення адміністративної діяльності
+        громадської організації “Еко Місто Чернігів” та нові інноваційні проєкту
+        для розвитку міста.</Text
+      >
+    </Stack>
+  </form>
+</aside>

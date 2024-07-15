@@ -113,7 +113,7 @@ export const cooperationData = [
     rows: "3",
   },
   {
-    label: "Я дізнався/дізналася про вашу організацію",
+    label: "Я дізнався/лася про вашу організацію",
     formControl: "input",
     name: "source",
     placeholder: "Я дізнався з соцмереж.",
