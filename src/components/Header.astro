@@ -13,6 +13,7 @@ import Button from "./ui/Button.astro";
 import MobileMenuModal from "./ui/MobileMenuModal.astro";
 import MobileNav from "./MobileNav.astro";
 import MobileMenu from "./MobileMenu.astro";
+import SideModal from "./ui/SideModal.astro";
 
 // Assets
 ---
@@ -29,17 +30,20 @@ import MobileMenu from "./MobileMenu.astro";
       <div class="support-action">
         <Cluster space="space-0" justify="end">
           <Button
-            tagName="a"
             style="primary"
             size="small"
-            href="/donate"
             class="support"
+            data-open-modal
+            aria-label="Open cooperation form modal"
+            aria-expanded="false"
             >Підтримати <Icon
               name="icon-heart"
               aria-hidden="true"
               focusable="false"
             /></Button
           >
+
+          <SideModal> Donate </SideModal>
         </Cluster>
       </div>
     </Cluster>

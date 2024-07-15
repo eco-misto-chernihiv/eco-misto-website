@@ -44,6 +44,9 @@ import Logo from "../Logo.astro";
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
+  /* Custom breakpoint */
+  @custom-media --tablet-l-and-up (width >= 48em);
+
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -62,6 +65,10 @@ import Logo from "../Logo.astro";
       opacity 200ms var(--ease-out),
       z-index 0s 200ms,
       visibility 0s 200ms;
+
+    @media (--tablet-l-and-up) {
+      display: none;
+    }
   }
 
   .modal-overlay.is-open {
