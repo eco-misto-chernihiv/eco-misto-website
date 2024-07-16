@@ -34,8 +34,6 @@ const donateData = [
 ];
 
 const [numberData, emailData] = donateData;
-console.log(numberData);
-console.log(emailData);
 ---
 
 <aside class="donate aside-modal">
@@ -79,23 +77,80 @@ console.log(emailData);
 </aside>
 
 <script>
-  const donateForm = document.querySelector(
-    "form[data-form='donate']"
-  ) as HTMLFormElement;
+  import sanitizeHtml from "sanitize-html";
 
-  const moneyInputElement = donateForm.querySelector(
-    'input[type="number"]'
-  ) as HTMLInputElement;
+  type FormValues = {
+    number: string;
+    email: string;
+  };
 
-  function handleChoice(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.matches(".chip")) return;
+  // Get all forms
+  const forms = [
+    ...document.querySelectorAll("form[data-form='donate']"),
+  ] as HTMLFormElement[];
 
-    const choice = Number(target.textContent);
-    const moneyInput = Number(moneyInputElement.value);
+  // Loop through them
+  forms.forEach((form) => {
+    /**
+     * Elements
+     */
+    // Get number element
+    const moneyInputElement = form.querySelector(
+      'input[type="number"]'
+    ) as HTMLInputElement;
 
-    moneyInputElement.value = (choice + moneyInput).toString();
-  }
+    /**
+     * Functinos
+     */
 
-  donateForm?.addEventListener("click", handleChoice);
+    /**
+     * Add choice values to a number input
+     * @param {Object} event
+     */
+    function handleClick(event: Event) {
+      // Matching strategy
+      const target = event.target as HTMLElement;
+      if (!target.matches(".chip")) return;
+
+      // Get choice and number input values and convert them to a number
+      const choice = Number(target.textContent);
+      const moneyInput = Number(moneyInputElement.value);
+
+      // Set new number input value and convert it to string
+      moneyInputElement.value = (choice + moneyInput).toString();
+    }
+
+    /**
+     * TODO: Submit data to liqpay and sendpulse
+     * @param {Object} event
+     */
+    function handleSubmit(event: SubmitEvent) {
+      event.preventDefault();
+
+      // Get data
+      const data = new FormData(form);
+      let { number, email } = Object.fromEntries(data) as FormValues;
+
+      // If no values do nohing
+      if (!number || !email) {
+        // TODO: Show errors in the UI
+        console.log("Please include all required values");
+        return;
+      }
+
+      // Sanitize values
+      email = sanitizeHtml(email.trim());
+      number = sanitizeHtml(number.trim());
+
+      console.log("submit");
+      console.log(number);
+      console.log(email);
+    }
+
+    /**
+     * Event Liseners
+     */
+    form?.addEventListener("click", handleClick);
+    form?.addEventListener("submit", handleSubmit);
+  });
 </script>

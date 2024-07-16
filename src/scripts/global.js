@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// TODO: Refactor modals to use native dialog html element
 // Loop through all modal overlays
 modalOverlays.forEach((overlay, index) => {
   // Select modal element

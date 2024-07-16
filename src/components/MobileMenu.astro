@@ -33,7 +33,7 @@ import Donate from "./Donate.astro";
       /></Button
     >
 
-    <SideModal> <Donate /> </SideModal>
+    <SideModal name="donate-form"> <Donate /> </SideModal>
   </Stack>
   <SocialList class="mobile-menu-socials" />
 </div>
@@ -59,20 +59,20 @@ import Donate from "./Donate.astro";
 </style>
 
 <script>
-  // const supportButton = document.querySelector(
-  //   ".support-button"
-  // ) as HTMLButtonElement;
+  const supportButton = document.querySelector(
+    ".support-button"
+  ) as HTMLButtonElement;
 
-  // const closeButton = document.querySelector(
-  //   ".jsModalClose"
-  // ) as HTMLButtonElement;
+  const closeButton = document.querySelector(
+    "[data-modal='mobile-menu'] .jsModalClose"
+  ) as HTMLButtonElement;
 
   // console.log(supportButton);
   // console.log(closeButton);
 
-  // supportButton?.addEventListener("click", () => {
-  //   console.log("click");
-  //   console.log(closeButton);
-  //   closeButton?.click();
-  // });
+  supportButton?.addEventListener("click", () => {
+    // console.log("click");
+    // console.log(closeButton);
+    closeButton?.click();
+  });
 </script>

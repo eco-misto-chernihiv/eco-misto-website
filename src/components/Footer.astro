@@ -18,6 +18,8 @@ import FooterSocial from "./FooterSocial.astro";
 // Data
 import { navData } from "@/data/siteData";
 import Button from "./ui/Button.astro";
+import SideModal from "./ui/SideModal.astro";
+import Donate from "./Donate.astro";
 
 // Assets
 ---
@@ -57,13 +59,23 @@ import Button from "./ui/Button.astro";
                   Подобається<br />що ми робимо?
                 </Heading>
 
-                <Button tagName="a" style="secondary" href="/donate"
+                <Button
+                  style="secondary"
+                  size="small"
+                  class="support"
+                  data-open-modal
+                  aria-label="Open donate form modal"
+                  aria-expanded="false"
                   >Підтримати <Icon
                     name="icon-heart"
                     aria-hidden="true"
                     focusable="false"
                   /></Button
                 >
+
+                <SideModal name="donate-form">
+                  <Donate />
+                </SideModal>
               </Stack>
 
               <div class="right">

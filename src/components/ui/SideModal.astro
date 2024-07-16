@@ -4,23 +4,32 @@ import { Icon } from "astro-icon/components";
 
 // Components
 import Button from "@ui/Button.astro";
+
+type Props = {
+  name: string;
+};
+
+const { name } = Astro.props;
+
+function getLabel(name: string) {
+  return name.split("-").join(" ");
+}
+
+const label = getLabel(name);
+
+// console.log(name);
 ---
 
-<div class="modal-overlay jsModalOverlay" data-modal>
-  <div
-    class="modal"
-    role="dialog"
-    aria-modal="true"
-    aria-label="partnership form"
-  >
+<div class="modal-overlay jsModalOverlay" data-modal={name}>
+  <div class="modal" role="dialog" aria-modal="true" aria-label={label}>
     <Button
       style="icon"
       class="modal__close-button jsModalClose"
-      aria-label="Close partnership form"
+      aria-label={`Close ${label}`}
       isDefault={false}
     >
       <Icon name="icon-close" size={32} />
-      <span class="sr-only">Close partnership form</span>
+      <span class="sr-only">{`Close ${label}`}</span>
     </Button>
 
     <div class="modal__content">

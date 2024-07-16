@@ -35,7 +35,7 @@ import Donate from "./Donate.astro";
             size="small"
             class="support"
             data-open-modal
-            aria-label="Open cooperation form modal"
+            aria-label="Open donate form modal"
             aria-expanded="false"
             >Підтримати <Icon
               name="icon-heart"
@@ -44,7 +44,7 @@ import Donate from "./Donate.astro";
             /></Button
           >
 
-          <SideModal>
+          <SideModal name="donate-form">
             <Donate />
           </SideModal>
         </Cluster>
