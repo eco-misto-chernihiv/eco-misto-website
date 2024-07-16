@@ -27,16 +27,6 @@
   text-decoration: none;
 }
 
-.button.icon {
-  --_radius: var(--rounded-md);
-
-  padding: var(--space-2-fixed);
-
-  & span {
-    font-size: 0;
-  }
-}
-
 .button.default {
   --_radius: var(--rounded-md);
 
@@ -77,7 +67,7 @@
 
 /* STYLES */
 
-.button.primary {
+.button[data-style="primary"] {
   --_text-color: var(--color-secondary);
   --_background-color: var(--color-primary);
 
@@ -88,7 +78,7 @@
   }
 }
 
-.button.secondary {
+.button[data-style="secondary"] {
   --_text-color: var(--color-primary);
   --_background-color: var(--color-secondary);
 
@@ -99,7 +89,7 @@
   }
 }
 
-.button.accent {
+.button[data-style="accent"] {
   --_text-color: var(--color-secondary);
   --_background-color: var(--color-accent);
 
@@ -110,24 +100,36 @@
   }
 }
 
-.button.chip {
-  --_radius: var(--rounded-full);
-}
-
 /* SIZES */
 
-.button.x-small {
+.button[data-size="x-small"] {
   font-size: var(--text-minus-2);
 }
 
-.button.small {
+.button[data-size="small"] {
   font-size: var(--text-minus-1);
 }
 
-.button.large {
+.button[data-size="large"] {
   font-size: var(--text-base);
 }
 
-.button.x-large {
+.button[data-size="x-large"] {
   font-size: var(--text-1);
+}
+
+/* VARIANTS */
+
+.button[data-variant="chip"] {
+  --_radius: var(--rounded-full);
+}
+
+.button[data-variant="icon"] {
+  --_radius: var(--rounded-md);
+
+  padding: var(--space-2-fixed);
+
+  & span {
+    font-size: 0;
+  }
 }

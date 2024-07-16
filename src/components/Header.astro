@@ -59,7 +59,7 @@ import Donate from "./Donate.astro";
       />
 
       <Button
-        style="icon"
+        variant="icon"
         aria-label="Open main menu"
         aria-expanded="false"
         data-open-modal
@@ -210,12 +210,12 @@ import Donate from "./Donate.astro";
 
     if (scrollTop > THRESHOLD) {
       header?.classList.add("fixed");
-      supportButton?.classList.add("secondary");
-      supportButton?.classList.remove("primary");
+      supportButton?.setAttribute("data-style", "secondary");
+      // supportButton?.classList.remove("primary");
     } else {
       header?.classList.remove("fixed");
-      supportButton?.classList.remove("secondary");
-      supportButton?.classList.add("primary");
+      // supportButton?.classList.remove("secondary");
+      supportButton?.setAttribute("data-style", "primary");
     }
   });
 

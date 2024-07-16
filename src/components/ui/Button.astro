@@ -1,9 +1,15 @@
 ---
-const styleOptions = {
+const variantOptions = {
+  button: "button",
   icon: "icon",
+  chip: "chip",
+} as const;
+
+const styleOptions = {
   primary: "primary",
   secondary: "secondary",
   accent: "accent",
+  ghost: "ghost",
 } as const;
 
 const sizeOptions = {
@@ -18,6 +24,7 @@ type Props = {
   class?: string;
   style: keyof typeof styleOptions;
   size?: keyof typeof sizeOptions;
+  variant?: keyof typeof variantOptions;
   isDefault?: boolean;
   [key: string]: any;
 };
@@ -27,7 +34,7 @@ const {
   tagName = "button",
   style,
   size = "large",
-
+  variant = "button",
   isDefault = true,
   ...rest
 } = Astro.props;
@@ -36,16 +43,21 @@ const Tag = tagName;
 ---
 
 <Tag
-  class:list={[
-    "button",
-    classList,
-    styleOptions[style],
-    sizeOptions[size],
-    { default: isDefault },
-  ]}
+  class:list={["button", classList, { default: isDefault }]}
+  data-style={styleOptions[style]}
+  data-size={sizeOptions[size]}
+  data-variant={variantOptions[variant]}
   {...rest}
 >
-  <slot />
+  <span>
+    <slot />
+  </span>
 </Tag>
 
-<style></style>
+<style>
+  .button span {
+    /* Optical alignment */
+    display: block;
+    transform: translateY(1px);
+  }
+</style>

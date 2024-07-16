@@ -54,13 +54,13 @@ const [numberData, emailData] = donateData;
           <InputGroup data={numberData} />
 
           <Cluster space="space-3" class="choice-row">
-            <Button style="accent" size="x-small" class="chip" type="button"
+            <Button style="accent" size="x-small" variant="chip" type="button"
               >+100</Button
             >
-            <Button style="accent" size="x-small" class="chip" type="button"
+            <Button style="accent" size="x-small" variant="chip" type="button"
               >+200</Button
             >
-            <Button style="accent" size="x-small" class="chip" type="button"
+            <Button style="accent" size="x-small" variant="chip" type="button"
               >+500</Button
             >
           </Cluster>
@@ -110,10 +110,11 @@ const [numberData, emailData] = donateData;
     function handleClick(event: Event) {
       // Matching strategy
       const target = event.target as HTMLElement;
-      if (!target.matches(".chip")) return;
+      const chipButton = target.closest("[data-variant='chip']");
+      if (!chipButton) return;
 
       // Get choice and number input values and convert them to a number
-      const choice = Number(target.textContent);
+      const choice = Number(chipButton.textContent);
       const moneyInput = Number(moneyInputElement.value);
 
       // Set new number input value and convert it to string
