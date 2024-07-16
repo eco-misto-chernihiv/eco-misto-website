@@ -3,9 +3,11 @@ const styleOptions = {
   icon: "icon",
   primary: "primary",
   secondary: "secondary",
+  accent: "accent",
 } as const;
 
 const sizeOptions = {
+  "x-small": "x-small",
   small: "small",
   large: "large",
   "x-large": "x-large",
@@ -16,15 +18,16 @@ type Props = {
   class?: string;
   style: keyof typeof styleOptions;
   size?: keyof typeof sizeOptions;
-
   isDefault?: boolean;
   [key: string]: any;
 };
+
 const {
   class: classList,
   tagName = "button",
   style,
   size = "large",
+
   isDefault = true,
   ...rest
 } = Astro.props;

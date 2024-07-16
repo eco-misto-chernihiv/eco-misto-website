@@ -26,27 +26,18 @@
   row-gap: var(--space-6-fixed);
   height: 100%;
 
-  /* @media (--tablet-and-up) {
+  @media (--tablet-and-up) {
     & button[type="submit"] {
       align-self: flex-start;
     }
-  } */
+  }
 }
 
-.aside-modal .inputs-container {
+.aside-modal .main {
   /* to enable overflow, when there is no space, sometimes height: 100% needed */
   overflow-y: auto;
 
   padding-inline: var(--space-7-fixed);
-}
-
-.aside-modal .inputs {
-  padding-block: var(--space-1-fixed);
-  width: 100%;
-
-  /* & > * + * {
-    margin-block-start: var(--space-5-fixed);
-  } */
 }
 
 .aside-modal .footer {

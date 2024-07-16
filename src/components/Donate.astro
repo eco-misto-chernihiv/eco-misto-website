@@ -2,11 +2,40 @@
 // Tools
 
 // Compositions
+import UserDataAgreement from "./UserDataAgreement.astro";
+import Cluster from "./compositions/Cluster.astro";
 import Stack from "./compositions/Stack.astro";
+import Button from "./ui/Button.astro";
 
 // Components
 import Heading from "./ui/Heading.astro";
+import InputGroup from "./ui/InputGroup.astro";
 import Text from "./ui/Text.astro";
+
+const donateData = [
+  {
+    label: "Введіть суму *",
+    formControl: "input",
+    name: "number",
+    placeholder: "0",
+    type: "number",
+    required: true,
+    // pattern: "^[^@]+@[^@]+.[^@]+$",
+  },
+  {
+    label: "Ваша пошта *",
+    formControl: "input",
+    name: "email",
+    placeholder: "marusya@gmail.com",
+    type: "email",
+    required: true,
+    pattern: "^[^@]+@[^@]+.[^@]+$",
+  },
+];
+
+const [numberData, emailData] = donateData;
+console.log(numberData);
+console.log(emailData);
 ---
 
 <aside class="donate aside-modal">
@@ -21,5 +50,52 @@ import Text from "./ui/Text.astro";
         для розвитку міста.</Text
       >
     </Stack>
+    <div class="main">
+      <Stack space="space-8">
+        <Stack space="space-4">
+          <InputGroup data={numberData} />
+
+          <Cluster space="space-3" class="choice-row">
+            <Button style="accent" size="x-small" class="chip" type="button"
+              >+100</Button
+            >
+            <Button style="accent" size="x-small" class="chip" type="button"
+              >+200</Button
+            >
+            <Button style="accent" size="x-small" class="chip" type="button"
+              >+500</Button
+            >
+          </Cluster>
+        </Stack>
+        <InputGroup data={emailData} />
+      </Stack>
+    </div>
+
+    <Stack space="space-7" class="footer">
+      <UserDataAgreement />
+      <Button style="secondary" type="submit"> Підтримати </Button>
+    </Stack>
   </form>
 </aside>
+
+<script>
+  const donateForm = document.querySelector(
+    "form[data-form='donate']"
+  ) as HTMLFormElement;
+
+  const moneyInputElement = donateForm.querySelector(
+    'input[type="number"]'
+  ) as HTMLInputElement;
+
+  function handleChoice(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.matches(".chip")) return;
+
+    const choice = Number(target.textContent);
+    const moneyInput = Number(moneyInputElement.value);
+
+    moneyInputElement.value = (choice + moneyInput).toString();
+  }
+
+  donateForm?.addEventListener("click", handleChoice);
+</script>

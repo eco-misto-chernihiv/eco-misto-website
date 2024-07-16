@@ -10,12 +10,13 @@
 .button-arrow {
   --_text-color: inherit;
   --_background-color: transparent;
+  --_radius: 0;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: 2px solid transparent;
-  border-radius: 0;
+  border-radius: var(--_radius);
   background: var(--_background-color);
   cursor: pointer;
   font: inherit;
@@ -27,8 +28,9 @@
 }
 
 .button.icon {
+  --_radius: var(--rounded-md);
+
   padding: var(--space-2-fixed);
-  border-radius: var(--rounded-md);
 
   & span {
     font-size: 0;
@@ -36,10 +38,11 @@
 }
 
 .button.default {
+  --_radius: var(--rounded-md);
+
   min-width: 6.25em;
   font-weight: var(--font-medium);
   padding: var(--space-2) var(--space-5);
-  border-radius: var(--rounded-md);
 
   transition: color var(--transition-default),
     background-color var(--transition-default), border var(--transition-default);
@@ -96,7 +99,26 @@
   }
 }
 
+.button.accent {
+  --_text-color: var(--color-secondary);
+  --_background-color: var(--color-accent);
+
+  &:hover {
+    --_text-color: var(--color-secondary);
+    --_background-color: transparent;
+    border-color: var(--color-accent);
+  }
+}
+
+.button.chip {
+  --_radius: var(--rounded-full);
+}
+
 /* SIZES */
+
+.button.x-small {
+  font-size: var(--text-minus-2);
+}
 
 .button.small {
   font-size: var(--text-minus-1);

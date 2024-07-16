@@ -1,0 +1,33 @@
+---
+// Compositions
+import Cluster from "./compositions/Cluster.astro";
+
+// Components
+import Text from "./ui/Text.astro";
+---
+
+<Cluster alignItems="center" class="checkbox-group">
+  <Text tagName="label" size="small" for="consent" class="color-gray-400"
+    >Даю згоду на обробку персональних даних</Text
+  >
+  <input type="checkbox" name="consent" id="consent" required />
+</Cluster>
+
+<style>
+  .checkbox-group {
+    & label {
+      order: 2;
+    }
+
+    & input[type="checkbox"] {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+
+      outline-color: var(--color-primary);
+      accent-color: var(--color-primary);
+
+      order: 1;
+    }
+  }
+</style>
