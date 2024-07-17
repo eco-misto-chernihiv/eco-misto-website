@@ -34,6 +34,9 @@ const donateData = [
 ];
 
 const [numberData, emailData] = donateData;
+
+// TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
+const id = crypto.randomUUID();
 ---
 
 <aside class="donate aside-modal">
@@ -49,23 +52,55 @@ const [numberData, emailData] = donateData;
       >
     </Stack>
     <div class="main">
-      <Stack space="space-8">
-        <Stack space="space-4">
-          <InputGroup data={numberData} />
+      <Stack space="space-6">
+        <Cluster alignItems="baseline" class="donate-tabs">
+          <input
+            type="radio"
+            name="pay"
+            id={`pay-once-${id}`}
+            value="pay-once"
+            checked
+            tabindex="0"
+          />
+          <Text
+            tagName="label"
+            size="small"
+            class="font-medium"
+            for={`pay-once-${id}`}>Разова допомога</Text
+          >
 
-          <Cluster space="space-3" class="choice-row">
-            <Button style="accent" size="x-small" variant="chip" type="button"
-              >+100</Button
-            >
-            <Button style="accent" size="x-small" variant="chip" type="button"
-              >+200</Button
-            >
-            <Button style="accent" size="x-small" variant="chip" type="button"
-              >+500</Button
-            >
-          </Cluster>
+          <input
+            type="radio"
+            name="pay"
+            id={`pay-monthly-${id}`}
+            value="pay-monthly"
+          />
+          <Text
+            tagName="label"
+            size="small"
+            class="font-medium"
+            for={`pay-monthly-${id}`}>Щомісячна підтримка</Text
+          >
+        </Cluster>
+
+        <Stack space="space-8">
+          <Stack space="space-4">
+            <InputGroup data={numberData} />
+
+            <Cluster space="space-3" class="choice-row">
+              <Button style="accent" size="x-small" variant="chip" type="button"
+                >+100</Button
+              >
+              <Button style="accent" size="x-small" variant="chip" type="button"
+                >+200</Button
+              >
+              <Button style="accent" size="x-small" variant="chip" type="button"
+                >+500</Button
+              >
+            </Cluster>
+          </Stack>
+          <InputGroup data={emailData} />
         </Stack>
-        <InputGroup data={emailData} />
       </Stack>
     </div>
 
@@ -76,10 +111,40 @@ const [numberData, emailData] = donateData;
   </form>
 </aside>
 
+<style>
+  .donate-tabs label {
+    color: var(--color-gray-400);
+    cursor: pointer;
+  }
+
+  .donate-tabs input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .donate-tabs input[type="radio"]:checked {
+    & + label {
+      color: var(--color-black);
+    }
+  }
+
+  .donate-tabs input[type="radio"]:focus {
+    & + label {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 4px;
+      border-radius: var(--rounded-sm);
+    }
+  }
+</style>
+
 <script>
   import sanitizeHtml from "sanitize-html";
 
   type FormValues = {
+    pay: string;
     number: string;
     email: string;
   };
@@ -130,20 +195,23 @@ const [numberData, emailData] = donateData;
 
       // Get data
       const data = new FormData(form);
-      let { number, email } = Object.fromEntries(data) as FormValues;
+
+      let { pay, number, email } = Object.fromEntries(data) as FormValues;
 
       // If no values do nohing
-      if (!number || !email) {
+      if (!pay || !number || !email) {
         // TODO: Show errors in the UI
         console.log("Please include all required values");
         return;
       }
 
       // Sanitize values
+      pay = sanitizeHtml(pay);
       email = sanitizeHtml(email.trim());
       number = sanitizeHtml(number.trim());
 
       console.log("submit");
+      console.log(pay);
       console.log(number);
       console.log(email);
     }

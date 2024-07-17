@@ -40,7 +40,7 @@
   padding-inline: var(--space-7-fixed);
 
   /* prevent cutting inputs outline */
-  padding-block: var(--space-1-fixed);
+  padding-block: var(--space-2-fixed);
 }
 
 .aside-modal .footer {
@@ -50,4 +50,8 @@
   justify-content: flex-end;
 
   padding-inline: var(--space-7-fixed);
+}
+
+.aside-modal button {
+  outline-color: var(--color-primary);
 }

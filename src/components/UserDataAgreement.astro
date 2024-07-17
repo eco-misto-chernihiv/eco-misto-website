@@ -4,13 +4,18 @@ import Cluster from "./compositions/Cluster.astro";
 
 // Components
 import Text from "./ui/Text.astro";
+
+const id = crypto.randomUUID();
 ---
 
 <Cluster alignItems="center" class="checkbox-group">
-  <Text tagName="label" size="small" for="consent" class="color-gray-400"
-    >Даю згоду на обробку персональних даних</Text
+  <Text
+    tagName="label"
+    size="small"
+    for={`consent-${id}`}
+    class="color-gray-400">Даю згоду на обробку персональних даних</Text
   >
-  <input type="checkbox" name="consent" id="consent" required />
+  <input type="checkbox" name="consent" id={`consent-${id}`} required />
 </Cluster>
 
 <style>
@@ -26,6 +31,7 @@ import Text from "./ui/Text.astro";
 
       outline-color: var(--color-primary);
       accent-color: var(--color-primary);
+      border-radius: var(--rounded-md);
 
       order: 1;
     }

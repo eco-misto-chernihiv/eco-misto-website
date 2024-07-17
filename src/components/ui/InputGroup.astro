@@ -6,13 +6,16 @@ const { data } = Astro.props;
 const { label, name, formControl, placeholder, ...rest } = data;
 
 const Tag = formControl;
+
+// TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
+const id = crypto.randomUUID();
 ---
 
 <Stack space="space-1" class="input-group">
-  <Text tagName="label" size="small" for={name} class="font-medium"
+  <Text tagName="label" size="small" for={`${name}-${id}`} class="font-medium"
     >{label}</Text
   >
-  <Tag id={name} name={name} placeholder={placeholder} {...rest} />
+  <Tag id={`${name}-${id}`} name={name} placeholder={placeholder} {...rest} />
 </Stack>
 
 <style>
