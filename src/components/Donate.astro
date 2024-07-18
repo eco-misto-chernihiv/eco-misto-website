@@ -12,26 +12,8 @@ import Heading from "./ui/Heading.astro";
 import InputGroup from "./ui/InputGroup.astro";
 import Text from "./ui/Text.astro";
 
-const donateData = [
-  {
-    label: "Введіть суму *",
-    formControl: "input",
-    name: "number",
-    placeholder: "0",
-    type: "number",
-    required: true,
-    // pattern: "^[^@]+@[^@]+.[^@]+$",
-  },
-  {
-    label: "Ваша пошта *",
-    formControl: "input",
-    name: "email",
-    placeholder: "marusya@gmail.com",
-    type: "email",
-    required: true,
-    pattern: "^[^@]+@[^@]+.[^@]+$",
-  },
-];
+// Data
+import { donateData } from "@/data/siteData.ts";
 
 const [numberData, emailData] = donateData;
 
@@ -115,6 +97,8 @@ const id = crypto.randomUUID();
   .donate-tabs label {
     color: var(--color-gray-400);
     cursor: pointer;
+
+    transition: color var(--transition-default);
   }
 
   .donate-tabs input[type="radio"] {
@@ -125,7 +109,8 @@ const id = crypto.randomUUID();
     overflow: hidden;
   }
 
-  .donate-tabs input[type="radio"]:checked {
+  .donate-tabs input[type="radio"]:checked,
+  .donate-tabs input[type="radio"]:hover {
     & + label {
       color: var(--color-black);
     }

@@ -129,3 +129,25 @@ export const cooperationData = [
     pattern: "^[^@]+@[^@]+.[^@]+$",
   },
 ];
+
+export const donateData = [
+  {
+    label: "Введіть суму *",
+    formControl: "input",
+    name: "number",
+    placeholder: "0",
+    type: "number",
+    required: true,
+    min: "0",
+    // pattern: "^[^@]+@[^@]+.[^@]+$",
+  },
+  {
+    label: "Ваша пошта *",
+    formControl: "input",
+    name: "email",
+    placeholder: "marusya@gmail.com",
+    type: "email",
+    required: true,
+    pattern: "^[^@]+@[^@]+.[^@]+$",
+  },
+];

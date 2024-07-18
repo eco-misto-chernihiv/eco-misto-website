@@ -100,6 +100,16 @@
   }
 }
 
+.button[data-style="accent"][data-variant="chip"] {
+  --_text-color: var(--color-secondary);
+  --_background-color: var(--color-accent);
+  opacity: 1;
+  transition: opacity var(--transition-default);
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 /* SIZES */
 
 .button[data-size="x-small"] {

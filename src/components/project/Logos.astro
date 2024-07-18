@@ -2,7 +2,6 @@
 import AutoFlex from "../compositions/AutoFlex.astro";
 import Stack from "../compositions/Stack.astro";
 import Text from "../ui/Text.astro";
-
 ---
 
 <div class="logos">
@@ -20,7 +19,7 @@ import Text from "../ui/Text.astro";
       <slot />
     </AutoGrid> -->
     <AutoFlex
-      minItemWidth="128px"
+      minItemWidth="136px"
       space="space-6"
       class="logos-container"
       noStretch
@@ -45,8 +44,8 @@ import Text from "../ui/Text.astro";
     color: var(--color-secondary);
 
     & :global(svg) {
-      width: auto;
-      height: 56px;
+      width: 100%;
+      height: 100%;
       fill: currentColor;
     }
   }

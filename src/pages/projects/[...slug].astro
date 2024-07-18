@@ -24,6 +24,13 @@ import H3 from "../../components/project/H3.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
 import { components } from "@/components/mdxComponents.js";
+import Button from "@/components/ui/Button.astro";
+import SideModal from "@/components/ui/SideModal.astro";
+import Partnership from "@/components/Partnership.astro";
+import MobileMenuModal from "@/components/ui/MobileMenuModal.astro";
+import MobileMenu from "@/components/MobileMenu.astro";
+import { Icon } from "astro-icon/components";
+import Donate from "@/components/Donate.astro";
 
 // Data
 
@@ -113,6 +120,15 @@ const nextProject = isActive
     <Content components={{ ...components, h2: H2, h3: H3 }} />
   </ProjectLayout>
 
+  {
+    isActive ? (
+      <>
+        <div>Написати та Підтримати</div>
+      </>
+    ) : (
+      ""
+    )
+  }
   <!-- <Center
     maxWidth="75rem"
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}

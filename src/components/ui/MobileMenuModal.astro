@@ -155,9 +155,15 @@ import Logo from "../Logo.astro";
 
     color: var(--color-secondary);
 
+    transition: opacity var(--transition-default);
+
     & svg {
       width: var(--_icon-size);
       height: var(--_icon-size);
+    }
+
+    &:hover {
+      opacity: 0.5;
     }
   }
 
