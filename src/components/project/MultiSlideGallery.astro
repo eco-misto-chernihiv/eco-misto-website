@@ -1,12 +1,14 @@
 ---
 // Tools
 import { Picture } from "astro:assets";
+import { getRatio } from "@/lib/helpers";
 
 import Frame from "../compositions/Frame.astro";
 import ArrowIcon from "../ui/ArrowIcon.astro";
 import Center from "../compositions/Center.astro";
 import Cluster from "../compositions/Cluster.astro";
 import SwiperButtons from "./SwiperButtons.astro";
+import Annotation from "./Annotation.astro";
 
 // Compositions
 
@@ -15,9 +17,10 @@ import SwiperButtons from "./SwiperButtons.astro";
 // Data
 
 type Props = {
+  orientation?: "landscape" | "portrait" | "wide" | "square";
   imagePaths: string[];
 };
-const { imagePaths } = Astro.props;
+const { imagePaths, orientation = "landscape" } = Astro.props;
 
 // Assets
 
@@ -34,6 +37,8 @@ imagePaths.forEach((imagePath) => {
       `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
     );
 });
+
+const ratio = getRatio(orientation);
 ---
 
 <div class="multi-slide-gallery">
@@ -45,7 +50,7 @@ imagePaths.forEach((imagePath) => {
 
           return (
             <div class="swiper-slide">
-              <Frame ratio="3:2" class="img-wrapper">
+              <Frame ratio={ratio} class="img-wrapper">
                 <Picture
                   src={images[newPath]()}
                   width={1000}
@@ -78,11 +83,15 @@ imagePaths.forEach((imagePath) => {
       </Center>
     </div>
   </div>
+
+  <Annotation>
+    <slot />
+  </Annotation>
 </div>
 
 <style>
   .multi-slide-gallery {
-    padding-block: var(--space-12-fixed);
+    /* padding-block: var(--space-12-fixed); */
   }
 
   .swiper-slide {

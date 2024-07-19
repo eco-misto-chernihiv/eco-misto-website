@@ -24,13 +24,8 @@ import H3 from "../../components/project/H3.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
 import { components } from "@/components/mdxComponents.js";
-import Button from "@/components/ui/Button.astro";
-import SideModal from "@/components/ui/SideModal.astro";
-import Partnership from "@/components/Partnership.astro";
-import MobileMenuModal from "@/components/ui/MobileMenuModal.astro";
-import MobileMenu from "@/components/MobileMenu.astro";
-import { Icon } from "astro-icon/components";
-import Donate from "@/components/Donate.astro";
+
+import CallToAction from "@/components/project/CallToAction.astro";
 
 // Data
 
@@ -123,22 +118,22 @@ const nextProject = isActive
   {
     isActive ? (
       <>
-        <div>Написати та Підтримати</div>
+        <CallToAction />
       </>
     ) : (
       ""
     )
   }
-  <!-- <Center
-    maxWidth="75rem"
+  <Center
+    maxWidth="68.75rem"
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+    class="pagination"
   >
     <Stack space="space-10">
       <Heading tagName="h3" size="h5">Інші проєкти</Heading>
       <Row
         columnGap={{ default: "space-0", tablet: "space-7" }}
         rowGap={{ default: "space-8", tablet: "space-0" }}
-        class="pagination"
       >
         {
           previousProject && (
@@ -158,7 +153,7 @@ const nextProject = isActive
         }
       </Row>
     </Stack>
-  </Center> -->
+  </Center>
 </BaseLayout>
 
 <style>
@@ -317,6 +312,10 @@ const nextProject = isActive
   }
 
   .pagination {
-    padding-block-end: var(--space-11-fixed);
+    padding-block: var(--space-11-fixed);
+
+    @media (--tablet-and-up) {
+      padding-block: var(--space-13-fixed);
+    }
   }
 </style>

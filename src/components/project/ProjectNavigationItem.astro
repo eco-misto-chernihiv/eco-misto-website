@@ -1,10 +1,17 @@
 ---
+// Tools
 import type { CollectionEntry } from "astro:content";
-import Link from "../ui/Link.astro";
-import Frame from "../compositions/Frame.astro";
 import { Image } from "astro:assets";
-import Heading from "../ui/Heading.astro";
+import { Icon } from "astro-icon/components";
+
+// Compositions
+import Frame from "../compositions/Frame.astro";
 import Stack from "../compositions/Stack.astro";
+import Cluster from "../compositions/Cluster.astro";
+
+// Components
+import Link from "../ui/Link.astro";
+import Heading from "../ui/Heading.astro";
 
 type Props = {
   project: CollectionEntry<"projects">;
@@ -15,7 +22,7 @@ const { project, class: classList } = Astro.props;
 const { title, cover, isCollage } = project.data;
 ---
 
-<article class:list={[classList]}>
+<article class:list={["project-navigation", classList]}>
   <Link
     href={`${Astro.url.origin}/projects/${project.slug}`}
     class="project-navigation-link"
@@ -24,16 +31,39 @@ const { title, cover, isCollage } = project.data;
       <Frame ratio="3:2" class:list={["img-wrapper", { collage: isCollage }]}>
         <Image src={cover} alt="" />
       </Frame>
-      <Heading tagName="h4" size="h6">{title}</Heading>
+      <Cluster noWrap justify="between" alignItems="baseline" space="space-7">
+        <Heading tagName="h4" size="h6">{title}</Heading>
+        <Icon
+          name="icon-arrow-right"
+          aria-hidden="true"
+          focusable="false"
+          class="color-primary"
+        />
+      </Cluster>
     </Stack>
   </Link>
 </article>
 
 <style>
+  .project-navigation {
+    & svg {
+      --_size: var(--space-6);
+
+      inline-size: var(--_size);
+      block-size: var(--_size);
+
+      flex-shrink: 0;
+      transform: translateY(7px) rotate(-45deg);
+
+      transition: transform var(--transition-default);
+    }
+  }
+
   .project-navigation-link {
     inline-size: 100%;
     block-size: 100%;
   }
+
   .img-wrapper {
     background-color: var(--color-accent);
     border-radius: var(--rounded-2xl);

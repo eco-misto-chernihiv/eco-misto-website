@@ -1,12 +1,15 @@
 ---
 import Centered from "./Centered.astro";
+import ProjectRow from "./ProjectRow.astro";
 ---
 
-<Centered>
-  <div class="text-content">
-    <slot />
-  </div>
-</Centered>
+<ProjectRow>
+  <Centered>
+    <div class="text-content">
+      <slot />
+    </div>
+  </Centered>
+</ProjectRow>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";

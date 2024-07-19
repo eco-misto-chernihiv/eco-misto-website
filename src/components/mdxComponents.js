@@ -12,10 +12,12 @@ import Logos from "@/components/project/Logos.astro";
 import Results from "@/components/project/Results.astro";
 import ResultItem from "@/components/project/ResultItem.astro";
 import ResultIcon from "@/components/project/ResultIcon.astro";
-import PhotoGrid from "@/components/project/PhotoGrid.astro";
+import ImageGrid from "@/components/project/ImageGrid.astro";
 import Half from "@/components/project/Half.astro";
 import Full from "@/components/project/Full.astro";
 import ResultList from "@/components/project/ResultList.astro";
+import ProjectRow from "@/components/project/ProjectRow.astro";
+import CallToAction from "@/components/project/CallToAction.astro";
 
 export const components = {
   MultiSlideGallery,
@@ -30,9 +32,11 @@ export const components = {
   Results,
   ResultItem,
   ResultIcon,
-  PhotoGrid,
+  ImageGrid,
   Half,
   Full,
   ResultList,
   Icon,
+  ProjectRow,
+  CallToAction,
 };

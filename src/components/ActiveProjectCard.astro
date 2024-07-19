@@ -27,7 +27,7 @@ const { project, class: classList, ...rest } = Astro.props;
 const { title, description, cover } = project.data;
 ---
 
-<article class:list={[classList]} {...rest}>
+<article class:list={["active-project", classList]} {...rest}>
   <Link href={`/projects/${project.slug}`} class="wrapper">
     <Stack space="space-8">
       <Frame ratio="4:3" class="img-wrapper">
@@ -61,10 +61,7 @@ const { title, description, cover } = project.data;
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .wrapper {
-    width: 100%;
-    text-decoration: none;
-
+  .active-project {
     & svg {
       --_size: var(--space-6);
 
@@ -76,6 +73,11 @@ const { title, description, cover } = project.data;
 
       transition: transform var(--transition-default);
     }
+  }
+
+  .wrapper {
+    width: 100%;
+    text-decoration: none;
   }
 
   .title {
@@ -120,11 +122,11 @@ const { title, description, cover } = project.data;
 
   /* State */
 
-  .wrapper:hover .title {
+  .active-project:hover .title {
     color: var(--color-primary);
   }
 
-  .wrapper:hover .img-wrapper {
+  .active-project:hover .img-wrapper {
     filter: brightness(103%);
 
     & :global(img) {
@@ -133,7 +135,7 @@ const { title, description, cover } = project.data;
     }
   }
 
-  .wrapper:hover svg {
+  .active-project:hover svg {
     transform: translateY(7px) rotate(0deg);
   }
 </style>

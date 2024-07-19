@@ -30,7 +30,7 @@ const swiper1 = new Swiper(".multi-slide-swiper", {
       spaceBetween: 20,
     },
     1100: {
-      slidesPerView: 1.9,
+      slidesPerView: 2.3,
       spaceBetween: 24,
     },
   },

@@ -9,8 +9,8 @@ type Props = {
 const { src } = Astro.props;
 ---
 
-<Centered>
-  <div class="video">
+<div class="video">
+  <Centered>
     <Frame ratio="16:9">
       <iframe
         src={src}
@@ -21,8 +21,8 @@ const { src } = Astro.props;
         loading="lazy"
         allowfullscreen></iframe>
     </Frame>
-  </div>
-</Centered>
+  </Centered>
+</div>
 
 <style>
   .video {

@@ -9,6 +9,7 @@ import Frame from "../compositions/Frame.astro";
 // Components
 import ArrowIcon from "../ui/ArrowIcon.astro";
 import SwiperButtons from "./SwiperButtons.astro";
+import Annotation from "./Annotation.astro";
 
 // Data
 
@@ -75,9 +76,9 @@ const ratio = getRatio(orientation);
     </div>
   </div>
 
-  <div class="annotation">
+  <Annotation>
     <slot />
-  </div>
+  </Annotation>
 </div>
 
 <style>
@@ -141,16 +142,6 @@ const ratio = getRatio(orientation);
 
     @media (--laptop-and-up) {
       --_position: var(--space-8-fixed);
-    }
-  }
-
-  .annotation {
-    margin-block-start: var(--space-4-fixed);
-    text-align: center;
-
-    & > :global(p) {
-      font-size: var(--text-minus-2);
-      color: var(--color-gray-400);
     }
   }
 

@@ -13,7 +13,7 @@ import product2 from "./images/plastic-fantastic/plastic_fantastic_product_002.j
 import product3 from "./images/plastic-fantastic/plastic_fantastic_product_003.jpg";
 import product4 from "./images/plastic-fantastic/plastic_fantastic_product_004.jpg";
 import product5 from "./images/plastic-fantastic/plastic_fantastic_product_005.jpg";
-import plasticTypes from "./images//plastic-fantastic/plastic_types.jpg";
+import plasticTypes from "./images/plastic-fantastic/plastic-types.jpg";
 
 {/* Should start with 'images' */}
 export const workshopImages = [
@@ -30,6 +30,15 @@ export const workshopImages = [
 "images/plastic-fantastic/plastic_fantastic_011.jpg",
 ];
 
+export const equipmentImages = [
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_001.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_002.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_003.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_004.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_005.jpg",
+
+];
+
 <TextContent>
   **Plastic Fantastic** – це бренд, що об'єднує екоактивістів, дизайнерів та
   мейкерів задля дослідження процесів переробки пластику і використання його як
@@ -44,10 +53,17 @@ export const workshopImages = [
   що переповнені й, насправді, мали би бути давно зачиненими.
 </TextContent>
 
+{/* prettier-ignore */}
 <Blockquote>
-  <span>“</span>Ми бачимо майбутнє за локальними майстернями й сортувальними
-  станціями, що займатимуться переробкою вторсировини і формуватимуть навколо
-  себе свідомі спільноти.<span>”</span>
+
+<span>“</span>Ми бачимо майбутнє за локальними майстернями й сортувальними
+станціями, що займатимуться переробкою вторсировини і формуватимуть навколо себе
+свідомі спільноти.
+<span>”</span>
+
+  <BlockquoteFooter>
+  Еко Місто
+</BlockquoteFooter>
 </Blockquote>
 
 <TextContent>
@@ -59,11 +75,13 @@ export const workshopImages = [
 
 </TextContent>
 
-<TextContent>
-  <PhotoGrid>
-    <Full src={plasticTypes} orientation="square" />
-  </PhotoGrid>
-</TextContent>
+{/* prettier-ignore */}
+<Centered>
+
+  <ImageGrid>
+    <Full src={plasticTypes} />
+  </ImageGrid>
+</Centered>
 
 <TextContent>
   <Badge>Підхід</Badge>
@@ -74,32 +92,65 @@ export const workshopImages = [
 
 </TextContent>
 
-<TextContent>ТУТ ФОТО ОБЛАДНАННЯ</TextContent>
+<MultiSlideGallery imagePaths={equipmentImages} orientation="square">
+  Обладнання майстерні Plastic Fantastic
+</MultiSlideGallery>
 
 <TextContent>
-  Теми ресайклінгу та свідомого споживання — ключові у проєкті. Існує багато
-  прикладів того, як різні світові бренди роблять стильні елементи гардеробу зі
-  вторсировини. Втім, в інших галузях якісних продуктів не так багато. У
-  більшості випадків перероблене сміття перетворюється на інше “сміття”, що ніяк
-  не покращує наш побут і не вирішує проблеми із забрудненням. Аби уникнути
-  цього ми керуємось не лише естетичним, а й системним підходом до втілення
-  ідей.
+  <Badge>Локально</Badge>
+  Один раз на місяць ми організовуємо день відкритих дверей в майстерні ресайклінгу
+  Plastic Fantastic і приймаємо на переробку чистий і сухий пластик типу 2 HDPE.
+  Пластик для переробки збирають більше 30 дитячих садочків в Чернігові в рамках
+  довгострокової ініціативи “Кришки на іграшки”.
+
+Пластик 2 HDPE (анл. high depth polietilen) – поліетилен високого тиску – це харчовий, нетоксичний пластик, що може бути переробленим нескінченну кількість разів. Часто використовується в побуті у вигляді кришок від напоїв і рідин, а також флаконів з побутової хімії, засобів гігієни, миючих засобів тощо. Ми приймаємо поліетилен кожну першу суботу місяця після анонсу в телеграм-боті.
+
+Теми ресайклінгу та свідомого споживання — ключові у проєкті. Існує багато
+прикладів того, як різні світові бренди роблять стильні елементи гардеробу зі
+вторсировини. Втім, в інших галузях якісних продуктів не так багато. У
+більшості випадків перероблене сміття перетворюється на інше “сміття”, що ніяк
+не покращує наш побут і не вирішує проблеми із забрудненням. Аби уникнути
+цього ми керуємось не лише естетичним, а й системним підходом до втілення
+ідей.
+
+**В перспективі, ми мріємо про платформу, що об'єднуватиме майстерні і митців по всій Україні, допомогатиме обмінюватись досвідом, а також підтримувати тих, хто починає свій шлях у ресайклінгу.**
+
 </TextContent>
 
+{/* prettier-ignore */}
 <Centered>
-  <PhotoGrid>
+
+  <ImageGrid>
     <Half src={product1} orientation="portrait" />
     <Half src={product2} orientation="portrait" />
     <Half src={product3} orientation="portrait" />
     <Half src={product4} orientation="portrait" />
-  </PhotoGrid>
+  </ImageGrid>
 </Centered>
 
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>Пропозиції</Badge>
+
+    <ResultList>
+      - Крафтові вироби Plastic Fantastic.
+      - Листи з переробленого пластику різної товщини і дизайну.
+      - Індивідуальні та групові воркшопи з ресайклінгу для дорослих і дітей.
+      - Екскурсії для груп школярів і студентів.
+      - Волонтерство, стажування.
+      - Дослідження і практика в рамках дипломних і курсових робіт.
+    </ResultList>
+
+  </TextContent>
+
 <TextContent>
-    Назва “Plastic Fantastic” одночасно зародилася й у наших київських друзів з платформи "Острів". Оскільки маємо схожі цінності, ми прийняли рішення об'єднати зусилля й рухатись спільно на шляху до виконання цілей.
+  <Logos>
+    <Icon name="donors-transition" />
+    <Icon name="partners-ostriv-original" />
+    <Icon name="partners-politehnika-original" />
+    <Icon name="partners-zelenew-original" />
 
-    **В перспективі, ми мріємо про платформу, що об'єднуватиме майстерні і митців по всій Україні, допомогатиме обмінюватись досвідом, а також підтримувати тих, хто починає свій шлях у ресайклінгу.**
-
+  </Logos>
 </TextContent>
 
 <MultiSlideGallery imagePaths={workshopImages} />

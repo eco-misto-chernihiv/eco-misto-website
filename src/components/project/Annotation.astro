@@ -1,0 +1,19 @@
+---
+
+---
+
+<div class="annotation">
+  <slot />
+</div>
+
+<style>
+  .annotation {
+    margin-block-start: var(--space-4-fixed);
+    text-align: center;
+
+    & > :global(p) {
+      font-size: var(--text-minus-2);
+      color: var(--color-gray-400);
+    }
+  }
+</style>

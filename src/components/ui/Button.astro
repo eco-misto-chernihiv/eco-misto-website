@@ -26,6 +26,7 @@ type Props = {
   size?: keyof typeof sizeOptions;
   variant?: keyof typeof variantOptions;
   isDefault?: boolean;
+  isInverted?: boolean;
   [key: string]: any;
 };
 
@@ -36,6 +37,7 @@ const {
   size = "large",
   variant = "button",
   isDefault = true,
+  isInverted = false,
   ...rest
 } = Astro.props;
 
@@ -43,7 +45,12 @@ const Tag = tagName;
 ---
 
 <Tag
-  class:list={["button", classList, { default: isDefault }]}
+  class:list={[
+    "button",
+    classList,
+    { default: isDefault },
+    { inverted: isInverted },
+  ]}
   data-style={styleOptions[style]}
   data-size={sizeOptions[size]}
   data-variant={variantOptions[variant]}

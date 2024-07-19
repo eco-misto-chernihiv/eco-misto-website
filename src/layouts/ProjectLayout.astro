@@ -14,11 +14,11 @@
     /* padding-block-end: var(--space-14-fixed); */
   }
 
-  .content :global(.project-row + .project-row) {
-    margin-block-start: var(--space-10-fixed);
+  .content > :global(*:not(:last-child)) {
+    margin-block-end: var(--space-10-fixed);
 
     @media (--tablet-and-up) {
-      margin-block-start: var(--space-12-fixed);
+      margin-block-end: var(--space-12-fixed);
     }
   }
 

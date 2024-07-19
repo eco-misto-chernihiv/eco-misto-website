@@ -2,11 +2,9 @@
 import Center from "../compositions/Center.astro";
 ---
 
-<div class="project-row">
-  <Center
-    maxWidth="68.75rem"
-    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
-  >
-    <slot />
-  </Center>
-</div>
+<Center
+  maxWidth="68.75rem"
+  space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+>
+  <slot />
+</Center>

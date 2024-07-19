@@ -34,7 +34,7 @@ import Donate from "./Donate.astro";
 
       <Center
         maxWidth="87.5rem"
-        space={{ default: "space-6", tablet: "space-7" }}
+        space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
       >
         <Stack space="space-16">
           <Stack space="space-14">
@@ -54,8 +54,13 @@ import Donate from "./Donate.astro";
             </div>
 
             <Cluster justify="between" space="space-8">
-              <Stack space="space-6" class="support">
-                <Heading tagName="h5" size="h5" class="font-heading">
+              <div class="support">
+                <Text tagName="p" size="large" class="color-secondary">
+                  Громадська організація "Еко Місто Чернігів" — це урбаністична
+                  ініціатива, спрямована на покращення якості життя через
+                  проєкти тактичного урбанізму та формування спільнот.
+                </Text>
+                <!-- <Heading tagName="h5" size="h5" class="font-heading">
                   Подобається,<br />що ми робимо?
                 </Heading>
 
@@ -75,8 +80,8 @@ import Donate from "./Donate.astro";
 
                 <SideModal name="donate-form">
                   <Donate />
-                </SideModal>
-              </Stack>
+                </SideModal> -->
+              </div>
 
               <div class="right">
                 <nav>
@@ -146,6 +151,10 @@ import Donate from "./Donate.astro";
     @media (--laptop-and-up) {
       border-radius: var(--rounded-3xl);
     }
+  }
+
+  .support {
+    max-inline-size: 40ch;
   }
 
   .social {

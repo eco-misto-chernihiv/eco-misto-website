@@ -1,0 +1,170 @@
+---
+// Compositions
+import Center from "../compositions/Center.astro";
+import Row from "../compositions/Row.astro";
+
+// Components
+import Text from "../ui/Text.astro";
+import Heading from "../ui/Heading.astro";
+import Cluster from "../compositions/Cluster.astro";
+import Button from "../ui/Button.astro";
+import SideModal from "../ui/SideModal.astro";
+import Partnership from "../Partnership.astro";
+import { Icon } from "astro-icon/components";
+import Donate from "../Donate.astro";
+import Shape from "../ui/Shape.astro";
+---
+
+<Center
+  class="call-to-action"
+  maxWidth="68.75rem"
+  space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+>
+  <div class="inner">
+    <Row
+      columnGap={{ default: "space-0", tablet: "space-4" }}
+      rowGap={{ default: "space-4", tablet: "space-0" }}
+      class="text"
+    >
+      <Heading tagName="h5" size="h5" class="font-heading col-12 tablet:col-6"
+        >Подобається, що ми робимо?</Heading
+      >
+      <Text tagName="p" size="x-large" class="col-12 tablet:col-6"
+        >Ми відкриті до співпраці й будемо раді будь-якій допомозі: пиши,
+        дзвони, донать, долучайся!</Text
+      >
+    </Row>
+
+    <div class="actions">
+      <Shape class="top" color="white" translateY="-100%" rotate="90deg" />
+      <Shape class="left" color="white" translateX="-100%" rotate="90deg" />
+
+      <div class="wrapper">
+        <Button
+          style="primary"
+          data-open-modal
+          aria-label="Open cooperation form modal"
+          aria-expanded="false"
+          size="small"
+          class="cooperation-button col-12 tablet:col-6"
+          isInverted
+          >Написати
+        </Button>
+
+        <SideModal name="partnership-form">
+          <Partnership />
+        </SideModal>
+
+        <Button
+          style="secondary"
+          size="small"
+          class="support-button col-12 tablet:col-6"
+          data-open-modal
+          aria-label="Open donate form modal"
+          aria-expanded="false"
+          >Підтримати <Icon
+            name="icon-heart"
+            aria-hidden="true"
+            focusable="false"
+          /></Button
+        >
+
+        <SideModal name="donate-form">
+          <Donate />
+        </SideModal>
+      </div>
+    </div>
+  </div>
+</Center>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .call-to-action {
+    margin-block-start: var(--space-11-fixed);
+
+    @media (--tablet-and-up) {
+      margin-block-start: var(--space-13-fixed);
+    }
+  }
+
+  .inner {
+    --_border-radius: var(--rounded-2xl);
+
+    position: relative;
+
+    padding-block: var(--space-7-fixed);
+    padding-inline: var(--space-7-fixed);
+
+    color: var(--color-white);
+    background-color: var(--color-dark-gray);
+
+    border-radius: var(--_border-radius);
+
+    @media (--tablet-and-up) {
+      padding-block-start: var(--space-8-fixed);
+      padding-block-end: var(--space-12-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+
+      padding-inline: var(--space-9-fixed);
+    }
+  }
+
+  .inner .text {
+    margin-block-end: var(--space-6-fixed);
+
+    @media (--tablet-and-up) {
+      margin-block-end: 0;
+    }
+  }
+
+  .actions {
+    & .shape {
+      display: none;
+
+      @media (--tablet-and-up) {
+        display: block;
+      }
+    }
+
+    & .shape.top {
+      top: 1px;
+      right: -1px;
+    }
+    & .shape.left {
+      left: 1px;
+      bottom: -1px;
+    }
+
+    @media (--tablet-and-up) {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      padding-inline-start: var(--space-7-fixed);
+      padding-block-start: var(--space-4-fixed);
+
+      background-color: var(--color-white);
+
+      border-top-left-radius: var(--rounded-2xl);
+    }
+  }
+
+  .actions .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4-fixed);
+
+    @media (--tablet-and-up) {
+      flex-direction: row;
+      width: 23.75rem;
+
+      & > * {
+        flex: 1;
+      }
+    }
+  }
+</style>
