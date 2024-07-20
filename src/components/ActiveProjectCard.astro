@@ -15,6 +15,7 @@ import MyPicture from "./ui/MyPicture.astro";
 import ArrowIcon from "./ui/ArrowIcon.astro";
 import Cluster from "./compositions/Cluster.astro";
 import { Icon } from "astro-icon/components";
+import ProjectCard from "./ProjectCard.astro";
 
 // Data
 type Props = {
@@ -27,10 +28,10 @@ const { project, class: classList, ...rest } = Astro.props;
 const { title, description, cover } = project.data;
 ---
 
-<article class:list={["active-project", classList]} {...rest}>
-  <Link href={`/projects/${project.slug}`} class="wrapper">
+<ProjectCard class:list={["active-project", classList]} {...rest}>
+  <Link href={`/projects/${project.slug}`}>
     <Stack space="space-8">
-      <Frame ratio="4:3" class="img-wrapper">
+      <Frame ratio="4:3" class="cover-wrapper">
         <MyPicture src={cover} width={600} alt="" />
       </Frame>
 
@@ -56,61 +57,20 @@ const { title, description, cover } = project.data;
       </Cluster>
     </Stack>
   </Link>
-</article>
+</ProjectCard>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .active-project {
-    & svg {
-      --_size: var(--space-6);
-
-      inline-size: var(--_size);
-      block-size: var(--_size);
-
-      flex-shrink: 0;
-      transform: translateY(7px) rotate(-45deg);
-
-      transition: transform var(--transition-default);
-    }
-  }
-
-  .wrapper {
-    width: 100%;
-    text-decoration: none;
-  }
-
-  .title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-
-    transition: color var(--transition-default);
-  }
-
-  .description {
-    max-width: 28rem;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-  }
-
-  .img-wrapper {
-    /* height: 28.5rem; */
+  /* Add custom styles to base cover-wrapper */
+  .active-project .cover-wrapper {
     --_border-radius: var(--rounded-2xl);
     --_img-padding: var(--space-4-fixed);
 
     padding: var(--_img-padding);
-    background-color: var(--color-accent);
     border-radius: var(--_border-radius);
 
-    transition: filter 300ms var(--ease-out);
-
     & :global(img) {
-      transition: transform 300ms var(--ease-out);
       object-fit: contain;
     }
 
@@ -118,24 +78,5 @@ const { title, description, cover } = project.data;
       --_border-radius: var(--rounded-3xl);
       --_img-padding: var(--space-9-fixed);
     }
-  }
-
-  /* State */
-
-  .active-project:hover .title {
-    color: var(--color-primary);
-  }
-
-  .active-project:hover .img-wrapper {
-    filter: brightness(103%);
-
-    & :global(img) {
-      /* transform: scale(1.03); */
-      transform: scale3d(1.05, 1.05, 1.05);
-    }
-  }
-
-  .active-project:hover svg {
-    transform: translateY(7px) rotate(0deg);
   }
 </style>

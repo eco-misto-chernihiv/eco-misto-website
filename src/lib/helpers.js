@@ -64,3 +64,15 @@ export function getSortedProjects(projects) {
 export function getProjectIndex(projects, project) {
   return projects.findIndex((p) => p.id === project.id);
 }
+
+/**
+ * Get project time period
+ * @param {Object} period
+ * @returns {String} Time period
+ */
+export function getTimePeriod(period) {
+  const { startYear, startMonth, endYear, endMonth } = period;
+
+  const isSameYear = startYear === endYear ? "" : startYear;
+  return `${startMonth} ${isSameYear} — ${endMonth} ${endYear} р.`;
+}

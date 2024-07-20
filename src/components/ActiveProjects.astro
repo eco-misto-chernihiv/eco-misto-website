@@ -11,6 +11,7 @@ import Stack from "./compositions/Stack.astro";
 import ActiveProjectCard from "./ActiveProjectCard.astro";
 import Heading from "./ui/Heading.astro";
 import Text from "./ui/Text.astro";
+import ProjectCard from "./ProjectCard.astro";
 
 // Data
 
@@ -22,13 +23,6 @@ const sortedProjects = getSortedProjects(projects);
 ---
 
 <Stack space="space-10">
-  <!-- <Stack space="space-3">
-    <Text tagName="p" size="medium" isBadge variant="secondary"
-      >Наша робота</Text
-    >
-    <Heading tagName="h3" size="h5">Активні проєкти</Heading>
-  </Stack> -->
-
   <Heading tagName="h3" size="h5">Основні проєкти</Heading>
   <Row
     columnGap={{
@@ -48,7 +42,8 @@ const sortedProjects = getSortedProjects(projects);
         return (
           <ActiveProjectCard
             project={project}
-            class="active-project-item col-12 tablet:col-6"
+            class="col-12 tablet:col-6"
+            data-active-project
           />
         );
       })
@@ -69,7 +64,7 @@ const sortedProjects = getSortedProjects(projects);
     }
   }
 
-  .active-project-item:nth-of-type(2n) {
+  [data-active-project]:nth-of-type(2n) {
     @media (--tablet-and-up) {
       /* Set the offset in % */
       transform: translateY(calc(var(--_offset) * 1%));
@@ -82,8 +77,8 @@ const sortedProjects = getSortedProjects(projects);
     ".active-projects"
   ) as HTMLElement;
 
-  const activeProjectItem = activeProjects.querySelector(
-    ".active-project-item"
+  const activeProject = activeProjects.querySelector(
+    "[data-active-project]"
   ) as HTMLElement;
 
   // if items number is odd, then do nothing
@@ -102,7 +97,7 @@ const sortedProjects = getSortedProjects(projects);
    * Set item height as a css property on active projects element
    */
   function setItemHeight() {
-    const itemRect = activeProjectItem?.getBoundingClientRect();
+    const itemRect = activeProject?.getBoundingClientRect();
 
     activeProjects.style.setProperty("--item-height", `${itemRect.height}`);
   }

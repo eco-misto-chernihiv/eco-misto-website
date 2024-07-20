@@ -55,6 +55,14 @@ const projects = defineCollection({
       startMonth: z.enum(monthOptions).optional(),
       endYear: z.number().optional(),
       endMonth: z.enum(monthOptions).optional(),
+      period: z
+        .object({
+          startYear: z.number(),
+          startMonth: z.enum(monthOptions),
+          endYear: z.number(),
+          endMonth: z.enum(monthOptions),
+        })
+        .optional(),
     }),
 });
 

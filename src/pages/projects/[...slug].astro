@@ -26,6 +26,7 @@ import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.as
 import { components } from "@/components/mdxComponents.js";
 
 import CallToAction from "@/components/project/CallToAction.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 // Data
 
@@ -124,7 +125,7 @@ const nextProject = isActive
       ""
     )
   }
-  <!-- <Center
+  <Center
     maxWidth="68.75rem"
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
     class="pagination"
@@ -153,7 +154,7 @@ const nextProject = isActive
         }
       </Row>
     </Stack>
-  </Center> -->
+  </Center>
 </BaseLayout>
 
 <style>

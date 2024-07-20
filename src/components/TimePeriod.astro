@@ -1,0 +1,29 @@
+---
+// Components
+import Text from "./ui/Text.astro";
+---
+
+<div class="time-period">
+  <Text tagName="p" size="small" class="color-secondary font-medium"
+    ><slot /></Text
+  >
+</div>
+
+<style>
+  .time-period {
+    width: fit-content;
+
+    background-color: var(--color-accent);
+    border-radius: 9999px;
+
+    padding-inline: var(--space-3);
+    padding-block: calc(var(--space-1) + 1px);
+  }
+
+  .time-period p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+</style>

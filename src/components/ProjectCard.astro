@@ -1,0 +1,85 @@
+---
+type Props = {
+  class?: string;
+  [key: string]: any;
+};
+
+const { class: classList, ...rest } = Astro.props;
+---
+
+<article class:list={["project-card", classList]} {...rest}>
+  <slot />
+</article>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  /* Base styles for a project card,
+    * you can override them inside a component
+    * or use your styles by adding different class
+    * Pay attention to 'class class' selector
+     */
+
+  .project-card :global(a) {
+    inline-size: 100%;
+  }
+
+  .project-card :global(.cover-wrapper) {
+    background-color: var(--color-accent);
+
+    transition: filter 300ms var(--ease-out);
+
+    & :global(img) {
+      transition: transform 300ms var(--ease-out);
+    }
+  }
+
+  .project-card :global(.title) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
+    transition: color var(--transition-default);
+  }
+
+  .project-card :global(.description) {
+    max-width: 28rem;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .project-card :global(svg) {
+    --_size: var(--space-6);
+
+    inline-size: var(--_size);
+    block-size: var(--_size);
+
+    flex-shrink: 0;
+    transform: translateY(7px) rotate(-45deg);
+
+    transition: transform var(--transition-default);
+  }
+
+  /* State */
+
+  .project-card:hover :global(.cover-wrapper) {
+    filter: brightness(103%);
+
+    & :global(img) {
+      /* transform: scale(1.03); */
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+  }
+
+  .project-card:hover :global(.title) {
+    color: var(--color-primary);
+  }
+
+  .project-card:hover :global(svg) {
+    transform: translateY(7px) rotate(0deg);
+  }
+</style>
