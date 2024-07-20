@@ -30,7 +30,7 @@
 .button.default {
   --_radius: var(--rounded-md);
 
-  min-width: 6.25em;
+  min-inline-size: 6.25em;
   font-weight: var(--font-medium);
   padding: var(--space-2) var(--space-5);
 

@@ -7,34 +7,44 @@ import Stack from "../compositions/Stack.astro";
 
 // Components
 import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
 import VideoModal from "@ui/VideoModal.astro";
 import Button from "../ui/Button.astro";
 import ButtonArrow from "../ui/ButtonArrow.astro";
+import { Icon } from "astro-icon/components";
 
 // Data
 const { video } = Astro.props;
 const { thumbnail, title, videoId } = video;
 ---
 
-<div class="video-item">
-  <Stack space="space-7">
-    <div class="img-container">
-      <Image src={thumbnail} alt="" width={480} height={360} />
-    </div>
-    <Heading tagName="h4" size="h6" class="title color-secondary"
-      >{title}</Heading
-    >
-  </Stack>
-
-  <ButtonArrow
-    style="primary"
+<div class="youtube-video">
+  <Button
+    style="ghost"
     data-open-modal
     aria-label="Open youtube video modal"
     aria-expanded="false"
     class="open-btn"
   >
-    Дивитись
-  </ButtonArrow>
+    <Stack space="space-7">
+      <div class="img-container">
+        <Image src={thumbnail} alt="" width={480} height={360} />
+      </div>
+      <Heading tagName="h4" size="h6" class="title color-secondary text-left"
+        >{title}</Heading
+      >
+    </Stack>
+  </Button>
+
+  <div class="arrow-right-container">
+    <Text tagName="span" size="small" class="arrow-right-text">Дивитись</Text>
+    <Icon
+      name="icon-arrow-right"
+      aria-hidden="true"
+      focusable="false"
+      class="color-primary arrow-right"
+    />
+  </div>
 
   <VideoModal>
     <div class="video-container">
@@ -49,17 +59,36 @@ const { thumbnail, title, videoId } = video;
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
-  .video-item {
+  .youtube-video {
     display: flex;
     flex-direction: column;
 
     height: 100%;
-
-    & button[data-open-modal] {
-      margin-block-start: auto;
-      padding-block-start: var(--space-5-fixed);
-    }
   }
+
+  .youtube-video .arrow-right-container {
+    align-self: flex-start;
+    flex-shrink: 0;
+
+    display: flex;
+    gap: var(--space-1);
+    margin-block-start: auto;
+    padding-block-start: var(--space-5-fixed);
+
+    color: var(--color-primary);
+  }
+
+  /* .archive-project .arrow-right-container {
+    align-self: flex-end;
+
+
+
+    margin-inline-start: auto;
+
+    @media (--tablet-and-up) {
+      align-self: auto;
+    }
+  } */
 
   .img-container {
     aspect-ratio: 1.8;
@@ -76,19 +105,36 @@ const { thumbnail, title, videoId } = video;
     }
   }
 
-  button[data-open-modal] {
-    align-self: flex-start;
-
-    font-size: var(--text-minus-1);
+  .youtube-video button[data-open-modal] {
+    min-inline-size: auto;
+    padding: 0;
   }
 
-  .title {
+  .youtube-video .title {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
 
     font-size: var(--text-1);
+
+    transition: color var(--transition-default);
+  }
+
+  .youtube-video .arrow-right {
+    transform: translateY(0px) rotate(-45deg);
+
+    transition: transform var(--transition-default);
+  }
+
+  /* State */
+
+  .youtube-video:hover .title {
+    color: var(--color-primary);
+  }
+
+  .youtube-video:hover .arrow-right {
+    transform: translateY(0px) rotate(0deg);
   }
 </style>
 
