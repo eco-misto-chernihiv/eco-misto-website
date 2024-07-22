@@ -19,8 +19,7 @@ const { thumbnail, title, videoId } = video;
 ---
 
 <div class="youtube-video">
-  <Button
-    style="ghost"
+  <button
     data-open-modal
     aria-label="Open youtube video modal"
     aria-expanded="false"
@@ -34,17 +33,17 @@ const { thumbnail, title, videoId } = video;
         >{title}</Heading
       >
     </Stack>
-  </Button>
 
-  <div class="arrow-right-container">
-    <Text tagName="span" size="small" class="arrow-right-text">Дивитись</Text>
-    <Icon
-      name="icon-arrow-right"
-      aria-hidden="true"
-      focusable="false"
-      class="color-primary arrow-right"
-    />
-  </div>
+    <div class="arrow-right-container">
+      <Text tagName="span" size="small" class="arrow-right-text">Дивитись</Text>
+      <Icon
+        name="icon-arrow-right"
+        aria-hidden="true"
+        focusable="false"
+        class="color-primary arrow-right"
+      />
+    </div>
+  </button>
 
   <VideoModal>
     <div class="video-container">
@@ -60,10 +59,17 @@ const { thumbnail, title, videoId } = video;
 <style>
   @import "@styles/04-utilities/breakpoints.css";
   .youtube-video {
+    height: 100%;
+  }
+
+  .youtube-video .open-btn {
     display: flex;
     flex-direction: column;
 
     height: 100%;
+
+    border: none;
+    background: transparent;
   }
 
   .youtube-video .arrow-right-container {
