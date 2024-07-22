@@ -1,9 +1,9 @@
 import { a as createComponent, b as renderTemplate, m as maybeRenderHead, g as addAttribute, d as renderComponent, f as createAstro, e as renderSlot, F as Fragment, h as defineStyleVars, s as spreadAttributes } from './astro/server_DpbLoD-d.mjs';
-import { k as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, p as achievmentsData, a as $$Stack, h as $$Icon, l as $$Button, q as parseTitle, m as $$SideModal, g as getSortedProjects, c as $$BaseLayout } from './BaseLayout_B6LxzPtz.mjs';
-import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_DDFDTGuL.mjs';
+import { k as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, p as achievmentsData, a as $$Stack, h as $$Icon, l as $$Button, q as parseTitle, m as $$SideModal, g as getSortedProjects, c as $$BaseLayout } from './BaseLayout_COJ-lBUc.mjs';
+import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_4EC9m0Kf.mjs';
 /* empty css                         */
-import { a as $$AutoGrid, $ as $$EmptyShape, b as $$Partnership } from './Partnership_iwCWb3TH.mjs';
-import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_N8LG7zU6.mjs';
+import { a as $$AutoGrid, $ as $$EmptyShape, b as $$Partnership } from './Partnership_1Uz3k6qO.mjs';
+import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_CHeOvnXI.mjs';
 
 const $$Astro$5 = createAstro();
 const $$Achievment = createComponent(($$result, $$props, $$slots) => {
@@ -139,7 +139,7 @@ const $$YoutubeVideo = createComponent(($$result, $$props, $$slots) => {
 }, "/Volumes/Media HD/Web Development/ecomisto/src/components/home/YoutubeVideo.astro", void 0);
 
 const $$Youtube = createComponent(async ($$result, $$props, $$slots) => {
-  const apiKey = "AIzaSyBmpgxH69C5mdjd_e08w_FBazkZTB9hUgE";
+  const apiKey = process.env.YOUTUBE_API_KEY;
   const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
   let youtubeVideos = [];
   try {

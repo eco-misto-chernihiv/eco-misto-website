@@ -1,5 +1,5 @@
 import { a as createComponent, b as renderTemplate, d as renderComponent } from './astro/server_DpbLoD-d.mjs';
-import { b as $$Center, e as $$Cluster, a as $$Stack, $ as $$Heading, f as $$Text, c as $$BaseLayout } from './BaseLayout_B6LxzPtz.mjs';
+import { b as $$Center, e as $$Cluster, a as $$Stack, $ as $$Heading, f as $$Text, c as $$BaseLayout } from './BaseLayout_COJ-lBUc.mjs';
 /* empty css                              */
 
 const $$Typography = createComponent(($$result, $$props, $$slots) => {

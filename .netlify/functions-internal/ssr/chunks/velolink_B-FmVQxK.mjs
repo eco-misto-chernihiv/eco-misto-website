@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./velolink_DgMzwlav.mjs');
+						return import('./velolink_HW7HqWuS.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

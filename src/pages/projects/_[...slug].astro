@@ -82,27 +82,33 @@ const nextProject = isActive
 ---
 
 <BaseLayout>
-  <Section class="hero" color="white">
+  <Section class="hero" isRoundBottom color="secondary">
     <Center
-      maxWidth="80rem"
+      maxWidth="87.5rem"
       space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
     >
-      <div class="wrapper">
+      <Stack space={{ default: "space-6", tablet: "space-0" }} class="wrapper">
         <div class="text-wrapper">
+          <Shape color="secondary" class="top" />
+          <Shape color="secondary" class="bottom" rotate="270deg" />
           <Stack space="space-2" class="hero-text">
             <Heading
               tagName="h1"
               size="h3"
-              class="title font-heading color-secondary">{title}</Heading
+              class="title font-heading color-primary">{title}</Heading
             >
-            <Text tagName="p" size="large">{description}</Text>
+            <Text tagName="p" size="large" class="color-accent"
+              >{description}</Text
+            >
           </Stack>
         </div>
 
-        <div class:list={["hero-img", { collage: isCollage }]}>
-          <MyPicture src={cover} alt="" width={1120} />
+        <div class="img-wrapper">
+          <div class:list={["hero-img", { collage: isCollage }]}>
+            <MyPicture src={cover} alt="" width={1120} />
+          </div>
         </div>
-      </div>
+      </Stack>
     </Center>
   </Section>
 
@@ -160,11 +166,11 @@ const nextProject = isActive
     --_padding: var(--space-11-fixed);
 
     padding-block-start: calc(var(--_padding) + var(--header-height));
+    padding-block-end: var(--space-11-fixed);
 
-    /* padding-block-end: var(--space-11-fixed); */
-
+    background-color: var(--color-secondary);
     @media (--tablet-and-up) {
-      --_padding: var(--space-13-fixed);
+      --_padding: var(--space-16-fixed);
     }
 
     @media (--laptop-and-up) {
@@ -174,52 +180,102 @@ const nextProject = isActive
   }
 
   .wrapper {
-    display: grid;
-    gap: var(--space-6-fixed);
-
-    @media (--tablet-and-up) {
-      gap: var(--space-8-fixed);
-    }
-
-    @media (--laptop-and-up) {
-      grid-template-columns: max-content 1fr;
-      gap: var(--space-6-fixed);
-    }
+    position: relative;
   }
 
   .text-wrapper {
-  }
+    & .shape {
+      display: none;
+    }
 
-  .hero-text {
-    max-width: 60ch;
-    margin-inline: auto;
+    @media (--tablet-and-up) {
+      position: absolute;
+      top: -5rem;
 
-    text-align: center;
+      /* min-height: 14.5rem; */
 
-    & .title {
+      & .shape {
+        display: block;
+      }
+
+      & .shape.top {
+        top: 0px;
+        right: 0px;
+        transform: translateY(calc(100% + 2.5rem)) translateX(100%)
+          rotate(270deg);
+        margin-block-start: -1px;
+        margin-inline-end: 1px;
+      }
+
+      & .shape.bottom {
+        bottom: 1px;
+        left: -1px;
+        transform: translateY(100%) rotate(270deg);
+      }
     }
 
     @media (--laptop-and-up) {
+      width: 100%;
+
+      position: absolute;
+      top: 6rem;
+
+      & .shape.top {
+        top: 2px;
+        left: var(--_offset-left);
+        margin-left: -1px;
+        transform: translateY(-100%) rotate(180deg);
+      }
+      & .shape.bottom {
+        bottom: 1px;
+        left: var(--_offset-left);
+        margin-left: -1px;
+        transform: translateY(100%) rotate(270deg);
+      }
+    }
+  }
+
+  .hero-text {
+    & .title {
+    }
+
+    @media (--tablet-and-up) {
       /* min-width: fit-content; */
-      /* max-width: 26rem; */
-      /* padding-block-start: var(--space-15-fixed); */
-      padding-block-start: clamp(6rem, 8vw, 10rem);
-      max-width: 35ch;
-      margin-inline: 0;
-      text-align: left;
+      max-width: 26rem;
+      padding-inline-end: var(--space-9-fixed);
+      padding-block-end: var(--space-4-fixed);
+
+      background-color: var(--color-secondary);
+
+      border-bottom-right-radius: var(--_border-radius);
+    }
+
+    @media (--laptop-and-up) {
+      /* TODO: adjust max width */
+
+      max-width: 30.5rem;
+
+      padding-inline-end: var(--space-4-fixed);
+      padding-block: var(--space-7-fixed);
+
+      border-top-right-radius: var(--_border-radius);
+      border-bottom-right-radius: var(--_border-radius);
+
+      /* transform: translateX(10%); */
     }
   }
 
   .img-wrapper {
+    @media (--laptop-and-up) {
+      padding-left: var(--_offset-left);
+    }
   }
 
   .hero-img {
-    /* isolate stacking context */
-    isolation: isolate;
-    /* --_height: 24rem; */
+    --_height: 24rem;
 
-    /* inline-size: 100%; */
-    /* block-size: var(--_height); */
+    inline-size: 100%;
+    block-size: var(--_height);
 
     background-color: var(--color-accent);
 
@@ -238,37 +294,21 @@ const nextProject = isActive
     }
 
     &.collage {
-      position: relative;
-      background-color: transparent;
-      z-index: 2;
-      /* padding: var(--space-4-fixed); */
-    }
-
-    &.collage::before {
-      content: "";
-      display: block;
-      position: absolute;
-      background-color: var(--color-accent);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      width: 90%;
-      height: 90%;
-
-      border-radius: var(--_border-radius);
+      padding: var(--space-4-fixed);
     }
 
     &.collage > :global(picture),
     &.collage > :global(picture) > :global(img) {
+      object-fit: contain;
+      object-position: right 50%;
     }
 
     @media (--tablet-and-up) {
-      /* --_height: 35rem; */
+      --_height: 35rem;
     }
 
     @media (--laptop-and-up) {
-      /* --_height: 40rem; */
+      --_height: 40rem;
     }
   }
 

@@ -74,7 +74,7 @@ function _createMdxContent(props) {
         })]
       }), createVNode(BlockquoteFooter, {
         children: createVNode(_components.p, {
-          children: "Еко Місто"
+          children: "Громадська організація “Еко Місто”"
         })
       })]
     }), "\n", createVNode(TextContent, {

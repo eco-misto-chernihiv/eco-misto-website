@@ -99,11 +99,7 @@ function _createMdxContent(props) {
         children: [createVNode(Icon, {
           name: "donors-usaid"
         }), createVNode(Icon, {
-          name: "donors-usaid"
-        }), createVNode(Icon, {
           name: "partners-ostriv-original"
-        }), createVNode(Icon, {
-          name: "donors-usaid"
         }), createVNode(Icon, {
           name: "partners-politehnika-original"
         })]

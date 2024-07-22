@@ -119,14 +119,21 @@ import Donate from "./Donate.astro";
     --_border-radius: var(--rounded-3xl);
 
     width: 100%;
+    padding-inline: var(--space-5-fixed);
     padding-block: var(--space-1-fixed);
 
     border-radius: var(--_border-radius);
+
+    background-color: var(--color-secondary);
 
     transition:
       background-color 200ms var(--ease),
       padding 200ms var(--ease),
       border-radius 200ms var(--ease);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-7-fixed);
+    }
 
     @media (--tablet-l-and-up) {
       padding-block: var(--space-3-fixed);
@@ -154,7 +161,7 @@ import Donate from "./Donate.astro";
   }
 
   header.fixed .wrapper {
-    padding-inline: var(--space-5-fixed);
+    /* padding-inline: var(--space-5-fixed); */
 
     background-color: var(--color-primary);
 
@@ -162,10 +169,6 @@ import Donate from "./Donate.astro";
       background-color 300ms var(--ease),
       padding 300ms var(--ease),
       border-radius 300ms var(--ease); */
-
-    @media (--tablet-and-up) {
-      padding-inline: var(--space-7-fixed);
-    }
   }
 
   /* Somehow i can't target nav from here, so is use :global directive */

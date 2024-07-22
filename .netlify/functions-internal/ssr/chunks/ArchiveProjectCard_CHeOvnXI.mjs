@@ -1,6 +1,6 @@
 import { a as createComponent, b as renderTemplate, d as renderComponent, f as createAstro, e as renderSlot, m as maybeRenderHead } from './astro/server_DpbLoD-d.mjs';
-import { c as $$ProjectCard, a as $$Frame, e as $$MyPicture, g as getCollection, d as $$Row, b as $$TimePeriod } from './TimePeriod_DDFDTGuL.mjs';
-import { d as $$Link, a as $$Stack, e as $$Cluster, $ as $$Heading, f as $$Text, h as $$Icon, g as getSortedProjects, i as getTimePeriod } from './BaseLayout_B6LxzPtz.mjs';
+import { c as $$ProjectCard, a as $$Frame, e as $$MyPicture, g as getCollection, d as $$Row, b as $$TimePeriod } from './TimePeriod_4EC9m0Kf.mjs';
+import { d as $$Link, a as $$Stack, e as $$Cluster, $ as $$Heading, f as $$Text, h as $$Icon, g as getSortedProjects, i as getTimePeriod } from './BaseLayout_COJ-lBUc.mjs';
 /* empty css                         */
 import { $ as $$Image } from './_astro_assets_DWB9kGPJ.mjs';
 
@@ -26,7 +26,7 @@ const $$ActiveProjects = createComponent(async ($$result, $$props, $$slots) => {
     laptop: "space-14"
   }, "class": "active-projects", "data-astro-cid-5lhaoq7t": true }, { "default": ($$result3) => renderTemplate`${sortedProjects.map((project) => {
     return renderTemplate`${renderComponent($$result3, "ActiveProjectCard", $$ActiveProjectCard, { "project": project, "class": "col-12 tablet:col-6", "data-active-project": true, "data-astro-cid-5lhaoq7t": true })}`;
-  })}` })} ` })}  `;
+  })}` })} ` })} `;
 }, "/Volumes/Media HD/Web Development/ecomisto/src/components/ActiveProjects.astro", void 0);
 
 const $$Astro$1 = createAstro();

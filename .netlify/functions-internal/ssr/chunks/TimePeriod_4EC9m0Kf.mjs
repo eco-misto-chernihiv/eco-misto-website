@@ -2,7 +2,7 @@ import { a as createComponent, h as defineStyleVars, b as renderTemplate, m as m
 /* empty css                         */
 import { AsyncResource } from 'async_hooks';
 import { A as AstroError, U as UnknownContentCollectionError, p as prependForwardSlash } from './astro/assets-service_C2aiabpb.mjs';
-import { u as getBreakpoints, f as $$Text } from './BaseLayout_B6LxzPtz.mjs';
+import { u as getBreakpoints, f as $$Text } from './BaseLayout_COJ-lBUc.mjs';
 import { a as $$Picture } from './_astro_assets_DWB9kGPJ.mjs';
 
 const $$Astro$4 = createAstro();
@@ -325,7 +325,7 @@ function isPropagatedAssetsModule(module) {
 
 const contentDir = '/src/content/';
 
-const contentEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/projects/city-makers.mdx": () => import('./city-makers_yfr9RLkg.mjs'),"/src/content/projects/maysternya-mista.mdx": () => import('./maysternya-mista_wvwIrX4C.mjs'),"/src/content/projects/peremoha-lab.mdx": () => import('./peremoha-lab_D5mz7Z3Z.mjs'),"/src/content/projects/plastic-fantastic.mdx": () => import('./plastic-fantastic_diVz8i3F.mjs'),"/src/content/projects/prostir-diy.mdx": () => import('./prostir-diy_B_JPJ3AY.mjs'),"/src/content/projects/supersorters.mdx": () => import('./supersorters_CY6DLRtp.mjs'),"/src/content/projects/velokuhnya.mdx": () => import('./velokuhnya_CGrPHBtA.mjs'),"/src/content/projects/velolink.mdx": () => import('./velolink_DqNlQosb.mjs')});
+const contentEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/projects/city-makers.mdx": () => import('./city-makers_yfr9RLkg.mjs'),"/src/content/projects/maysternya-mista.mdx": () => import('./maysternya-mista_wvwIrX4C.mjs'),"/src/content/projects/peremoha-lab.mdx": () => import('./peremoha-lab_D5mz7Z3Z.mjs'),"/src/content/projects/plastic-fantastic.mdx": () => import('./plastic-fantastic_1IPCMJ7e.mjs'),"/src/content/projects/prostir-diy.mdx": () => import('./prostir-diy_B_JPJ3AY.mjs'),"/src/content/projects/supersorters.mdx": () => import('./supersorters_CY6DLRtp.mjs'),"/src/content/projects/velokuhnya.mdx": () => import('./velokuhnya_CGrPHBtA.mjs'),"/src/content/projects/velolink.mdx": () => import('./velolink_COmWqu8Q.mjs')});
 const contentCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: contentEntryGlob,
 	contentDir,
@@ -342,7 +342,7 @@ createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"members":{"type":"data","entries":{"sergiy-bezborodko":"/src/content/members/sergiy-bezborodko.yaml"}},"projects":{"type":"content","entries":{"peremoha-lab":"/src/content/projects/peremoha-lab.mdx","maysternya-mista":"/src/content/projects/maysternya-mista.mdx","city-makers":"/src/content/projects/city-makers.mdx","plastic-fantastic":"/src/content/projects/plastic-fantastic.mdx","prostir-diy":"/src/content/projects/prostir-diy.mdx","supersorters":"/src/content/projects/supersorters.mdx","velokuhnya":"/src/content/projects/velokuhnya.mdx","velolink":"/src/content/projects/velolink.mdx"}}};
+lookupMap = {"members":{"type":"data","entries":{"sergiy-bezborodko":"/src/content/members/sergiy-bezborodko.yaml"}},"projects":{"type":"content","entries":{"maysternya-mista":"/src/content/projects/maysternya-mista.mdx","city-makers":"/src/content/projects/city-makers.mdx","peremoha-lab":"/src/content/projects/peremoha-lab.mdx","plastic-fantastic":"/src/content/projects/plastic-fantastic.mdx","prostir-diy":"/src/content/projects/prostir-diy.mdx","supersorters":"/src/content/projects/supersorters.mdx","velokuhnya":"/src/content/projects/velokuhnya.mdx","velolink":"/src/content/projects/velolink.mdx"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {
@@ -353,7 +353,7 @@ function createGlobLookup(glob) {
 	};
 }
 
-const renderEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/projects/city-makers.mdx": () => import('./city-makers_JhFEc57v.mjs'),"/src/content/projects/maysternya-mista.mdx": () => import('./maysternya-mista_zWBsPWru.mjs'),"/src/content/projects/peremoha-lab.mdx": () => import('./peremoha-lab_B_mFr2rw.mjs'),"/src/content/projects/plastic-fantastic.mdx": () => import('./plastic-fantastic_CANnY7n4.mjs'),"/src/content/projects/prostir-diy.mdx": () => import('./prostir-diy_B5_f3tq8.mjs'),"/src/content/projects/supersorters.mdx": () => import('./supersorters_CSDA4dDP.mjs'),"/src/content/projects/velokuhnya.mdx": () => import('./velokuhnya_DWQ4-89N.mjs'),"/src/content/projects/velolink.mdx": () => import('./velolink_DKGmtjkn.mjs')});
+const renderEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/projects/city-makers.mdx": () => import('./city-makers_JhFEc57v.mjs'),"/src/content/projects/maysternya-mista.mdx": () => import('./maysternya-mista_zWBsPWru.mjs'),"/src/content/projects/peremoha-lab.mdx": () => import('./peremoha-lab_B_mFr2rw.mjs'),"/src/content/projects/plastic-fantastic.mdx": () => import('./plastic-fantastic_BBWaDHXH.mjs'),"/src/content/projects/prostir-diy.mdx": () => import('./prostir-diy_B5_f3tq8.mjs'),"/src/content/projects/supersorters.mdx": () => import('./supersorters_CSDA4dDP.mjs'),"/src/content/projects/velokuhnya.mdx": () => import('./velokuhnya_DWQ4-89N.mjs'),"/src/content/projects/velolink.mdx": () => import('./velolink_B-FmVQxK.mjs')});
 const collectionToRenderEntryMap = createCollectionToGlobResultMap({
 	globResult: renderEntryGlob,
 	contentDir,

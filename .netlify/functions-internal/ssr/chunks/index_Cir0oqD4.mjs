@@ -1,11 +1,11 @@
 import { a as createComponent, b as renderTemplate, d as renderComponent } from './astro/server_DpbLoD-d.mjs';
-import { $ as $$Heading, g as getSortedProjects, a as $$Stack, b as $$Center, c as $$BaseLayout } from './BaseLayout_B6LxzPtz.mjs';
-import { $ as $$Section, g as getCollection } from './TimePeriod_DDFDTGuL.mjs';
+import { $ as $$Heading, g as getSortedProjects, a as $$Stack, b as $$Center, c as $$BaseLayout } from './BaseLayout_COJ-lBUc.mjs';
+import { $ as $$Section, g as getCollection } from './TimePeriod_4EC9m0Kf.mjs';
 /* empty css                         */
-import { $ as $$ArchiveProjectCard, a as $$ButtonArrow, b as $$ActiveProjects } from './ArchiveProjectCard_N8LG7zU6.mjs';
+import { $ as $$ArchiveProjectCard, a as $$ButtonArrow, b as $$ActiveProjects } from './ArchiveProjectCard_CHeOvnXI.mjs';
 
 const $$Hero = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "class": "hero", "isRoundBottom": true, "data-astro-cid-lkf2ngmc": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Heading", $$Heading, { "tagName": "h1", "size": "h3", "class": "color-primary", "data-astro-cid-lkf2ngmc": true }, { "default": ($$result3) => renderTemplate`Проєкти` })} ` })} `;
+  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "class": "hero", "isRoundBottom": true, "data-astro-cid-lkf2ngmc": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Heading", $$Heading, { "tagName": "h1", "size": "h3", "class": "color-primary", "data-astro-cid-lkf2ngmc": true }, { "default": ($$result3) => renderTemplate`Наші проєкти` })} ` })} `;
 }, "/Volumes/Media HD/Web Development/ecomisto/src/components/projects/Hero.astro", void 0);
 
 const $$ArchiveProjects = createComponent(async ($$result, $$props, $$slots) => {

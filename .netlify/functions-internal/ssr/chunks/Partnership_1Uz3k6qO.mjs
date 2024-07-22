@@ -1,6 +1,6 @@
 import { a as createComponent, h as defineStyleVars, b as renderTemplate, m as maybeRenderHead, g as addAttribute, s as spreadAttributes, e as renderSlot, f as createAstro, d as renderComponent } from './astro/server_DpbLoD-d.mjs';
 /* empty css                         */
-import { $ as $$Heading, f as $$Text, a as $$Stack, r as cooperationData, s as $$InputGroup, t as $$UserDataAgreement, l as $$Button } from './BaseLayout_B6LxzPtz.mjs';
+import { $ as $$Heading, f as $$Text, a as $$Stack, r as cooperationData, s as $$InputGroup, t as $$UserDataAgreement, l as $$Button } from './BaseLayout_COJ-lBUc.mjs';
 
 const $$Astro$1 = createAstro();
 const $$EmptyShape = createComponent(($$result, $$props, $$slots) => {

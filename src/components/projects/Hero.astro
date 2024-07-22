@@ -9,27 +9,33 @@ import Section from "../ui/Section.astro";
 ---
 
 <Section class="hero" isRoundBottom>
-    <Heading tagName="h1" size="h3" class="color-primary">Проєкти</Heading>
-  </Section>
+  <Heading tagName="h1" size="h3" class="color-primary">Наші проєкти</Heading>
+</Section>
 
-  <style>
-     @import "@styles/04-utilities/breakpoints.css";
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
 
-.hero {
-  --_hero-height: calc(17rem + var(--header-height));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--_hero-height);
-  padding-block: var(--header-height);
-  background-color: var(--color-secondary);
+  .hero {
+    --_padding: var(--space-9-fixed);
+    /* --_hero-height: var(--header-height); */
 
-  @media (--tablet-and-up) {
-    --_hero-height: calc(19rem + var(--header-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-block-start: calc(var(--_padding) + var(--header-height));
+    padding-block-end: var(--_padding);
+
+    background-color: var(--color-secondary);
+
+    @media (--tablet-and-up) {
+      --_padding: var(--space-10-fixed);
+      /* --_hero-height: calc(19rem + var(--header-height)); */
+    }
+
+    @media (--laptop-and-up) {
+      --_padding: var(--space-11-fixed);
+      /* --_hero-height: calc(25rem + var(--header-height)); */
+    }
   }
-
-  @media (--laptop-and-up) {
-    --_hero-height: calc(25rem + var(--header-height));
-  }
-}
-  </style>
+</style>
