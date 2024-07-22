@@ -12,7 +12,7 @@ import Stack from "../compositions/Stack.astro";
 // Components
 import Heading from "@ui/Heading.astro";
 import YoutubeVideo from "./YoutubeVideo.astro";
-import DummyVideo from "./DummyVideo.astro";
+import DummyVideo from "./_DummyVideo.astro";
 
 // Data
 // const apiKey = import.meta.env.YOUTUBE_API_KEY;
@@ -38,7 +38,7 @@ try {
 
   const data = await response.json();
 
-  console.log(data.items);
+  // console.log(data.items);
 
   // Get desired data shape
   // &#39;
@@ -49,6 +49,8 @@ try {
       videoId: item.id.videoId,
     };
   });
+
+  console.log(youtubeVideos);
 } catch (error) {
   console.log(error);
   console.log("Error fetching youtube videos");
@@ -63,17 +65,7 @@ try {
       <AutoGrid role="list" minItemWidth="265px">
         {
           youtubeVideos.length === 0 ? (
-            <>
-              <DummyVideo
-                title={`Онлайн-лекція "Майбутнє Кривого Рогу через призму інтегрованого урбан
-      дизайну"`}
-              />
-              <DummyVideo
-                title={`Онлайн-лекція "Майбутнє Кривого Рогу через призму інтегрованого урбан
-      дизайну"`}
-              />
-              <DummyVideo title={`Онлайн-лекція "Майбутнє"`} />
-            </>
+            <></>
           ) : (
             youtubeVideos.map((video) => {
               return (

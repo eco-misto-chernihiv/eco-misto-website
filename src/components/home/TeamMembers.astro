@@ -13,7 +13,7 @@ import TeamMember from "./TeamMember.astro";
 const members = await getCollection("members");
 ---
 
-<Reel role="list" thumbColor="secondary" trackColor="white" class="members">
+<!-- <Reel role="list" thumbColor="secondary" trackColor="white" class="members">
   {
     members.map((member) => {
       return (
@@ -27,7 +27,7 @@ const members = await getCollection("members");
 
 <AutoGrid
   minItemWidth="220px"
-  maxColumns="4"
+  maxColumns="1"
   space="space-6"
   role="list"
   class="members tablet"
@@ -41,12 +41,18 @@ const members = await getCollection("members");
       );
     })
   }
-</AutoGrid>
+</AutoGrid> -->
+<div class="members-test">
+  <TeamMember member={members[0]} />
+</div>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  div[role="listitem"] {
+  /* TODO: Remove later */
+  .members-test {
+    min-width: 220px;
+    max-width: 320px;
   }
 
   .members {
