@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "@styles/react/YoutubeReactVideos.module.css";
 // import "@styles/main.css";
 
-import Modal from "./Modal";
+import Modal from "./_Modal";
 
 export const YoutubeReactVideos = ({ apiKey, channelId }) => {
   const [videos, setVideos] = useState([]);

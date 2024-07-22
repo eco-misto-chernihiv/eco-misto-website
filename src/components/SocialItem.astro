@@ -11,7 +11,7 @@ const { title, href, icon } = socialItem;
 ---
 
 <li>
-  <Link href={href} isExternal target="_blank">
+  <Link href={href} aria-label={title} isExternal target="_blank">
     <span class="social-link">
       <Icon name={icon} size={20} />
     </span>

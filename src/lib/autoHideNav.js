@@ -7,8 +7,9 @@
 
 function autoHideNav(navSelector, hideThreshold) {
   const nav = document.querySelector(navSelector);
+
   // Get nav height
-  const navHeight = nav.getBoundingClientRect().height;
+  // const navHeight = nav.getBoundingClientRect().height;
 
   const HEADER_HIDE_THRESHOLD = hideThreshold;
 
@@ -24,10 +25,10 @@ function autoHideNav(navSelector, hideThreshold) {
       currentScrollPosition > previousScrollPosition ? "downwards" : "upwards";
 
     // Get scroll difference
-    const difference = currentScrollPosition - previousScrollPosition;
+    // const difference = currentScrollPosition - previousScrollPosition;
 
     // Get current nav top position
-    const currentNavTop = parseFloat(getComputedStyle(nav).top);
+    // const currentNavTop = parseFloat(getComputedStyle(nav).top);
 
     if (
       direction === "downwards" &&

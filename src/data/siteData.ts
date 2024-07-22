@@ -1,7 +1,7 @@
 export const baseData = {
-  title: "Eco-misto",
+  title: "Громадська організація “Еко Місто”",
   description:
-    "Ecomisto is a non-profit social organization dedicated to promoting environmental sustainability and eco-friendly practices within local communities.",
+    "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
 };
 
 export const navData = [
@@ -62,7 +62,7 @@ export const socialData = [
   },
   {
     title: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/eco-misto",
     icon: "icon-linkedin",
   },
 ];
