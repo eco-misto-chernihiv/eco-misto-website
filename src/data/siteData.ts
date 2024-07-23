@@ -93,7 +93,7 @@ export const cooperationData = [
     placeholder: "Костя",
     type: "text",
     required: true,
-    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,20}",
+    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,20}$",
   },
   {
     label: "Я з організації *",
