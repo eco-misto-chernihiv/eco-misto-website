@@ -22,7 +22,7 @@ const { thumbnail, title, videoId } = video;
     aria-expanded="false"
     class="open-btn"
   >
-    <Stack space="space-7">
+    <Stack space="space-7" class="content-container">
       <div class="img-container">
         <!-- <Image src={thumbnail} alt="" width={480} height={360} /> -->
         <img src={thumbnail} alt="" width="480" height="360" />
@@ -65,9 +65,14 @@ const { thumbnail, title, videoId } = video;
     flex-direction: column;
 
     height: 100%;
+    width: 100%;
 
     border: none;
     background: transparent;
+  }
+
+  .youtube-video .content-container {
+    width: 100%;
   }
 
   .youtube-video .arrow-right-container {

@@ -11,7 +11,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: add site: 'https://ecomisto.org'
+  site: "https://ecomisto.org",
   integrations: [react(), purgecss(), mdx(), icon()],
   devToolbar: {
     enabled: false,

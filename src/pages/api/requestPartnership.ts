@@ -42,16 +42,18 @@ export const POST: APIRoute = async ({ request }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          phone: "0",
-          data: {
-            name,
-            organisation: organization,
-            topic: message,
-            found_out_from: source,
+        body: JSON.stringify([
+          {
+            email,
+            phone: "0",
+            data: {
+              name,
+              organisation: organization,
+              topic: message,
+              found_out_from: source,
+            },
           },
-        }),
+        ]),
       }
     );
 
