@@ -102,7 +102,7 @@ export const cooperationData = [
     placeholder: "Platforma",
     type: "text",
     required: true,
-    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,40}$",
+    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,80}$",
   },
   {
     label: "Я хотів/ла би обговорити *",
