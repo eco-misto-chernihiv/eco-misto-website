@@ -32,11 +32,11 @@ if (period) {
   timePeriod = getTimePeriod(period);
 }
 
-const siteUrl = Astro.site
-  ? new URL(`/projects/${project.slug}`, Astro.site)
-  : `https://ecomisto.netlify.app/projects/${project.slug}`;
+// const siteUrl = Astro.site
+//   ? new URL(`/projects/${project.slug}`, Astro.site)
+//   : `https://ecomisto.netlify.app/projects/${project.slug}`;
 
-// const siteUrl = `/projects/${project.slug}`;
+const siteUrl = `/projects/${project.slug}`;
 ---
 
 <ProjectCard class:list={["project-navigation", classList]}>

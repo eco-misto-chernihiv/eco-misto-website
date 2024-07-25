@@ -1,3 +1,5 @@
+import cryptoJs from "crypto-js";
+
 /**
  * Creates breakpoints classes to use in class:list directive
  */
@@ -75,4 +77,36 @@ export function getTimePeriod(period) {
 
   const isSameYear = startYear === endYear ? "" : startYear;
   return `${startMonth} ${isSameYear} — ${endMonth} ${endYear} р.`;
+}
+
+/**
+ * Generate liqpay signature hash
+ * @param {String} data
+ * @param {String} privateKey
+ * @returns {String} hash
+ */
+export function generateLiqPaySignature(data, privateKey) {
+  return cryptoJs.enc.Base64.stringify(
+    cryptoJs.SHA1(privateKey + data + privateKey)
+  );
+}
+
+/**
+ * Encode string to base64
+ * @param {String} string
+ * @returns {String}
+ */
+export function encodeBase64(string) {
+  return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(string));
+}
+
+/**
+ * Decode string from base64
+ * @param {String} string
+ * @returns {Object}
+ */
+export function decodeBase64(string) {
+  return decodeURIComponent(
+    cryptoJs.enc.Utf8.stringify(cryptoJs.enc.Base64.parse(string))
+  );
 }

@@ -65,7 +65,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Succesfull response
     const sendpulseResponse = await sendpulseRequest.json();
 
-    // Return response
+    // Return success response
     return new Response(
       JSON.stringify({
         message: sendpulseResponse,

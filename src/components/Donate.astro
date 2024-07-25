@@ -2,12 +2,12 @@
 // Tools
 
 // Compositions
-import UserDataAgreement from "./UserDataAgreement.astro";
 import Cluster from "./compositions/Cluster.astro";
 import Stack from "./compositions/Stack.astro";
 import Button from "./ui/Button.astro";
 
 // Components
+import UserDataAgreement from "./UserDataAgreement.astro";
 import Heading from "./ui/Heading.astro";
 import InputGroup from "./ui/InputGroup.astro";
 import Text from "./ui/Text.astro";
@@ -15,7 +15,7 @@ import Text from "./ui/Text.astro";
 // Data
 import { donateData } from "@/data/siteData.ts";
 
-const [numberData, emailData] = donateData;
+const [amountData, emailData] = donateData;
 
 // TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
 const id = crypto.randomUUID();
@@ -40,7 +40,7 @@ const id = crypto.randomUUID();
             type="radio"
             name="pay"
             id={`pay-once-${id}`}
-            value="pay-once"
+            value="pay"
             checked
           />
           <Text
@@ -54,7 +54,7 @@ const id = crypto.randomUUID();
             type="radio"
             name="pay"
             id={`pay-monthly-${id}`}
-            value="pay-monthly"
+            value="subscribe"
           />
           <Text
             tagName="label"
@@ -66,7 +66,7 @@ const id = crypto.randomUUID();
 
         <Stack space="space-8">
           <Stack space="space-4">
-            <InputGroup data={numberData} />
+            <InputGroup data={amountData} />
 
             <Cluster space="space-3" class="choice-row">
               <Button style="accent" size="x-small" variant="chip" type="button"
@@ -126,10 +126,13 @@ const id = crypto.randomUUID();
 
 <script>
   import sanitizeHtml from "sanitize-html";
+  import { type LiqPayObject, type LiqPayAction } from "@/lib/types.ts";
+  import { format } from "date-fns";
+  import { encodeBase64, decodeBase64 } from "../lib/helpers.js";
 
   type FormValues = {
-    pay: string;
-    number: string;
+    pay: LiqPayAction;
+    amount: string;
     email: string;
   };
 
@@ -149,7 +152,79 @@ const id = crypto.randomUUID();
     ) as HTMLInputElement;
 
     /**
-     * Functinos
+     * Helpers
+     */
+
+    function createLiqPayData(values: FormValues): LiqPayObject {
+      const { pay, email, amount } = values;
+
+      // Create unique id
+      const orderId = `id_${crypto.randomUUID()}`;
+      const startPaymentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+
+      return {
+        public_key: import.meta.env.PUBLIC_LIQPAY_KEY,
+        version: 3,
+        action: pay,
+        subscribe_date_start: startPaymentDate,
+        subscribe_periodicity: "month",
+        amount: Number(amount),
+        paytypes: "gpay,apay,card,privat24",
+        currency: "UAH",
+        description: "Благодійний внесок на громадську організацію 'Еко Місто'",
+        order_id: orderId,
+        result_url: `${window.location.href}`,
+      };
+    }
+
+    /**
+     * Retrieves a signature from the server by sending a POST request with JSON data.
+     * @async
+     * @param {String} jsonString — The JSON string to be sent in the request body.
+     * @returns {Promise<string>} A promise that resolves to the signature string received from the server.
+     */
+    async function getSignature(jsonString: string): Promise<"string"> {
+      // Send json string to checkout route
+      const request = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: jsonString }),
+      });
+
+      // if request failed throw request
+      if (!request.ok) {
+        throw request;
+      }
+
+      // Get signature from response
+      const response = await request.json();
+
+      return response.data;
+    }
+
+    /**
+     * Create and submit form with data to liqpay
+     * @param {String} jsonString
+     * @param {String} signature
+     */
+    function sumbitFormToLiqPay(jsonString: string, signature: string) {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://www.liqpay.ua/api/3/checkout";
+      form.innerHTML = `
+        <input type="hidden" name="data" value="${jsonString}" />
+        <input type="hidden" name="signature" value="${signature}" />
+  `;
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+    }
+
+    /**
+     * Handlers
      */
 
     /**
@@ -171,33 +246,43 @@ const id = crypto.randomUUID();
     }
 
     /**
-     * TODO: Submit data to liqpay and sendpulse
-     * @param {Object} event
+     * TODO: Submit data to liqpay
+     * @param {SubmitEvent} event
      */
-    function handleSubmit(event: SubmitEvent) {
+    async function handleSubmit(event: SubmitEvent) {
       event.preventDefault();
 
-      // Get data
-      const data = new FormData(form);
+      try {
+        // Get data
+        const formData = new FormData(form);
 
-      let { pay, number, email } = Object.fromEntries(data) as FormValues;
+        let { pay, amount, email } = Object.fromEntries(formData) as FormValues;
 
-      // If no values do nohing
-      if (!pay || !number || !email) {
-        // TODO: Show errors in the UI
-        console.log("Please include all required values");
-        return;
+        // If no values do nothing
+        if (!pay || !amount || !email) {
+          // TODO: Show errors in the UI
+          console.log("Please include all required values");
+          return;
+        }
+
+        // Sanitize values
+        pay = sanitizeHtml(pay);
+        email = sanitizeHtml(email.trim());
+        amount = sanitizeHtml(amount.trim());
+
+        // Create data
+        const data = createLiqPayData({ pay, email, amount });
+
+        // Encode data into base64 string
+        const jsonString = encodeBase64(JSON.stringify(data));
+
+        const signature = await getSignature(jsonString);
+
+        sumbitFormToLiqPay(jsonString, signature);
+      } catch (error) {
+        console.log(error);
+        console.log("Something went wrong, try again!");
       }
-
-      // Sanitize values
-      pay = sanitizeHtml(pay);
-      email = sanitizeHtml(email.trim());
-      number = sanitizeHtml(number.trim());
-
-      console.log("submit");
-      console.log(pay);
-      console.log(number);
-      console.log(email);
     }
 
     /**

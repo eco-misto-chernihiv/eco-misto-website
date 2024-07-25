@@ -134,7 +134,7 @@ export const donateData = [
   {
     label: "Введіть суму *",
     formControl: "input",
-    name: "number",
+    name: "amount",
     placeholder: "0",
     type: "number",
     required: true,
