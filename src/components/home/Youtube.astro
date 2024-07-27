@@ -32,11 +32,22 @@ let youtubeVideos: YoutubeVideos[] = [];
 // Because we are using SSG nad it will be rendered once at build
 
 try {
-  const response = await fetch(
+  const request = await fetch(
     `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`
   );
 
-  const data = await response.json();
+  
+  if (!request.ok) {
+
+    console.error("Youtube API request failed", {
+        status: request.status,
+        message: request.statusText,
+      });
+
+    throw new Error('There was a problem with the server youtube api.');
+  }
+  
+  const data = await request.json();
 
   // console.log(data.items);
 
@@ -52,8 +63,8 @@ try {
 
   console.log(youtubeVideos);
 } catch (error) {
-  console.log(error);
-  console.log("Error fetching youtube videos");
+  console.error(error);
+  console.error("Error fetching youtube videos");
 }
 ---
 
