@@ -101,7 +101,7 @@ import { cooperationData } from "@/data/siteData";
       form.setAttribute("data-submitting", "true");
       submitButton.innerText = "Надсилаю...";
 
-      const request = await fetch("/api/requestPartnership", {
+      const request = await fetch("/api/request-partnership", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

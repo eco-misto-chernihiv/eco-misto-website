@@ -13,6 +13,8 @@ export enum LiqPayAction {
 export interface LiqPayObject {
   public_key: string;
   version: number;
+  status?: string;
+  payment_id?: number;
   action: LiqPayAction;
   amount: number;
   currency: "USD" | "UAH" | "EUR";
@@ -22,8 +24,9 @@ export interface LiqPayObject {
   subscribe_periodicity: "month" | "year";
   paytypes?: string;
   result_url?: string;
-  //   server_url?: string;
-  //   dae?: string | LiqPayCustomData;
+  server_url?: string;
+  create_date?: number;
+  dae?: string | LiqPayCustomData;
 }
 
 export interface LiqPayCustomData {

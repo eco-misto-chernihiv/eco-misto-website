@@ -126,7 +126,7 @@ export const cooperationData = [
     placeholder: "kostya@gmail.com",
     type: "email",
     required: true,
-    pattern: "^[^@]+@[^@]+.[^@]+$",
+    pattern: "/^[w-.]+@([w-]+.)+[w-]{2,4}$/",
   },
 ];
 
@@ -139,7 +139,6 @@ export const donateData = [
     type: "number",
     required: true,
     min: "0",
-    // pattern: "^[^@]+@[^@]+.[^@]+$",
   },
   {
     label: "Ваша пошта *",
@@ -148,6 +147,6 @@ export const donateData = [
     placeholder: "marusya@gmail.com",
     type: "email",
     required: true,
-    pattern: "^[^@]+@[^@]+.[^@]+$",
+    pattern: "/^[w-.]+@([w-]+.)+[w-]{2,4}$/",
   },
 ];

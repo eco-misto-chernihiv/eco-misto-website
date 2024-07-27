@@ -19,10 +19,12 @@ const [amountData, emailData] = donateData;
 
 // TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
 const id = crypto.randomUUID();
+
+const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
 ---
 
 <aside class="donate aside-modal">
-  <form action="" data-form="donate">
+  <form action="" data-form="donate" data-liqpay-key={PUBLIC_LIQPAY_KEY}>
     <Stack space="space-4" class="header">
       <Heading tagName="h2" size="h6" class="color-secondary font-heading"
         >Зробити внесок</Heading
@@ -126,9 +128,9 @@ const id = crypto.randomUUID();
 
 <script>
   import sanitizeHtml from "sanitize-html";
-  import { type LiqPayObject, type LiqPayAction } from "@/lib/types.ts";
+  import type { LiqPayObject, LiqPayAction } from "@/lib/types.ts";
   import { format } from "date-fns";
-  import { encodeBase64, decodeBase64 } from "../lib/helpers.js";
+  import { encodeBase64 } from "../lib/helpers.js";
 
   type FormValues = {
     pay: LiqPayAction;
@@ -155,25 +157,59 @@ const id = crypto.randomUUID();
      * Helpers
      */
 
+    /**
+     * Retrieves the public key from the form's data attribute.
+     * @returns {string} The public key.
+     */
+    function getPublicKey(): string {
+      const key = form.getAttribute("data-liqpay-key") || "";
+
+      if (!key) {
+        throw new Error("Please provide public key");
+      }
+
+      return key;
+    }
+
+    /**
+     * Generates a formatted date string for the current date and time.
+     * @returns {string} The formatted date string.
+     */
+    function getFormattedSubscribeDate(): string {
+      return format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    }
+
+    /**
+     * Generates a unique order ID.
+     * @returns {string} The generated order ID.
+     */
+    function generateOrderId(): string {
+      return `order_id-${crypto.randomUUID()}`;
+    }
+
+    /**
+     * Creates a LiqPay data object from form values.
+     * @param {FormValues} values - The form values.
+     * @returns {LiqPayObject} The LiqPay data object
+     */
     function createLiqPayData(values: FormValues): LiqPayObject {
       const { pay, email, amount } = values;
-
-      // Create unique id
-      const orderId = `id_${crypto.randomUUID()}`;
-      const startPaymentDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+      const public_key = getPublicKey();
 
       return {
-        public_key: import.meta.env.PUBLIC_LIQPAY_KEY,
+        public_key,
         version: 3,
         action: pay,
-        subscribe_date_start: startPaymentDate,
+        subscribe_date_start: getFormattedSubscribeDate(),
         subscribe_periodicity: "month",
-        amount: Number(amount),
+        amount: parseFloat(amount),
         paytypes: "gpay,apay,card,privat24",
         currency: "UAH",
         description: "Благодійний внесок на громадську організацію 'Еко Місто'",
-        order_id: orderId,
+        order_id: generateOrderId(),
         result_url: `${window.location.href}`,
+        server_url: "https://ecomisto.org/api/liqpay-sendpulse",
+        dae: encodeBase64(JSON.stringify({ email })),
       };
     }
 
@@ -246,7 +282,7 @@ const id = crypto.randomUUID();
     }
 
     /**
-     * TODO: Submit data to liqpay
+     * Submit data to liqpay
      * @param {SubmitEvent} event
      */
     async function handleSubmit(event: SubmitEvent) {
@@ -261,12 +297,11 @@ const id = crypto.randomUUID();
         // If no values do nothing
         if (!pay || !amount || !email) {
           // TODO: Show errors in the UI
-          console.log("Please include all required values");
+          console.error("Please include all required values");
           return;
         }
 
         // Sanitize values
-        pay = sanitizeHtml(pay);
         email = sanitizeHtml(email.trim());
         amount = sanitizeHtml(amount.trim());
 
@@ -280,8 +315,8 @@ const id = crypto.randomUUID();
 
         sumbitFormToLiqPay(jsonString, signature);
       } catch (error) {
-        console.log(error);
-        console.log("Something went wrong, try again!");
+        console.error(error);
+        console.error("Something went wrong, try again!");
       }
     }
 

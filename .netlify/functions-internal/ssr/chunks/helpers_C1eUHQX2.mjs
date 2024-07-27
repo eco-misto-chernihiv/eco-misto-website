@@ -1,9 +1,9 @@
-import cryptoJs from "crypto-js";
+import cryptoJs from 'crypto-js';
 
 /**
  * Creates breakpoints classes to use in class:list directive
  */
-export function getBreakpoints(prefix, prop) {
+function getBreakpoints(prefix, prop) {
   return typeof prop === "object"
     ? {
         [`default:${prefix}-${prop.default}`]: prop.default,
@@ -19,7 +19,7 @@ export function getBreakpoints(prefix, prop) {
  * @param {String} title
  * @returns Parsed title
  */
-export function parseTitle(title) {
+function parseTitle(title) {
   return title.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
 }
 
@@ -28,7 +28,7 @@ export function parseTitle(title) {
  * @param {String} orientation
  * @returns {String} Aspect ratio
  */
-export function getRatio(orientation) {
+function getRatio(orientation) {
   if (orientation === "landscape") {
     return "3:2";
   }
@@ -51,7 +51,7 @@ export function getRatio(orientation) {
  * @param {Array} projects
  * @returns {Array} Sorted projects
  */
-export function getSortedProjects(projects) {
+function getSortedProjects(projects) {
   return [...projects].sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
@@ -63,7 +63,7 @@ export function getSortedProjects(projects) {
  * @param {Object} project
  * @returns {Number} Index number
  */
-export function getProjectIndex(projects, project) {
+function getProjectIndex(projects, project) {
   return projects.findIndex((p) => p.id === project.id);
 }
 
@@ -72,7 +72,7 @@ export function getProjectIndex(projects, project) {
  * @param {Object} period
  * @returns {String} Time period
  */
-export function getTimePeriod(period) {
+function getTimePeriod(period) {
   const { startYear, startMonth, endYear, endMonth } = period;
 
   const isSameYear = startYear === endYear ? "" : startYear;
@@ -85,19 +85,10 @@ export function getTimePeriod(period) {
  * @param {String} privateKey
  * @returns {String} hash
  */
-export function generateLiqPaySignature(data, privateKey) {
+function generateLiqPaySignature(data, privateKey) {
   return cryptoJs.enc.Base64.stringify(
     cryptoJs.SHA1(privateKey + data + privateKey)
   );
-}
-
-/**
- * Encode string to base64
- * @param {String} string
- * @returns {String}
- */
-export function encodeBase64(string) {
-  return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(string));
 }
 
 /**
@@ -105,7 +96,7 @@ export function encodeBase64(string) {
  * @param {String} string
  * @returns {String}
  */
-export function decodeBase64(string) {
+function decodeBase64(string) {
   return decodeURIComponent(
     cryptoJs.enc.Utf8.stringify(cryptoJs.enc.Base64.parse(string))
   );
@@ -120,6 +111,8 @@ export function decodeBase64(string) {
  * @param {number} options.status - The HTTP status code for the response.
  * @returns {Response} A new Response object with the specified content and status.
  */
-export function createResponse({ message, success, status }) {
+function createResponse({ message, success, status }) {
   return new Response(JSON.stringify({ message, success }), { status });
 }
+
+export { getSortedProjects as a, getTimePeriod as b, createResponse as c, decodeBase64 as d, getRatio as e, getProjectIndex as f, generateLiqPaySignature as g, getBreakpoints as h, parseTitle as p };

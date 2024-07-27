@@ -4,6 +4,11 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 import sanitizeHtml from "sanitize-html";
 
+import { createResponse } from "@/lib/helpers";
+
+const SENDPULSE_API_URL =
+  process.env.SENDPULSE_API_URL || "https://events.sendpulse.com/events/id";
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Get data from client
@@ -22,7 +27,9 @@ export const POST: APIRoute = async ({ request }) => {
       !email ||
       typeof email !== "string"
     ) {
-      return new Response("Please provide all required data", {
+      return createResponse({
+        message: "Please provide all required data",
+        success: false,
         status: 404,
       });
     }
@@ -36,7 +43,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Get sendpulse request with data
     const sendpulseRequest = await fetch(
-      "https://events.sendpulse.com/events/id/a5845b0419324023828b3577f1e43dff/8603131",
+      `${SENDPULSE_API_URL}/a5845b0419324023828b3577f1e43dff/8603131`,
       {
         method: "POST",
         headers: {
@@ -59,47 +66,39 @@ export const POST: APIRoute = async ({ request }) => {
 
     // If request failed throw error
     if (!sendpulseRequest.ok) {
-      throw new Error("There was a problem with the server sendpulseRequest.");
+      return createResponse({
+        message: "There was a problem with the server sendpulseRequest.",
+        success: false,
+        status: 500,
+      });
     }
 
     // Succesfull response
     const sendpulseResponse = await sendpulseRequest.json();
 
     // Return success response
-    return new Response(
-      JSON.stringify({
-        message: sendpulseResponse,
-        success: true,
-      }),
-      {
-        status: 200,
-      }
-    );
+    return createResponse({
+      message: sendpulseResponse,
+      success: true,
+      status: 200,
+    });
   } catch (error) {
-    console.log(error);
+    console.error(error);
 
     // Return error if API call failed
     if (error instanceof Error) {
-      return new Response(
-        JSON.stringify({
-          message: error.message,
-          sucess: false,
-        }),
-        {
-          status: 500,
-        }
-      );
+      return createResponse({
+        message: error.message,
+        success: false,
+        status: 500,
+      });
     }
   }
 
   // Return overall error
-  return new Response(
-    JSON.stringify({
-      message: "Something went wrong",
-      success: false,
-    }),
-    {
-      status: 404,
-    }
-  );
+  return createResponse({
+    message: "Something went wrong",
+    success: false,
+    status: 404,
+  });
 };

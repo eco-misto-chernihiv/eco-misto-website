@@ -2,27 +2,28 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-import { generateLiqPaySignature } from "@/lib/helpers";
+import { generateLiqPaySignature, createResponse } from "@/lib/helpers";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const { data } = await request.json();
 
     if (!data || typeof data !== "string") {
-      return new Response("Please provide json string", {
+      return createResponse({
+        message: "Please provide json string",
+        success: false,
         status: 404,
       });
     }
 
-    const privateKey = import.meta.env.PRIVATE_LIQPAY_KEY;
+    const privateKey = process.env.PRIVATE_LIQPAY_KEY;
 
     if (!privateKey) {
-      return new Response(
-        "Please set liqpay private key as environmental variable",
-        {
-          status: 500,
-        }
-      );
+      return createResponse({
+        message: "Please set liqpay private key as environmental variable",
+        success: false,
+        status: 500,
+      });
     }
 
     const signature = generateLiqPaySignature(data, privateKey);
@@ -42,26 +43,18 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Return error if API call failed
     if (error instanceof Error) {
-      return new Response(
-        JSON.stringify({
-          message: error.message,
-          sucess: false,
-        }),
-        {
-          status: 500,
-        }
-      );
+      return createResponse({
+        message: error.message,
+        success: false,
+        status: 500,
+      });
     }
   }
 
   // Return overall error
-  return new Response(
-    JSON.stringify({
-      message: "Something went wrong",
-      success: false,
-    }),
-    {
-      status: 404,
-    }
-  );
+  return createResponse({
+    message: "An unexpected error occurred",
+    success: false,
+    status: 404,
+  });
 };
