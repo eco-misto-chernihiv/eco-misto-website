@@ -72,11 +72,11 @@ const swiper3 = new Swiper(".team-members-swiper", {
       slidesPerView: 1.2,
     },
     550: {
-      slidesPerView: 2,
+      slidesPerView: 2.5,
       spaceBetween: 20,
     },
     1100: {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 24,
     },
   },
