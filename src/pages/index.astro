@@ -24,10 +24,10 @@ import Projects from "@/components/home/Projects.astro";
 * s-maxage=86400: Instructs CDNs (like Netlify) to cache the page for 24 hours (86400 seconds).
 stale-while-revalidate=604800: Allows serving a stale version for up to a week (604800 seconds) while revalidating in the background.
 */
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800"
-);
+// Astro.response.headers.set(
+//   "Cache-Control",
+//   "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800"
+// );
 ---
 
 <BaseLayout>
