@@ -7,8 +7,9 @@ import { getRatio } from "@/lib/helpers";
 import Frame from "../compositions/Frame.astro";
 
 // Components
-import SwiperButtons from "./SwiperButtons.astro";
 import Annotation from "./Annotation.astro";
+import Cluster from "../compositions/Cluster.astro";
+import SwiperButton from "../ui/SwiperButton.astro";
 
 // Data
 
@@ -63,7 +64,10 @@ const ratio = getRatio(orientation);
     </div>
 
     <div class="swiper-navigation">
-      <SwiperButtons />
+      <Cluster space="space-2" noWrap>
+        <SwiperButton direction="left" class="swiper-button-prev" />
+        <SwiperButton direction="right" class="swiper-button-next" />
+      </Cluster>
     </div>
   </div>
 

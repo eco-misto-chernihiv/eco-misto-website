@@ -49,3 +49,35 @@ const swiper2 = new Swiper(".single-slide-swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+// Init Team Member Swiper
+const swiper3 = new Swiper(".team-members-swiper", {
+  // configure Swiper to use modules
+  modules: [Navigation, Pagination],
+  slidesPerView: 1.9,
+  spaceBetween: 24,
+
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    type: "progressbar",
+  },
+  breakpoints: {
+    320: {
+      spaceBetween: 16,
+      slidesPerView: 1.2,
+    },
+    550: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1100: {
+      slidesPerView: 3,
+      spaceBetween: 24,
+    },
+  },
+});

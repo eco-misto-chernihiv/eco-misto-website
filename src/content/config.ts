@@ -8,7 +8,10 @@ const members = defineCollection({
       name: z.string(),
       position: z.string(),
       // validate as a local image
-      picture: image(),
+      picture: image().refine((img) => img.width >= 640, {
+        message: "Portait should be at least 640px wide or more",
+      }),
+      indexId: z.number(),
     }),
 });
 

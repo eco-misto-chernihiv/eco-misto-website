@@ -3,71 +3,94 @@
 import { getCollection } from "astro:content";
 
 // Compositions
-import AutoGrid from "../compositions/AutoGrid.astro";
-import Reel from "../compositions/Reel.astro";
+
+import Cluster from "../compositions/Cluster.astro";
 
 // Components
 import TeamMember from "./TeamMember.astro";
+import SwiperButton from "../ui/SwiperButton.astro";
+import SwiperPaginationProgress from "../ui/SwiperPaginationProgress.astro";
 
 // Data
 const members = await getCollection("members");
+
+const sortedMembers = members.sort((a, b) => a.data.indexId - b.data.indexId);
 ---
 
-<!-- <Reel role="list" thumbColor="secondary" trackColor="white" class="members">
-  {
-    members.map((member) => {
-      return (
-        <div role="listitem" class="reel-item">
-          <TeamMember member={member} />
-        </div>
-      );
-    })
-  }
-</Reel>
+<div class="team-members-gallery">
+  <div class="team-members-swiper swiper">
+    <div class="swiper-wrapper">
+      {
+        sortedMembers.map((member) => {
+          return (
+            <div class="swiper-slide">
+              <div role="listitem">
+                <TeamMember member={member} />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
 
-<AutoGrid
-  minItemWidth="220px"
-  maxColumns="1"
-  space="space-6"
-  role="list"
-  class="members tablet"
->
-  {
-    members.map((member) => {
-      return (
-        <div role="listitem">
-          <TeamMember member={member} />
-        </div>
-      );
-    })
-  }
-</AutoGrid> -->
-<div class="members-test">
-  <TeamMember member={members[0]} />
+  <div class="swiper-navigation">
+    <Cluster
+      space={{ default: "space-8", tablet: "space-10" }}
+      alignItems="center"
+      noWrap
+    >
+      <SwiperPaginationProgress />
+
+      <Cluster space="space-2" noWrap class="swiper-buttons">
+        <SwiperButton direction="left" class="swiper-button-prev" />
+        <SwiperButton direction="right" class="swiper-button-next" />
+      </Cluster>
+    </Cluster>
+  </div>
 </div>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  /* TODO: Remove later */
-  .members-test {
-    min-width: 220px;
-    max-width: 320px;
-  }
-
   .members {
     color: var(--color-secondary);
+  }
 
-    @media (--tablet-and-up) {
-      display: none;
+  .team-members-gallery {
+    position: relative;
+  }
+
+  .team-members-swiper {
+    /* Push content inside to avoid being cut */
+    padding-inline: 2px;
+  }
+
+  .swiper-navigation {
+    margin-block-start: var(--space-9-fixed);
+
+    @media (--laptop-and-up) {
+      padding-inline: var(--space-14-fixed);
     }
   }
 
-  .members.tablet {
-    display: none;
+  .swiper-buttons :global(.swiper-button-prev),
+  .swiper-buttons :global(.swiper-button-next) {
+    --_size: initial;
+
+    width: var(--_size);
+    height: var(--_size);
 
     @media (--tablet-and-up) {
-      display: grid;
+      & :global(.arrow) {
+        --_size: 48px;
+      }
+    }
+
+    @media (--laptop-and-up) {
+      & :global(.arrow) {
+        --_size: 64px;
+      }
     }
   }
 </style>

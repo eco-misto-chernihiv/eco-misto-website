@@ -1,0 +1,51 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+
+type Props = {
+  direction: "left" | "right";
+  class?: string;
+};
+const { direction, class: classList } = Astro.props;
+---
+
+<div class:list={["swiper-button", classList]} data-direction={direction}>
+  <ArrowIcon style="primary" direction={direction} />
+</div>
+
+<style>
+  .swiper-button {
+    cursor: pointer;
+
+    transition:
+      color var(--transition-default),
+      background-color var(--transition-default),
+      transform var(--transition-default);
+
+    & :global(.arrow) {
+      transition: transform var(--transition-default);
+    }
+
+    &:hover :global(.arrow) {
+      color: var(--color-primary);
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .swiper-button-disabled {
+    opacity: 0;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  .swiper-button[data-direction="left"] {
+    &:hover :global(.arrow) {
+      transform: translateX(-4px);
+    }
+  }
+
+  .swiper-button[data-direction="right"] {
+    &:hover :global(.arrow) {
+      transform: translateX(4px);
+    }
+  }
+</style>
