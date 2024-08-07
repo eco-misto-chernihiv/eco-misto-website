@@ -1,10 +1,10 @@
 import { f as createAstro, a as createComponent, b as renderTemplate, m as maybeRenderHead, g as addAttribute, d as renderComponent, e as renderSlot, F as Fragment, h as defineStyleVars, s as spreadAttributes } from './astro/server_CFD6V1YY.mjs';
-import { h as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, j as achievmentsData, a as $$Stack, e as $$Cluster, g as $$Icon, i as $$Button, c as $$BaseLayout } from './BaseLayout_5z7z2QQz.mjs';
-import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_DhupaizN.mjs';
+import { h as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, j as achievmentsData, a as $$Stack, e as $$Cluster, g as $$Icon, i as $$Button, c as $$BaseLayout } from './BaseLayout_DG_nGclv.mjs';
+import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_mFXva0fo.mjs';
 /* empty css                         */
-import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, c as $$AutoGrid, b as $$EmptyShape } from './AutoGrid_DpmmOV0u.mjs';
+import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, c as $$AutoGrid, b as $$EmptyShape } from './AutoGrid_D-XuTYMo.mjs';
 import { p as parseTitle, a as getSortedProjects } from './helpers_C1eUHQX2.mjs';
-import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_CCD762Pu.mjs';
+import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_CyG53SyF.mjs';
 
 const $$Astro$6 = createAstro("https://ecomisto.org");
 const $$Achievment = createComponent(($$result, $$props, $$slots) => {

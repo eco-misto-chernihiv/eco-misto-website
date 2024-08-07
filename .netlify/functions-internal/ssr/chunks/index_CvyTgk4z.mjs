@@ -1,8 +1,8 @@
 import { a as createComponent, b as renderTemplate, d as renderComponent } from './astro/server_CFD6V1YY.mjs';
-import { $ as $$Heading, a as $$Stack, b as $$Center, c as $$BaseLayout } from './BaseLayout_5z7z2QQz.mjs';
-import { $ as $$Section, g as getCollection } from './TimePeriod_DhupaizN.mjs';
+import { $ as $$Heading, a as $$Stack, b as $$Center, c as $$BaseLayout } from './BaseLayout_DG_nGclv.mjs';
+import { $ as $$Section, g as getCollection } from './TimePeriod_mFXva0fo.mjs';
 /* empty css                         */
-import { $ as $$ArchiveProjectCard, a as $$ButtonArrow, b as $$ActiveProjects } from './ArchiveProjectCard_CCD762Pu.mjs';
+import { $ as $$ArchiveProjectCard, a as $$ButtonArrow, b as $$ActiveProjects } from './ArchiveProjectCard_CyG53SyF.mjs';
 import { a as getSortedProjects } from './helpers_C1eUHQX2.mjs';
 
 const $$Hero = createComponent(($$result, $$props, $$slots) => {

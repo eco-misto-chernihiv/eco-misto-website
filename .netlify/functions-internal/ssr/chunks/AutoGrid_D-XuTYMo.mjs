@@ -1,5 +1,5 @@
 import { f as createAstro, a as createComponent, b as renderTemplate, m as maybeRenderHead, g as addAttribute, s as spreadAttributes, d as renderComponent, h as defineStyleVars, e as renderSlot } from './astro/server_CFD6V1YY.mjs';
-import { g as $$Icon, e as $$Cluster } from './BaseLayout_5z7z2QQz.mjs';
+import { g as $$Icon, e as $$Cluster } from './BaseLayout_DG_nGclv.mjs';
 /* empty css                         */
 
 const $$Astro$3 = createAstro("https://ecomisto.org");

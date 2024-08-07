@@ -127,9 +127,11 @@ partnershipButtons.forEach((button) => {
   });
 });
 
-promoVideoButton.addEventListener("click", () => {
-  promoDialog.showModal();
-});
+if (promoVideoButton) {
+  promoVideoButton.addEventListener("click", () => {
+    promoDialog.showModal();
+  });
+}
 
 youtubeVideoButtons.forEach((button, index) => {
   button.addEventListener("click", () => {

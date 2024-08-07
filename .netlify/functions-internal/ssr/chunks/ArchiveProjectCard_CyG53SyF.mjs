@@ -1,7 +1,7 @@
 import { f as createAstro, a as createComponent, b as renderTemplate, d as renderComponent, e as renderSlot, m as maybeRenderHead } from './astro/server_CFD6V1YY.mjs';
-import { c as $$ProjectCard, a as $$Frame, e as $$MyPicture, g as getCollection, d as $$Row, b as $$TimePeriod } from './TimePeriod_DhupaizN.mjs';
+import { c as $$ProjectCard, a as $$Frame, e as $$MyPicture, g as getCollection, d as $$Row, b as $$TimePeriod } from './TimePeriod_mFXva0fo.mjs';
 import { a as getSortedProjects, b as getTimePeriod } from './helpers_C1eUHQX2.mjs';
-import { d as $$Link, a as $$Stack, e as $$Cluster, $ as $$Heading, f as $$Text, g as $$Icon } from './BaseLayout_5z7z2QQz.mjs';
+import { d as $$Link, a as $$Stack, e as $$Cluster, $ as $$Heading, f as $$Text, g as $$Icon } from './BaseLayout_DG_nGclv.mjs';
 /* empty css                         */
 import { $ as $$Image } from './_astro_assets_CBy1yhCu.mjs';
 

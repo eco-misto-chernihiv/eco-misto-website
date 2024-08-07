@@ -4,7 +4,7 @@ import { AsyncResource } from 'async_hooks';
 import { A as AstroError, U as UnknownContentCollectionError, p as prependForwardSlash } from './astro/assets-service_C2aiabpb.mjs';
 import { h as getBreakpoints } from './helpers_C1eUHQX2.mjs';
 import { a as $$Picture } from './_astro_assets_CBy1yhCu.mjs';
-import { f as $$Text } from './BaseLayout_5z7z2QQz.mjs';
+import { f as $$Text } from './BaseLayout_DG_nGclv.mjs';
 
 const $$Astro$4 = createAstro("https://ecomisto.org");
 const $$Section = createComponent(($$result, $$props, $$slots) => {
