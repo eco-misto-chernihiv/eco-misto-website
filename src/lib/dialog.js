@@ -1,14 +1,28 @@
 import { getURLAndSearchParams, updateBrowserHistory } from "./helpers.js";
 
+/**
+ * Dialog Elements
+ */
 const dialogs = document.querySelectorAll("dialog");
-const mobileMenuDialog = document.querySelector("#mobile-menu");
-const donateDialog = document.querySelector("#donate");
-const partnershipDialog = document.querySelector("#partnership");
+const mobileMenuDialog = document.querySelector("[data-dialog='mobile-menu']");
+const donateDialog = document.querySelector("[data-dialog='donate']");
+const partnershipDialog = document.querySelector("[data-dialog='partnership']");
+const promoDialog = document.querySelector("[data-dialog='promo-video']");
+const youtubeDialogs = [
+  ...document.querySelectorAll("[data-dialog='youtube-video']"),
+];
 
+/**
+ * Button Elements
+ */
 const mobileMenuButton = document.querySelector("[data-open-mobile-menu]");
 const donateButtons = [...document.querySelectorAll("[data-open-donate]")];
 const partnershipButtons = [
   ...document.querySelectorAll("[data-open-partnership]"),
+];
+const promoVideoButton = document.querySelector("[data-open-promo]");
+const youtubeVideoButtons = [
+  ...document.querySelectorAll("[data-open-youtube]"),
 ];
 
 /**
@@ -56,9 +70,10 @@ dialogs.forEach((dialog) => {
   // Remove donate id from url params on dialog close
   dialog.addEventListener("close", () => {
     const { url, params } = getURLAndSearchParams();
+    const param = dialog.getAttribute("data-dialog");
 
     // Remove dialog id as param from the url and set new url
-    params.delete(dialog.id);
+    params.delete(param);
     url.search = params.toString();
 
     updateBrowserHistory(url);
@@ -85,12 +100,13 @@ donateButtons.forEach((button) => {
     donateDialog.showModal();
 
     const { url, params } = getURLAndSearchParams();
+    const param = donateDialog.getAttribute("data-dialog");
     const radioValue = donateDialog.querySelector(
       'input[type="radio"]:checked'
     ).value;
 
     // Set new param as dialog id and update url
-    params.set(donateDialog.id, radioValue);
+    params.set(param, radioValue);
     url.search = params.toString();
 
     updateBrowserHistory(url);
@@ -102,10 +118,21 @@ partnershipButtons.forEach((button) => {
     partnershipDialog.showModal();
 
     const { url } = getURLAndSearchParams();
+    const param = partnershipDialog.getAttribute("data-dialog");
 
     // Create new url with partnership param
-    const modifiedUrl = `${url.origin}${url.pathname}?${partnershipDialog.id}`;
+    const modifiedUrl = `${url.origin}${url.pathname}?${param}`;
 
     updateBrowserHistory(modifiedUrl);
+  });
+});
+
+promoVideoButton.addEventListener("click", () => {
+  promoDialog.showModal();
+});
+
+youtubeVideoButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    youtubeDialogs[index].showModal();
   });
 });

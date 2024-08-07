@@ -39,7 +39,7 @@ function handleURLParamDialog() {
 
   if (!param) return;
 
-  const dialog = document.querySelector(`dialog#${param}`);
+  const dialog = document.querySelector(`[data-dialog='${param}']`);
   dialog.showModal();
 
   setRadioFromURLParam({ dialog, param, params });

@@ -10,13 +10,14 @@ import Button from "./Button.astro";
 import Logo from "../Logo.astro";
 
 type Props = {
-  id: string;
+  class?: string;
+  name: string;
 };
 
-const { id } = Astro.props;
+const { class: classList, name } = Astro.props;
 ---
 
-<dialog data-dialog id={id}>
+<dialog class:list={[classList]} data-dialog={name}>
   <div class="header-wrapper">
     <Cluster alignItems="center" justify="between" class="header">
       <Logo
