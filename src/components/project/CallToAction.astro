@@ -10,7 +10,7 @@ import Row from "../compositions/Row.astro";
 import Text from "../ui/Text.astro";
 import Heading from "../ui/Heading.astro";
 import Button from "../ui/Button.astro";
-import SideModal from "../ui/SideModal.astro";
+import SideModal from "../ui/_SideModal.astro";
 import Partnership from "../Partnership.astro";
 import Donate from "../Donate.astro";
 import Shape from "../ui/Shape.astro";
@@ -43,35 +43,25 @@ import Shape from "../ui/Shape.astro";
       <div class="wrapper">
         <Button
           style="primary"
-          data-open-modal
+          data-open-partnership
           aria-label="Open cooperation form modal"
-          aria-expanded="false"
           size="small"
           class="cooperation-button col-12 tablet:col-6"
           >Написати
         </Button>
 
-        <SideModal name="partnership-form">
-          <Partnership />
-        </SideModal>
-
         <Button
           style="secondary"
           size="small"
           class="support-button col-12 tablet:col-6"
-          data-open-modal
+          data-open-donate
           aria-label="Open donate form modal"
-          aria-expanded="false"
           >Підтримати <Icon
             name="icon-heart"
             aria-hidden="true"
             focusable="false"
           /></Button
         >
-
-        <SideModal name="donate-form">
-          <Donate />
-        </SideModal>
       </div>
     </div>
   </div>

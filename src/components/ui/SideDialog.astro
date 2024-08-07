@@ -1,0 +1,130 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Components
+import Button from "./Button.astro";
+
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+---
+
+<dialog data-dialog id={id}>
+  <Button
+    variant="icon"
+    style="ghost"
+    aria-label={`Close ${id}`}
+    isDefault={false}
+    data-close-dialog
+  >
+    <Icon name="icon-close" size={32} />
+    <span class="sr-only">{`Close ${id}`}</span>
+  </Button>
+
+  <slot />
+</dialog>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  dialog {
+    --_size: 100%;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: 0;
+
+    inline-size: var(--_size);
+    block-size: 100%;
+    block-size: 100svh;
+
+    background-color: var(--color-white);
+
+    animation: slide-left-out 300ms var(--ease) forwards;
+
+    @media (--tablet-and-up) {
+      --_size: 31rem;
+
+      border-top-left-radius: var(--rounded-lg);
+      border-bottom-left-radius: var(--rounded-lg);
+    }
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  dialog button {
+    outline: var(--color-primary);
+  }
+
+  dialog button[data-close-dialog] {
+    /* TEMP */
+    /* display: none; */
+
+    --_icon-size: 20px;
+
+    position: absolute;
+    top: calc(var(--space-7-fixed) - 12px);
+    left: calc(var(--space-7-fixed) - 8px);
+
+    /* padding: 4px; */
+
+    color: var(--color-black);
+
+    transition: background-color var(--transition-default);
+
+    & svg {
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+    }
+
+    @media (--laptop-and-up) {
+      top: calc(var(--space-7-fixed) - 4px);
+    }
+
+    @media (--laptop-and-up) {
+      --_icon-size: 24px;
+
+      /* padding: 8px; */
+    }
+  }
+
+  dialog button[data-close-dialog]:hover {
+    background-color: var(--color-gray-100);
+  }
+
+  /**
+  * Animation
+   */
+
+  dialog[open] {
+    animation: slide-left-in 300ms var(--ease-out) backwards;
+    animation-delay: 100ms;
+  }
+
+  @keyframes slide-left-in {
+    0% {
+      transform: translateX(100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-left-out {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+</style>

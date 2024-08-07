@@ -1,6 +1,40 @@
 import cryptoJs from "crypto-js";
 
 /**
+ * Retrieves the current URL and its search parameters.
+ *
+ * @property {URL} url - The URL object representing the current page URL.
+ * @property {URLSearchParams} params - An object containing the parsed query string parameters.
+ *
+ * */
+export function getURLAndSearchParams() {
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams(url.search);
+
+  return { url, params };
+}
+
+/**
+ * Extracts the base path from a given URL path.
+ *
+ * @param {string} path - The full URL path to process.
+ * @returns {string} The base path (first segment after the leading slash) or an empty string if not found.
+ *
+ * @example
+ * Returns "/dashboard"
+ * getBasePath("/dashboard/users");
+ */
+export function getBasePath(path) {
+  const parts = path.split("/");
+
+  if (parts.length >= 2) {
+    return `/${parts[1]}`;
+  }
+
+  return "";
+}
+
+/**
  * Creates breakpoints classes to use in class:list directive
  */
 export function getBreakpoints(prefix, prop) {
@@ -122,4 +156,12 @@ export function decodeBase64(string) {
  */
 export function createResponse({ message, success, status }) {
   return new Response(JSON.stringify({ message, success }), { status });
+}
+
+/**
+ * Updates the browser's history state with a new URL without reloading the page.
+ * @param {*} url — The new URL to be set in the browser's address bar.
+ */
+export function updateBrowserHistory(url) {
+  window.history.replaceState({}, "", url);
 }

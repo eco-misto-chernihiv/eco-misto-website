@@ -1,0 +1,175 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Compositions
+import Cluster from "../compositions/Cluster.astro";
+
+// Components
+import Button from "./Button.astro";
+import Logo from "../Logo.astro";
+
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+---
+
+<dialog data-dialog id={id}>
+  <div class="header-wrapper">
+    <Cluster alignItems="center" justify="between" class="header">
+      <Logo
+        name="ecomisto-logo"
+        color="secondary"
+        style={{ "--width": "136px" }}
+      />
+
+      <Button
+        variant="icon"
+        style="ghost"
+        data-close-dialog
+        aria-label="Close menu"
+        isDefault={false}
+      >
+        <Icon name="icon-close" size={32} />
+        <span class="sr-only">Close menu</span>
+      </Button>
+    </Cluster>
+  </div>
+  <div class="content">
+    <slot />
+  </div>
+</dialog>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  /* Custom breakpoint */
+  @custom-media --tablet-l-and-up (width >= 48em);
+
+  dialog {
+    --_padding: var(--space-6-fixed);
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: transparent;
+    width: 100%;
+
+    padding-inline: var(--_padding);
+
+    @media (--tablet-and-up) {
+      --_padding: var(--space-7-fixed);
+    }
+  }
+
+  dialog[open] .content {
+    animation: roll-down 0.4s var(--ease-out) backwards;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+  }
+
+  .header {
+    width: 100%;
+
+    padding-block: var(--space-1-fixed);
+    padding-inline: var(--space-5-fixed);
+
+    border-start-end-radius: var(--rounded-3xl);
+    border-start-start-radius: var(--rounded-3xl);
+
+    background-color: var(--color-primary);
+
+    @media (--tablet-and-up) {
+      padding-inline: var(--space-7-fixed);
+    }
+  }
+
+  dialog button[data-close-dialog] {
+    --_icon-size: 32px;
+    --_padding: var(--space-1-fixed);
+
+    border-radius: var(--rounded-md);
+    opacity: 1;
+
+    color: var(--color-secondary);
+
+    transition: opacity var(--transition-default);
+
+    & svg {
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .content {
+    --_height: 26rem;
+
+    height: var(--_height);
+
+    margin-block-start: -22px;
+    background-color: var(--color-primary);
+    border-end-end-radius: var(--rounded-3xl);
+    border-end-start-radius: var(--rounded-3xl);
+
+    animation: roll-up 0.4s var(--ease-out) forwards;
+
+    @media (--tablet-and-up) {
+      --_height: 32rem;
+    }
+  }
+
+  @keyframes roll-down {
+    0% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    }
+    100% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+  }
+
+  @keyframes roll-up {
+    0% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    100% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

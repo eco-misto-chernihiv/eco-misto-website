@@ -112,6 +112,10 @@ function BaseModal(settings) {
       return window.innerWidth - document.documentElement.clientWidth;
     },
 
+    get name() {
+      return overlayElement.getAttribute("data-modal");
+    },
+
     setScrollBarWidth() {
       document.documentElement.style.setProperty(
         "--scrollbar-width",
@@ -171,6 +175,41 @@ function BaseModal(settings) {
 
       // Disable page scrolling
       modal.disableScroll();
+
+      // Add modal name as param
+      const modalName = modal.name;
+      const url = new URL(window.location.href);
+
+      if (modalName !== "donate" && modalName !== "partnership") return;
+
+      if (modalName === "donate") {
+        const value = contentElement.querySelector(
+          'input[type="radio"]:checked'
+        ).value;
+
+        const params = new URLSearchParams(url.search);
+
+        params.set(modalName, value);
+
+        url.search = params.toString();
+
+        window.history.replaceState({}, "", url);
+      }
+
+      if (modalName === "partnership") {
+        const modifiedUrl = `${url.origin}${url.pathname}?${modalName}`;
+
+        window.history.replaceState({}, "", modifiedUrl);
+      }
+
+      // const params = new URLSearchParams(url.search);
+
+      // params.set(modalName, "");
+
+      // url.search = params.toString();
+
+      // console.log(window.location.href);
+      // console.log(modalName);
     },
 
     close() {
@@ -184,6 +223,18 @@ function BaseModal(settings) {
 
       // Enable page scrolling, when animation ends
       overlayElement.addEventListener("transitionend", modal.enableScroll);
+
+      // Remove modal name as param
+      const modalName = modal.name;
+
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+
+      params.delete(modalName);
+
+      url.search = params.toString();
+
+      window.history.replaceState({}, "", url);
 
       // Get iframe or video element, within a modal
       const videoElement = getVideoElement(contentElement);

@@ -10,29 +10,25 @@ import MobileNav from "./MobileNav.astro";
 import SocialList from "./SocialList.astro";
 import Button from "./ui/Button.astro";
 import Filler from "./ui/Filler.astro";
-import SideModal from "./ui/SideModal.astro";
-import Donate from "./Donate.astro";
 ---
 
 <div class="mobile-menu">
   <Filler />
   <Stack space="space-7">
     <MobileNav />
+
     <Button
       style="secondary"
       size="small"
       class="support-button"
-      data-open-modal
       aria-label="Open donate form modal"
-      aria-expanded="false"
-      >Підтримати <Icon
+      data-open-donate
+      >Підтримати<Icon
         name="icon-heart"
         aria-hidden="true"
         focusable="false"
       /></Button
     >
-
-    <SideModal name="donate-form"> <Donate /> </SideModal>
   </Stack>
   <SocialList class="mobile-menu-socials" />
 </div>
@@ -56,22 +52,3 @@ import Donate from "./Donate.astro";
     align-items: flex-end;
   }
 </style>
-
-<script>
-  const supportButton = document.querySelector(
-    ".support-button"
-  ) as HTMLButtonElement;
-
-  const closeButton = document.querySelector(
-    "[data-modal='mobile-menu'] .jsModalClose"
-  ) as HTMLButtonElement;
-
-  // console.log(supportButton);
-  // console.log(closeButton);
-
-  supportButton?.addEventListener("click", () => {
-    // console.log("click");
-    // console.log(closeButton);
-    closeButton?.click();
-  });
-</script>

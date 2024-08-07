@@ -130,7 +130,11 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
   import sanitizeHtml from "sanitize-html";
   import type { LiqPayObject, LiqPayAction } from "@/lib/types.ts";
   import { format } from "date-fns";
-  import { encodeBase64 } from "../lib/helpers.js";
+  import {
+    encodeBase64,
+    updateBrowserHistory,
+    getURLAndSearchParams,
+  } from "../lib/helpers.js";
 
   type FormValues = {
     pay: LiqPayAction;
@@ -263,6 +267,26 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
      * Handlers
      */
 
+    function handleChipButton(chipButton: HTMLButtonElement) {
+      // Get choice and number input values and convert them to a number
+      const choice = Number(chipButton.textContent);
+      const moneyInput = Number(moneyInputElement.value);
+
+      // Set new number input value and convert it to string
+      moneyInputElement.value = (choice + moneyInput).toString();
+    }
+
+    function handlePayRadioButton(radioButton: HTMLInputElement) {
+      const { url, params } = getURLAndSearchParams();
+
+      if (!params.has("donate")) return;
+
+      params.set("donate", radioButton.value);
+      url.search = params.toString();
+
+      updateBrowserHistory(url);
+    }
+
     /**
      * Add choice values to a number input
      * @param {Object} event
@@ -270,15 +294,22 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
     function handleClick(event: Event) {
       // Matching strategy
       const target = event.target as HTMLElement;
-      const chipButton = target.closest("[data-variant='chip']");
-      if (!chipButton) return;
+      const chipButton = target.closest(
+        "[data-variant='chip']"
+      ) as HTMLButtonElement;
+      const radioButton = target.closest(
+        "input[type='radio']"
+      ) as HTMLInputElement;
 
-      // Get choice and number input values and convert them to a number
-      const choice = Number(chipButton.textContent);
-      const moneyInput = Number(moneyInputElement.value);
+      if (chipButton) {
+        handleChipButton(chipButton);
+        return;
+      }
 
-      // Set new number input value and convert it to string
-      moneyInputElement.value = (choice + moneyInput).toString();
+      if (radioButton) {
+        handlePayRadioButton(radioButton);
+        return;
+      }
     }
 
     /**
@@ -304,6 +335,7 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
         // Sanitize values
         email = sanitizeHtml(email.trim());
         amount = sanitizeHtml(amount.trim());
+        console.log(pay);
 
         // Create data
         const data = createLiqPayData({ pay, email, amount });

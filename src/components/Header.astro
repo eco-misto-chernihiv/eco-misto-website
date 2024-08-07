@@ -9,10 +9,6 @@ import Cluster from "./compositions/Cluster.astro";
 import Logo from "./Logo.astro";
 import MainNav from "./MainNav.astro";
 import Button from "./ui/Button.astro";
-import MobileMenuModal from "./ui/MobileMenuModal.astro";
-import MobileMenu from "./MobileMenu.astro";
-import SideModal from "./ui/SideModal.astro";
-import Donate from "./Donate.astro";
 
 // Assets
 ---
@@ -32,19 +28,14 @@ import Donate from "./Donate.astro";
             style="primary"
             size="small"
             class="support"
-            data-open-modal
+            data-open-donate
             aria-label="Open donate form modal"
-            aria-expanded="false"
             >Підтримати <Icon
               name="icon-heart"
               aria-hidden="true"
               focusable="false"
             /></Button
           >
-
-          <SideModal name="donate-form">
-            <Donate />
-          </SideModal>
         </Cluster>
       </div>
     </Cluster>
@@ -60,18 +51,13 @@ import Donate from "./Donate.astro";
         variant="icon"
         style="ghost"
         aria-label="Open main menu"
-        aria-expanded="false"
-        data-open-modal
+        data-open-mobile-menu
         isDefault={false}
         class="open-menu"
       >
         <Icon name="icon-menu" size={32} />
         <span class="sr-only">Open main menu</span>
       </Button>
-
-      <MobileMenuModal>
-        <MobileMenu />
-      </MobileMenuModal>
     </Cluster>
   </div>
 </header>
@@ -83,6 +69,8 @@ import Donate from "./Donate.astro";
   @custom-media --tablet-l-and-up (width >= 48em);
 
   header {
+    --_padding: var(--space-6-fixed);
+
     position: fixed;
     top: 0;
     left: 0;
@@ -100,7 +88,8 @@ import Donate from "./Donate.astro";
     max-width: 125rem;
     height: var(--header-height);
 
-    padding-inline: var(--space-6-fixed);
+    padding-inline: var(--_padding);
+
     background-color: transparent;
 
     transform: translateY(-100%);
@@ -109,7 +98,7 @@ import Donate from "./Donate.astro";
       max-width 200ms var(--ease);
 
     @media (--tablet-and-up) {
-      padding-inline: var(--space-7-fixed);
+      --_padding: var(--space-7-fixed);
     }
   }
 
@@ -201,6 +190,8 @@ import Donate from "./Donate.astro";
 </style>
 
 <script>
+  import { getBasePath } from "@/lib/helpers";
+
   // Fixed header
   const header = document.querySelector("header") as HTMLElement;
   const supportButton = header.querySelector(".support");
@@ -223,16 +214,6 @@ import Donate from "./Donate.astro";
 
   // Set active state on site-nav
   const { pathname } = window.location;
-
-  function getBasePath(path: string) {
-    const parts = path.split("/");
-
-    if (parts.length >= 2) {
-      return `/${parts[1]}`;
-    }
-
-    return "";
-  }
 
   // TODO: Adjust to select a mobile navigation
   const activeNavigationElements = [

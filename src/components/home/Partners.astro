@@ -16,7 +16,7 @@ import EmptyShape from "../ui/EmptyShape.astro";
 import Shape from "../ui/Shape.astro";
 import Partnership from "../Partnership.astro";
 import MyIcon from "../ui/MyIcon.astro";
-import SideModal from "../ui/SideModal.astro";
+import SideModal from "../ui/_SideModal.astro";
 
 // Assets
 ---
@@ -64,15 +64,10 @@ import SideModal from "../ui/SideModal.astro";
               </Stack>
               <Button
                 style="primary"
-                data-open-modal
+                data-open-partnership
                 aria-label="Open cooperation form modal"
-                aria-expanded="false"
                 >Написати
               </Button>
-
-              <SideModal name="partnership-form">
-                <Partnership />
-              </SideModal>
             </Stack>
           </Stack>
         </Row>
