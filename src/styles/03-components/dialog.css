@@ -25,7 +25,6 @@ dialog {
   transition: opacity 200ms var(--ease-out), visibility 0s 200ms;
 
   &::backdrop {
-    opacity: 0;
     backdrop-filter: blur(0px);
   }
 }
@@ -46,11 +45,12 @@ dialog[open] {
   transition-delay: 0s;
 
   &::backdrop {
-    animation: backdrop 200ms var(--ease-out) forwards;
+    backdrop-filter: blur(2px);
+    animation: blur-in 200ms var(--ease-out) forwards;
   }
 }
 
-@keyframes backdrop {
+@keyframes blur-in {
   from {
     opacity: 0;
     backdrop-filter: blur(0px);
