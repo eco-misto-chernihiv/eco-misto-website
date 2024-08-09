@@ -37,7 +37,11 @@ const { class: classList, name } = Astro.props;
     width: 90%;
     max-width: 62.5rem;
 
+    /* Place dialog in dead center */
+    position: fixed;
+    inset: 0;
     margin: auto;
+
     background: none;
 
     /* Override default overflow, which is hidden */
