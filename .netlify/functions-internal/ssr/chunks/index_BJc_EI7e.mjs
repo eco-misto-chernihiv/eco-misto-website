@@ -1,10 +1,10 @@
 import { f as createAstro, a as createComponent, b as renderTemplate, m as maybeRenderHead, g as addAttribute, d as renderComponent, e as renderSlot, F as Fragment, h as defineStyleVars, s as spreadAttributes } from './astro/server_CFD6V1YY.mjs';
-import { h as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, j as achievmentsData, a as $$Stack, e as $$Cluster, g as $$Icon, i as $$Button, c as $$BaseLayout } from './BaseLayout_nW7brJ2a.mjs';
-import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_DdbxnJwE.mjs';
+import { h as $$Shape, $ as $$Heading, f as $$Text, b as $$Center, j as achievmentsData, a as $$Stack, e as $$Cluster, g as $$Icon, i as $$Button, c as $$BaseLayout } from './BaseLayout_bb2t1Dxw.mjs';
+import { e as $$MyPicture, $ as $$Section, d as $$Row, a as $$Frame, g as getCollection } from './TimePeriod_BLnmzInW.mjs';
 /* empty css                         */
-import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, c as $$AutoGrid, b as $$EmptyShape } from './AutoGrid_zETMvkup.mjs';
+import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, c as $$AutoGrid, b as $$EmptyShape } from './AutoGrid_1yPdwL0g.mjs';
 import { p as parseTitle, a as getSortedProjects } from './helpers_C1eUHQX2.mjs';
-import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_BHISF0F1.mjs';
+import { $ as $$ArchiveProjectCard, b as $$ActiveProjects, a as $$ButtonArrow } from './ArchiveProjectCard_je2Ja8ZZ.mjs';
 
 const $$Astro$6 = createAstro("https://ecomisto.org");
 const $$Achievment = createComponent(($$result, $$props, $$slots) => {
@@ -251,6 +251,10 @@ const prerender = false;
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
+  Astro2.response.headers.set(
+    "Cache-Control",
+    "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800"
+  );
   return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "Donors", $$Donors, {})} ${renderComponent($$result2, "Mission", $$Mission, {})} ${renderComponent($$result2, "Projects", $$Projects, {})} ${renderComponent($$result2, "Partners", $$Partners, {})} ${renderComponent($$result2, "Team", $$Team, {})} ${renderComponent($$result2, "Youtube", $$Youtube, {})} ` })}`;
 }, "/Volumes/Media HD/Web Development/ecomisto/src/pages/index.astro", void 0);
 

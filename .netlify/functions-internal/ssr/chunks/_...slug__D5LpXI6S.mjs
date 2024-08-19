@@ -1,10 +1,10 @@
 import { a as createComponent, b as renderTemplate, m as maybeRenderHead, e as renderSlot, d as renderComponent, f as createAstro, g as addAttribute, h as defineStyleVars, s as spreadAttributes, F as Fragment, u as unescapeHTML } from './astro/server_CFD6V1YY.mjs';
-import { a as $$Frame, b as $$TimePeriod, c as $$ProjectCard, d as $$Row, e as $$MyPicture, g as getCollection, $ as $$Section } from './TimePeriod_DdbxnJwE.mjs';
+import { a as $$Frame, b as $$TimePeriod, c as $$ProjectCard, d as $$Row, e as $$MyPicture, g as getCollection, $ as $$Section } from './TimePeriod_BLnmzInW.mjs';
 import { b as getTimePeriod, e as getRatio, a as getSortedProjects, f as getProjectIndex } from './helpers_C1eUHQX2.mjs';
-import { $ as $$Heading, d as $$Link, a as $$Stack, e as $$Cluster, f as $$Text, g as $$Icon, h as $$Shape, i as $$Button, b as $$Center, c as $$BaseLayout } from './BaseLayout_nW7brJ2a.mjs';
+import { $ as $$Heading, d as $$Link, a as $$Stack, e as $$Cluster, f as $$Text, g as $$Icon, h as $$Shape, i as $$Button, b as $$Center, c as $$BaseLayout } from './BaseLayout_bb2t1Dxw.mjs';
 /* empty css                          */
 import { $ as $$Image, a as $$Picture } from './_astro_assets_CBy1yhCu.mjs';
-import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, b as $$EmptyShape, c as $$AutoGrid } from './AutoGrid_zETMvkup.mjs';
+import { $ as $$SwiperPaginationProgress, a as $$SwiperButton, b as $$EmptyShape, c as $$AutoGrid } from './AutoGrid_1yPdwL0g.mjs';
 import { parse } from 'node-html-parser';
 
 const $$ProjectLayout = createComponent(($$result, $$props, $$slots) => {

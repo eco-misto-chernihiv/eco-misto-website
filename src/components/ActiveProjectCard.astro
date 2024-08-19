@@ -24,37 +24,77 @@ type Props = {
 
 const { project, class: classList, ...rest } = Astro.props;
 const { title, description, cover } = project.data;
+
+// TODO: Delete projects that's with content
+// Eventually reformat rendering when all projects with content
+const projectsToExclude = ["peremoha-lab", "maysternya-mista", "velokuhnya"];
 ---
 
 <ProjectCard class:list={["active-project", classList]} {...rest}>
-  <Link href={`/projects/${project.slug}`}>
-    <Stack space="space-8">
-      <Frame ratio="4:3" class="cover-wrapper">
-        <MyPicture src={cover} width={600} alt="" />
-      </Frame>
+  {
+    projectsToExclude.includes(project.slug) ? (
+      <Stack space="space-8">
+        <Frame ratio="4:3" class="cover-wrapper">
+          <MyPicture src={cover} width={600} alt="" />
+        </Frame>
 
-      <Cluster noWrap justify="between" alignItems="baseline" space="space-7">
-        <Stack space="space-3">
-          <Heading
-            tagName="h4"
-            size="h5"
-            class="title font-heading color-secondary"
+        <Cluster noWrap justify="between" alignItems="baseline" space="space-7">
+          <Stack space="space-3">
+            <Heading
+              tagName="h4"
+              size="h5"
+              class="title font-heading color-secondary"
+            >
+              {title}
+            </Heading>
+            <Text tagName="p" size="medium" class="color-black description">
+              {description}
+            </Text>
+          </Stack>
+          <Icon
+            name="icon-arrow-right"
+            aria-hidden="true"
+            focusable="false"
+            class="color-primary"
+          />
+        </Cluster>
+      </Stack>
+    ) : (
+      <Link href={`/projects/${project.slug}`}>
+        <Stack space="space-8">
+          <Frame ratio="4:3" class="cover-wrapper">
+            <MyPicture src={cover} width={600} alt="" />
+          </Frame>
+
+          <Cluster
+            noWrap
+            justify="between"
+            alignItems="baseline"
+            space="space-7"
           >
-            {title}
-          </Heading>
-          <Text tagName="p" size="medium" class="color-black description">
-            {description}
-          </Text>
+            <Stack space="space-3">
+              <Heading
+                tagName="h4"
+                size="h5"
+                class="title font-heading color-secondary"
+              >
+                {title}
+              </Heading>
+              <Text tagName="p" size="medium" class="color-black description">
+                {description}
+              </Text>
+            </Stack>
+            <Icon
+              name="icon-arrow-right"
+              aria-hidden="true"
+              focusable="false"
+              class="color-primary"
+            />
+          </Cluster>
         </Stack>
-        <Icon
-          name="icon-arrow-right"
-          aria-hidden="true"
-          focusable="false"
-          class="color-primary"
-        />
-      </Cluster>
-    </Stack>
-  </Link>
+      </Link>
+    )
+  }
 </ProjectCard>
 
 <style>

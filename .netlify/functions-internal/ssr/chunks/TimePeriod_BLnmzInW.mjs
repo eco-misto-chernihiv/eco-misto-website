@@ -4,7 +4,7 @@ import { AsyncResource } from 'async_hooks';
 import { A as AstroError, U as UnknownContentCollectionError, p as prependForwardSlash } from './astro/assets-service_C2aiabpb.mjs';
 import { h as getBreakpoints } from './helpers_C1eUHQX2.mjs';
 import { a as $$Picture } from './_astro_assets_CBy1yhCu.mjs';
-import { f as $$Text } from './BaseLayout_nW7brJ2a.mjs';
+import { f as $$Text } from './BaseLayout_bb2t1Dxw.mjs';
 
 const $$Astro$4 = createAstro("https://ecomisto.org");
 const $$Section = createComponent(($$result, $$props, $$slots) => {
@@ -332,7 +332,7 @@ const contentCollectionToEntryMap = createCollectionToGlobResultMap({
 	contentDir,
 });
 
-const dataEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/members/andriy.yaml": () => import('./andriy_CAwNiP-E.mjs'),"/src/content/members/daniil.yaml": () => import('./daniil_BZ_wG-es.mjs'),"/src/content/members/evgen.yaml": () => import('./evgen_CT53sfir.mjs'),"/src/content/members/maksym.yaml": () => import('./maksym_ciSOrGRI.mjs'),"/src/content/members/natalya.yaml": () => import('./natalya_CKWVe0AA.mjs'),"/src/content/members/oleksiy.yaml": () => import('./oleksiy_DJ0qJ0id.mjs'),"/src/content/members/sergiy-bezborodko.yaml": () => import('./sergiy-bezborodko_4G_7GVnN.mjs'),"/src/content/members/sergiy.yaml": () => import('./sergiy_Deg9RWhV.mjs'),"/src/content/members/sonya.yaml": () => import('./sonya_DWUWGa2d.mjs')});
+const dataEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/members/andriy.yaml": () => import('./andriy_BFrzOMjf.mjs'),"/src/content/members/daniil.yaml": () => import('./daniil_EiG7P1-D.mjs'),"/src/content/members/evgen.yaml": () => import('./evgen_kmjKuMj1.mjs'),"/src/content/members/maksym.yaml": () => import('./maksym_Cc3TVN-L.mjs'),"/src/content/members/natalya.yaml": () => import('./natalya_C3D03AFA.mjs'),"/src/content/members/oleksiy.yaml": () => import('./oleksiy_Bjh5bqc1.mjs'),"/src/content/members/olya.yaml": () => import('./olya_DN7w8h7t.mjs'),"/src/content/members/sergiy-bezborodko.yaml": () => import('./sergiy-bezborodko_4G_7GVnN.mjs'),"/src/content/members/sergiy.yaml": () => import('./sergiy_D-SSG06i.mjs'),"/src/content/members/sonya.yaml": () => import('./sonya_JOkcQhCi.mjs')});
 const dataCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: dataEntryGlob,
 	contentDir,
@@ -343,7 +343,7 @@ createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"members":{"type":"data","entries":{"andriy":"/src/content/members/andriy.yaml","daniil":"/src/content/members/daniil.yaml","evgen":"/src/content/members/evgen.yaml","maksym":"/src/content/members/maksym.yaml","natalya":"/src/content/members/natalya.yaml","oleksiy":"/src/content/members/oleksiy.yaml","sergiy-bezborodko":"/src/content/members/sergiy-bezborodko.yaml","sergiy":"/src/content/members/sergiy.yaml","sonya":"/src/content/members/sonya.yaml"}},"projects":{"type":"content","entries":{"city-makers":"/src/content/projects/city-makers.mdx","maysternya-mista":"/src/content/projects/maysternya-mista.mdx","peremoha-lab":"/src/content/projects/peremoha-lab.mdx","plastic-fantastic":"/src/content/projects/plastic-fantastic.mdx","prostir-diy":"/src/content/projects/prostir-diy.mdx","supersorters":"/src/content/projects/supersorters.mdx","velokuhnya":"/src/content/projects/velokuhnya.mdx","velolink":"/src/content/projects/velolink.mdx"}}};
+lookupMap = {"members":{"type":"data","entries":{"andriy":"/src/content/members/andriy.yaml","daniil":"/src/content/members/daniil.yaml","evgen":"/src/content/members/evgen.yaml","maksym":"/src/content/members/maksym.yaml","natalya":"/src/content/members/natalya.yaml","oleksiy":"/src/content/members/oleksiy.yaml","olya":"/src/content/members/olya.yaml","sergiy-bezborodko":"/src/content/members/sergiy-bezborodko.yaml","sergiy":"/src/content/members/sergiy.yaml","sonya":"/src/content/members/sonya.yaml"}},"projects":{"type":"content","entries":{"city-makers":"/src/content/projects/city-makers.mdx","maysternya-mista":"/src/content/projects/maysternya-mista.mdx","peremoha-lab":"/src/content/projects/peremoha-lab.mdx","plastic-fantastic":"/src/content/projects/plastic-fantastic.mdx","prostir-diy":"/src/content/projects/prostir-diy.mdx","supersorters":"/src/content/projects/supersorters.mdx","velokuhnya":"/src/content/projects/velokuhnya.mdx","velolink":"/src/content/projects/velolink.mdx"}}};
 
 function createGlobLookup(glob) {
 	return async (collection, lookupId) => {

@@ -13,11 +13,11 @@ const data = {name:"Наталя",position:"Комунікаційниця",pict
 							return target[name];
 						}
 					})
-					,indexId:4};
+					,indexId:5};
 const _internal = {
 	type: 'data',
 	filePath: "/Volumes/Media HD/Web Development/ecomisto/src/content/members/natalya.yaml",
-	rawData: "name: Наталя\nposition: Комунікаційниця\npicture: ./images/natalya.png\nindexId: 4\n",
+	rawData: "name: Наталя\nposition: Комунікаційниця\npicture: ./images/natalya.png\nindexId: 5\n",
 };
 
 export { _internal, collection, data, id };
