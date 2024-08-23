@@ -51,10 +51,58 @@ function setScrollBarWidth() {
 }
 
 /**
+ * Get iframe or video element, within desired element
+ * @param {HTMLElement} element
+ * @returns {HTMLElement} Iframe or video element
+ */
+function getVideoElement(element) {
+  return element.querySelector("iframe") || element.querySelector("video");
+}
+
+/**
  * Close dialog
  */
 dialogs.forEach((dialog) => {
+  /**
+   * Elements
+   */
   const closeButton = dialog.querySelector("button[data-close-dialog]");
+
+  /**
+   * Handlers
+   */
+
+  function handleURLParams() {
+    const { url, params } = getURLAndSearchParams();
+    const param = dialog.getAttribute("data-dialog");
+
+    // Remove dialog id as param from the url and set new url
+    params.delete(param);
+    url.search = params.toString();
+
+    updateBrowserHistory(url);
+  }
+
+  function handleVideoPause() {
+    // Get iframe or video element, within a modal
+    const videoElement = getVideoElement(dialog);
+    if (!videoElement) return;
+
+    // If videoElement is iframe, reset src
+    if (videoElement instanceof HTMLIFrameElement) {
+      const src = videoElement.src;
+      videoElement.src = src;
+    }
+
+    // If videoElement is video, set video on pause
+    if (videoElement instanceof HTMLVideoElement) {
+      videoElement.pause();
+    }
+  }
+
+  /**
+   * Listeners
+   */
 
   closeButton.addEventListener("click", () => {
     dialog.close();
@@ -67,16 +115,12 @@ dialogs.forEach((dialog) => {
     }
   });
 
-  // Remove donate id from url params on dialog close
   dialog.addEventListener("close", () => {
-    const { url, params } = getURLAndSearchParams();
-    const param = dialog.getAttribute("data-dialog");
+    // Remove donate id from url params on dialog close
+    handleURLParams();
 
-    // Remove dialog id as param from the url and set new url
-    params.delete(param);
-    url.search = params.toString();
-
-    updateBrowserHistory(url);
+    // Set video on pause
+    handleVideoPause();
   });
 });
 
