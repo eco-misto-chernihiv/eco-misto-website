@@ -1,0 +1,25 @@
+---
+import Link from "../ui/Link.astro";
+
+type Props = {
+  href: string;
+};
+
+const { href } = Astro.props;
+---
+
+<a href={href} rel="nofollow noopener norefferer" target="_blank">
+  <slot />
+</a>
+
+<style>
+  a {
+    color: var(--color-secondary);
+
+    transition: color var(--transition-default);
+  }
+
+  a:hover {
+    color: var(--color-primary);
+  }
+</style>

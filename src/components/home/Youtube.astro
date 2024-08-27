@@ -15,8 +15,8 @@ import YoutubeVideo from "./YoutubeVideo.astro";
 
 
 // Data
-// const apiKey = import.meta.env.YOUTUBE_API_KEY;
-const apiKey = process.env.YOUTUBE_API_KEY;
+const apiKey = import.meta.env.YOUTUBE_API_KEY;
+// const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
 
 type YoutubeVideos = {
@@ -70,10 +70,10 @@ try {
 
 <section class="youtube">
   <Center maxWidth="87.5rem" space="space-6">
-    <Stack space="space-10" >
+
       <Heading tagName="h3" size="h6">Відеоархів</Heading>
 
-      <AutoGrid role="list" minItemWidth="265px">
+      <AutoGrid class="youtube-list" role="list" minItemWidth="265px" >
         {
           youtubeVideos.length === 0 ? (
             <></>
@@ -88,7 +88,7 @@ try {
           )
         }
       </AutoGrid>
-    </Stack>
+
   </Center>
 </section>
 
@@ -97,5 +97,9 @@ try {
 
   .youtube {
     padding-block: var(--space-11-fixed);
+  }
+
+  .youtube-list {
+    margin-top: var(--space-10-fixed);
   }
 </style>

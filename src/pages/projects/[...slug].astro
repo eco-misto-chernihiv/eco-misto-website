@@ -20,6 +20,7 @@ import Text from "@/components/ui/Text.astro";
 import Section from "@/components/ui/Section.astro";
 import H2 from "../../components/project/H2.astro";
 import H3 from "../../components/project/H3.astro";
+import ProjectLink from "@/components/project/ProjectLink.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
@@ -104,7 +105,7 @@ const nextProject = isActive
   </Section>
 
   <ProjectLayout>
-    <Content components={{ ...components, h2: H2, h3: H3 }} />
+    <Content components={{ ...components, h2: H2, h3: H3, a: ProjectLink }} />
   </ProjectLayout>
 
   {
