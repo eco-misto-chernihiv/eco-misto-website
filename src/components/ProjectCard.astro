@@ -27,10 +27,10 @@ const { class: classList, ...rest } = Astro.props;
   .project-card :global(.cover-wrapper) {
     background-color: var(--color-accent);
 
-    transition: filter 300ms var(--ease-out);
+    transition: filter 650ms var(--ease-out);
 
     & :global(img) {
-      transition: transform 300ms var(--ease-out);
+      transition: transform 650ms var(--ease-out);
     }
   }
 
@@ -40,7 +40,7 @@ const { class: classList, ...rest } = Astro.props;
     -webkit-line-clamp: 1;
     overflow: hidden;
 
-    transition: color var(--transition-default);
+    transition: color 400ms var(--ease-out);
   }
 
   .project-card :global(.description) {
@@ -69,9 +69,13 @@ const { class: classList, ...rest } = Astro.props;
   .project-card:hover :global(.cover-wrapper) {
     filter: brightness(103%);
 
+    transition: filter 400ms var(--ease-out);
+
     & :global(img) {
       /* transform: scale(1.03); */
       transform: scale3d(1.05, 1.05, 1.05);
+
+      transition: transform 400ms var(--ease-out);
     }
   }
 

@@ -1,43 +1,65 @@
 ---
 import AutoFlex from "../compositions/AutoFlex.astro";
+import AutoGrid from "../compositions/AutoGrid.astro";
 import Stack from "../compositions/Stack.astro";
 import Text from "../ui/Text.astro";
 ---
 
 <div class="logos">
-  <Stack space="space-5">
-    <Text tagName="p" size="small" class="color-gray-400"
-      >За підтримки донорів та партнерів</Text
-    >
+  <Text tagName="p" size="small" class="color-gray-400"
+    >За підтримки донорів та партнерів</Text
+  >
 
-    <!-- <AutoGrid
-      minItemWidth="128px"
-      space="space-7"
-      class="logos-container"
-      justifyItems="center"
-    >
-      <slot />
-    </AutoGrid> -->
-    <AutoFlex
-      minItemWidth="180px"
-      space="space-6"
-      class="logos-container"
-      noStretch
-      justify="start"
-    >
-      <slot />
-    </AutoFlex>
-  </Stack>
+  <AutoGrid
+    minItemWidth="128px"
+    maxColumns="2"
+    space="space-6"
+    class="logos-container mobile"
+    justifyItems="center"
+  >
+    <slot />
+  </AutoGrid>
+  <AutoFlex
+    minItemWidth="180px"
+    space="space-6"
+    class="logos-container desktop"
+    noStretch
+    justify="start"
+  >
+    <slot />
+  </AutoFlex>
 </div>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
   .logos-container {
+    margin-top: var(--space-5-fixed);
+
     & :global(svg) {
       width: 100%;
       height: 100%;
       fill: currentColor;
+    }
+  }
+
+  /**
+  * State
+   */
+
+  .logos-container.mobile {
+    display: grid;
+
+    @media (--tablet-and-up) {
+      display: none;
+    }
+  }
+
+  .logos-container.desktop {
+    display: none;
+
+    @media (--tablet-and-up) {
+      display: flex;
     }
   }
 </style>
