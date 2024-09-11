@@ -1,5 +1,11 @@
 ---
-type colorOptions = "primary" | "secondary" | "accent" | "white" | "black";
+type colorOptions =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "white"
+  | "black"
+  | "gray-200";
 
 type spaceOptions =
   | "space-0"
@@ -48,40 +54,56 @@ const track = `var(--color-${trackColor})`;
 </div>
 
 <style define:vars={{ thumb, track, scrollSnapAlign }}>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .reel {
     display: flex;
 
     /* We want horizontal scrolling */
     overflow-x: scroll;
+    overflow-y: hidden;
 
     /** Space to move scrollbar away */
-    padding-block-end: var(--space-4-fixed);
+    padding-block-end: var(--space-7-fixed);
 
-    scrollbar-color: var(--thumb) var(--track);
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
+    @media (--tablet-and-up) {
+      scrollbar-color: var(--thumb) var(--track);
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   .reel::-webkit-scrollbar {
-    block-size: 1rem;
+    @media (--tablet-and-up) {
+      block-size: 1rem;
+    }
   }
 
   .reel::-webkit-scrollbar-track {
-    background-color: var(--track);
+    @media (--tablet-and-up) {
+      background-color: var(--track);
+    }
   }
 
   .reel::-webkit-scrollbar-thumb {
-    border: 2px solid var(--track);
-    border-radius: 1000px;
-    background-color: var(--track);
-    background-image: linear-gradient(
-      var(--track) 0,
-      var(--track) 0.25rem,
-      var(--thumb) 0.25rem,
-      var(--thumb) 0.75rem,
-      var(--track) 0.75rem
-    );
+    @media (--tablet-and-up) {
+      border: 2px solid var(--track);
+      border-radius: 1000px;
+      background-color: var(--track);
+      background-image: linear-gradient(
+        var(--track) 0,
+        var(--track) 0.25rem,
+        var(--thumb) 0.25rem,
+        var(--thumb) 0.75rem,
+        var(--track) 0.75rem
+      );
+    }
   }
+
+  /* .reel > :global(*) {
+    height: 64px;
+    flex: 0 0 300px;
+  } */
 
   .reel.scroll-snap {
     scroll-snap-type: x mandatory;
@@ -91,3 +113,30 @@ const track = `var(--color-${trackColor})`;
     scroll-snap-align: var(--scrollSnapAlign);
   }
 </style>
+
+<script>
+  const reels = [...document.querySelectorAll(".reel")];
+
+  /**
+   * Check whether the total width of the element’s content (scrollWidth) is greater than the width of the element that is visible (clientWidth)
+   * @param {HTMLElement} element to toggle class on
+   */
+  function toggleOverflowClass(element: HTMLElement) {
+    element.classList.toggle(
+      "overflowing",
+      element.scrollWidth > element.clientWidth
+    );
+  }
+
+  reels.forEach((reel) => {
+    if ("ResizeObserver" in window) {
+      new ResizeObserver((entries) => {
+        const element = entries[0].target as HTMLElement;
+
+        toggleOverflowClass(element);
+      }).observe(reel);
+    }
+  });
+
+  console.log(reels);
+</script>

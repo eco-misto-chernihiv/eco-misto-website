@@ -1,16 +1,23 @@
 ---
 import AutoFlex from "../compositions/AutoFlex.astro";
 import AutoGrid from "../compositions/AutoGrid.astro";
+import Center from "../compositions/Center.astro";
+import Reel from "../compositions/Reel.astro";
 import Stack from "../compositions/Stack.astro";
 import Text from "../ui/Text.astro";
 ---
 
-<div class="logos">
-  <Text tagName="p" size="small" class="color-gray-400"
-    >За підтримки донорів та партнерів</Text
-  >
+<Center
+  maxWidth="80rem"
+  space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+>
+  <div class="logos">
+    <Stack space="space-8">
+      <Text tagName="p" size="small" class="color-gray-400 text-center"
+        >За підтримки донорів та партнерів</Text
+      >
 
-  <AutoGrid
+      <!-- <AutoGrid
     minItemWidth="128px"
     maxColumns="2"
     space="space-6"
@@ -27,27 +34,36 @@ import Text from "../ui/Text.astro";
     justify="start"
   >
     <slot />
-  </AutoFlex>
-</div>
+  </AutoFlex> -->
+      <Reel thumbColor="gray-200" trackColor="white" class="logos-reel">
+        <slot />
+      </Reel>
+    </Stack>
+  </div>
+</Center>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .logos-container {
-    margin-top: var(--space-5-fixed);
+  .logos-reel {
+    justify-content: center;
 
     & :global(svg) {
-      width: 100%;
       height: 100%;
-      fill: currentColor;
+      min-width: 175px;
+      /* flex: 0 0 175px; */
     }
+  }
+
+  .logos-reel.overflowing {
+    justify-content: start;
   }
 
   /**
   * State
    */
 
-  .logos-container.mobile {
+  .logos-reel.mobile {
     display: grid;
 
     @media (--tablet-and-up) {
@@ -55,7 +71,7 @@ import Text from "../ui/Text.astro";
     }
   }
 
-  .logos-container.desktop {
+  .logos-reel.desktop {
     display: none;
 
     @media (--tablet-and-up) {
@@ -63,3 +79,5 @@ import Text from "../ui/Text.astro";
     }
   }
 </style>
+
+<script></script>
