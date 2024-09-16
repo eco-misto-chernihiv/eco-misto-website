@@ -4,12 +4,13 @@ import ArrowIcon from "./ArrowIcon.astro";
 type Props = {
   direction: "left" | "right";
   class?: string;
+  size?: number;
 };
-const { direction, class: classList } = Astro.props;
+const { direction, size = 40, class: classList } = Astro.props;
 ---
 
 <div class:list={["swiper-button", classList]} data-direction={direction}>
-  <ArrowIcon style="primary" direction={direction} />
+  <ArrowIcon size={size} style="primary" direction={direction} />
 </div>
 
 <style>

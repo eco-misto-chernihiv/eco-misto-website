@@ -23,6 +23,7 @@ import H3 from "../../components/project/H3.astro";
 import ProjectLink from "@/components/project/ProjectLink.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
+import RelatedProjects from "@/components/project/RelatedProjects.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
 import { components } from "@/components/mdxComponents.js";
 
@@ -58,25 +59,31 @@ const { title, description, cover, isCollage = false } = project.data;
 const sortedProjects = getSortedProjects(projects);
 
 // Get active and archive projects
-const activeProjects = sortedProjects.filter(({ data }) => data.isActive);
-
-const archiveProjects = sortedProjects.filter(({ data }) => !data.isActive);
+const activeProjects = sortedProjects.filter(
+  (p) => p.data.isActive && p.id !== project.id
+);
+const archiveProjects = sortedProjects.filter(
+  (p) => !p.data.isActive && p.id !== project.id
+);
 
 const isActive = project.data.isActive;
 
-// Get index of current project
-const index = isActive
-  ? getProjectIndex(activeProjects, project)
-  : getProjectIndex(archiveProjects, project);
+const relatedProjects = isActive ? activeProjects : archiveProjects;
 
-// Set previous and next projects
-const previousProject = isActive
-  ? activeProjects[index - 1]
-  : archiveProjects[index - 1];
+// // Get index of current project
+// const index = isActive
+//   ? getProjectIndex(activeProjects, project)
+//   : getProjectIndex(archiveProjects, project);
 
-const nextProject = isActive
-  ? activeProjects[index + 1]
-  : archiveProjects[index + 1];
+// console.log(relatedProjects);
+// // Set previous and next projects
+// const previousProject = isActive
+//   ? activeProjects[index - 1]
+//   : archiveProjects[index - 1];
+
+// const nextProject = isActive
+//   ? activeProjects[index + 1]
+//   : archiveProjects[index + 1];
 ---
 
 <BaseLayout>
@@ -120,13 +127,14 @@ const nextProject = isActive
   <Center
     maxWidth="68.75rem"
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
-    class="pagination"
+    class="related-projects"
   >
     <Stack space="space-10">
       <Heading tagName="h3" size="h5" class="color-secondary"
         >Інші проєкти</Heading
       >
-      <Row
+      <RelatedProjects relatedProjects={relatedProjects} />
+      <!-- <Row
         columnGap={{ default: "space-0", tablet: "space-7" }}
         rowGap={{ default: "space-8", tablet: "space-0" }}
       >
@@ -146,7 +154,7 @@ const nextProject = isActive
             />
           )
         }
-      </Row>
+      </Row> -->
     </Stack>
   </Center>
 </BaseLayout>
@@ -272,7 +280,7 @@ const nextProject = isActive
     }
   }
 
-  .pagination {
+  .related-projects {
     padding-block: var(--space-11-fixed);
 
     @media (--tablet-and-up) {

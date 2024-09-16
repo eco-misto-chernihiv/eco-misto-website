@@ -85,6 +85,7 @@ export const contactsData = [
   },
 ];
 
+// prettier-ignore
 export const cooperationData = [
   {
     label: "Мене звати *",
@@ -126,10 +127,12 @@ export const cooperationData = [
     placeholder: "kostya@gmail.com",
     type: "email",
     required: true,
-    pattern: "/^[w-.]+@([w-]+.)+[w-]{2,4}$/",
+    pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
   },
 ];
 
+// TODO: Check email patterns
+// prettier-ignore
 export const donateData = [
   {
     label: "Введіть суму *",
@@ -145,8 +148,8 @@ export const donateData = [
     formControl: "input",
     name: "email",
     placeholder: "marusya@gmail.com",
-    type: "email",
+    type: "text",
     required: true,
-    pattern: "/^[w-.]+@([w-]+.)+[w-]{2,4}$/",
+    pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
   },
 ];

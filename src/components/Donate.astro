@@ -335,7 +335,6 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
         // Sanitize values
         email = sanitizeHtml(email.trim());
         amount = sanitizeHtml(amount.trim());
-        console.log(pay);
 
         // Create data
         const data = createLiqPayData({ pay, email, amount });

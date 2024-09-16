@@ -1,0 +1,93 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectNavigationItem from "./ProjectNavigationItem.astro";
+import Cluster from "../compositions/Cluster.astro";
+import SwiperButton from "../ui/SwiperButton.astro";
+
+type Props = {
+  relatedProjects: CollectionEntry<"projects">[];
+};
+
+const { relatedProjects } = Astro.props;
+---
+
+<div class="related-projects-carousel">
+  <div class="related-projects-swiper swiper">
+    <div class="swiper-wrapper">
+      {
+        relatedProjects.map((project) => {
+          return (
+            <div class="swiper-slide">
+              <div role="listitem">
+                <ProjectNavigationItem project={project} />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div class="swiper-navigation">
+    <Cluster
+      space={{ default: "space-8", tablet: "space-10" }}
+      alignItems="center"
+      noWrap
+    >
+      <Cluster space="space-2" noWrap class="swiper-buttons">
+        <SwiperButton
+          size={64}
+          direction="left"
+          class="related-swiper-button-prev"
+        />
+        <SwiperButton
+          size={64}
+          direction="right"
+          class="related-swiper-button-next"
+        />
+      </Cluster>
+    </Cluster>
+  </div>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .related-projects-carousel {
+    position: relative;
+    isolation: isolate;
+  }
+
+  :global(.related-swiper-button-prev),
+  :global(.related-swiper-button-next) {
+    --_vertical-offset: 26.4444%;
+    --_horizontal-offset: -1rem;
+    /**
+    * Note: Buttons positiond to parent carousel 
+     */
+    position: absolute;
+    z-index: 999;
+
+    transform: translateY(calc(var(--_vertical-offset) * -1));
+
+    @media (--tablet-and-up) {
+      --_vertical-offset: 28.4444%;
+      --_horizontal-offset: -1.5rem;
+    }
+
+    @media (--laptop-and-up) {
+      --_vertical-offset: 30.4444%;
+      --_horizontal-offset: -2rem;
+    }
+  }
+
+  :global(.related-swiper-button-prev) {
+    top: var(--_vertical-offset);
+    left: var(--_horizontal-offset);
+  }
+
+  :global(.related-swiper-button-next) {
+    top: var(--_vertical-offset);
+    right: var(--_horizontal-offset);
+  }
+</style>

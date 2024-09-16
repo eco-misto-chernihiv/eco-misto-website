@@ -16,6 +16,7 @@ type Props = {
   style: keyof typeof styleOptions;
   direction?: keyof typeof directionOptions;
   class?: string;
+  size?: number;
   isOutline?: boolean;
   [key: string]: any;
 };
@@ -23,10 +24,13 @@ type Props = {
 const {
   class: classList,
   style,
+  size = 40,
   direction = "right",
   isOutline = false,
   ...rest
 } = Astro.props;
+
+const arrowIconSize = `${size}px`;
 ---
 
 <div
@@ -42,9 +46,9 @@ const {
   <Icon name="icon-arrow-right" size={32} />
 </div>
 
-<style>
+<style define:vars={{ arrowIconSize }}>
   .arrow {
-    --_size: 40px;
+    --_size: var(--arrowIconSize);
 
     height: var(--_size);
     width: var(--_size);

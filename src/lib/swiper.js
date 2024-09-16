@@ -14,8 +14,8 @@ const swiper1 = new Swiper(".multi-slide-swiper", {
   loop: true,
   // Navigation arrows
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".multi-swiper-button-next",
+    prevEl: ".multi-swiper-button-prev",
   },
   pagination: {
     el: ".swiper-pagination",
@@ -45,8 +45,8 @@ const swiper2 = new Swiper(".single-slide-swiper", {
 
   // Navigation arrows
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".single-swiper-button-next",
+    prevEl: ".single-swiper-button-prev",
   },
 });
 
@@ -59,8 +59,8 @@ const swiper3 = new Swiper(".team-members-swiper", {
 
   // Navigation arrows
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".team-swiper-button-next",
+    prevEl: ".team-swiper-button-prev",
   },
   pagination: {
     el: ".swiper-pagination",
@@ -77,6 +77,39 @@ const swiper3 = new Swiper(".team-members-swiper", {
     },
     1100: {
       slidesPerView: 4,
+      spaceBetween: 24,
+    },
+  },
+});
+
+// Init Related Projects Swiper
+const swiper4 = new Swiper(".related-projects-swiper", {
+  // configure Swiper to use modules
+  modules: [Navigation, Pagination],
+  slidesPerView: 2,
+  spaceBetween: 24,
+
+  // Navigation arrows
+  // TODO: Custom Names
+  navigation: {
+    nextEl: ".related-swiper-button-next",
+    prevEl: ".related-swiper-button-prev",
+  },
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   type: "progressbar",
+  // },
+  breakpoints: {
+    320: {
+      spaceBetween: 16,
+      slidesPerView: 1.3,
+    },
+    550: {
+      slidesPerView: 1.7,
+      spaceBetween: 20,
+    },
+    1100: {
+      slidesPerView: 2,
       spaceBetween: 24,
     },
   },
