@@ -26,6 +26,9 @@ import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.as
 import RelatedProjects from "@/components/project/RelatedProjects.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
 import { components } from "@/components/mdxComponents.js";
+import Switcher from "@/components/compositions/Switcher.astro";
+import { Icon } from "astro-icon/components";
+import ButtonArrow from "@/components/ui/ButtonArrow.astro";
 
 // Data
 
@@ -129,10 +132,23 @@ const relatedProjects = isActive ? activeProjects : archiveProjects;
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
     class="related-projects"
   >
-    <Stack space="space-10">
-      <Heading tagName="h3" size="h5" class="color-secondary"
-        >Інші проєкти</Heading
+    <Stack space={{ default: "space-7", tablet: "space-10" }}>
+      <Row
+        alignItems="baseline"
+        rowGap={{ default: "space-4", tablet: "space-0" }}
       >
+        <Heading
+          tagName="h3"
+          size="h5"
+          class="col-12 tablet:col-6 color-secondary">Інші проєкти</Heading
+        >
+        <div class="col-12 tablet:col-6 all-projects">
+          <ButtonArrow tagName="a" style="primary" href="/projects"
+            >Усі проєкти
+          </ButtonArrow>
+        </div>
+      </Row>
+
       <RelatedProjects relatedProjects={relatedProjects} />
       <!-- <Row
         columnGap={{ default: "space-0", tablet: "space-7" }}
@@ -285,6 +301,15 @@ const relatedProjects = isActive ? activeProjects : archiveProjects;
 
     @media (--tablet-and-up) {
       padding-block: var(--space-13-fixed);
+    }
+  }
+
+  .all-projects {
+    display: flex;
+    justify-content: flex-start;
+
+    @media (--tablet-and-up) {
+      justify-content: flex-end;
     }
   }
 </style>
