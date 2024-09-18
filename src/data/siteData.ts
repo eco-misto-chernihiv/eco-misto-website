@@ -61,6 +61,11 @@ export const socialData = [
     icon: "icon-youtube",
   },
   {
+    title: "Telegram",
+    href: "https://t.me/ecochernihivbot",
+    icon: "icon-telegram",
+  },
+  {
     title: "LinkedIn",
     href: "https://www.linkedin.com/company/eco-misto",
     icon: "icon-linkedin",

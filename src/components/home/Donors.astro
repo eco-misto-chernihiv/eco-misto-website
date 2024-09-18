@@ -9,11 +9,12 @@ import Stack from "../compositions/Stack.astro";
 import Marquee from "../ui/Marquee.astro";
 import Text from "../ui/Text.astro";
 import MyIcon from "../ui/MyIcon.astro";
+import MyPicture from "../ui/MyPicture.astro";
 
 // Assets
 const donors = [
   {
-    name: "donors-usaid",
+    name: "donors-usaid-figma",
   },
   {
     name: "donors-ednannya",
@@ -34,6 +35,8 @@ const donors = [
     name: "donors-undp",
   },
 ];
+
+import gizLogo from "@/assets/images/giz.png";
 ---
 
 <section class="donors">
@@ -61,6 +64,13 @@ const donors = [
               );
             })
           }
+          <div class="donor-logo">
+            <MyPicture
+              src={gizLogo}
+              width={300}
+              alt="Chernigiv Monumentalism logo"
+            />
+          </div>
         </div>
       </Marquee>
     </Stack>
@@ -96,6 +106,11 @@ const donors = [
       display: flex;
       align-items: center;
       justify-content: center;
+
+      & :global(img),
+      & :global(picture) {
+        object-fit: contain;
+      }
 
       @media (--tablet-and-up) {
         width: 300px;

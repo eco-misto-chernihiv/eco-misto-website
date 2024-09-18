@@ -14,10 +14,12 @@ import Section from "../ui/Section.astro";
 import Marquee from "../ui/Marquee.astro";
 import EmptyShape from "../ui/EmptyShape.astro";
 import Shape from "../ui/Shape.astro";
-
 import MyIcon from "../ui/MyIcon.astro";
+import MyPicture from "../ui/MyPicture.astro";
 
 // Assets
+import chernigivMonumentalism from "@/assets/images/chernigiv-monumentalism.png";
+import chernigivPatrolPolice from "@/assets/images/chernigiv-patrol-police.png";
 ---
 
 <Section class="partners">
@@ -83,6 +85,10 @@ import MyIcon from "../ui/MyIcon.astro";
               </div>
 
               <div class="partner-logo">
+                <MyIcon name="partners-dmch" />
+              </div>
+
+              <div class="partner-logo">
                 <MyIcon name="partners-tolocar" />
               </div>
 
@@ -96,6 +102,14 @@ import MyIcon from "../ui/MyIcon.astro";
 
               <div class="partner-logo">
                 <MyIcon name="partners-chernigiv-it" />
+              </div>
+
+              <div class="partner-logo">
+                <MyPicture
+                  src={chernigivMonumentalism}
+                  width={300}
+                  alt="Chernigiv Monumentalism logo"
+                />
               </div>
             </div>
           </Marquee>
@@ -127,6 +141,14 @@ import MyIcon from "../ui/MyIcon.astro";
 
               <div class="partner-logo">
                 <MyIcon name="partners-plato" />
+              </div>
+
+              <div class="partner-logo">
+                <MyPicture
+                  src={chernigivPatrolPolice}
+                  width={300}
+                  alt="Chernigiv Patrol Police logo"
+                />
               </div>
             </div>
           </Marquee>
@@ -208,6 +230,11 @@ import MyIcon from "../ui/MyIcon.astro";
     display: flex;
     align-items: center;
     justify-content: center;
+
+    & :global(img),
+    & :global(picture) {
+      object-fit: contain;
+    }
 
     @media (--tablet-and-up) {
       width: 300px;

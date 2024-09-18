@@ -10,7 +10,7 @@ import path from "path";
 // fs.writeFileSync("./src/icons/sprites.svg", sprites);
 
 // Directory containing your SVG files
-const svgDir = "./src/icons";
+const svgDir = "./src/assets/_icons";
 
 // Output file path
 const outputPath = "./public/sprite.svg";
