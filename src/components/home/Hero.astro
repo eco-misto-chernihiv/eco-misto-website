@@ -28,7 +28,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
   >
     <Row
       class="hero-grid"
-      rowGap={{ default: "space-6", tablet: "space-14", laptop: "space-0" }}
+      rowGap={{ default: "space-7", tablet: "space-14", laptop: "space-0" }}
       alignItems="center"
     >
       <div class="hero-text col-12">
@@ -38,18 +38,20 @@ import VideoDialog from "../ui/VideoDialog.astro";
       </div>
 
       <div class="about-text col-12">
-        <Stack space="space-4">
+        <Stack space={{ default: "space-4", laptop: "space-7" }}>
           <Text tagName="p" size="large" class="color-accent">
-            Громадська організація "Еко Місто Чернігів" — це урбаністична
+            Громадська організація «Еко Місто Чернігів» — це урбаністична
             ініціатива, спрямована на покращення якості життя через проєкти
-            тактичного урбанізму та формування спільнот.
+            активації публічних просторів і формування спільнот.
           </Text>
 
-          <Text tagName="p" size="large" class="color-accent">
-            Наша діяльність включає популяризацію сталих підходів, а саме
-            розвиток мейкерства, ресайклінг та підтримку велосипедного руху в
-            Чернігові.
-          </Text>
+          <Button
+            style="primary"
+            isInverted={true}
+            data-open-partnership
+            aria-label="Open cooperation form modal"
+            >Написати
+          </Button>
         </Stack>
       </div>
 
@@ -94,18 +96,20 @@ import VideoDialog from "../ui/VideoDialog.astro";
         <div class="about-text tablet">
           <Shape color="secondary" class="left" translateX="-100%" />
           <Shape color="secondary" class="bottom" translateY="100%" />
-          <Stack space="space-4">
+          <Stack space="space-5">
             <Text tagName="p" size="medium" class="color-accent">
-              Громадська організація "Еко Місто Чернігів" — це урбаністична
+              Громадська організація «Еко Місто Чернігів» — це урбаністична
               ініціатива, спрямована на покращення якості життя через проєкти
               тактичного урбанізму та формування спільнот.
             </Text>
 
-            <Text tagName="p" size="medium" class="color-accent">
-              Наша діяльність включає популяризацію сталих підходів, а саме
-              розвиток мейкерства, ресайклінг та підтримку велосипедного руху в
-              Чернігові.
-            </Text>
+            <Button
+              style="primary"
+              isInverted={true}
+              data-open-partnership
+              aria-label="Open cooperation form modal"
+              >Написати
+            </Button>
           </Stack>
         </div>
 
@@ -320,8 +324,9 @@ import VideoDialog from "../ui/VideoDialog.astro";
       padding-block-start: var(--space-12-fixed);
     }
 
-    & p {
-      /* opacity: 0.7; */
+    /** Prevent button from stretching */
+    & button {
+      width: fit-content;
     }
   }
 
@@ -335,7 +340,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
       top: 0;
       right: 0;
 
-      height: 13.5rem;
+      height: 12rem;
 
       /* Fluid max-width */
       max-width: 24rem;
@@ -357,7 +362,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
 
       & .shape.left {
         /* TODO: fluid top */
-        bottom: 4.3rem;
+        bottom: 3.6rem;
         left: 0;
         margin-top: -1px;
         margin-left: 1px;
