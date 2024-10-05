@@ -8,6 +8,7 @@ isCollage: true
 ---
 
 import bikesForUkraine from "./images/velokuhnya/bikes-for-ukraine.png";
+import workingHours from "./images/velokuhnya/working-hours.jpg";
 
 {/* Should start with 'images' */}
 export const velokuhnyaImages = [
@@ -105,10 +106,12 @@ export const velokuhnyaImages = [
 
   </TextContent>
 
+{/* prettier-ignore */}
 <TextContent>
-  Майстерня розташована за адресою: [Проспект Левка Лук'яненка,
-  2А](https://maps.app.goo.gl/ZS49Y47vxbkQsASo9) і працює по буднях з 11:00 до
-  17:00.
+
+  <ImageGrid>
+    <Full src={workingHours} orientation="portrait"/>
+  </ImageGrid>
 </TextContent>
 
   <Logos>
