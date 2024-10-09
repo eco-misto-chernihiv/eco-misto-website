@@ -69,11 +69,24 @@ const { name, position, picture } = member.data;
     left: -1px;
     bottom: -1px;
 
-    padding-block-start: var(--space-3-fixed);
-    padding-inline-end: var(--space-6-fixed);
-    border-top-right-radius: var(--_border-radius);
+    width: 100%;
+
+    padding-inline-end: var(--space-9-fixed);
+
     color: var(--color-secondary);
+  }
+
+  .member-info .wrapper {
+    position: relative;
+
+    width: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding-block-start: var(--space-3-fixed);
+    padding-inline-end: var(--space-4-fixed);
+
     background-color: var(--color-white);
+    border-top-right-radius: var(--_border-radius);
   }
 
   .info {

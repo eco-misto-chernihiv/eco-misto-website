@@ -69,7 +69,7 @@ const swiper3 = new Swiper(".team-members-swiper", {
   breakpoints: {
     320: {
       spaceBetween: 16,
-      slidesPerView: 1.2,
+      slidesPerView: 2.2,
     },
     550: {
       slidesPerView: 2.5,
