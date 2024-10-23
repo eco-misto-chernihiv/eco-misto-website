@@ -7,6 +7,7 @@ isActive: true
 isCollage: true
 ---
 
+import WorkingHours from "@/components/project/WorkingHours.astro";
 import bikesForUkraine from "./images/velokuhnya/bikes-for-ukraine.png";
 import workingHours from "./images/velokuhnya/working-hours.jpg";
 
@@ -107,12 +108,13 @@ export const velokuhnyaImages = [
   </TextContent>
 
 {/* prettier-ignore */}
-<TextContent>
+{/* <TextContent>
 
   <ImageGrid>
     <Full src={workingHours} orientation="portrait"/>
   </ImageGrid>
-</TextContent>
+</TextContent> */}
+<WorkingHours/>
 
   <Logos>
     <Icon name="donors-eed" />

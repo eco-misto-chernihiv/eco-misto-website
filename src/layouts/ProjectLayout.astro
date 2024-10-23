@@ -35,7 +35,10 @@
     margin-block-end: var(--space-5-fixed);
   }
 
-  .content :global(p + p) {
+  /**
+  * Using :where to set 0 specificity, so that you can overwrite p inside .content
+   */
+  :where(.content) :global(p + p) {
     margin-block-start: var(--space-7-fixed);
   }
 

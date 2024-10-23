@@ -1,0 +1,130 @@
+---
+import { Icon } from "astro-icon/components";
+import Row from "../compositions/Row.astro";
+import Centered from "./Centered.astro";
+import Stack from "../compositions/Stack.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import MyPicture from "../ui/MyPicture.astro";
+
+import workingHoursBg from "@/content/projects/images/velokuhnya/working-hours_bg.png";
+import workingHoursBgMobile from "@/content/projects/images/velokuhnya/working-hours_bg-mobile.png";
+---
+
+<div class="working-hours">
+  <Centered>
+    <Stack space={{ default: "space-4", tablet: "space-0" }}>
+      <Row rowGap={{ default: "space-10", tablet: "space-0" }}>
+        <div class="logo col-12 tablet:col-6">
+          <Icon name="velokuhnya-logo" />
+        </div>
+        <div class="info col-12 tablet:col-6">
+          <Stack space="space-8">
+            <Stack space="space-4">
+              <Heading tagName="h4" size="h6"
+                >Працюємо<br /> з понеділка по пʼятницю</Heading
+              >
+              <Heading tagName="h4" size="h6">11:00 - 17:00</Heading>
+            </Stack>
+
+            <Stack space="space-1">
+              <Text tagName="p" size="medium">
+                Проспект Левка Лук’яненка, 2А
+              </Text>
+              <Text tagName="p" size="medium"> Центр «Перемога» </Text>
+            </Stack>
+          </Stack>
+        </div>
+      </Row>
+      <Row>
+        <div class="collage col-12">
+          <MyPicture
+            src={workingHoursBgMobile}
+            width={490}
+            alt="Peremoha Center Collage"
+            class="mobile"
+          />
+          <MyPicture
+            src={workingHoursBg}
+            width={1100}
+            alt="Peremoha Center Collage"
+            class="desktop"
+          />
+        </div>
+      </Row>
+    </Stack>
+  </Centered>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .working-hours {
+    text-align: center;
+
+    @media (--tablet-and-up) {
+      --_offset: var(--space-6-fixed);
+
+      padding-block-start: var(--space-6-fixed);
+
+      text-align: left;
+    }
+
+    @media (--laptop-and-up) {
+      --_offset: var(--space-10-fixed);
+
+      text-align: left;
+    }
+  }
+
+  .logo {
+    --_height: var(--space-9-fixed);
+
+    & svg {
+      block-size: var(--_height);
+      inline-size: 100%;
+    }
+
+    @media (--tablet-and-up) {
+      justify-self: flex-end;
+      padding-inline-end: var(--_offset);
+
+      & svg {
+        --_height: var(--space-11-fixed);
+      }
+    }
+
+    @media (--laptop-and-up) {
+      & svg {
+        --_height: var(--space-12-fixed);
+      }
+    }
+  }
+
+  .info {
+    @media (--tablet-and-up) {
+      padding-inline-start: var(--_offset);
+    }
+  }
+
+  .collage {
+    & :global(picture),
+    & :global(img) {
+      object-fit: cover;
+    }
+
+    & :global(.desktop) {
+      display: none;
+    }
+
+    @media (--tablet-and-up) {
+      & :global(.mobile) {
+        display: none;
+      }
+
+      & :global(.desktop) {
+        display: revert;
+      }
+    }
+  }
+</style>
