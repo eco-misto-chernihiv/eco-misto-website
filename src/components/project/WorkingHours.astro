@@ -80,24 +80,21 @@ import workingHoursBgMobile from "@/content/projects/images/velokuhnya/working-h
   .logo {
     --_height: var(--space-9-fixed);
 
-    & svg {
-      block-size: var(--_height);
-      inline-size: 100%;
+    justify-self: center;
+
+    & [data-icon] {
+      font-size: var(--_height);
     }
 
     @media (--tablet-and-up) {
+      --_height: var(--space-11-fixed);
+
       justify-self: flex-end;
       padding-inline-end: var(--_offset);
-
-      & svg {
-        --_height: var(--space-11-fixed);
-      }
     }
 
     @media (--laptop-and-up) {
-      & svg {
-        --_height: var(--space-12-fixed);
-      }
+      --_height: var(--space-12-fixed);
     }
   }
 

@@ -9,10 +9,21 @@ import mdx from "@astrojs/mdx";
 
 import icon from "astro-icon";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://ecomisto.org",
-  integrations: [react(), mdx(), icon()],
+  integrations: [
+    react(),
+    mdx(),
+    icon(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   devToolbar: {
     enabled: false,
   },
