@@ -11,6 +11,8 @@ import icon from "astro-icon";
 
 import partytown from "@astrojs/partytown";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://ecomisto.org",
@@ -23,6 +25,7 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
+    sitemap(),
   ],
   devToolbar: {
     enabled: false,
