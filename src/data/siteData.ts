@@ -25,7 +25,7 @@ export const achievmentsData = [
     "right-rotate": "270deg",
   },
   {
-    title: "712",
+    title: "726",
     description: "соціальних велосипедів видано",
     id: "primary-light",
     "left-translateX": "-100%",

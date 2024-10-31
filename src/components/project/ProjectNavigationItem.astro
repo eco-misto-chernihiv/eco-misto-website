@@ -43,7 +43,7 @@ const siteUrl = `/projects/${project.slug}`;
   <Link href={`${siteUrl}`}>
     <Stack space="space-6">
       <Frame ratio="3:2" class:list={["cover-wrapper", { collage: isCollage }]}>
-        <Image src={cover} alt="" />
+        <Image src={cover.image} alt={cover.alt} />
       </Frame>
 
       <Stack space="space-2">

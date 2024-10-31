@@ -87,9 +87,22 @@ const relatedProjects = isActive ? activeProjects : archiveProjects;
 // const nextProject = isActive
 //   ? activeProjects[index + 1]
 //   : archiveProjects[index + 1];
+
+const template = cover.image.format === "png" ? "projectCover" : "projectPhoto";
 ---
 
-<BaseLayout seo={{ title: `${title} | Еко Місто`, description }}>
+<BaseLayout
+  seo={{ title: `${title} | Еко Місто`, description }}
+  ogImage={{
+    template,
+    data: {
+      title: `${title} | Еко Місто`,
+      image: `${Astro.url.origin}/${cover.image.src}`,
+      alt: cover.alt,
+    },
+  }}
+  type="article"
+>
   <Section class="hero" color="white">
     <Center
       maxWidth="80rem"
@@ -108,7 +121,7 @@ const relatedProjects = isActive ? activeProjects : archiveProjects;
         </div>
 
         <div class:list={["hero-img", { collage: isCollage }]}>
-          <MyPicture src={cover} alt="" width={1120} />
+          <MyPicture src={cover.image} alt="" width={1120} />
         </div>
       </div>
     </Center>

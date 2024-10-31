@@ -46,8 +46,11 @@ const projects = defineCollection({
         })
         .optional(),
       // validate as a local image
-      cover: image().refine((img) => img.width >= 1120, {
-        message: "Cover should be at least 1120px wide or more",
+      cover: z.object({
+        image: image().refine((img) => img.width >= 1120, {
+          message: "Cover should be at least 1120px wide or more",
+        }),
+        alt: z.string(),
       }),
       // color: z.enum(colorOptions).optional(),
       pubDate: z.date(),

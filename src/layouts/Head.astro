@@ -9,9 +9,18 @@ import { baseData } from "../data/siteData";
 
 interface Props {
   seo?: SEOProps;
+  ogImage?: {
+    template: string;
+    data?: Record<string, any>;
+    alt?: string;
+  };
+  type?: string;
 }
 
-const { seo } = Astro.props;
+const { seo, ogImage, type } = Astro.props;
+
+// new URLSearchParams(ogImage?.data) — carry data to client-side from server-side
+const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png?${new URLSearchParams(ogImage?.data)}`;
 ---
 
 <head>
@@ -22,11 +31,47 @@ const { seo } = Astro.props;
     name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1"
   />
-  <meta name="generator" content={Astro.generator} />
   <SEO
     title={seo?.title ?? baseData.title}
     description={seo?.description ?? baseData.description}
     {...seo}
+    openGraph={{
+      basic: {
+        type: type ?? "website",
+        title: seo?.title ?? baseData.title,
+
+        image: ogImageUrl,
+        url: seo?.canonical,
+      },
+      image: {
+        alt: ogImage?.data?.alt,
+        type: "image/png",
+      },
+    }}
+    extend={{
+      meta: [
+        {
+          name: "og:description",
+          content: seo?.description ?? baseData.description,
+        },
+        {
+          name: "og:locale",
+          content: "uk_UA",
+        },
+        {
+          name: "og:site_name",
+          content: baseData.title,
+        },
+      ],
+    }}
+    twitter={{
+      card: "summary_large_image",
+      image: ogImageUrl,
+      imageAlt: ogImage?.alt,
+      site: baseData.title,
+      title: seo?.title ?? baseData.title,
+      description: seo?.description ?? baseData.description,
+    }}
   />
   <GoogleAnalytics />
 </head>

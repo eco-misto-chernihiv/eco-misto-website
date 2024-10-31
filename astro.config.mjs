@@ -32,4 +32,9 @@ export default defineConfig({
   },
   output: "hybrid",
   adapter: netlify(),
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });

@@ -35,7 +35,7 @@ const projectsToExclude = ["maysternya-mista"];
     projectsToExclude.includes(project.slug) ? (
       <Stack space="space-8">
         <Frame ratio="4:3" class="cover-wrapper">
-          <MyPicture src={cover} width={600} alt="" />
+          <MyPicture src={cover.image} width={600} alt={cover.alt} />
         </Frame>
 
         <Cluster noWrap justify="between" alignItems="baseline" space="space-7">
@@ -63,7 +63,7 @@ const projectsToExclude = ["maysternya-mista"];
       <Link href={`/projects/${project.slug}`}>
         <Stack space="space-8">
           <Frame ratio="4:3" class="cover-wrapper">
-            <MyPicture src={cover} width={600} alt="" />
+            <MyPicture src={cover.image} width={600} alt="" />
           </Frame>
 
           <Cluster
