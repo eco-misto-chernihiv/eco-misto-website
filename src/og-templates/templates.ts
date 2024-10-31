@@ -1,5 +1,4 @@
 import { html } from "satori-html";
-import bg from "@/og-templates/bg.png";
 
 // Templates is a Record, where the key is string(template name)
 // And value is going to be a method that returns any, but optionally accepts

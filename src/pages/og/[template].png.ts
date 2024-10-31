@@ -1,3 +1,6 @@
+// Server rendered
+export const prerender = false;
+
 import satori from "satori";
 import fs from "fs/promises";
 import path from "path";
@@ -5,9 +8,6 @@ import path from "path";
 import { Resvg } from "@resvg/resvg-js";
 import { templates } from "@/og-templates/templates";
 import type { APIContext } from "astro";
-
-// Server rendered
-export const prerender = false;
 
 export async function GET(context: APIContext) {
   // Obtain dynamic segment
