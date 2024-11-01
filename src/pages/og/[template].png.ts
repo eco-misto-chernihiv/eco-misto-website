@@ -4,6 +4,7 @@ export const prerender = false;
 import satori from "satori";
 import fs from "fs/promises";
 import path from "path";
+import sharp from "sharp";
 
 import { Resvg } from "@resvg/resvg-js";
 import { templates } from "@/og-templates/templates";
@@ -44,17 +45,23 @@ export async function GET(context: APIContext) {
     ],
   });
 
-  const resvgInstance = new Resvg(svg, {
-    // Fit image to a box that has a width 1200
-    fitTo: {
-      mode: "width",
-      value: 1200,
-    },
-  });
+  // const resvgInstance = new Resvg(svg, {
+  //   // Fit image to a box that has a width 1200
+  //   fitTo: {
+  //     mode: "width",
+  //     value: 1200,
+  //   },
+  // });
 
-  // Render image from instance
-  const image = await resvgInstance.render();
+  // // Render image from instance
+  // const image = await resvgInstance.render();
 
   // Return a file from a result of our endpoint
-  return new Response(image.asPng());
+  // return new Response(image.asPng());
+
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return new Response(png, {
+    headers: { "Content-Type": "image/png" },
+  });
 }

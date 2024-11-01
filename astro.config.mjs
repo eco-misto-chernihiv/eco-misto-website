@@ -32,18 +32,18 @@ export default defineConfig({
   },
   output: "hybrid",
   adapter: netlify(),
-  vite: {
-    ssr: {
-      // ssr instead of rollupOptions
-      external: ["@resvg/resvg-js"],
-    },
-    build: {
-      rollupOptions: {
-        external: ["@resvg/resvg-js"],
-      },
-    },
-    optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
-    },
-  },
+  // vite: {
+  //   ssr: {
+  //     // ssr instead of rollupOptions
+  //     external: ["@resvg/resvg-js"],
+  //   },
+  //   build: {
+  //     rollupOptions: {
+  //       external: ["@resvg/resvg-js"],
+  //     },
+  //   },
+  //   optimizeDeps: {
+  //     exclude: ["@resvg/resvg-js"],
+  //   },
+  // },
 });
