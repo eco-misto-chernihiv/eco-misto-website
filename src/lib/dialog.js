@@ -1,5 +1,11 @@
 import { getURLAndSearchParams, updateBrowserHistory } from "./helpers.js";
 
+// import Swiper JS
+import Swiper from "swiper";
+import { fullScreenConfig } from "./swiper.js";
+
+let swiper = null;
+
 /**
  * Dialog Elements
  */
@@ -11,7 +17,9 @@ const promoDialog = document.querySelector("[data-dialog='promo-video']");
 const youtubeDialogs = [
   ...document.querySelectorAll("[data-dialog='youtube-video']"),
 ];
-
+const multiSlideFullscreenDialog = document.querySelector(
+  "[data-dialog='multi-slide-fullscreen']"
+);
 /**
  * Button Elements
  */
@@ -24,7 +32,9 @@ const promoVideoButton = document.querySelector("[data-open-promo]");
 const youtubeVideoButtons = [
   ...document.querySelectorAll("[data-open-youtube]"),
 ];
-
+const multiSlideFullscreenButtons = [
+  ...document.querySelectorAll("[data-open-multi-slide]"),
+];
 /**
  * Helpers
  */
@@ -121,6 +131,12 @@ dialogs.forEach((dialog) => {
 
     // Set video on pause
     handleVideoPause();
+
+    // Destroy swiper instance
+    if (swiper) {
+      swiper.destroy(true, true);
+      swiper = null;
+    }
   });
 });
 
@@ -180,5 +196,18 @@ if (promoVideoButton) {
 youtubeVideoButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
     youtubeDialogs[index].showModal();
+  });
+});
+
+multiSlideFullscreenButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    // If no swiper, initialize
+    if (!swiper) {
+      swiper = new Swiper(".fullscreen-gallery-swiper", fullScreenConfig);
+    }
+
+    swiper.slideTo(index);
+
+    multiSlideFullscreenDialog.showModal();
   });
 });

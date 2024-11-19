@@ -10,10 +10,8 @@ import Cluster from "../compositions/Cluster.astro";
 
 // Components
 import Annotation from "./Annotation.astro";
-import FullscreenGallery from "./FullscreenGallery.astro";
 import SwiperButton from "../ui/SwiperButton.astro";
 import SwiperPaginationProgress from "../ui/SwiperPaginationProgress.astro";
-import FullscreenGalleryDialog from "../ui/FullscreenGalleryDialog.astro";
 
 // Data
 
@@ -42,8 +40,8 @@ imagePaths.forEach((imagePath) => {
 const ratio = getRatio(orientation);
 ---
 
-<div class="multi-slide-gallery">
-  <div class="multi-slide-swiper swiper">
+<div class="fullscreen-gallery">
+  <div class="fullscreen-gallery-swiper swiper">
     <div class="swiper-wrapper">
       {
         imagePaths?.map((imagePath) => {
@@ -51,17 +49,15 @@ const ratio = getRatio(orientation);
 
           return (
             <div class="swiper-slide">
-              <button class="open-btn" data-open-multi-slide>
-                <Frame ratio={ratio} class="img-wrapper">
-                  <Picture
-                    src={images[newPath]()}
-                    width={1000}
-                    formats={["avif", "webp"]}
-                    alt=""
-                    densities={[1.5, 2]}
-                  />
-                </Frame>
-              </button>
+              <Frame ratio={ratio} class="img-wrapper">
+                <Picture
+                  src={images[newPath]()}
+                  width={1000}
+                  formats={["avif", "webp"]}
+                  alt=""
+                  densities={[1.5, 2]}
+                />
+              </Frame>
             </div>
           );
         })
@@ -81,8 +77,14 @@ const ratio = getRatio(orientation);
           <SwiperPaginationProgress />
 
           <Cluster space="space-2" noWrap>
-            <SwiperButton direction="left" class="multi-swiper-button-prev" />
-            <SwiperButton direction="right" class="multi-swiper-button-next" />
+            <SwiperButton
+              direction="left"
+              class="fullscreen-gallery-swiper-button-prev"
+            />
+            <SwiperButton
+              direction="right"
+              class="fullscreen-gallery-swiper-button-next"
+            />
           </Cluster>
         </Cluster>
       </Center>
@@ -92,58 +94,27 @@ const ratio = getRatio(orientation);
   <Annotation>
     <slot />
   </Annotation>
-
-  <FullscreenGalleryDialog name="multi-slide-fullscreen">
-    <FullscreenGallery imagePaths={imagePaths} />
-  </FullscreenGalleryDialog>
 </div>
 
 <style>
-  @import "@styles/04-utilities/breakpoints.css";
-
-  .img-wrapper {
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0);
-      border-radius: var(--rounded-lg);
-
-      transition: background-color var(--transition-default);
-
-      @media (--tablet-and-up) {
-        border-radius: var(--rounded-xl);
-      }
-    }
-
-    &:hover::after {
-      background-color: rgba(0, 0, 0, 0.4);
-    }
+  .fullscreen-gallery {
+    inline-size: 100%;
+    block-size: 100%;
+    display: flex;
+    align-items: center;
+    padding-block-start: var(--space-10-fixed);
   }
 
-  .swiper-slide .open-btn {
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: block;
-
-    &:hover {
-      cursor: url("/icon-arrow-expand.svg"), auto;
-    }
+  .swiper-slide {
+    overflow: hidden;
+    height: auto;
   }
 
   .swiper-navigation {
-    margin-block-start: var(--space-9-fixed);
+    margin-block-start: var(--space-8-fixed);
   }
 
   .swiper-pagination-wrapper {
     flex: 1;
-
-    position: relative;
   }
 </style>
-
-<script></script>

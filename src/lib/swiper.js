@@ -4,8 +4,10 @@ import { Navigation, Pagination } from "swiper/modules";
 // import Swiper styles
 import "swiper/css";
 
-// Init Multi Slide Swiper
-const swiper1 = new Swiper(".multi-slide-swiper", {
+/**
+ * Swiper Configs
+ */
+const multiSlideConfig = {
   // configure Swiper to use modules
   modules: [Navigation, Pagination],
   slidesPerView: 1.9,
@@ -34,12 +36,9 @@ const swiper1 = new Swiper(".multi-slide-swiper", {
       spaceBetween: 24,
     },
   },
-});
+};
 
-// Init Single Slide Swiper
-
-// init Swiper:
-const swiper2 = new Swiper(".single-slide-swiper", {
+const singSlideConfig = {
   // configure Swiper to use modules
   modules: [Navigation],
 
@@ -48,10 +47,9 @@ const swiper2 = new Swiper(".single-slide-swiper", {
     nextEl: ".single-swiper-button-next",
     prevEl: ".single-swiper-button-prev",
   },
-});
+};
 
-// Init Team Member Swiper
-const swiper3 = new Swiper(".team-members-swiper", {
+const teamMembersConfig = {
   // configure Swiper to use modules
   modules: [Navigation, Pagination],
   slidesPerView: 1.9,
@@ -80,10 +78,9 @@ const swiper3 = new Swiper(".team-members-swiper", {
       spaceBetween: 24,
     },
   },
-});
+};
 
-// Init Related Projects Swiper
-const swiper4 = new Swiper(".related-projects-swiper", {
+const relatedProjectsConfig = {
   // configure Swiper to use modules
   modules: [Navigation, Pagination],
   slidesPerView: 2,
@@ -113,4 +110,47 @@ const swiper4 = new Swiper(".related-projects-swiper", {
       spaceBetween: 24,
     },
   },
-});
+};
+
+export const fullScreenConfig = {
+  // configure Swiper to use modules
+  modules: [Navigation, Pagination],
+  slidesPerView: 1.2,
+  spaceBetween: 24,
+  centeredSlides: true,
+  loop: true,
+  // Navigation arrows
+  navigation: {
+    nextEl: ".fullscreen-gallery-swiper-button-next",
+    prevEl: ".fullscreen-gallery-swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    type: "progressbar",
+  },
+  breakpoints: {
+    320: {
+      spaceBetween: 16,
+      slidesPerView: 1.2,
+    },
+    550: {
+      spaceBetween: 20,
+      slidesPerView: 1.5,
+    },
+    1280: {
+      slidesPerView: 1.7,
+      spaceBetween: 24,
+    },
+  },
+};
+
+/**
+ * Init Swipers
+ */
+const multiSlideSwiper = new Swiper(".multi-slide-swiper", multiSlideConfig);
+const singleSlideSwiper = new Swiper(".single-slide-swiper", singSlideConfig);
+const teamMembersSwiper = new Swiper(".team-members-swiper", teamMembersConfig);
+const relatedProjectsSwiper = new Swiper(
+  ".related-projects-swiper",
+  relatedProjectsConfig
+);
