@@ -202,6 +202,7 @@ youtubeVideoButtons.forEach((button, index) => {
 multiSlideFullscreenButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
     // If no swiper, initialize
+    // todo refactor to support multiple swipers on the same page
     if (!swiper) {
       swiper = new Swiper(".fullscreen-gallery-swiper", fullScreenConfig);
     }

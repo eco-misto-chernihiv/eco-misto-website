@@ -19,9 +19,14 @@ import FullscreenGalleryDialog from "../ui/FullscreenGalleryDialog.astro";
 
 type Props = {
   orientation?: "landscape" | "portrait" | "wide" | "square";
+  isFullscreen?: boolean;
   imagePaths: string[];
 };
-const { imagePaths, orientation = "landscape" } = Astro.props;
+const {
+  imagePaths,
+  orientation = "landscape",
+  isFullscreen = false,
+} = Astro.props;
 
 // Assets
 
@@ -42,7 +47,7 @@ imagePaths.forEach((imagePath) => {
 const ratio = getRatio(orientation);
 ---
 
-<div class="multi-slide-gallery">
+<div class:list={["multi-slide-gallery", { fullscreen: isFullscreen }]}>
   <div class="multi-slide-swiper swiper">
     <div class="swiper-wrapper">
       {
@@ -51,7 +56,19 @@ const ratio = getRatio(orientation);
 
           return (
             <div class="swiper-slide">
-              <button class="open-btn" data-open-multi-slide>
+              {isFullscreen ? (
+                <button class="open-btn" data-open-multi-slide>
+                  <Frame ratio={ratio} class="img-wrapper">
+                    <Picture
+                      src={images[newPath]()}
+                      width={1000}
+                      formats={["avif", "webp"]}
+                      alt=""
+                      densities={[1.5, 2]}
+                    />
+                  </Frame>
+                </button>
+              ) : (
                 <Frame ratio={ratio} class="img-wrapper">
                   <Picture
                     src={images[newPath]()}
@@ -61,7 +78,7 @@ const ratio = getRatio(orientation);
                     densities={[1.5, 2]}
                   />
                 </Frame>
-              </button>
+              )}
             </div>
           );
         })
@@ -93,15 +110,19 @@ const ratio = getRatio(orientation);
     <slot />
   </Annotation>
 
-  <FullscreenGalleryDialog name="multi-slide-fullscreen">
-    <FullscreenGallery imagePaths={imagePaths} />
-  </FullscreenGalleryDialog>
+  {
+    isFullscreen && (
+      <FullscreenGalleryDialog name="multi-slide-fullscreen">
+        <FullscreenGallery imagePaths={imagePaths} />
+      </FullscreenGalleryDialog>
+    )
+  }
 </div>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
-  .img-wrapper {
+  .multi-slide-gallery.fullscreen .img-wrapper {
     &::after {
       content: "";
       position: absolute;
