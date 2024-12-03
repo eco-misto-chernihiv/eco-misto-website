@@ -18,6 +18,8 @@ import Full from "@/components/project/Full.astro";
 import ResultList from "@/components/project/ResultList.astro";
 import ProjectRow from "@/components/project/ProjectRow.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
+import Link from "./ui/Link.astro";
+import MyPicture from "@/components/ui/MyPicture.astro";
 
 export const components = {
   MultiSlideGallery,
@@ -39,4 +41,6 @@ export const components = {
   Icon,
   ProjectRow,
   CallToAction,
+  Link,
+  MyPicture,
 };

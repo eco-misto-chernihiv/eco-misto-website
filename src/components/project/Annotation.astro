@@ -11,9 +11,17 @@
     margin-block-start: var(--space-4-fixed);
     text-align: center;
 
-    & > :global(p) {
+    & > :global(p),
+    & > :global(a) {
       font-size: var(--text-minus-2);
+    }
+
+    & > :global(p) {
       color: var(--color-gray-400);
+    }
+
+    & > :global(a) {
+      color: var(--color-secondary);
     }
   }
 </style>
