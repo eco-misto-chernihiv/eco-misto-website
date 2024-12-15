@@ -32,15 +32,19 @@ if (period) {
   timePeriod = getTimePeriod(period);
 }
 
-// const siteUrl = Astro.site
-//   ? new URL(`/projects/${project.slug}`, Astro.site)
-//   : `https://ecomisto.netlify.app/projects/${project.slug}`;
-
-const siteUrl = `/projects/${project.slug}`;
+const siteUrl =
+  project.slug === "maysternya-mista"
+    ? "https://crowdfunding.ecomisto.org/"
+    : `/projects/${project.slug}`;
 ---
 
 <ProjectCard class:list={["project-navigation", classList]}>
-  <Link href={`${siteUrl}`}>
+  <Link
+    href={siteUrl}
+    {...project.slug === "maysternya-mista"
+      ? { isExternal: true, target: "_blank" }
+      : ""}
+  >
     <Stack space="space-6">
       <Frame ratio="3:2" class:list={["cover-wrapper", { collage: isCollage }]}>
         <Image src={cover.image} alt={cover.alt} />
