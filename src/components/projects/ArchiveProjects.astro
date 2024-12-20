@@ -34,9 +34,9 @@ const sortedProjects = getSortedProjects(projects);
       }
     </Stack>
 
-    <ButtonArrow style="secondary" noArrow data-load-more
+    <!-- <ButtonArrow style="secondary" noArrow data-load-more
       >Дивитись більше</ButtonArrow
-    >
+    > -->
   </Stack>
 </Stack>
 
@@ -57,16 +57,18 @@ const sortedProjects = getSortedProjects(projects);
     }
   } */
 
-  button[data-load-more] {
+  /* button[data-load-more] {
     align-self: center;
   }
 
   button[data-load-more][data-loaded] {
     display: none;
-  }
+  } */
 </style>
 
 <script>
+  /*
+  * ENABLE WHEN NEEDED
   const archiveProjectsList = document.querySelector(
     ".archive-projects-list"
   ) as HTMLDivElement;
@@ -106,4 +108,5 @@ const sortedProjects = getSortedProjects(projects);
   }
 
   loadMore?.addEventListener("click", handleClick);
+  */
 </script>
