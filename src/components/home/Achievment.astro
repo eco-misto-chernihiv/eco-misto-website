@@ -31,7 +31,11 @@ const {
     rotate={rightRotate}
   />
   <div class="content">
-    <Heading tagName="h4" size="h3" class="numner font-heading">{title}</Heading>
+    <Heading
+      tagName="h4"
+      size={{ default: "h6", tablet: "h5", laptop: "h3" }}
+      class="numner font-heading">{title}</Heading
+    >
     <Text tagName="p" size="medium" class="description">{description}</Text>
   </div>
 </div>
@@ -39,18 +43,18 @@ const {
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
+  @custom-media --tablet-s-and-up (width >= 48em);
+
   .achievment {
+    aspect-ratio: 1;
     --_translate-y: 0rem;
-
-    position: absolute;
-
-    padding: var(--space-4-fixed);
 
     background-color: var(--color-secondary);
 
     transform: translateY(var(--_translate-y));
 
     @media (--tablet-and-up) {
+      position: absolute;
       padding: var(--space-6-fixed);
     }
 
@@ -73,10 +77,18 @@ const {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    width: 8rem;
-    height: 8rem;
+
+    height: 100%;
+
+    padding: var(--space-3-fixed);
 
     @media (--tablet-and-up) {
+      width: 8rem;
+      height: 8rem;
+      padding: var(--space-4-fixed);
+    }
+
+    @media (--tablet-s-and-up) {
       width: 12rem;
       height: 12rem;
     }
@@ -84,14 +96,25 @@ const {
     @media (--laptop-and-up) {
       width: 15rem;
       height: 15rem;
+      padding: var(--space-6-fixed);
+    }
+  }
+
+  .achievment :global(.shape) {
+    display: none;
+
+    @media (--tablet-and-up) {
+      display: block;
     }
   }
 
   .achievment.primary {
-    --_translate-y: -5rem;
+    @media (--tablet-and-up) {
+      --_translate-y: -5rem;
 
-    top: 0;
-    right: 4rem;
+      top: 0;
+      right: 4rem;
+    }
 
     @media (--laptop-and-up) {
       right: 14rem;
@@ -123,13 +146,21 @@ const {
 
   .achievment.primary-light,
   .achievment.accent {
-    bottom: 0;
+    @media (--tablet-and-up) {
+      bottom: 0;
+    }
   }
 
   .achievment.primary-light {
-    --_translate-y: 5rem;
+    @media (--tablet-and-up) {
+      --_translate-y: 5rem;
 
-    left: 4rem;
+      left: 3rem;
+    }
+
+    @media (--tablet-s-and-up) {
+      left: 4rem;
+    }
 
     @media (--laptop-and-up) {
       left: 9rem;
@@ -160,13 +191,15 @@ const {
   }
 
   .achievment.accent {
-    --_translate-y: 8rem;
+    @media (--tablet-and-up) {
+      --_translate-y: 8rem;
 
-    display: none;
-
-    @media (--laptop-and-up) {
-      right: 5rem;
       display: flex;
+      right: 4rem;
+    }
+
+    @media (--tablet-s-and-up) {
+      right: 5rem;
     }
 
     /* Shape positions */
@@ -193,22 +226,15 @@ const {
     }
   }
 
-  .content {
-    padding: var(--space-3-fixed);
-
-    @media (--tablet-and-up) {
-      padding: var(--space-4-fixed);
-    }
-
-    @media (--laptop-and-up) {
-      padding: var(--space-6-fixed);
-    }
-  }
-
   .achievment .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    line-height: 1.2;
+
+    @media (--laptop-and-up) {
+      line-height: 1.4;
+    }
   }
 </style>

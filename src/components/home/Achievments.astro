@@ -14,6 +14,7 @@ import achievmentsBg from "../../assets/images/achievments-bg-final.jpg";
 
 // Data
 import { achievmentsData } from "@/data/siteData";
+import Cluster from "../compositions/Cluster.astro";
 ---
 
 <Section class="achievments">
@@ -25,11 +26,13 @@ import { achievmentsData } from "@/data/siteData";
       <div class="bg-image">
         <MyPicture src={achievmentsBg} width={1400} alt="" />
       </div>
-      {
-        achievmentsData.map((achievment) => (
-          <Achievment achievment={achievment} />
-        ))
-      }
+      <div class="achievments-inner">
+        {
+          achievmentsData.map((achievment) => (
+            <Achievment achievment={achievment} />
+          ))
+        }
+      </div>
     </div>
   </Center>
 </Section>
@@ -46,6 +49,14 @@ import { achievmentsData } from "@/data/siteData";
     position: relative;
   }
 
+  .achievments-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--space-4-fixed);
+
+    margin-block-start: var(--space-5-fixed);
+  }
+
   .bg-image {
     overflow: hidden;
     border-radius: var(--rounded-2xl);
@@ -55,10 +66,11 @@ import { achievmentsData } from "@/data/siteData";
     }
 
     & :global(img) {
-      height: 600px;
+      height: 400px;
       object-fit: cover;
+      object-position: left;
 
-      @media (--laptop-and-up) {
+      @media (--tablet-and-up) {
         height: 600px;
       }
     }
