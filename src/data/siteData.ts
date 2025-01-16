@@ -18,7 +18,7 @@ export const navData = [
 export const achievmentsData = [
   {
     title: "557",
-    description: "креативних заходів організовано",
+    description: "креативних заходів проведено",
     id: "primary",
     "left-translateX": "-100%",
     "right-translateX": "100%",
@@ -35,7 +35,7 @@ export const achievmentsData = [
   },
   {
     title: "7",
-    description: "публічних просторів ревіталізовано",
+    description: "публічних просторів оновлено",
     id: "accent",
     "left-translateX": "-100%",
     "right-translateX": "100%",

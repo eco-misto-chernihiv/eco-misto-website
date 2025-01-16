@@ -20,7 +20,7 @@ import Achievments from "./Achievments.astro";
 ---
 
 <Section color="secondary" isRound class="mission">
-  <Stack space="space-12">
+  <Stack space={{ default: "space-10", tablet: "space-12" }}>
     <Center
       maxWidth="87.5rem"
       space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
@@ -55,7 +55,11 @@ import Achievments from "./Achievments.astro";
 
   .mission {
     padding-block-start: var(--space-11-fixed);
-    padding-block-end: var(--space-15-fixed);
+    padding-block-end: var(--space-12-fixed);
+
+    @media (--tablet-and-up) {
+      padding-block-end: var(--space-15-fixed);
+    }
 
     @media (--laptop-and-up) {
       padding-block-start: var(--space-15-fixed);
