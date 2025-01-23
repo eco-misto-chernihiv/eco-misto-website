@@ -20,6 +20,7 @@ import ProjectRow from "@/components/project/ProjectRow.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
 import Link from "./ui/Link.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
+import Annotation from "@/components/project/Annotation.astro";
 
 export const components = {
   MultiSlideGallery,
@@ -43,4 +44,5 @@ export const components = {
   CallToAction,
   Link,
   MyPicture,
+  Annotation,
 };

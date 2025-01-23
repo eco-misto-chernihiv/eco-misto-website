@@ -1,7 +1,15 @@
 ---
 import Row from "../compositions/Row.astro";
+
+type Props = {
+  isFull?: boolean;
+};
+
+const { isFull = false } = Astro.props;
+
+const gap = isFull ? "space-0" : "space-4";
 ---
 
-<Row rowGap="space-4" class="image-grid">
+<Row rowGap={gap} class="image-grid">
   <slot />
 </Row>
