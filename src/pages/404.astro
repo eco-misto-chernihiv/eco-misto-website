@@ -39,8 +39,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style>
+  @import "@styles/04-utilities/breakpoints.css";
+
   .container {
-    --_padding: var(--space-16);
+    --_padding: var(--space-14);
 
     padding-block-start: calc(var(--_padding) + var(--header-height));
     padding-block-end: var(--_padding);
@@ -49,6 +51,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
     & [data-variant="button"] {
       align-self: center;
+    }
+
+    @media (--tablet-and-up) {
+      --_padding: var(--space-16);
     }
   }
 </style>
