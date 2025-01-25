@@ -1,0 +1,54 @@
+---
+import Center from "@/components/compositions/Center.astro";
+import Stack from "@/components/compositions/Stack.astro";
+import Button from "@/components/ui/Button.astro";
+import Heading from "@/components/ui/Heading.astro";
+import Text from "@/components/ui/Text.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout seo={{ title: "Сторінку не знайдено" }}>
+  <Center
+    maxWidth="87.5rem"
+    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+  >
+    <Center maxWidth="45ch" class="container">
+      <Stack space="space-4">
+        <Heading tagName="h1" size="h2" class="color-secondary">404</Heading>
+
+        <Stack space="space-4">
+          <Heading tagName="h2" size="h5" class="color-secondary"
+            >Упс, сторінку не знайдено</Heading
+          >
+          <Text tagName="p" size="medium"
+            >Схоже, сторінки, яку ви шукали, не існує. Але ви можете перевірити
+            правильність адреси чи повернутися назад.</Text
+          >
+
+          <Button
+            tagName="a"
+            href="/"
+            style="secondary"
+            aria-label="Go back to the main page"
+            >Назад на головну
+          </Button>
+        </Stack>
+      </Stack>
+    </Center>
+  </Center>
+</BaseLayout>
+
+<style>
+  .container {
+    --_padding: var(--space-16);
+
+    padding-block-start: calc(var(--_padding) + var(--header-height));
+    padding-block-end: var(--_padding);
+
+    text-align: center;
+
+    & [data-variant="button"] {
+      align-self: center;
+    }
+  }
+</style>

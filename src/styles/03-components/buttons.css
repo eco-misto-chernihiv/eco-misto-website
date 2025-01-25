@@ -8,34 +8,41 @@
 
 .button,
 .button-arrow {
-  --_text-color: inherit;
-  --_background-color: transparent;
-  --_radius: 0;
+  &,
+  &:link {
+    --_text-color: inherit;
+    --_background-color: transparent;
+    --_radius: 0;
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 2px solid transparent;
-  border-radius: var(--_radius);
-  background: var(--_background-color);
-  cursor: pointer;
-  font: inherit;
-  color: var(--_text-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid transparent;
+    border-radius: var(--_radius);
+    background: var(--_background-color);
+    cursor: pointer;
+    font: inherit;
+    color: var(--_text-color);
 
-  /* Override link styles */
-  text-align: center;
-  text-decoration: none;
+    /* Override link styles */
+    text-align: center;
+    text-decoration: none;
+  }
 }
 
 .button.default {
-  --_radius: var(--rounded-md);
+  &,
+  &:link {
+    --_radius: var(--rounded-md);
 
-  min-inline-size: 6.25em;
-  font-weight: var(--font-medium);
-  padding: var(--space-2) var(--space-5);
+    min-inline-size: 6.25em;
+    font-weight: var(--font-medium);
+    padding: var(--space-2) var(--space-5);
 
-  transition: color var(--transition-default),
-    background-color var(--transition-default), border var(--transition-default);
+    transition: color var(--transition-default),
+      background-color var(--transition-default),
+      border var(--transition-default);
+  }
 
   &:focus {
     /* outline-offset: 2px; */
@@ -98,6 +105,18 @@
     --_text-color: var(--color-secondary);
     --_background-color: transparent;
     border-color: var(--_text-color);
+  }
+}
+
+.button[data-style="secondary"].inverted {
+  --_text-color: var(--color-secondary);
+  --_background-color: transparent;
+  border-color: var(--_text-color);
+
+  &:hover {
+    --_text-color: var(--color-primary);
+    --_background-color: var(--color-secondary);
+    border-color: var(--_background-color);
   }
 }
 
