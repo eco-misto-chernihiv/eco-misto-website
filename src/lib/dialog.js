@@ -20,6 +20,8 @@ const youtubeDialogs = [
 const multiSlideFullscreenDialog = document.querySelector(
   "[data-dialog='multi-slide-fullscreen']"
 );
+const pdfDialog = document.querySelector("[data-dialog='pdf-fullscreen']");
+
 /**
  * Button Elements
  */
@@ -35,6 +37,8 @@ const youtubeVideoButtons = [
 const multiSlideFullscreenButtons = [
   ...document.querySelectorAll("[data-open-multi-slide]"),
 ];
+const pdfDialogButtons = [...document.querySelectorAll("[data-open-pdf]")];
+
 /**
  * Helpers
  */
@@ -210,5 +214,11 @@ multiSlideFullscreenButtons.forEach((button, index) => {
     swiper.slideTo(index);
 
     multiSlideFullscreenDialog.showModal();
+  });
+});
+
+pdfDialogButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    pdfDialog.showModal();
   });
 });
