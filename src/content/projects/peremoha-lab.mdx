@@ -10,6 +10,8 @@ isActive: true
 isCollage: true
 ---
 
+import gizLogo from "@/assets/images/giz.png";
+
 export const peremohaLabImages = [
   "images/peremoha-lab/multiple_gallery_peremoha-lab_001.jpg",
   "images/peremoha-lab/multiple_gallery_peremoha-lab_002.jpg",
@@ -41,7 +43,7 @@ export const peremohaLabImages = [
 {/* prettier-ignore */}
 <Blockquote>
 
-<span>«</span>Наша мета – ревіталізувати радянський кінотеатр «Перемога»,
+<span>«</span>Наша мета – ревіталізувати радянський кінотеатр “Перемога”,
 перетворивши його на сучасний науково-мистецький центр, що поєднує культуру та
 освіту і сприяє розвитку новаторських ідей.
 <span>»</span>
@@ -104,7 +106,9 @@ Peremoha Lab є центром спільнот, де зустрічаються
 
 <Logos>
   <Icon name="partners-politehnika-original" />
-  <Icon name="partners-giz" />
+  <div class="donor-logo">
+    <MyPicture src={gizLogo} width={300} alt="GIZ logo" />
+  </div>
   <Icon name="donors-usaid-figma" />
   <Icon name="partners-expertise-france-original" />
   <Icon name="partners-tolocar-original" />

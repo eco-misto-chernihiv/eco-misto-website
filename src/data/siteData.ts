@@ -17,7 +17,7 @@ export const navData = [
 
 export const achievmentsData = [
   {
-    title: "570",
+    title: "595",
     description: "креативних заходів проведено",
     id: "primary",
     "left-translateX": "-100%",
@@ -25,7 +25,7 @@ export const achievmentsData = [
     "right-rotate": "270deg",
   },
   {
-    title: "811",
+    title: "853",
     description: "соціальних велосипедів видано",
     id: "primary-light",
     "left-translateX": "-100%",
