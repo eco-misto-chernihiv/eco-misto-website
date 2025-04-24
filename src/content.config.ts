@@ -1,16 +1,18 @@
 import { defineCollection, z } from "astro:content";
 
+// Loaders
+import { glob, file } from "astro/loaders";
+
 const members = defineCollection({
-  type: "data",
+  loader: file("./src/content/team/team.json"),
   schema: ({ image }) =>
     z.object({
       // TODO: Validate
       name: z.string(),
       position: z.string(),
       // validate as a local image
-      picture: image().refine((img) => img.width >= 640, {
-        message: "Portait should be at least 640px wide or more",
-      }),
+      // Image should be at least 640 px
+      picture: image(),
       indexId: z.number(),
     }),
 });
@@ -32,7 +34,7 @@ const monthOptions = [
 ] as const;
 
 const projects = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: ({ image }) =>
     z.object({
       id: z.string().optional(),
@@ -47,9 +49,8 @@ const projects = defineCollection({
         .optional(),
       // validate as a local image
       cover: z.object({
-        image: image().refine((img) => img.width >= 1120, {
-          message: "Cover should be at least 1120px wide or more",
-        }),
+        // Cover should be 1120px
+        image: image(),
         alt: z.string(),
       }),
       // color: z.enum(colorOptions).optional(),

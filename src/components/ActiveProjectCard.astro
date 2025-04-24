@@ -26,15 +26,15 @@ const { project, class: classList, ...rest } = Astro.props;
 const { title, description, cover } = project.data;
 
 const siteUrl =
-  project.slug === "maysternya-mista"
+  project.id === "maysternya-mista"
     ? "https://crowdfunding.ecomisto.org/"
-    : `/projects/${project.slug}`;
+    : `/projects/${project.id}`;
 ---
 
 <ProjectCard class:list={["active-project", classList]} {...rest}>
   <Link
     href={siteUrl}
-    {...project.slug === "maysternya-mista"
+    {...project.id === "maysternya-mista"
       ? { isExternal: true, target: "_blank" }
       : ""}
   >

@@ -30,7 +30,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  output: "hybrid",
+  output: "static",
   adapter: netlify(),
   // vite: {
   //   ssr: {

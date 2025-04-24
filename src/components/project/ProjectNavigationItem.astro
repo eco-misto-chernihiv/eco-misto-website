@@ -33,15 +33,15 @@ if (period) {
 }
 
 const siteUrl =
-  project.slug === "maysternya-mista"
+  project.id === "maysternya-mista"
     ? "https://crowdfunding.ecomisto.org/"
-    : `/projects/${project.slug}`;
+    : `/projects/${project.id}`;
 ---
 
 <ProjectCard class:list={["project-navigation", classList]}>
   <Link
     href={siteUrl}
-    {...project.slug === "maysternya-mista"
+    {...project.id === "maysternya-mista"
       ? { isExternal: true, target: "_blank" }
       : ""}
   >

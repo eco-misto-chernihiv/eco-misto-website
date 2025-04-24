@@ -1,9 +1,8 @@
 ---
 // Tools
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import type { GetStaticPaths } from "astro";
-import { getProjectIndex, getSortedProjects } from "@/lib/helpers.js";
+import { getSortedProjects } from "@/lib/helpers.js";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -22,40 +21,40 @@ import H2 from "../../components/project/H2.astro";
 import H3 from "../../components/project/H3.astro";
 import ProjectLink from "@/components/project/ProjectLink.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
-import ProjectNavigationItem from "@/components/project/ProjectNavigationItem.astro";
 import RelatedProjects from "@/components/project/RelatedProjects.astro";
 import CallToAction from "@/components/project/CallToAction.astro";
 import { components } from "@/components/mdxComponents.js";
-import Switcher from "@/components/compositions/Switcher.astro";
-import { Icon } from "astro-icon/components";
+
 import ButtonArrow from "@/components/ui/ButtonArrow.astro";
 
 // Data
 
-export const getStaticPaths = (async () => {
+export async function getStaticPaths() {
   // filter actual posts, not drafts
   const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
   // return object with slug and post data
   return projects.map((project) => ({
     params: {
-      slug: project.slug,
+      slug: project.id,
     },
     props: {
       project,
       projects,
     },
   }));
-}) satisfies GetStaticPaths;
+}
 
-type Props = {
+// Types
+interface Props {
   project: CollectionEntry<"projects">;
   projects: CollectionEntry<"projects">[];
-};
+}
 
+// Props
 const { project, projects } = Astro.props;
 
-const { Content } = await project.render();
+const { Content } = await render(project);
 const { title, description, cover, isCollage = false } = project.data;
 
 // Sort projects
