@@ -3,21 +3,21 @@
 import { Icon } from "astro-icon/components";
 
 // Compositions
-import Center from "../compositions/Center.astro";
-import Row from "../compositions/Row.astro";
-import Stack from "../compositions/Stack.astro";
+import Center from "@compositions/Center.astro";
+import Row from "@compositions/Row.astro";
+import Stack from "@compositions/Stack.astro";
 
 // Components
-import Heading from "../ui/Heading.astro";
-import Text from "../ui/Text.astro";
-import Shape from "../ui/Shape.astro";
-import Button from "../ui/Button.astro";
-import Section from "../ui/Section.astro";
-import MyPicture from "../ui/MyPicture.astro";
+import Heading from "@ui/Heading.astro";
+import Text from "@ui/Text.astro";
+import Shape from "@ui/Shape.astro";
+import Button from "@ui/Button.astro";
+import Section from "@ui/Section.astro";
+import MyPicture from "@ui/MyPicture.astro";
 
 // Assets
 import heroImg from "@/assets/images/hero2.jpg";
-import VideoDialog from "../ui/VideoDialog.astro";
+import VideoDialog from "@ui/VideoDialog.astro";
 ---
 
 <Section class="hero" isRoundBottom color="secondary">
@@ -32,16 +32,16 @@ import VideoDialog from "../ui/VideoDialog.astro";
     >
       <div class="hero-text col-12">
         <Heading tagName="h1" size="h1" class="font-heading"
-          >Події. Простори.<br />Спільнота.</Heading
+          >Events. Spaces.<br />Community.</Heading
         >
       </div>
 
       <div class="about-text col-12">
         <Stack space={{ default: "space-4", laptop: "space-7" }}>
           <Text tagName="p" size="large" class="color-accent">
-            Громадська організація «Еко Місто Чернігів» — це урбаністична
-            ініціатива, спрямована на покращення якості життя через проєкти
-            активації публічних просторів і формування спільнот.
+            Eco Misto Chernihiv is an urban initiative focused on improving
+            quality of life through public space activation and
+            community-building projects.
           </Text>
 
           <Button
@@ -49,7 +49,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
             isInverted={true}
             data-open-partnership
             aria-label="Open cooperation form modal"
-            >Написати
+            >Contact us
           </Button>
         </Stack>
       </div>
@@ -67,7 +67,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
             data-open-promo
             aria-label="Open ecomisto showreel modal"
           >
-            <Icon name="play-video" class="icon-play-video" size={120} />
+            <Icon name="play-video-eng" class="icon-play-video" size={120} />
           </Button>
           <Icon name="icon-play" class="icon-play" size={32} />
 
@@ -86,9 +86,9 @@ import VideoDialog from "../ui/VideoDialog.astro";
           <Shape color="secondary" class="bottom" translateY="100%" />
           <Stack space="space-5">
             <Text tagName="p" size="medium" class="color-accent">
-              Громадська організація «Еко Місто Чернігів» — це урбаністична
-              ініціатива, спрямована на покращення якості життя через проєкти
-              тактичного урбанізму та формування спільнот.
+              Eco Misto Chernihiv is an urban initiative focused on improving
+              quality of life through public space activation and
+              community-building projects.
             </Text>
 
             <Button
@@ -96,7 +96,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
               isInverted={true}
               data-open-partnership
               aria-label="Open cooperation form modal"
-              >Написати
+              >Contacts us
             </Button>
           </Stack>
         </div>
@@ -105,7 +105,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
           <Shape color="secondary" class="left" translateX="-100%" />
           <Shape color="secondary" class="bottom" translateY="100%" />
           <Heading tagName="h1" size="h1" class="font-heading"
-            >Події. Простори.<br />Спільнота.</Heading
+            >Events. Spaces.<br />Community.</Heading
           >
         </div>
       </div>
@@ -328,7 +328,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
       top: 0;
       right: 0;
 
-      height: 12rem;
+      height: 10.5rem;
 
       /* Fluid max-width */
       max-width: 24rem;
@@ -350,7 +350,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
 
       & .shape.left {
         /* TODO: fluid top */
-        bottom: 3.6rem;
+        bottom: 2.75rem;
         left: 0;
         margin-top: -1px;
         margin-left: 1px;

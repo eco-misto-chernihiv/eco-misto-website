@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "./compositions/Center.astro";
@@ -16,9 +17,9 @@ import FooterSocial from "./FooterSocial.astro";
 
 // Data
 import { navData } from "@/data/siteData";
-import Button from "./ui/Button.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-// Assets
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <footer id="contacts">
@@ -67,12 +68,26 @@ import Button from "./ui/Button.astro";
                   <Stack space="space-4">
                     <Text tagName="div" size="small">Меню</Text>
                     <Stack tagName="ul" space="space-3" role="list">
-                      <li><Link href="/" isHovered> Головна </Link></li>
+                      <li>
+                        <Link
+                          href={getRelativeLocaleUrl(currentLocale, "/")}
+                          isHovered
+                        >
+                          {currentLocale === "en" ? "Main" : "Головна"}
+                        </Link>
+                      </li>
                       {
-                        navData.map(({ title, href }) => {
+                        navData[currentLocale].map(({ title, href }) => {
                           return (
                             <li>
-                              <Link href={href} isHovered>
+                              <Link
+                                href={
+                                  href === "#contacts"
+                                    ? "#contacts"
+                                    : getRelativeLocaleUrl(currentLocale, href)
+                                }
+                                isHovered
+                              >
                                 {title}
                               </Link>
                             </li>

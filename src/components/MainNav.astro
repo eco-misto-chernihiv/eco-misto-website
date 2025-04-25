@@ -1,4 +1,7 @@
 ---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
 // Compositions
 import Cluster from "./compositions/Cluster.astro";
 
@@ -7,21 +10,32 @@ import Link from "./ui/Link.astro";
 
 // Data
 import { navData } from "@/data/siteData";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 type Props = {
   color?: "primary" | "secondary" | "accent";
 };
 
 const { color } = Astro.props;
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <nav class:list={["site-nav main-nav", { ["color-" + color]: color }]}>
   <Cluster tagName="ul" role="list" space="space-6">
     {
-      navData.map((navItem) => {
+      navData[currentLocale].map((navItem) => {
         return (
           <li>
-            <Link href={navItem.href} isHovered class="nav-link">
+            <Link
+              href={
+                navItem.href === "#contacts"
+                  ? "#contacts"
+                  : getRelativeLocaleUrl(currentLocale, navItem.href)
+              }
+              isHovered
+              class="nav-link"
+            >
               {navItem.title}
             </Link>
           </li>
@@ -38,6 +52,4 @@ const { color } = Astro.props;
   }
 </style>
 
-<script>
-
-</script>
+<script></script>

@@ -1,19 +1,24 @@
 ---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
 // Components
 import Header from "@/components/Header.astro";
 import Head from "./Head.astro";
-
-// Styles
-import "@styles/main.css";
 import Footer from "@/components/Footer.astro";
 import SideDialog from "@/components/ui/SideDialog.astro";
 import MobileMenuDialog from "@/components/ui/MobileMenuDialog.astro";
 import Donate from "@/components/Donate.astro";
 import Partnership from "@/components/Partnership.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
+
+// Styles
+import "@styles/main.css";
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
-<html lang="en">
+<html lang={currentLocale}>
   <Head {...Astro.props} />
   <body>
     <div id="root">

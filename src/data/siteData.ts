@@ -4,16 +4,28 @@ export const baseData = {
     "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
 };
 
-export const navData = [
-  {
-    title: "Проєкти",
-    href: "/projects",
-  },
-  {
-    title: "Контакти",
-    href: "#contacts",
-  },
-];
+export const navData = {
+  uk: [
+    {
+      title: "Проєкти",
+      href: "/projects",
+    },
+    {
+      title: "Контакти",
+      href: "#contacts",
+    },
+  ],
+  en: [
+    {
+      title: "Projects",
+      href: "/projects",
+    },
+    {
+      title: "Contacts",
+      href: "#contacts",
+    },
+  ],
+};
 
 export const achievmentsData = [
   {

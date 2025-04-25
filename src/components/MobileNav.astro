@@ -1,16 +1,35 @@
 ---
-import { navData } from "@/data/siteData";
-import Link from "./ui/Link.astro";
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
 import Stack from "./compositions/Stack.astro";
+
+// Components
+import Link from "./ui/Link.astro";
+
+// Data
+import { navData } from "@/data/siteData";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <nav class="site-nav mobile-nav">
   <Stack tagName="ul" space="space-2" role="list">
     {
-      navData.map((navItem) => {
+      navData[currentLocale].map((navItem) => {
         return (
           <li>
-            <Link href={navItem.href} isHovered class="mobile-nav-link">
+            <Link
+              href={
+                navItem.href === "#contacts"
+                  ? "#contacts"
+                  : getRelativeLocaleUrl(currentLocale, navItem.href)
+              }
+              isHovered
+              class="mobile-nav-link"
+            >
               {navItem.title}
             </Link>
           </li>

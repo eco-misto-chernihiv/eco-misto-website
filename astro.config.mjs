@@ -6,16 +6,17 @@ import react from "@astrojs/react";
 import purgecss from "astro-purgecss";
 import netlify from "@astrojs/netlify";
 import mdx from "@astrojs/mdx";
-
 import icon from "astro-icon";
-
 import partytown from "@astrojs/partytown";
-
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://ecomisto.org",
+  i18n: {
+    defaultLocale: "uk",
+    locales: ["uk", "en"],
+  },
   integrations: [
     react(),
     mdx(),
