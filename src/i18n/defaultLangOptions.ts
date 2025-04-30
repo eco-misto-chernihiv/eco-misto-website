@@ -1,11 +1,11 @@
 export const Languages = [
   {
-    name: "en",
-    value: "en",
+    name: "uk",
+    value: "uk",
   },
   {
-    name: "ua",
-    value: "uk",
+    name: "en",
+    value: "en",
   },
 ] as const;
 

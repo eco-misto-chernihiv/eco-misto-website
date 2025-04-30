@@ -2,6 +2,7 @@
 // TODO: Define proper html semantic structure
 
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -17,6 +18,10 @@ import Achievments from "./Achievments.astro";
 // Assets
 
 // Data
+import { missionData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const mission = missionData[currentLocale];
 ---
 
 <Section color="secondary" isRound class="mission">
@@ -32,15 +37,14 @@ import Achievments from "./Achievments.astro";
             size="large"
             class="font-medium"
             variant="accent"
-            isBadge>Місія</Text
+            isBadge>{mission.tag}</Text
           >
           <Heading
             tagName="h3"
             size="h4"
             class="mission-text color-primary font-heading"
           >
-            Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних
-            та креативних рішень, залучаючи спільноту на всіх рівнях.
+            {mission.text}
           </Heading>
         </Stack>
       </Row>

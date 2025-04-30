@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getTimePeriod } from "@/lib/helpers";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "./compositions/Stack.astro";
@@ -20,11 +21,14 @@ import TimePeriod from "./TimePeriod.astro";
 // Assets
 
 // Data
+import { buttonsData } from "@/data/siteData";
 
+// Types
 type Props = {
   project: CollectionEntry<"projects">;
 };
 
+// Props
 const { project } = Astro.props;
 const { title, description, cover, period } = project.data;
 
@@ -32,6 +36,9 @@ const { title, description, cover, period } = project.data;
 if (!period) throw new Error(`Period is missing for project: ${project.id}`);
 
 const timePeriod = getTimePeriod(period);
+
+const currentLocale = Astro.currentLocale as Lang;
+const buttons = buttonsData[currentLocale];
 ---
 
 <ProjectCard class="archive-project">
@@ -63,7 +70,7 @@ const timePeriod = getTimePeriod(period);
       </Stack>
 
       <div class="arrow-right-container">
-        <span class="arrow-right-text">Дивитись</span>
+        <span class="arrow-right-text">{buttons.view}</span>
         <Icon
           name="icon-arrow-right"
           aria-hidden="true"

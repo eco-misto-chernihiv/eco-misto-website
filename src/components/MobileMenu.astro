@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "./compositions/Stack.astro";
@@ -10,10 +11,21 @@ import MobileNav from "./MobileNav.astro";
 import SocialList from "./SocialList.astro";
 import Button from "./ui/Button.astro";
 import Filler from "./ui/Filler.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+
+// Data
+import { buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const buttons = buttonsData[currentLocale];
 ---
 
 <div class="mobile-menu">
-  <Filler />
+  <!-- <Filler /> -->
+  <div class="wrapper">
+    <LanguagePicker />
+  </div>
+
   <Stack space="space-7">
     <MobileNav />
 
@@ -23,13 +35,14 @@ import Filler from "./ui/Filler.astro";
       class="support-button"
       aria-label="Open donate form modal"
       data-open-donate
-      >Підтримати<Icon
+      >{buttons.support}<Icon
         name="icon-heart"
         aria-hidden="true"
         focusable="false"
       /></Button
     >
   </Stack>
+
   <SocialList class="mobile-menu-socials" />
 </div>
 
@@ -43,7 +56,16 @@ import Filler from "./ui/Filler.astro";
 
     text-align: center;
 
+    padding-block-start: var(--space-8-fixed);
     padding-block-end: var(--space-6-fixed);
+  }
+
+  .mobile-menu .wrapper {
+    flex: 1;
+  }
+
+  .mobile-menu :global(.language-picker) {
+    color: var(--color-secondary);
   }
 
   .mobile-menu-socials {

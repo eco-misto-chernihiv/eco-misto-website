@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -18,6 +19,13 @@ import MyPicture from "../ui/MyPicture.astro";
 // Assets
 import heroImg from "@/assets/images/hero2.jpg";
 import VideoDialog from "../ui/VideoDialog.astro";
+
+// Data
+import { buttonsData, aboutData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const about = aboutData[currentLocale];
+const buttons = buttonsData[currentLocale];
 ---
 
 <Section class="hero" isRoundBottom color="secondary">
@@ -39,9 +47,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
       <div class="about-text col-12">
         <Stack space={{ default: "space-4", laptop: "space-7" }}>
           <Text tagName="p" size="large" class="color-accent">
-            Громадська організація «Еко Місто Чернігів» — це урбаністична
-            ініціатива, спрямована на покращення якості життя через проєкти
-            активації публічних просторів і формування спільнот.
+            {about.p1}
           </Text>
 
           <Button
@@ -49,7 +55,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
             isInverted={true}
             data-open-partnership
             aria-label="Open cooperation form modal"
-            >Написати
+            >{buttons.contact}
           </Button>
         </Stack>
       </div>
@@ -86,9 +92,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
           <Shape color="secondary" class="bottom" translateY="100%" />
           <Stack space="space-5">
             <Text tagName="p" size="medium" class="color-accent">
-              Громадська організація «Еко Місто Чернігів» — це урбаністична
-              ініціатива, спрямована на покращення якості життя через проєкти
-              тактичного урбанізму та формування спільнот.
+              {about.p1}
             </Text>
 
             <Button
@@ -96,7 +100,7 @@ import VideoDialog from "../ui/VideoDialog.astro";
               isInverted={true}
               data-open-partnership
               aria-label="Open cooperation form modal"
-              >Написати
+              >{buttons.contact}
             </Button>
           </Stack>
         </div>

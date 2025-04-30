@@ -1,0 +1,96 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+// Compositions
+
+import Cluster from "@compositions/Cluster.astro";
+
+// Components
+import TeamMember from "@/components/home/TeamMember.astro";
+import SwiperButton from "@ui/SwiperButton.astro";
+import SwiperPaginationProgress from "@ui/SwiperPaginationProgress.astro";
+
+// Data
+const members = await getCollection("membersEn");
+
+const sortedMembers = members.sort((a, b) => a.data.indexId - b.data.indexId);
+---
+
+<div class="team-members-gallery">
+  <div class="team-members-swiper swiper">
+    <div class="swiper-wrapper">
+      {
+        sortedMembers.map((member) => {
+          return (
+            <div class="swiper-slide">
+              <div role="listitem">
+                <TeamMember member={member} />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div class="swiper-navigation">
+    <Cluster
+      space={{ default: "space-8", tablet: "space-10" }}
+      alignItems="center"
+      noWrap
+    >
+      <SwiperPaginationProgress />
+
+      <Cluster space="space-2" noWrap class="swiper-buttons">
+        <SwiperButton direction="left" class="team-swiper-button-prev" />
+        <SwiperButton direction="right" class="team-swiper-button-next" />
+      </Cluster>
+    </Cluster>
+  </div>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .members {
+    color: var(--color-secondary);
+  }
+
+  .team-members-gallery {
+    position: relative;
+  }
+
+  .team-members-swiper {
+    /* Push content inside to avoid being cut */
+    padding-inline: 2px;
+  }
+
+  .swiper-navigation {
+    margin-block-start: var(--space-9-fixed);
+
+    @media (--laptop-and-up) {
+      padding-inline: var(--space-14-fixed);
+    }
+  }
+
+  .swiper-buttons :global(.swiper-button-prev),
+  .swiper-buttons :global(.swiper-button-next) {
+    --_size: initial;
+
+    width: var(--_size);
+    height: var(--_size);
+
+    @media (--tablet-and-up) {
+      & :global(.arrow) {
+        --_size: 48px;
+      }
+    }
+
+    @media (--laptop-and-up) {
+      & :global(.arrow) {
+        --_size: 64px;
+      }
+    }
+  }
+</style>

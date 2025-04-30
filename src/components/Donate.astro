@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Cluster from "./compositions/Cluster.astro";
@@ -13,9 +14,14 @@ import InputGroup from "./ui/InputGroup.astro";
 import Text from "./ui/Text.astro";
 
 // Data
-import { donateData } from "@/data/siteData.ts";
+import { donateData, donateText, buttonsData } from "@/data/siteData.ts";
 
-const [amountData, emailData] = donateData;
+const currentLocale = Astro.currentLocale as Lang;
+const donateInuts = donateData[currentLocale];
+const text = donateText[currentLocale];
+const buttons = buttonsData[currentLocale];
+
+const [amountData, emailData] = donateInuts;
 
 // TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
 const id = crypto.randomUUID();
@@ -27,13 +33,9 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
   <form action="" data-form="donate" data-liqpay-key={PUBLIC_LIQPAY_KEY}>
     <Stack space="space-4" class="header">
       <Heading tagName="h2" size="h6" class="color-secondary font-heading"
-        >Зробити внесок</Heading
+        >{text.title}</Heading
       >
-      <Text tagName="p" size="small"
-        >Усі кошти будуть витрачені на забезпечення адміністративної діяльності
-        громадської організації “Еко Місто Чернігів” та нові інноваційні проєкти
-        для розвитку міста.</Text
-      >
+      <Text tagName="p" size="small">{text.description}</Text>
     </Stack>
     <div class="main">
       <Stack space="space-6">
@@ -49,7 +51,7 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
             tagName="label"
             size="small"
             class="font-medium"
-            for={`pay-once-${id}`}>Разова допомога</Text
+            for={`pay-once-${id}`}>{text.pay}</Text
           >
 
           <input
@@ -62,7 +64,7 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
             tagName="label"
             size="small"
             class="font-medium"
-            for={`pay-monthly-${id}`}>Щомісячна підтримка</Text
+            for={`pay-monthly-${id}`}>{text.subscribe}</Text
           >
         </Cluster>
 
@@ -89,7 +91,7 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
 
     <Stack space="space-7" class="footer">
       <UserDataAgreement />
-      <Button style="secondary" type="submit"> Підтримати </Button>
+      <Button style="secondary" type="submit"> {buttons.support} </Button>
     </Stack>
   </form>
 </aside>

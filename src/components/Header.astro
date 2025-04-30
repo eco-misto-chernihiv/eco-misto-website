@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Cluster from "./compositions/Cluster.astro";
@@ -9,8 +10,13 @@ import Cluster from "./compositions/Cluster.astro";
 import Logo from "./Logo.astro";
 import MainNav from "./MainNav.astro";
 import Button from "./ui/Button.astro";
+import LanguagePicker from "./LanguagePicker.astro";
 
-// Assets
+// Data
+import { buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const buttons = buttonsData[currentLocale];
 ---
 
 <header class="is-visible">
@@ -21,8 +27,17 @@ import Button from "./ui/Button.astro";
         color="primary"
         style={{ "--width": "160px" }}
       />
+
       <MainNav color="accent" />
-      <div class="support-action">
+
+      <Cluster
+        space="space-6"
+        class="support-action"
+        alignItems="center"
+        justify="end"
+      >
+        <LanguagePicker />
+
         <Cluster space="space-0" justify="end">
           <Button
             style="primary"
@@ -30,14 +45,15 @@ import Button from "./ui/Button.astro";
             class="support"
             data-open-donate
             aria-label="Open donate form modal"
-            >Підтримати <Icon
+            >{buttons.support}
+            <Icon
               name="icon-heart"
               aria-hidden="true"
               focusable="false"
             /></Button
           >
         </Cluster>
-      </div>
+      </Cluster>
     </Cluster>
 
     <Cluster alignItems="center" justify="between" class="header-inner mobile">
@@ -67,6 +83,9 @@ import Button from "./ui/Button.astro";
 
   /* Custom breakpoint */
   @custom-media --tablet-l-and-up (width >= 48em);
+
+  /* Hide language picker at 810px */
+  @custom-media --tablet-xl-and-up (width >= 50.625em);
 
   header {
     --_padding: var(--space-6-fixed);
@@ -99,6 +118,14 @@ import Button from "./ui/Button.astro";
 
     @media (--tablet-and-up) {
       --_padding: var(--space-7-fixed);
+    }
+  }
+
+  header :global(.language-picker) {
+    display: none;
+    @media (--tablet-xl-and-up) {
+      display: flex;
+      color: var(--color-accent);
     }
   }
 
@@ -161,7 +188,8 @@ import Button from "./ui/Button.astro";
   /* Somehow i can't target nav from here, so i use :global directive */
   header.fixed .logo,
   header.fixed :global(.main-nav),
-  header.fixed .open-menu {
+  header.fixed .open-menu,
+  header.fixed :global(.language-picker) {
     color: var(--color-secondary);
   }
 

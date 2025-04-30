@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -14,7 +15,8 @@ import achievmentsBg from "../../assets/images/achievments-bg-final.jpg";
 
 // Data
 import { achievmentsData } from "@/data/siteData";
-import Cluster from "../compositions/Cluster.astro";
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <Section class="achievments">
@@ -28,7 +30,7 @@ import Cluster from "../compositions/Cluster.astro";
       </div>
       <div class="achievments-inner">
         {
-          achievmentsData.map((achievment) => (
+          achievmentsData[currentLocale].map((achievment) => (
             <Achievment achievment={achievment} />
           ))
         }

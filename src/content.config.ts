@@ -1,22 +1,14 @@
-import { defineCollection, z } from "astro:content";
+import {
+  defineCollection,
+  reference,
+  z,
+  type SchemaContext,
+} from "astro:content";
 
 // Loaders
 import { glob, file } from "astro/loaders";
 
-const members = defineCollection({
-  loader: file("./src/content/team/team.json"),
-  schema: ({ image }) =>
-    z.object({
-      // TODO: Validate
-      name: z.string(),
-      position: z.string(),
-      // validate as a local image
-      // Image should be at least 640 px
-      picture: image(),
-      indexId: z.number(),
-    }),
-});
-
+// Options
 // const colorOptions = ["primary", "secondary", "accent"] as const;
 const monthOptions = [
   "Січень",
@@ -32,6 +24,26 @@ const monthOptions = [
   "Листопад",
   "Грудень",
 ] as const;
+
+// When creating separate function schema, for image we should use context and not destructing
+const membersSchema = (context: SchemaContext) =>
+  z.object({
+    name: z.string(),
+    position: z.string(),
+    picture: context.image(),
+    indexId: z.number(),
+  });
+
+// Schemas
+const members = defineCollection({
+  loader: file("./src/content/team/team.json"),
+  schema: membersSchema,
+});
+
+const membersEn = defineCollection({
+  loader: file("./src/content/team/team-en.json"),
+  schema: membersSchema,
+});
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
@@ -75,5 +87,6 @@ const projects = defineCollection({
 
 export const collections = {
   members,
+  membersEn,
   projects,
 };

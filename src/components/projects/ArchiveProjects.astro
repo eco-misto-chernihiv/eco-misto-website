@@ -2,14 +2,13 @@
 // Tools
 import { getCollection } from "astro:content";
 import { getSortedProjects } from "@/lib/helpers";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "../compositions/Stack.astro";
-import AutoGrid from "../compositions/AutoGrid.astro";
 
 // Components
 import Heading from "../ui/Heading.astro";
-import ButtonArrow from "../ui/ButtonArrow.astro";
 import ArchiveProjectCard from "../ArchiveProjectCard.astro";
 
 // Data
@@ -18,11 +17,15 @@ const projects = (
 ).filter(({ data }) => !data.isActive);
 
 const sortedProjects = getSortedProjects(projects);
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <Stack space="space-10">
   <Heading tagName="h3" size="h6" class="color-secondary"
-    >Реалізовані проекти</Heading
+    >{
+      currentLocale === "uk" ? "Реалізовані проекти" : "Completed projects"
+    }</Heading
   >
 
   <Stack space="space-10">

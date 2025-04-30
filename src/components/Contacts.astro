@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "./compositions/Stack.astro";
@@ -11,21 +12,24 @@ import Text from "./ui/Text.astro";
 // Data
 import { contactsData } from "@/data/siteData";
 import Link from "./ui/Link.astro";
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <div class="contacts">
   <Stack space="space-4">
-    <Text tagName="div" size="small">Контактні дані</Text>
+    <Text tagName="div" size="small"
+      >{currentLocale === "uk" ? "Контактні дані" : "Contact Information"}</Text
+    >
     <Stack space="space-3" tagName="ul" role="list">
       {
-        contactsData.map((contact) => {
+        contactsData[currentLocale].map((contact) => {
           return (
             <li class="contact-item">
               <Icon name={contact.icon} size={14} />
-              {/* <Text tagName="p" size="medium" class="font-medium">
+              <Link href={contact.href} isHovered isExternal target="_blank">
                 {contact.description}
-              </Text> */}
-              <Link href={contact.href} isHovered isExternal target="_blank">{contact.description}</Link>
+              </Link>
             </li>
           );
         })
@@ -45,12 +49,11 @@ import Link from "./ui/Link.astro";
     display: flex;
     align-items: baseline;
     gap: var(--space-3-fixed);
-    
 
     & svg {
       --_size: var(--space-4-fixed);
 
-     flex-shrink: 0;
+      flex-shrink: 0;
       inline-size: var(--_size);
       block-size: var(--_size);
 

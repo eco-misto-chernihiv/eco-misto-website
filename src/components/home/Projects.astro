@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -12,6 +13,11 @@ import ArchiveProjects from "./ArchiveProjects.astro";
 import ButtonArrow from "../ui/ButtonArrow.astro";
 
 // Data
+import { buttonsData } from "@/data/siteData";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLocale = Astro.currentLocale as Lang;
+const buttons = buttonsData[currentLocale];
 ---
 
 <Section class="projects">
@@ -29,9 +35,9 @@ import ButtonArrow from "../ui/ButtonArrow.astro";
       <ButtonArrow
         tagName="a"
         style="secondary"
-        href="/projects"
+        href={`${getRelativeLocaleUrl(currentLocale, "/projects")}`}
         class="all-projects"
-        >Усі проєкти
+        >{buttons.allProjects}
       </ButtonArrow>
     </Stack>
   </Center>

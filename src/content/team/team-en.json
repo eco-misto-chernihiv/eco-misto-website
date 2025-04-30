@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Sergiy",
+    "position": "Head of the organization",
+    "picture": "./images/sergiy-b.png",
+    "indexId": 1
+  },
+  {
+    "id": 2,
+    "name": "Viktoria",
+    "position": "Executive Director",
+    "picture": "./images/viktoriya.png",
+    "indexId": 2
+  },
+  {
+    "id": 3,
+    "name": "Sergiy",
+    "position": "Financial Manager",
+    "picture": "./images/sergiy.png",
+    "indexId": 3
+  },
+  {
+    "id": 4,
+    "name": "Sonya",
+    "position": "Designer",
+    "picture": "./images/sonya.png",
+    "indexId": 4
+  },
+  {
+    "id": 5,
+    "name": "Maksym",
+    "position": "Workshop Administrator",
+    "picture": "./images/maksym.png",
+    "indexId": 5
+  },
+  {
+    "id": 6,
+    "name": "Anna",
+    "position": "Maker",
+    "picture": "./images/anya.png",
+    "indexId": 6
+  },
+  {
+    "id": 7,
+    "name": "Yevhen",
+    "position": "Bicycle Mechanic",
+    "picture": "./images/evgen.png",
+    "indexId": 7
+  },
+  {
+    "id": 8,
+    "name": "Oleksii",
+    "position": "Junior Specialist",
+    "picture": "./images/oleksiy.png",
+    "indexId": 8
+  }
+]

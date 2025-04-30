@@ -12,30 +12,33 @@ import Text from "./ui/Text.astro";
 import Heading from "./ui/Heading.astro";
 
 // Data
-import { cooperationData } from "@/data/siteData";
+import { cooperationData, cooperationText, buttonsData } from "@/data/siteData";
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+const currentLocale = Astro.currentLocale as Lang;
+const cooperationInput = cooperationData[currentLocale];
+const text = cooperationText[currentLocale];
+const buttons = buttonsData[currentLocale];
 ---
 
 <aside class="partnership aside-modal">
   <form action="" data-form="partnership">
     <Stack space="space-4" class="header">
       <Heading tagName="h2" size="h6" class="color-secondary font-heading"
-        >Опишіть ваш запит</Heading
+        >{text.title}</Heading
       >
-      <Text tagName="p" size="small"
-        >Розкажіть про себе та сформулюйте свою пропозицію, або ідею. Ми
-        постараємось дати відповідь якнайшвидше.</Text
-      >
+      <Text tagName="p" size="small">{text.description}</Text>
     </Stack>
 
     <div class="main">
       <Stack space="space-5">
-        {cooperationData.map((data) => <InputGroup data={data} />)}
+        {cooperationInput.map((data) => <InputGroup data={data} />)}
       </Stack>
     </div>
 
     <Stack space="space-7" class="footer">
       <UserDataAgreement />
-      <Button style="secondary" type="submit"> Надіслати </Button>
+      <Button style="secondary" type="submit"> {buttons.send} </Button>
     </Stack>
   </form>
 </aside>

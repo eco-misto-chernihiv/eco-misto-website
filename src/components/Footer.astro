@@ -16,10 +16,13 @@ import Text from "./ui/Text.astro";
 import FooterSocial from "./FooterSocial.astro";
 
 // Data
-import { navData } from "@/data/siteData";
+import { navData, aboutData, footerData } from "@/data/siteData";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const currentLocale = Astro.currentLocale as Lang;
+
+const about = aboutData[currentLocale];
+const footerText = footerData[currentLocale];
 ---
 
 <footer id="contacts">
@@ -49,16 +52,11 @@ const currentLocale = Astro.currentLocale as Lang;
               <div class="support">
                 <Stack space="space-4">
                   <Text tagName="p" size="large" class="color-secondary">
-                    Громадська організація «Еко Місто Чернігів» — це
-                    урбаністична ініціатива, спрямована на покращення якості
-                    життя через проєкти активації публічних просторів і
-                    формування спільнот.
+                    {about.p1}
                   </Text>
 
                   <Text tagName="p" size="large" class="color-secondary">
-                    Наша діяльність включає популяризацію сталих підходів, а
-                    саме розвиток мейкерства, ресайклінг та підтримку
-                    велосипедного руху в Чернігові.
+                    {about.p2}
                   </Text>
                 </Stack>
               </div>
@@ -66,14 +64,16 @@ const currentLocale = Astro.currentLocale as Lang;
               <div class="right">
                 <nav>
                   <Stack space="space-4">
-                    <Text tagName="div" size="small">Меню</Text>
+                    <Text tagName="div" size="small"
+                      >{currentLocale === "uk" ? "Меню" : "Menu"}</Text
+                    >
                     <Stack tagName="ul" space="space-3" role="list">
                       <li>
                         <Link
                           href={getRelativeLocaleUrl(currentLocale, "/")}
                           isHovered
                         >
-                          {currentLocale === "en" ? "Main" : "Головна"}
+                          {currentLocale === "uk" ? "Головна" : "Main"}
                         </Link>
                       </li>
                       {
@@ -106,19 +106,19 @@ const currentLocale = Astro.currentLocale as Lang;
           <Cluster space="space-6" justify="between" alignItems="center">
             <div>
               <Text tagName="p" size="small" class="copyright"
-                >&copy; <span>{new Date().getFullYear()}</span> Громадська організація
-                «Еко Місто Чернігів»</Text
+                >&copy; <span>{new Date().getFullYear()}</span>
+                {footerText.copy}</Text
               >
             </div>
 
             <div>
-              <Text tagName="span" size="small">Усі права захищені</Text>
+              <Text tagName="span" size="small">{footerText.rights}</Text>
               <Text tagName="span" size="small" class="separator">|</Text>
               <Link
-                href="/privacy-policy"
+                href={`${getRelativeLocaleUrl(currentLocale, "privacy-policy")}`}
                 class="privacy"
                 isHovered
-                hoverHeight="1px">Політика конфіденційності</Link
+                hoverHeight="1px">{footerText.privacyPolicy}</Link
               >
             </div>
           </Cluster>

@@ -2,6 +2,7 @@
 // Tools
 import { getCollection } from "astro:content";
 import { getSortedProjects } from "@/lib/helpers";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "../compositions/Stack.astro";
@@ -19,12 +20,14 @@ const projects = (
 // valueOf() returns the number of milliseconds since January 1, 1970, 00:00:00 UTC
 const sortedProjects = getSortedProjects(projects);
 
-// TODO: How project should be sorted?
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <Stack space="space-10">
   <Heading tagName="h3" size="h6" class="color-secondary"
-    >Реалізовані проєкти</Heading
+    >{
+      currentLocale === "uk" ? "Реалізовані проекти" : "Completed projects"
+    }</Heading
   >
 
   <Stack space="space-7">

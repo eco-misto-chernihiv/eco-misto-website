@@ -1,7 +1,27 @@
+import { Description } from "@radix-ui/react-dialog";
+
 export const baseData = {
-  title: "Громадська організація «Еко Місто Чернігів»",
-  description:
-    "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
+  uk: {
+    title: "Громадська організація «Еко Місто Чернігів»",
+    description:
+      "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
+  },
+  en: {
+    title: "Eco Misto Chernihiv NGO",
+    description:
+      "We promote the development of maker culture, recycling, and support the cycling movement in Chernihiv.",
+  },
+};
+
+export const aboutData = {
+  uk: {
+    p1: "Громадська організація «Еко Місто Чернігів» — це урбаністична ініціатива, спрямована на покращення якості життя через проєкти активації публічних просторів і формування спільнот.",
+    p2: "Наша діяльність включає популяризацію сталих підходів, а саме розвиток мейкерства, ресайклінг та підтримку велосипедного руху в Чернігові.",
+  },
+  en: {
+    p1: "Eco Misto Chernihiv is an urban initiative focused on improving quality of life through public space activation and community-building projects.",
+    p2: "Our work promotes sustainable practices through maker culture, recycling, and the growth of cycling infrastructure in Chernihiv.",
+  },
 };
 
 export const navData = {
@@ -27,34 +47,88 @@ export const navData = {
   ],
 };
 
-export const achievmentsData = [
-  {
-    title: "595",
-    description: "креативних заходів проведено",
-    id: "primary",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "right-rotate": "270deg",
+export const missionData = {
+  uk: {
+    tag: "Місія",
+    text: "Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та креативних рішень, залучаючи спільноту на всіх рівнях.",
   },
-  {
-    title: "853",
-    description: "соціальних велосипедів видано",
-    id: "primary-light",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "left-rotate": "90deg",
-    "right-rotate": "180deg",
+  en: {
+    tag: "Mission",
+    text: "To support the sustainable development of Chernihiv by implementing innovative and creative solutions that engage the community at every level.",
   },
-  {
-    title: "7",
-    description: "публічних просторів оновлено",
-    id: "accent",
-    "left-translateX": "-100%",
-    "right-translateX": "100%",
-    "left-rotate": "90deg",
-    "right-rotate": "180deg",
+};
+
+export const partnersData = {
+  uk: {
+    tag: "Партнери",
+    title: "Запрошуємо до співпраці",
+    text: "Ми пропонуємо спільно брати участь у соціальних змінах для впровадження сталих підходів у розвитку міст. Свою місію реалізуємо через урбаністичні інтервенції, освітні програми та соціальне підприємництво. Долучайтесь до нас як волонтер або партнер. Разом ми можемо творити зміни!",
   },
-];
+  en: {
+    tag: "Partners",
+    title: "Let’s collaborate",
+    text: "We invite you to join us in driving social change and implementing sustainable solutions for urban development through public interventions, education, and social entrepreneurship. Become a partner or volunteer — together we can make a difference.",
+  },
+};
+
+export const achievmentsData = {
+  uk: [
+    {
+      title: "595",
+      description: "креативних заходів проведено",
+      id: "primary",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "right-rotate": "270deg",
+    },
+    {
+      title: "853",
+      description: "соціальних велосипедів видано",
+      id: "primary-light",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "left-rotate": "90deg",
+      "right-rotate": "180deg",
+    },
+    {
+      title: "7",
+      description: "публічних просторів оновлено",
+      id: "accent",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "left-rotate": "90deg",
+      "right-rotate": "180deg",
+    },
+  ],
+  en: [
+    {
+      title: "595",
+      description: "creative events held",
+      id: "primary",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "right-rotate": "270deg",
+    },
+    {
+      title: "853",
+      description: "community bikes distributed",
+      id: "primary-light",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "left-rotate": "90deg",
+      "right-rotate": "180deg",
+    },
+    {
+      title: "7",
+      description: "public spaces revitalized",
+      id: "accent",
+      "left-translateX": "-100%",
+      "right-translateX": "100%",
+      "left-rotate": "90deg",
+      "right-rotate": "180deg",
+    },
+  ],
+};
 
 export const socialData = [
   {
@@ -84,89 +158,241 @@ export const socialData = [
   },
 ];
 
-export const contactsData = [
-  {
-    description: "+38 073 479 99 87",
-    icon: "icon-phone",
-    href: "tel:+380734799987",
+export const contactsData = {
+  uk: [
+    {
+      description: "+38 073 479 99 87",
+      icon: "icon-phone",
+      href: "tel:+380734799987",
+    },
+    {
+      description: "info@ecomisto.org",
+      icon: "icon-mail",
+      href: "mailto:info@ecomisto.org",
+    },
+    {
+      description: "м. Чернігів, проспект Левка Лук'яненка 2А",
+      icon: "icon-pin",
+      href: "https://maps.app.goo.gl/6NF8PMSFEzigDxkg7",
+    },
+  ],
+  en: [
+    {
+      description: "+38 073 479 99 87",
+      icon: "icon-phone",
+      href: "tel:+380734799987",
+    },
+    {
+      description: "info@ecomisto.org",
+      icon: "icon-mail",
+      href: "mailto:info@ecomisto.org",
+    },
+    {
+      description: "Chernihiv, 2A Levko Lukianenko Avenue",
+      icon: "icon-pin",
+      href: "https://maps.app.goo.gl/6NF8PMSFEzigDxkg7",
+    },
+  ],
+};
+
+export const footerData = {
+  uk: {
+    copy: "Громадська організація «Еко Місто Чернігів»",
+    rights: "Усі права захищені",
+    privacyPolicy: "Політика конфіденційності",
   },
-  {
-    description: "info@ecomisto.org",
-    icon: "icon-mail",
-    href: "mailto:info@ecomisto.org",
+  en: {
+    copy: "Eco Misto Chernihiv NGO",
+    rights: "All rights reserved",
+    privacyPolicy: "Privacy policy",
   },
-  {
-    description: "м. Чернігів, проспект Левка Лук'яненка 2А",
-    icon: "icon-pin",
-    href: "https://maps.app.goo.gl/6NF8PMSFEzigDxkg7",
+};
+
+// MODALS DATA
+
+export const cooperationText = {
+  uk: {
+    title: "Опишіть ваш запит",
+    description:
+      "Розкажіть про себе та сформулюйте свою пропозицію, або ідею. Ми постараємось дати відповідь якнайшвидше.",
   },
-];
+  en: {
+    title: "Describe your request",
+    description:
+      "Tell us a bit about yourself and outline your idea or proposal. We’ll do our best to get back to you as soon as possible.",
+  },
+};
 
 // prettier-ignore
-export const cooperationData = [
-  {
-    label: "Мене звати *",
-    formControl: "input",
-    name: "name",
-    placeholder: "Костя",
-    type: "text",
-    required: true,
-    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,20}$",
-  },
-  {
-    label: "Я з організації *",
-    formControl: "input",
-    name: "organization",
-    placeholder: "Platforma",
-    type: "text",
-    required: true,
-    pattern: "^[A-Za-zА-Яа-я0-9 ]{2,80}$",
-  },
-  {
-    label: "Я хотів/ла би обговорити *",
-    formControl: "textarea",
-    name: "message",
-    placeholder: "Розкажіть про вашу ідею",
-    required: true,
-    rows: "3",
-  },
-  {
-    label: "Я дізнався/лася про вашу організацію",
-    formControl: "input",
-    name: "source",
-    placeholder: "Я дізнався з соцмереж.",
-    type: "text",
-  },
-  {
-    label: "Дайте відповідь мені на мою пошту *",
-    formControl: "input",
-    name: "email",
-    placeholder: "kostya@gmail.com",
-    type: "email",
-    required: true,
-    pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
-  },
-];
+export const cooperationData = {
+  uk: [
+    {
+      label: "Мене звати *",
+      formControl: "input",
+      name: "name",
+      placeholder: "Костя",
+      type: "text",
+      required: true,
+      pattern: "^[A-Za-zА-Яа-я0-9 ]{2,20}$",
+    },
+    {
+      label: "Я з організації *",
+      formControl: "input",
+      name: "organization",
+      placeholder: "Platforma",
+      type: "text",
+      required: true,
+      pattern: "^[A-Za-zА-Яа-я0-9 ]{2,80}$",
+    },
+    {
+      label: "Я хотів/ла би обговорити *",
+      formControl: "textarea",
+      name: "message",
+      placeholder: "Розкажіть про вашу ідею",
+      required: true,
+      rows: "3",
+    },
+    {
+      label: "Я дізнався/лася про вашу організацію",
+      formControl: "input",
+      name: "source",
+      placeholder: "Я дізнався з соцмереж.",
+      type: "text",
+    },
+    {
+      label: "Дайте відповідь мені на мою пошту *",
+      formControl: "input",
+      name: "email",
+      placeholder: "kostya@gmail.com",
+      type: "email",
+      required: true,
+      pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
+    },
+  ],
+  en: [
+    {
+      label: "My name is *",
+      formControl: "input",
+      name: "name",
+      placeholder: "John",
+      type: "text",
+      required: true,
+      pattern: "^[A-Za-zА-Яа-я0-9 ]{2,20}$",
+    },
+    {
+      label: "I represent the organization *",
+      formControl: "input",
+      name: "organization",
+      placeholder: "Platforma",
+      type: "text",
+      required: true,
+      pattern: "^[A-Za-zА-Яа-я0-9 ]{2,80}$",
+    },
+    {
+      label: "I’d like to discuss *",
+      formControl: "textarea",
+      name: "message",
+      placeholder: "Tell us about the idea",
+      required: true,
+      rows: "3",
+    },
+    {
+      label: "I found out about your organization from",
+      formControl: "input",
+      name: "source",
+      placeholder: "I found out about your organization from social media",
+      type: "text",
+    },
+    {
+      label: "Please reply to my email *",
+      formControl: "input",
+      name: "email",
+      placeholder: "john@gmail.com",
+      type: "email",
+      required: true,
+      pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
+    },
+  ]
+};
 
+export const donateText = {
+  uk: {
+    title: "Зробити внесок",
+    description:
+      "Усі кошти будуть витрачені на забезпечення адміністративної діяльності громадської організації “Еко Місто Чернігів” та нові інноваційні проєкти для розвитку міста.",
+    pay: "Разова допомога",
+    subscribe: "Щомісячна підтримка",
+    consent: "Даю згоду на обробку персональних даних",
+  },
+  en: {
+    title: "Make a contribution",
+    description:
+      "All funds will go toward supporting the administrative activities of NGO Eco Misto Chernihiv and launching new innovative projects for the city's development.",
+    pay: "One-time donation",
+    subscribe: "Monthly support",
+    consent: "I consent to the processing of my personal data",
+  },
+};
 // TODO: Check email patterns
 // prettier-ignore
-export const donateData = [
-  {
-    label: "Введіть суму *",
-    formControl: "input",
-    name: "amount",
-    placeholder: "0",
-    type: "number",
-    required: true,
-    min: "0",
+export const donateData = {
+  uk: [
+    {
+      label: "Введіть суму *",
+      formControl: "input",
+      name: "amount",
+      placeholder: "0",
+      type: "number",
+      required: true,
+      min: "0",
+    },
+    {
+      label: "Ваша пошта *",
+      formControl: "input",
+      name: "email",
+      placeholder: "marusya@gmail.com",
+      type: "text",
+      required: true,
+      pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
+    },
+  ],
+  en: [
+    {
+      label: "Enter amount *",
+      formControl: "input",
+      name: "amount",
+      placeholder: "0",
+      type: "number",
+      required: true,
+      min: "0",
+    },
+    {
+      label: "Your email *",
+      formControl: "input",
+      name: "email",
+      placeholder: "marusya@gmail.com",
+      type: "text",
+      required: true,
+      pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
+    },
+  ]
+};
+
+// MISC
+
+export const buttonsData = {
+  uk: {
+    support: "Підтримати",
+    contact: "Написати",
+    send: "Надіслати",
+    allProjects: "Усі проєкти",
+    view: "Дивитись",
   },
-  {
-    label: "Ваша пошта *",
-    formControl: "input",
-    name: "email",
-    placeholder: "marusya@gmail.com",
-    type: "text",
-    required: true,
-    pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
+  en: {
+    support: "Donate",
+    contact: "Contact us",
+    send: "Send",
+    allProjects: "All projects",
+    view: "View",
   },
-];
+};

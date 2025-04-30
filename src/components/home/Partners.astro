@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -20,6 +21,13 @@ import MyPicture from "../ui/MyPicture.astro";
 // Assets
 import chernigivMonumentalism from "@/assets/images/chernigiv-monumentalism.png";
 import chernigivPatrolPolice from "@/assets/images/chernigiv-patrol-police.png";
+
+// Data
+import { partnersData, buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const partners = partnersData[currentLocale];
+const buttons = buttonsData[currentLocale];
 ---
 
 <Section class="partners">
@@ -44,7 +52,7 @@ import chernigivPatrolPolice from "@/assets/images/chernigiv-patrol-police.png";
               size="large"
               class="font-medium"
               isBadge
-              variant="accent">Партнери</Text
+              variant="accent">{partners.tag}</Text
             >
             <Stack space="space-5">
               <Stack space="space-4">
@@ -53,21 +61,17 @@ import chernigivPatrolPolice from "@/assets/images/chernigiv-patrol-police.png";
                   size="h5"
                   class="color-primary font-heading"
                 >
-                  Запрошуємо до співпраці
+                  {partners.title}
                 </Heading>
                 <Text tagName="p" size="large" class="color-accent"
-                  >Ми пропонуємо спільно брати участь у соціальних змінах для
-                  впровадження сталих підходів у розвитку міст. Свою місію
-                  реалізуємо через урбаністичні інтервенції, освітні програми та
-                  соціальне підприємництво. Долучайтесь до нас як волонтер або
-                  партнер. Разом ми можемо творити зміни!
+                  >{partners.text}
                 </Text>
               </Stack>
               <Button
                 style="primary"
                 data-open-partnership
                 aria-label="Open cooperation form modal"
-                >Написати
+                >{buttons.contact}
               </Button>
             </Stack>
           </Stack>

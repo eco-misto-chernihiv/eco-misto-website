@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -40,6 +41,8 @@ const donors = [
 ];
 
 import gizLogo from "@/assets/images/giz.png";
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <section class="donors">
@@ -51,7 +54,8 @@ import gizLogo from "@/assets/images/giz.png";
           size="medium"
           class="font-medium"
           isBadge
-          variant="neutral">Нам довіряють</Text
+          variant="neutral"
+          >{currentLocale === "uk" ? "Нам довіряють" : "Trusted by"}</Text
         >
       </div>
 

@@ -12,7 +12,7 @@ import MyPicture from "../ui/MyPicture.astro";
 
 // Data
 type Props = {
-  member: CollectionEntry<"members">;
+  member: CollectionEntry<"members"> | CollectionEntry<"membersEn">;
 };
 
 const { member } = Astro.props;

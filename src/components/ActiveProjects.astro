@@ -2,6 +2,7 @@
 // Tools
 import { getCollection } from "astro:content";
 import { getSortedProjects } from "@/lib/helpers.js";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Row from "./compositions/Row.astro";
@@ -18,11 +19,13 @@ const projects = (
 ).filter(({ data }) => data.isActive);
 
 const sortedProjects = getSortedProjects(projects);
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <Stack space="space-10">
   <Heading tagName="h3" size="h6" class="color-secondary"
-    >Активні проєкти</Heading
+    >{currentLocale === "uk" ? "Активні проєкти" : "Ongoing projects"}</Heading
   >
   <Row
     columnGap={{

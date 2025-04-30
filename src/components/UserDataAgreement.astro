@@ -1,10 +1,18 @@
 ---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
 // Compositions
 import Cluster from "./compositions/Cluster.astro";
 
 // Components
 import Text from "./ui/Text.astro";
 
+// Data
+import { donateText } from "@/data/siteData.ts";
+
+const currentLocale = Astro.currentLocale as Lang;
+const text = donateText[currentLocale];
 const id = crypto.randomUUID();
 ---
 
@@ -13,7 +21,7 @@ const id = crypto.randomUUID();
     tagName="label"
     size="small"
     for={`consent-${id}`}
-    class="color-gray-400">Даю згоду на обробку персональних даних</Text
+    class="color-gray-400">{text.consent}</Text
   >
   <input type="checkbox" name="consent" id={`consent-${id}`} required />
 </Cluster>

@@ -1,6 +1,8 @@
 ---
+// Tools
 import { SEO, type Props as SEOProps } from "astro-seo";
 import { getImage } from "astro:assets";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Components
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
@@ -33,6 +35,12 @@ const { seo, ogImage, type } = Astro.props;
 
 // new URLSearchParams(ogImage?.data) — carry data to client-side from server-side
 const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png?${new URLSearchParams(ogImage?.data)}`;
+
+const currentLocale = Astro.currentLocale as Lang;
+const base = baseData[currentLocale];
+const ogLocale = currentLocale === "uk" ? "uk_UA" : "en_US";
+
+// TODO: Fix OG image text to proper render based on locale
 ---
 
 <head>
@@ -47,13 +55,13 @@ const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png
     content="width=device-width, initial-scale=1, maximum-scale=1"
   />
   <SEO
-    title={seo?.title ?? baseData.title}
-    description={seo?.description ?? baseData.description}
+    title={seo?.title ?? base.title}
+    description={seo?.description ?? base.description}
     {...seo}
     openGraph={{
       basic: {
         type: type ?? "website",
-        title: seo?.title ?? baseData.title,
+        title: seo?.title ?? base.title,
 
         image: ogImageUrl,
         url: seo?.canonical,
@@ -67,15 +75,15 @@ const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png
       meta: [
         {
           name: "og:description",
-          content: seo?.description ?? baseData.description,
+          content: seo?.description ?? base.description,
         },
         {
           name: "og:locale",
-          content: "uk_UA",
+          content: ogLocale,
         },
         {
           name: "og:site_name",
-          content: baseData.title,
+          content: base.title,
         },
       ],
     }}
@@ -83,9 +91,9 @@ const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png
       card: "summary_large_image",
       image: ogImageUrl,
       imageAlt: ogImage?.alt,
-      site: baseData.title,
-      title: seo?.title ?? baseData.title,
-      description: seo?.description ?? baseData.description,
+      site: base.title,
+      title: seo?.title ?? base.title,
+      description: seo?.description ?? base.description,
     }}
   />
   <GoogleAnalytics />

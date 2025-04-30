@@ -16,6 +16,9 @@ export default defineConfig({
   i18n: {
     defaultLocale: "uk",
     locales: ["uk", "en"],
+    routing: {
+      prefixDefaultLocale: true,
+    },
   },
   integrations: [
     react(),
