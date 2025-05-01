@@ -23,6 +23,18 @@ const monthOptions = [
   "Жовтень",
   "Листопад",
   "Грудень",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ] as const;
 
 // When creating separate function schema, for image we should use context and not destructing

@@ -1,11 +1,21 @@
 ---
-import AutoFlex from "../compositions/AutoFlex.astro";
-import AutoGrid from "../compositions/AutoGrid.astro";
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
 import Center from "../compositions/Center.astro";
-import Reel from "../compositions/Reel.astro";
 import Stack from "../compositions/Stack.astro";
+
+// Components
 import Marquee from "../ui/Marquee.astro";
 import Text from "../ui/Text.astro";
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+const text =
+  currentLocale === "uk"
+    ? "За підтримки донорів та партнерів"
+    : "Supported by donors and partners";
 ---
 
 <Center
@@ -15,7 +25,7 @@ import Text from "../ui/Text.astro";
   <div class="logos">
     <Stack space="space-6">
       <Text tagName="p" size="small" class="color-gray-400 text-center"
-        >За підтримки донорів та партнерів</Text
+        >{text}</Text
       >
 
       <Marquee direction="left" space="space-8" duration="slow">

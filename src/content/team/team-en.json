@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Sergiy",
+    "name": "Serhiy",
     "position": "Head of the organization",
     "picture": "./images/sergiy-b.png",
     "indexId": 1
@@ -15,7 +15,7 @@
   },
   {
     "id": 3,
-    "name": "Sergiy",
+    "name": "Serhiy",
     "position": "Financial Manager",
     "picture": "./images/sergiy.png",
     "indexId": 3
