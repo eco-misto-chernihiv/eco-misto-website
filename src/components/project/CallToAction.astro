@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Center from "../compositions/Center.astro";
@@ -10,10 +11,15 @@ import Row from "../compositions/Row.astro";
 import Text from "../ui/Text.astro";
 import Heading from "../ui/Heading.astro";
 import Button from "../ui/Button.astro";
-import SideModal from "../ui/_SideModal.astro";
-import Partnership from "../Partnership.astro";
-import Donate from "../Donate.astro";
 import Shape from "../ui/Shape.astro";
+
+// Data
+import { buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+
+// Translations
+const buttons = buttonsData[currentLocale];
 ---
 
 <Center
@@ -47,7 +53,7 @@ import Shape from "../ui/Shape.astro";
           aria-label="Open cooperation form modal"
           size="small"
           class="cooperation-button col-12 tablet:col-6"
-          >Написати
+          >{buttons.contact}
         </Button>
 
         <Button
@@ -56,7 +62,8 @@ import Shape from "../ui/Shape.astro";
           class="support-button col-12 tablet:col-6"
           data-open-donate
           aria-label="Open donate form modal"
-          >Підтримати <Icon
+          >{buttons.support}
+          <Icon
             name="icon-heart"
             aria-hidden="true"
             focusable="false"

@@ -1,0 +1,33 @@
+---
+// Tools
+import type { GetStaticPaths } from "astro";
+
+// Compositions
+
+// Components
+import Hero from "@/components/projects/Hero.astro";
+import Projects from "@/components/projects/Projects.astro";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Languages } from "@/i18n/defaultLangOptions";
+
+// I need to generate static paths ni order to render this page
+export const getStaticPaths = (() => {
+  const langValues = Languages.map((lang) => lang.value);
+
+  return langValues.map((lang) => ({
+    params: {
+      lang,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+
+const title = lang === "uk" ? "Проєкти" : "Projects";
+---
+
+<BaseLayout seo={{ title }}>
+  <Hero />
+  <Projects />
+</BaseLayout>

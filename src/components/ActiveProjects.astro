@@ -13,20 +13,20 @@ import ActiveProjectCard from "./ActiveProjectCard.astro";
 import Heading from "./ui/Heading.astro";
 
 // Data
+const currentLocale = Astro.currentLocale as Lang;
 
-const projects = (
-  await getCollection("projects", ({ data }) => !data.isDraft)
-).filter(({ data }) => data.isActive);
+// Maybe cumbersome but readable
+const projects = (await getCollection("projects", ({ data }) => !data.isDraft))
+  .filter(({ data }) => data.isActive)
+  .filter((project) => project.id.startsWith(currentLocale));
 
 const sortedProjects = getSortedProjects(projects);
 
-const currentLocale = Astro.currentLocale as Lang;
+const title = currentLocale === "uk" ? "Активні проєкти" : "Ongoing projects";
 ---
 
 <Stack space="space-10">
-  <Heading tagName="h3" size="h6" class="color-secondary"
-    >{currentLocale === "uk" ? "Активні проєкти" : "Ongoing projects"}</Heading
-  >
+  <Heading tagName="h3" size="h6" class="color-secondary">{title}</Heading>
   <Row
     columnGap={{
       default: "space-0",

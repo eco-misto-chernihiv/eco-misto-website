@@ -11,22 +11,21 @@ import Stack from "../compositions/Stack.astro";
 import Heading from "../ui/Heading.astro";
 import ArchiveProjectCard from "../ArchiveProjectCard.astro";
 
-// Data
-const projects = (
-  await getCollection("projects", ({ data }) => !data.isDraft)
-).filter(({ data }) => !data.isActive);
+// Projects
+const currentLocale = Astro.currentLocale as Lang;
+
+const projects = (await getCollection("projects", ({ data }) => !data.isDraft))
+  .filter(({ data }) => !data.isActive)
+  .filter((project) => project.id.startsWith(currentLocale));
 
 const sortedProjects = getSortedProjects(projects);
 
-const currentLocale = Astro.currentLocale as Lang;
+const title =
+  currentLocale === "uk" ? "Реалізовані проекти" : "Completed projects";
 ---
 
 <Stack space="space-10">
-  <Heading tagName="h3" size="h6" class="color-secondary"
-    >{
-      currentLocale === "uk" ? "Реалізовані проекти" : "Completed projects"
-    }</Heading
-  >
+  <Heading tagName="h3" size="h6" class="color-secondary">{title}</Heading>
 
   <Stack space="space-10">
     <Stack space="space-9" class="archive-projects-list">

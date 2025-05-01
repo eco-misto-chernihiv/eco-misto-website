@@ -1,4 +1,6 @@
 ---
+import type { Lang } from "@/i18n/defaultLangOptions";
+
 type Props = {
   name: string;
 };
@@ -7,5 +9,5 @@ const { name } = Astro.props;
 ---
 
 <svg>
-  <use href={`./sprite.svg#${name}`}></use>
+  <use href={`/sprite.svg#${name}`}></use>
 </svg>

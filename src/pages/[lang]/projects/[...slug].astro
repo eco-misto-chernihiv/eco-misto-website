@@ -3,6 +3,7 @@
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { getSortedProjects } from "@/lib/helpers.js";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -17,8 +18,8 @@ import Row from "@/components/compositions/Row.astro";
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
 import Section from "@/components/ui/Section.astro";
-import H2 from "../../components/project/H2.astro";
-import H3 from "../../components/project/H3.astro";
+import H2 from "@/components/project/H2.astro";
+import H3 from "@/components/project/H3.astro";
 import ProjectLink from "@/components/project/ProjectLink.astro";
 import MyPicture from "@/components/ui/MyPicture.astro";
 import RelatedProjects from "@/components/project/RelatedProjects.astro";
@@ -26,23 +27,33 @@ import CallToAction from "@/components/project/CallToAction.astro";
 import { components } from "@/components/mdxComponents.js";
 
 import ButtonArrow from "@/components/ui/ButtonArrow.astro";
+import { getProjectLang } from "@/i18n/getProjectLang";
+import { getProjectIdWithoutLang } from "@/i18n/getProjectIdWithoutLang";
 
 // Data
+import { buttonsData } from "@/data/siteData";
 
+// Routes
 export async function getStaticPaths() {
   // filter actual posts, not drafts
   const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
   // return object with slug and post data
-  return projects.map((project) => ({
-    params: {
-      slug: project.id,
-    },
-    props: {
-      project,
-      projects,
-    },
-  }));
+  return projects.map((project) => {
+    const lang = getProjectLang(project.id) as Lang;
+    const id = getProjectIdWithoutLang(project.id);
+
+    return {
+      params: {
+        lang,
+        slug: id,
+      },
+      props: {
+        project,
+        projects,
+      },
+    };
+  });
 }
 
 // Types
@@ -53,6 +64,7 @@ interface Props {
 
 // Props
 const { project, projects } = Astro.props;
+const { lang } = Astro.params;
 
 const { Content } = await render(project);
 const { title, description, cover, isCollage = false } = project.data;
@@ -61,33 +73,24 @@ const { title, description, cover, isCollage = false } = project.data;
 const sortedProjects = getSortedProjects(projects);
 
 // Get active and archive projects
-const activeProjects = sortedProjects.filter(
-  (p) => p.data.isActive && p.id !== project.id
-);
-const archiveProjects = sortedProjects.filter(
-  (p) => !p.data.isActive && p.id !== project.id
-);
+const activeProjects = sortedProjects
+  .filter((p) => p.data.isActive && p.id !== project.id)
+  .filter((p) => p.id.startsWith(lang));
+
+const archiveProjects = sortedProjects
+  .filter((p) => !p.data.isActive && p.id !== project.id)
+  .filter((p) => p.id.startsWith(lang));
 
 const isActive = project.data.isActive;
 
 const relatedProjects = isActive ? activeProjects : archiveProjects;
 
-// // Get index of current project
-// const index = isActive
-//   ? getProjectIndex(activeProjects, project)
-//   : getProjectIndex(archiveProjects, project);
-
-// console.log(relatedProjects);
-// // Set previous and next projects
-// const previousProject = isActive
-//   ? activeProjects[index - 1]
-//   : archiveProjects[index - 1];
-
-// const nextProject = isActive
-//   ? activeProjects[index + 1]
-//   : archiveProjects[index + 1];
-
+// OG template
 const template = cover.image.format === "png" ? "projectCover" : "projectPhoto";
+
+// Translations
+const buttons = buttonsData[lang];
+const otherProjects = lang === "uk" ? "Інші проєкти" : "Other projects";
 ---
 
 <BaseLayout
@@ -152,37 +155,16 @@ const template = cover.image.format === "png" ? "projectCover" : "projectPhoto";
         <Heading
           tagName="h3"
           size="h5"
-          class="col-12 tablet:col-6 color-secondary">Інші проєкти</Heading
+          class="col-12 tablet:col-6 color-secondary">{otherProjects}</Heading
         >
         <div class="col-12 tablet:col-6 all-projects">
           <ButtonArrow tagName="a" style="primary" href="/projects"
-            >Усі проєкти
+            >{buttons.allProjects}
           </ButtonArrow>
         </div>
       </Row>
 
       <RelatedProjects relatedProjects={relatedProjects} />
-      <!-- <Row
-        columnGap={{ default: "space-0", tablet: "space-7" }}
-        rowGap={{ default: "space-8", tablet: "space-0" }}
-      >
-        {
-          previousProject && (
-            <ProjectNavigationItem
-              project={previousProject}
-              class="previous-project col-12 col-start-1 tablet:col-6"
-            />
-          )
-        }
-        {
-          nextProject && (
-            <ProjectNavigationItem
-              project={nextProject}
-              class="next-project col-12 col-start-1 tablet:col-6 tablet:col-start-7"
-            />
-          )
-        }
-      </Row> -->
     </Stack>
   </Center>
 </BaseLayout>

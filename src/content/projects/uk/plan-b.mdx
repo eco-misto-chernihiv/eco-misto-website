@@ -1,0 +1,132 @@
+---
+title: Plan B
+description: Освітній проєкт орієнтований на підвищення свідомості чернігівців щодо відповідального поводження з відходами.
+pubDate: 2024-05-12
+cover:
+  image: ../images/plan-b/multiple_gallery_plan-b_001.jpg
+  alt: "Опис"
+isActive: false
+period:
+  startYear: 2019
+  startMonth: Липень
+  endYear: 2019
+  endMonth: Жовтень
+---
+
+import all4YouLogo from "src/assets/images/logo-all4you.jpg";
+import kidsPlanetLogo from "src/assets/images/logo-kids-planet.png";
+import sortImage from "./images/plan-b/plan-b-sort.jpg";
+
+{/* Should start with 'images' */}
+export const planBImages = [
+"images/plan-b/multiple_gallery_plan-b_001.jpg",
+"images/plan-b/multiple_gallery_plan-b_002.jpg",
+"images/plan-b/multiple_gallery_plan-b_003.jpg",
+"images/plan-b/multiple_gallery_plan-b_004.jpg",
+"images/plan-b/multiple_gallery_plan-b_005.jpg",
+"images/plan-b/multiple_gallery_plan-b_006.jpg",
+"images/plan-b/multiple_gallery_plan-b_008.jpg",
+"images/plan-b/multiple_gallery_plan-b_007.jpg",
+];
+
+{/* prettier-ignore */}
+<TextContent>
+  <Badge>Мета</Badge>
+  ## Збір та утилізацію використаних батарейок з метою зменшення забруднення навколишнього середовища токсичними важкими металами.
+  
+  Ідея виникла як відповідь на проблему неправильного поводження з батарейками, що містять небезпечні речовини, які забруднюють ґрунт і воду.
+</TextContent>
+
+<TextContent>
+  <Badge>Процес</Badge>
+Проєкт з підвищення екологічної свідомості серед жителів Чернігова, спрямований на відповідальне поводження з відходами та збір використаних батарейок для зменшення забруднення.
+
+За чотири місяці ми охопили понад 70 тисяч осіб, проводячи інформаційну кампанію та опитування, щоб дізнатися думку мешканців про проблему відходів. Особливу увагу було приділено навчальним заходам, зокрема тренінгам для екоменторів, які стали амбасадорами проєкту у своїх освітніх закладах.
+
+</TextContent>
+
+<Centered>
+
+  <ImageGrid isFull>
+    <Full src={sortImage} />
+  </ImageGrid>
+  <Annotation>
+  Мотиваційна гра для школярів «Eco Battle»
+  </Annotation>
+</Centered>
+
+<TextContent>
+  Ми провели 180 лекцій для школярів, охопивши понад 3000 дітей. Одним із
+  найбільших досягнень стала організація збору використаних батарейок у всіх
+  школах Чернігова, де для зручності були встановлені спеціальні контейнери.
+  Велику популярність здобула екогра «Eco Battle. Plan “B”», де учні могли
+  обмінювати використані батарейки на екомонети та отримувати подарунки, що
+  значно підвищувало їхню мотивацію.
+</TextContent>
+
+<Blockquote>
+<span>«</span>Діти були в захваті від моїх лекцій, і багато хто після завершення запитував, як ще можна допомогти природі.<span>»</span>
+
+    <BlockquoteFooter>
+        Діана Наливайко
+
+        екоменторка, учениця 11 класу
+    </BlockquoteFooter>
+
+</Blockquote>
+
+<TextContent>
+Завершенням проєкту став форум «Time for Plan “B”», що зібрав понад 200 осіб. Це стало важливою платформою для обміну досвідом та обговорення нових ідей для екологічних ініціатив у Чернігові. Проєкт не тільки підвищив рівень обізнаності про проблему відходів, а й став поштовхом для реальних змін у громаді.
+
+</TextContent>
+
+<Video src="https://www.youtube.com/embed/OBqBjlDlPcc?si=eUlS0lpUxD-1NwDy" />
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>Результат</Badge>
+
+    <ResultList>
+      - Відкрито пункти збору відпрацьованих батарейок в 34 школах міста.
+      - Більше 3000 дітей прослухали просвітницьку лекцію про шкоду батарейок.
+      - Організовано форум «Time for Plan “B”» за участі більш ніж 200 дітей.
+      - Зібрано 5 тонн батарейок для безпечної утилізації.
+    </ResultList>
+
+  </TextContent>
+
+<Logos>
+  <Icon name="donors-transition" />
+
+<div class="donor-logo">
+  <MyPicture
+    src={all4YouLogo}
+    width={300}
+    alt="Чернігівський обласний молодіжний центр логотип"
+  />
+</div>
+
+<div class="donor-logo">
+  <MyPicture src={kidsPlanetLogo} width={300} alt="Дитяча планета логотип" />
+</div>
+
+<Icon name="donors-transition" />
+
+<div class="donor-logo">
+  <MyPicture
+    src={all4YouLogo}
+    width={300}
+    alt="Чернігівський обласний молодіжний центр логотип"
+  />
+</div>
+
+  <div class="donor-logo">
+  <MyPicture
+    src={kidsPlanetLogo}
+    width={300}
+    alt="Дитяча планета логотип"
+  />
+</div>
+</Logos>
+
+<MultiSlideGallery imagePaths={planBImages} isFullscreen />

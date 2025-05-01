@@ -4,6 +4,9 @@ import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getTimePeriod } from "@/lib/helpers";
+
+// Helpers
+import { getProjectIdWithoutLang } from "@/i18n/getProjectIdWithoutLang";
 import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
@@ -22,6 +25,7 @@ import TimePeriod from "./TimePeriod.astro";
 
 // Data
 import { buttonsData } from "@/data/siteData";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 // Types
 type Props = {
@@ -32,8 +36,10 @@ type Props = {
 const { project } = Astro.props;
 const { title, description, cover, period } = project.data;
 
+const projectId = getProjectIdWithoutLang(project.id);
+
 // Throw error if someone accidentally forgot to define period
-if (!period) throw new Error(`Period is missing for project: ${project.id}`);
+if (!period) throw new Error(`Period is missing for project: ${projectId}`);
 
 const timePeriod = getTimePeriod(period);
 
@@ -42,7 +48,7 @@ const buttons = buttonsData[currentLocale];
 ---
 
 <ProjectCard class="archive-project">
-  <Link href={`/projects/${project.id}`}>
+  <Link href={getRelativeLocaleUrl(currentLocale, `/projects/${projectId}`)}>
     <Cluster
       class="wrapper"
       alignItems="center"

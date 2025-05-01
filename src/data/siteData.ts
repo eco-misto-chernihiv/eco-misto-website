@@ -7,7 +7,7 @@ export const baseData = {
       "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
   },
   en: {
-    title: "Eco Misto Chernihiv NGO",
+    title: "NGO Eco Misto Chernihiv",
     description:
       "We promote the development of maker culture, recycling, and support the cycling movement in Chernihiv.",
   },
@@ -202,7 +202,7 @@ export const footerData = {
     privacyPolicy: "Політика конфіденційності",
   },
   en: {
-    copy: "Eco Misto Chernihiv NGO",
+    copy: "NGO Eco Misto Chernihiv",
     rights: "All rights reserved",
     privacyPolicy: "Privacy policy",
   },

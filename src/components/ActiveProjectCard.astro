@@ -2,6 +2,11 @@
 // Tools
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+// Helpers
+import { getProjectIdWithoutLang } from "@/i18n/getProjectIdWithoutLang";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Frame from "./compositions/Frame.astro";
@@ -25,16 +30,20 @@ type Props = {
 const { project, class: classList, ...rest } = Astro.props;
 const { title, description, cover } = project.data;
 
+const projectId = getProjectIdWithoutLang(project.id);
+
+const currentLocale = Astro.currentLocale as Lang;
+
 const siteUrl =
-  project.id === "maysternya-mista"
+  projectId === "maysternya-mista"
     ? "https://crowdfunding.ecomisto.org/"
-    : `/projects/${project.id}`;
+    : getRelativeLocaleUrl(currentLocale, `/projects/${projectId}`);
 ---
 
 <ProjectCard class:list={["active-project", classList]} {...rest}>
   <Link
     href={siteUrl}
-    {...project.id === "maysternya-mista"
+    {...projectId === "maysternya-mista"
       ? { isExternal: true, target: "_blank" }
       : ""}
   >
