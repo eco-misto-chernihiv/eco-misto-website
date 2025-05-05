@@ -4,30 +4,29 @@ import { Icon } from "astro-icon/components";
 
 // Components
 import Link from "./ui/Link.astro";
+import type { Lang } from "@/i18n/defaultLangOptions";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 type Props = {
-  name: "ecomisto-logo" | "ecomisto-symbol";
   color: "primary" | "secondary" | "white" | "black";
   class?: string;
 
   [key: string]: any;
 };
 
-const {
-  name,
-  class: classList,
-  color,
-  isHovered = false,
-  ...rest
-} = Astro.props;
+const { class: classList, color, isHovered = false, ...rest } = Astro.props;
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+const logo = currentLocale === "uk" ? "ecomisto-logo" : "ecomisto-logo-en";
 ---
 
 <Link
-  href="/"
+  href={`${getRelativeLocaleUrl(currentLocale, "/")}`}
   class:list={["logo", classList, { ["color-" + color]: color }]}
   {...rest}
 >
-  <Icon name={name} />
+  <Icon name={logo} />
 </Link>
 
 <style>

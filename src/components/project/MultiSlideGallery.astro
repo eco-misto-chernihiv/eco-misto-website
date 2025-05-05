@@ -57,7 +57,7 @@ const ratio = getRatio(orientation);
           return (
             <div class="swiper-slide">
               {isFullscreen ? (
-                <button class="open-btn" data-open-multi-slide>
+                <button class="open-btn " data-open-multi-slide>
                   <Frame ratio={ratio} class="img-wrapper">
                     <Picture
                       src={images[newPath]()}
@@ -146,6 +146,8 @@ const ratio = getRatio(orientation);
   }
 
   .swiper-slide .open-btn {
+    width: 100%;
+    height: 100%;
     border: none;
     padding: 0;
     margin: 0;

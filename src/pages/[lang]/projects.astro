@@ -6,7 +6,7 @@ import type { GetStaticPaths } from "astro";
 
 // Components
 import Hero from "@/components/projects/Hero.astro";
-import Projects from "@/components/projects/Projects.astro";
+import ProjectsSection from "@/components/projects/ProjectsSection.astro";
 
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Languages } from "@/i18n/defaultLangOptions";
@@ -29,5 +29,5 @@ const title = lang === "uk" ? "Проєкти" : "Projects";
 
 <BaseLayout seo={{ title }}>
   <Hero />
-  <Projects />
+  <ProjectsSection />
 </BaseLayout>

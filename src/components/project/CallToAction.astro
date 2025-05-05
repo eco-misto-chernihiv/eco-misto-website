@@ -14,12 +14,13 @@ import Button from "../ui/Button.astro";
 import Shape from "../ui/Shape.astro";
 
 // Data
-import { buttonsData } from "@/data/siteData";
+import { buttonsData, callToActionData } from "@/data/siteData";
 
 const currentLocale = Astro.currentLocale as Lang;
 
 // Translations
 const buttons = buttonsData[currentLocale];
+const callToAction = callToActionData[currentLocale];
 ---
 
 <Center
@@ -34,11 +35,10 @@ const buttons = buttonsData[currentLocale];
       class="text"
     >
       <Heading tagName="h5" size="h5" class="font-heading col-12 tablet:col-6"
-        >Подобається, що ми робимо?</Heading
+        >{callToAction.title}</Heading
       >
       <Text tagName="p" size="x-large" class="col-12 tablet:col-6"
-        >Ми відкриті до співпраці й будемо раді будь-якій допомозі: пиши,
-        дзвони, донать, долучайся!</Text
+        >{callToAction.description}</Text
       >
     </Row>
 

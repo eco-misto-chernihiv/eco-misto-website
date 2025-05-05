@@ -1,13 +1,31 @@
 ---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+// Layouts
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// Compositions
 import Center from "@/components/compositions/Center.astro";
 import Stack from "@/components/compositions/Stack.astro";
+
+// Components
 import Button from "@/components/ui/Button.astro";
 import Heading from "@/components/ui/Heading.astro";
 import Text from "@/components/ui/Text.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// Data
+import { buttonsData, notFoundData } from "@/data/siteData";
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+
+const buttons = buttonsData[currentLocale];
+const notFound = notFoundData[currentLocale];
 ---
 
-<BaseLayout seo={{ title: "Сторінку не знайдено" }}>
+<BaseLayout seo={{ title: notFound.headTitle }}>
   <Center
     maxWidth="87.5rem"
     space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
@@ -18,19 +36,16 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
         <Stack space="space-4">
           <Heading tagName="h2" size="h5" class="color-secondary"
-            >Упс, сторінку не знайдено</Heading
+            >{notFound.title}</Heading
           >
-          <Text tagName="p" size="medium"
-            >Схоже, сторінки, яку ви шукали, не існує. Але ви можете перевірити
-            правильність адреси чи повернутися назад.</Text
-          >
+          <Text tagName="p" size="medium">{notFound.description}</Text>
 
           <Button
             tagName="a"
-            href="/"
+            href={`${getRelativeLocaleUrl(currentLocale, "/")}`}
             style="secondary"
             aria-label="Go back to the main page"
-            >Назад на головну
+            >{buttons.backToMain}
           </Button>
         </Stack>
       </Stack>

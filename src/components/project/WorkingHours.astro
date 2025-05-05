@@ -1,14 +1,28 @@
 ---
+// Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
 import Row from "../compositions/Row.astro";
-import Centered from "./Centered.astro";
 import Stack from "../compositions/Stack.astro";
+
+// Components
 import Heading from "../ui/Heading.astro";
+import Centered from "./Centered.astro";
 import Text from "../ui/Text.astro";
 import MyPicture from "../ui/MyPicture.astro";
 
+// Data
+import { workingHoursData } from "@/data/siteData";
+
+// Assets
 import workingHoursBg from "@/content/projects/images/velokuhnya/working-hours_bg.png";
 import workingHoursBgMobile from "@/content/projects/images/velokuhnya/working-hours_bg-mobile.png";
+
+//  Translations
+const currentLocale = Astro.currentLocale as Lang;
+const workingHours = workingHoursData[currentLocale];
 ---
 
 <div class="working-hours">
@@ -21,17 +35,17 @@ import workingHoursBgMobile from "@/content/projects/images/velokuhnya/working-h
         <div class="info col-12 tablet:col-6">
           <Stack space="space-8">
             <Stack space="space-4">
-              <Heading tagName="h4" size="h6"
-                >Працюємо<br /> з понеділка по пʼятницю</Heading
-              >
+              <Heading tagName="h4" size="h6" set:html={workingHours.title} />
               <Heading tagName="h4" size="h6">11:00 - 17:00</Heading>
             </Stack>
 
             <Stack space="space-1">
               <Text tagName="p" size="medium">
-                Проспект Левка Лук’яненка, 2А
+                {workingHours.adress}
               </Text>
-              <Text tagName="p" size="medium"> Центр «Перемога» </Text>
+              <Text tagName="p" size="medium">
+                {workingHours.place}
+              </Text>
             </Stack>
           </Stack>
         </div>

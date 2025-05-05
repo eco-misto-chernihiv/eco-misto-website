@@ -1,0 +1,132 @@
+---
+title: Plan B
+description: An educational project aimed at raising awareness among Chernihiv residents about responsible waste management.
+pubDate: 2024-05-12
+cover:
+  image: ../images/plan-b/multiple_gallery_plan-b_001.jpg
+  alt: "Опис"
+isActive: false
+period:
+  startYear: 2019
+  startMonth: July
+  endYear: 2019
+  endMonth: October
+---
+
+import all4YouLogo from "src/assets/images/logo-all4you.jpg";
+import kidsPlanetLogo from "src/assets/images/logo-kids-planet.png";
+import sortImage from "../images/plan-b/plan-b-sort.jpg";
+
+{/* Should start with 'images' */}
+export const planBImages = [
+"images/plan-b/multiple_gallery_plan-b_001.jpg",
+"images/plan-b/multiple_gallery_plan-b_002.jpg",
+"images/plan-b/multiple_gallery_plan-b_003.jpg",
+"images/plan-b/multiple_gallery_plan-b_004.jpg",
+"images/plan-b/multiple_gallery_plan-b_005.jpg",
+"images/plan-b/multiple_gallery_plan-b_006.jpg",
+"images/plan-b/multiple_gallery_plan-b_008.jpg",
+"images/plan-b/multiple_gallery_plan-b_007.jpg",
+];
+
+{/* prettier-ignore */}
+<TextContent>
+  <Badge>The Goal</Badge>
+  ## To collect and properly dispose of used batteries in order to reduce environmental pollution caused by toxic heavy metals.
+  
+  The idea emerged in response to the widespread issue of improper battery disposal, which leads to soil and water contamination by hazardous substances.
+</TextContent>
+
+<TextContent>
+  <Badge>The Process</Badge>
+This project aimed to raise environmental awareness among Chernihiv residents, promoting responsible waste handling and the collection of used batteries to reduce pollution.
+
+Over the course of four months, we reached more than 70,000 people through an information campaign and surveys to gather public opinions on waste issues. Special attention was given to educational activities, particularly training sessions for eco-mentors who became ambassadors of the project in their schools and educational institutions.
+
+</TextContent>
+
+<Centered>
+
+  <ImageGrid isFull>
+    <Full src={sortImage} />
+  </ImageGrid>
+  <Annotation>
+  Motivational Game for School Students "Eco Battle"
+  </Annotation>
+</Centered>
+
+<TextContent>
+  We held 180 lectures for school students, reaching over 3,000 children. One of
+  the project’s key achievements was organizing the collection of used batteries
+  in all schools across Chernihiv, where special containers were installed for
+  convenience. The eco game "Eco Battle. Plan B" gained great popularity —
+  students could exchange used batteries for eco-coins and receive gifts, which
+  significantly boosted their motivation to participate.
+</TextContent>
+
+<Blockquote>
+<span>“</span>The kids were thrilled by my lectures, and many of them asked afterward how else they could help the environment.<span>”</span>
+
+    <BlockquoteFooter>
+        Diana Nalyvaiko
+
+        Eco-mentor, 11th-grade student
+    </BlockquoteFooter>
+
+</Blockquote>
+
+<TextContent>
+The project concluded with the "Time for Plan B" forum, which brought together over 200 participants. It served as an important platform for sharing experiences and discussing new ideas for environmental initiatives in Chernihiv. The project not only raised awareness about waste-related issues, but also sparked real change within the community.
+
+</TextContent>
+
+<Video src="https://www.youtube.com/embed/OBqBjlDlPcc?si=eUlS0lpUxD-1NwDy" />
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>The Results</Badge>
+
+    <ResultList>
+      - Battery collection points were opened in 34 city schools.
+      - More than 3,000 children attended an awareness-raising lecture about the dangers of batteries.
+      - The "Time for Plan B" forum was held with the participation of over 200 children.
+      - 5 tons of used batteries were collected for safe disposal.
+    </ResultList>
+
+  </TextContent>
+
+<Logos>
+  <Icon name="donors-transition" />
+
+<div class="donor-logo">
+  <MyPicture
+    src={all4YouLogo}
+    width={300}
+    alt="Chernihiv Regional Youth Center logo"
+  />
+</div>
+
+<div class="donor-logo">
+  <MyPicture src={kidsPlanetLogo} width={300} alt="Children's Planet logo" />
+</div>
+
+<Icon name="donors-transition" />
+
+<div class="donor-logo">
+  <MyPicture
+    src={all4YouLogo}
+    width={300}
+    alt="Chernihiv Regional Youth Center logo"
+  />
+</div>
+
+  <div class="donor-logo">
+  <MyPicture
+    src={kidsPlanetLogo}
+    width={300}
+    alt="Children's Planet logo"
+  />
+</div>
+</Logos>
+
+<MultiSlideGallery imagePaths={planBImages} isFullscreen />

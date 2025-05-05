@@ -21,10 +21,7 @@ const buttons = buttonsData[currentLocale];
 ---
 
 <div class="mobile-menu">
-  <!-- <Filler /> -->
-  <div class="wrapper">
-    <LanguagePicker />
-  </div>
+  <Filler />
 
   <Stack space="space-7">
     <MobileNav />
@@ -58,14 +55,6 @@ const buttons = buttonsData[currentLocale];
 
     padding-block-start: var(--space-8-fixed);
     padding-block-end: var(--space-6-fixed);
-  }
-
-  .mobile-menu .wrapper {
-    flex: 1;
-  }
-
-  .mobile-menu :global(.language-picker) {
-    color: var(--color-secondary);
   }
 
   .mobile-menu-socials {

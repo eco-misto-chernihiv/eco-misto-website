@@ -1,5 +1,3 @@
-import { Description } from "@radix-ui/react-dialog";
-
 export const baseData = {
   uk: {
     title: "Громадська організація «Еко Місто Чернігів»",
@@ -15,7 +13,7 @@ export const baseData = {
 
 export const aboutData = {
   uk: {
-    p1: "Громадська організація «Еко Місто Чернігів» — це урбаністична ініціатива, спрямована на покращення якості життя через проєкти активації публічних просторів і формування спільнот.",
+    p1: "Громадська організація «Еко Місто Чернігів» — це урбаністична ініціатива, спрямована на покращення якості життя через проєкти тактичного урбанізму та формування спільнот.",
     p2: "Наша діяльність включає популяризацію сталих підходів, а саме розвиток мейкерства, ресайклінг та підтримку велосипедного руху в Чернігові.",
   },
   en: {
@@ -208,6 +206,21 @@ export const footerData = {
   },
 };
 
+export const notFoundData = {
+  uk: {
+    headTitle: "Сторінку не знайдено",
+    title: "Упс, сторінку не знайдено",
+    description:
+      "Схоже, сторінки, яку ви шукали, не існує. Але ви можете перевірити правильність адреси чи повернутися назад.",
+  },
+  en: {
+    headTitle: "Page not found",
+    title: "Oops, page not found",
+    description:
+      "It looks like the page you were looking for doesn't exist. But you can check the address for accuracy or go back.",
+  },
+};
+
 // MODALS DATA
 
 export const cooperationText = {
@@ -380,6 +393,19 @@ export const donateData = {
 
 // MISC
 
+export const callToActionData = {
+  uk: {
+    title: "Подобається, що ми робимо?",
+    description:
+      "Ми відкриті до співпраці й будемо раді будь-якій допомозі: пиши, дзвони, донать, долучайся!",
+  },
+  en: {
+    title: "Like what we do?",
+    description:
+      "We’re open to collaboration and happy for any support — write to us, call, donate, or get involved!",
+  },
+};
+
 export const buttonsData = {
   uk: {
     support: "Підтримати",
@@ -387,6 +413,7 @@ export const buttonsData = {
     send: "Надіслати",
     allProjects: "Усі проєкти",
     view: "Дивитись",
+    backToMain: "Назад на головну",
   },
   en: {
     support: "Donate",
@@ -394,5 +421,19 @@ export const buttonsData = {
     send: "Send",
     allProjects: "All projects",
     view: "View",
+    backToMain: "Back to main",
+  },
+};
+
+export const workingHoursData = {
+  uk: {
+    title: `Працюємо<br /> з понеділка по пʼятницю`,
+    adress: "Проспект Левка Лук’яненка, 2А",
+    place: "Центр «Перемога»",
+  },
+  en: {
+    title: `Open<br /> Monday to Friday`,
+    adress: "Levko Lukianenko Avenue, 2A",
+    place: "Peremoha Center",
   },
 };

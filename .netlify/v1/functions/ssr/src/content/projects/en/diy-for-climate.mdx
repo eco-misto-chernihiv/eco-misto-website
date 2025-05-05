@@ -1,0 +1,118 @@
+---
+title: DIY For Climate
+description: An international project that brought together young people from four countries to take joint action in adapting cities to climate change.
+pubDate: 2024-05-17
+cover:
+  image: ../images/diy-for-climate/multiple_gallery_diy-for-climate_001.jpg
+  alt: "Опис"
+isActive: false
+period:
+  startYear: 2022
+  startMonth: September
+  endYear: 2022
+  endMonth: December
+---
+
+import iakLogo from "src/assets/images/logo-iak.jpg";
+
+{/* Should start with 'images' */}
+export const diyForClimateMultiSlideImages = [
+"images/diy-for-climate/multiple_gallery_diy-for-climate_001.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_002.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_003.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_004.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_005.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_006.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_007.jpg",
+"images/diy-for-climate/multiple_gallery_diy-for-climate_008.jpg",
+];
+
+export const diyForClimatePDF = [
+  "images/diy-for-climate/single_gallery_diy-for-climate_001.jpg",
+  "images/diy-for-climate/single_gallery_diy-for-climate_002.jpg",
+  "images/diy-for-climate/single_gallery_diy-for-climate_003.jpg",
+];
+
+{/* prettier-ignore */}
+<TextContent>
+  <Badge>The Goal</Badge>
+  ## To promote environmental responsibility and resilience by engaging citizens in sustainable DIY practices and projects that counter climate change through hands-on actions and educational initiatives.
+</TextContent>
+
+<TextContent>
+  <Badge>The Process</Badge>
+The project lasted four months, uniting youth from four countries to help cities adapt to climate change and reduce their carbon footprint. It brought together 24 young community representatives from Germany, Ukraine, Moldova, and Belarus. In the first stage, participants joined an online meet-up with a facilitator to lay the groundwork for effective collaboration. This was followed by three educational webinars focused on the challenges of climate change and ways cities can adapt.
+
+The highlight of the project was a 7-day training exchange in Berlin, where participants learned to implement DIY solutions for urban sustainability. After returning home, they organized practical workshops in their communities — sharing knowledge and engaging local residents in environmental action.
+
+</TextContent>
+
+<Video src="https://www.youtube.com/embed/rJ0_glaxXBA?si=SFk7wAYT5xI_O-1F" />
+
+<TextContent>
+
+To share the outcomes, seven themed videos and a multilingual guide titled "DIY Solutions for Urban Gardening" were created and made accessible to all interested audiences. The project concluded with an online forum where participants presented their achievements and shared future plans.
+
+</TextContent>
+
+<Centered>
+  <SingleSlideGallery imagePaths={diyForClimatePDF} orientation="landscape">
+    You can view and download the guide at the following link:
+    <Link
+      href="https://plato.lviv.ua/wp-content/uploads/2023/01/diy-rishennya.pdf"
+      isHovered
+      hoverHeight="1px"
+      isExternal
+      target="_blank"
+    >
+      DIY Solutions for Urban Gardening
+    </Link>
+  </SingleSlideGallery>
+</Centered>
+
+<TextContent>
+This project not only empowered young people with knowledge, but also equipped them with practical tools for sustainable development in their communities — helping reduce carbon footprints and support climate adaptation.
+
+</TextContent>
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>The Results</Badge>
+
+    <ResultList>
+      - 24 young experts in urban development and planning from Germany, Ukraine, Moldova, and Belarus explored the topic of climate change in cities.
+      - 4 practical workshops were held on DIY solutions for urban climate adaptation.
+      - The guide "DIY Solutions for Urban Gardening" was developed.
+      - 7 videos from the urban workshops were produced and published, featuring participant interviews on the project theme.
+      - Group projects were showcased at the online forum "DIY For Climate".
+    </ResultList>
+
+  </TextContent>
+
+  <Blockquote>
+<span>“</span>Implementing best practices in urban gardening can help cities become more self-reliant and resilient in the face of wartime challenges — especially those related to food security.<span>”</span>
+
+    <BlockquoteFooter>
+        Tetiana Lebukhorska
+
+        "Victory Gardens" initiative, SURGe project
+    </BlockquoteFooter>
+
+</Blockquote>
+
+<Logos>
+  <Icon name="donors-evz" />
+  <Icon name="partners-ecovisio-original" />
+  <Icon name="logo-plato" />
+  <div class="donor-logo">
+    <MyPicture src={iakLogo} width={300} alt="IAK. Politisch Reisen logo" />
+  </div>
+  <Icon name="donors-evz" />
+  <Icon name="partners-ecovisio-original" />
+  <Icon name="logo-plato" />
+  <div class="donor-logo">
+    <MyPicture src={iakLogo} width={300} alt="IAK. Politisch Reisen logo" />
+  </div>
+</Logos>
+
+<MultiSlideGallery imagePaths={diyForClimateMultiSlideImages} isFullscreen />

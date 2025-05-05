@@ -32,11 +32,11 @@ interface Props {
 }
 
 const { seo, ogImage, type } = Astro.props;
+const currentLocale = Astro.currentLocale as Lang;
 
 // new URLSearchParams(ogImage?.data) — carry data to client-side from server-side
 const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png?${new URLSearchParams(ogImage?.data)}`;
 
-const currentLocale = Astro.currentLocale as Lang;
 const base = baseData[currentLocale];
 const ogLocale = currentLocale === "uk" ? "uk_UA" : "en_US";
 

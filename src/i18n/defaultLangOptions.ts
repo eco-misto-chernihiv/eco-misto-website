@@ -1,6 +1,6 @@
 export const Languages = [
   {
-    name: "uk",
+    name: "ua",
     value: "uk",
   },
   {

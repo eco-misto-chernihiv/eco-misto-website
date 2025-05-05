@@ -6,7 +6,7 @@ import { html } from "satori-html";
 
 export const templates: Record<string, (data?: Record<string, any>) => any> = {
   // Default template
-  default: () => html`<div
+  default: (data) => html`<div
     style="position: relative; display: flex; flex-direction: column;  background: #004737; height: 100%; color: #FFFBEC; padding: 0 0 6rem 6rem;"
   >
     <img
@@ -68,7 +68,7 @@ export const templates: Record<string, (data?: Record<string, any>) => any> = {
         <h1 style=" font-size: 5rem; line-height: 1.2; margin: 0;">
           Події. Простори.
         </h1>
-        <h1 style=" font-size: 5rem; margin: 0;">Спільнота.</h1>
+        <h1 style=" font-size: 5rem; margin: 0;">${data?.basic?.title}</h1>
       </div>
     </div>
   </div>`,

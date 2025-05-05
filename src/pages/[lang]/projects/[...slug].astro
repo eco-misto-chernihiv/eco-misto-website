@@ -91,14 +91,15 @@ const template = cover.image.format === "png" ? "projectCover" : "projectPhoto";
 // Translations
 const buttons = buttonsData[lang];
 const otherProjects = lang === "uk" ? "Інші проєкти" : "Other projects";
+const ecoMisto = lang === "uk" ? "Еко Місто" : "Eco Misto";
 ---
 
 <BaseLayout
-  seo={{ title: `${title} | Еко Місто`, description }}
+  seo={{ title: `${title} | ${ecoMisto}`, description }}
   ogImage={{
     template,
     data: {
-      title: `${title} | Еко Місто`,
+      title: `${title} | ${ecoMisto}`,
       image: `${Astro.url.origin}/${cover.image.src}`,
       alt: cover.alt,
     },

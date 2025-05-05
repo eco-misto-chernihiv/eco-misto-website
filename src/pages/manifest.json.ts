@@ -9,6 +9,9 @@ import { baseData } from "@/data/siteData";
 const faviconPngSizes = [192, 512];
 
 export const GET: APIRoute = async () => {
+  // Default locale
+  const locale = "en";
+
   const icons = await Promise.all(
     faviconPngSizes.map(async (size) => {
       const image = await getImage({
@@ -27,8 +30,8 @@ export const GET: APIRoute = async () => {
   );
 
   const manifest = {
-    name: baseData.title,
-    description: baseData.description,
+    name: baseData[locale].title,
+    description: baseData[locale].description,
     start_url: "/",
     display: "standalone",
     id: "ecomisto-id",

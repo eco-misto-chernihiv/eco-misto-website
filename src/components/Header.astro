@@ -22,11 +22,7 @@ const buttons = buttonsData[currentLocale];
 <header class="is-visible">
   <div class="wrapper">
     <Cluster isCenterMiddle alignItems="center" class="header-inner desktop">
-      <Logo
-        name="ecomisto-logo"
-        color="primary"
-        style={{ "--width": "160px" }}
-      />
+      <Logo color="primary" style={{ "--width": "160px" }} />
 
       <MainNav color="accent" />
 
@@ -57,23 +53,22 @@ const buttons = buttonsData[currentLocale];
     </Cluster>
 
     <Cluster alignItems="center" justify="between" class="header-inner mobile">
-      <Logo
-        name="ecomisto-logo"
-        color="primary"
-        style={{ "--width": "136px" }}
-      />
+      <Logo color="primary" style={{ "--width": "136px" }} />
 
-      <Button
-        variant="icon"
-        style="ghost"
-        aria-label="Open main menu"
-        data-open-mobile-menu
-        isDefault={false}
-        class="open-menu"
-      >
-        <Icon name="icon-menu" size={32} />
-        <span class="sr-only">Open main menu</span>
-      </Button>
+      <Cluster alignItems="center" space="space-2">
+        <LanguagePicker />
+        <Button
+          variant="icon"
+          style="ghost"
+          aria-label="Open main menu"
+          data-open-mobile-menu
+          isDefault={false}
+          class="open-menu"
+        >
+          <Icon name="icon-menu" size={32} />
+          <span class="sr-only">Open main menu</span>
+        </Button>
+      </Cluster>
     </Cluster>
   </div>
 </header>
@@ -85,9 +80,13 @@ const buttons = buttonsData[currentLocale];
   @custom-media --tablet-l-and-up (width >= 48em);
 
   /* Hide language picker at 810px */
-  @custom-media --tablet-xl-and-up (width >= 50.625em);
+  @custom-media --tablet-xl-and-up (width >= 51.875em);
 
   header {
+    --_header-primary: var(--color-primary);
+    --_header-secondary: var(--color-secondary);
+    --_header-accent: var(--color-accent);
+
     --_padding: var(--space-6-fixed);
 
     position: fixed;
@@ -121,12 +120,8 @@ const buttons = buttonsData[currentLocale];
     }
   }
 
-  header :global(.language-picker) {
-    display: none;
-    @media (--tablet-xl-and-up) {
-      display: flex;
-      color: var(--color-accent);
-    }
+  header :global(.logo) {
+    color: var(--_header-primary);
   }
 
   .wrapper {
@@ -155,7 +150,7 @@ const buttons = buttonsData[currentLocale];
   }
 
   .open-menu {
-    color: var(--color-primary);
+    color: var(--_header-primary);
     padding: 0;
     transition: opacity var(--transition-default);
 
@@ -171,27 +166,22 @@ const buttons = buttonsData[currentLocale];
   /* Fixed header  */
 
   header.fixed {
+    --_header-primary: var(--color-secondary);
+    --_header-secondary: var(--color-primary);
+    --_header-accent: var(--color-secondary);
+
     max-width: 60rem;
   }
 
   header.fixed .wrapper {
-    /* padding-inline: var(--space-5-fixed); */
-
     background-color: var(--color-primary);
-
-    /* transition:
-      background-color 300ms var(--ease),
-      padding 300ms var(--ease),
-      border-radius 300ms var(--ease); */
   }
 
   /* Somehow i can't target nav from here, so i use :global directive */
-  header.fixed .logo,
-  header.fixed :global(.main-nav),
-  header.fixed .open-menu,
-  header.fixed :global(.language-picker) {
+
+  /* header.fixed .open-menu {
     color: var(--color-secondary);
-  }
+  } */
 
   /* Show/hide header */
 
@@ -203,7 +193,7 @@ const buttons = buttonsData[currentLocale];
 
   header .mobile {
     /* display: none; */
-    @media (--tablet-l-and-up) {
+    @media (--tablet-xl-and-up) {
       display: none;
     }
   }
@@ -211,7 +201,7 @@ const buttons = buttonsData[currentLocale];
   header .desktop {
     display: none;
 
-    @media (--tablet-l-and-up) {
+    @media (--tablet-xl-and-up) {
       display: flex;
     }
   }

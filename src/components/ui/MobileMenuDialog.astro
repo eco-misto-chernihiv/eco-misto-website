@@ -8,6 +8,7 @@ import Cluster from "../compositions/Cluster.astro";
 // Components
 import Button from "./Button.astro";
 import Logo from "../Logo.astro";
+import LanguagePicker from "../LanguagePicker.astro";
 
 type Props = {
   class?: string;
@@ -26,16 +27,19 @@ const { class: classList, name } = Astro.props;
         style={{ "--width": "136px" }}
       />
 
-      <Button
-        variant="icon"
-        style="ghost"
-        data-close-dialog
-        aria-label="Close menu"
-        isDefault={false}
-      >
-        <Icon name="icon-close" size={32} />
-        <span class="sr-only">Close menu</span>
-      </Button>
+      <Cluster alignItems="center" space="space-2">
+        <LanguagePicker isInverted />
+        <Button
+          variant="icon"
+          style="ghost"
+          data-close-dialog
+          aria-label="Close menu"
+          isDefault={false}
+        >
+          <Icon name="icon-close" size={32} />
+          <span class="sr-only">Close menu</span>
+        </Button>
+      </Cluster>
     </Cluster>
   </div>
   <div class="content">
