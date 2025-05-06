@@ -8,9 +8,9 @@
   },
   {
     "id": 2,
-    "name": "Вікторія",
-    "position": "Виконавча директорка",
-    "picture": "./images/viktoriya.png",
+    "name": "Ярослав",
+    "position": "Проєктний менеджер",
+    "picture": "./images/yaroslav.png",
     "indexId": 2
   },
   {
@@ -32,27 +32,34 @@
     "name": "Максим",
     "position": "Адміністратор майстерні",
     "picture": "./images/maksym.png",
-    "indexId": 5
+    "indexId": 6
   },
   {
     "id": 6,
     "name": "Анна",
-    "position": "Майстриня",
-    "picture": "./images/anya.png",
-    "indexId": 6
+    "position": "Контентмейкерка",
+    "picture": "./images/anna.png",
+    "indexId": 5
   },
   {
     "id": 7,
     "name": "Євген",
     "position": "Веломайстер",
     "picture": "./images/evgen.png",
-    "indexId": 7
+    "indexId": 8
   },
   {
     "id": 8,
     "name": "Олексій",
     "position": "Молодший спеціаліст",
     "picture": "./images/oleksiy.png",
-    "indexId": 8
+    "indexId": 9
+  },
+  {
+    "id": 9,
+    "name": "Катя",
+    "position": "Лаборантка",
+    "picture": "./images/katya.png",
+    "indexId": 7
   }
 ]

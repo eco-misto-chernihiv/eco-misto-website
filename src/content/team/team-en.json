@@ -8,9 +8,9 @@
   },
   {
     "id": 2,
-    "name": "Viktoria",
-    "position": "Executive Director",
-    "picture": "./images/viktoriya.png",
+    "name": "Yaroslav",
+    "position": "Project Manager",
+    "picture": "./images/yaroslav.png",
     "indexId": 2
   },
   {
@@ -32,27 +32,34 @@
     "name": "Maksym",
     "position": "Workshop Administrator",
     "picture": "./images/maksym.png",
-    "indexId": 5
+    "indexId": 6
   },
   {
     "id": 6,
     "name": "Anna",
-    "position": "Maker",
-    "picture": "./images/anya.png",
-    "indexId": 6
+    "position": "Content Maker",
+    "picture": "./images/anna.png",
+    "indexId": 5
   },
   {
     "id": 7,
     "name": "Yevhen",
     "position": "Bicycle Mechanic",
     "picture": "./images/evgen.png",
-    "indexId": 7
+    "indexId": 8
   },
   {
     "id": 8,
     "name": "Oleksii",
     "position": "Junior Specialist",
     "picture": "./images/oleksiy.png",
-    "indexId": 8
+    "indexId": 9
+  },
+  {
+    "id": 9,
+    "name": "Katya",
+    "position": "Lab Assistant",
+    "picture": "./images/katya.png",
+    "indexId": 7
   }
 ]
