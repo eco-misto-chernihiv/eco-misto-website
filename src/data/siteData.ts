@@ -159,11 +159,6 @@ export const socialData = [
 export const contactsData = {
   uk: [
     {
-      description: "+38 073 479 99 87",
-      icon: "icon-phone",
-      href: "tel:+380734799987",
-    },
-    {
       description: "info@ecomisto.org",
       icon: "icon-mail",
       href: "mailto:info@ecomisto.org",
@@ -175,11 +170,6 @@ export const contactsData = {
     },
   ],
   en: [
-    {
-      description: "+38 073 479 99 87",
-      icon: "icon-phone",
-      href: "tel:+380734799987",
-    },
     {
       description: "info@ecomisto.org",
       icon: "icon-mail",
