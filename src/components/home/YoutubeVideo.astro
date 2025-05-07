@@ -1,6 +1,7 @@
 ---
 // Tools
 import { Icon } from "astro-icon/components";
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "../compositions/Stack.astro";
@@ -13,6 +14,10 @@ import VideoDialog from "../ui/VideoDialog.astro";
 // Data
 const { video } = Astro.props;
 const { thumbnail, title, videoId } = video;
+import { buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const buttons = buttonsData[currentLocale];
 ---
 
 <div class="youtube-video">
@@ -32,7 +37,9 @@ const { thumbnail, title, videoId } = video;
     </Stack>
 
     <div class="arrow-right-container">
-      <Text tagName="span" size="small" class="arrow-right-text">Дивитись</Text>
+      <Text tagName="span" size="small" class="arrow-right-text"
+        >{buttons.view}</Text
+      >
       <Icon
         name="icon-arrow-right"
         aria-hidden="true"
