@@ -1,0 +1,8 @@
+async function getMod() {
+						return import('./back-to-back_B_PFC9lf.mjs');
+					}
+					const collectedLinks = [];
+					const collectedStyles = [];
+					const defaultMod = { __astroPropagation: true, getMod, collectedLinks, collectedStyles, collectedScripts: [] };
+
+export { defaultMod as default };

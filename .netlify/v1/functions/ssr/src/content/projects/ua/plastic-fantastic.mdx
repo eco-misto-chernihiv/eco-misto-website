@@ -1,0 +1,162 @@
+---
+title: Plastic Fantastic
+description: Майстерня та бренд, що досліджують процеси переробки вторинного пластику і популяризують його використання як ресурсу для предметного дизайну.
+pubDate: 2999-01-02
+cover:
+  image: ../images/plastic-fantastic/cover_plastic-fantastic-2.png
+  alt: "Опис"
+isActive: true
+isCollage: true
+---
+
+{/* Assets */}
+import product1 from "../images/plastic-fantastic/plastic_fantastic_product_001.jpg";
+import product2 from "../images/plastic-fantastic/plastic_fantastic_product_002.jpg";
+import product3 from "../images/plastic-fantastic/plastic_fantastic_product_003.jpg";
+import product4 from "../images/plastic-fantastic/plastic_fantastic_product_004.jpg";
+import product5 from "../images/plastic-fantastic/plastic_fantastic_product_005.jpg";
+import plasticTypes from "../images/plastic-fantastic/plastic-types.png";
+import gizLogo from "@/assets/images/giz.png";
+
+{/* Should start with 'images' */}
+export const workshopImages = [
+"images/plastic-fantastic/plastic_fantastic_001.jpg",
+"images/plastic-fantastic/plastic_fantastic_002.jpg",
+"images/plastic-fantastic/plastic_fantastic_003.jpg",
+"images/plastic-fantastic/plastic_fantastic_004.jpg",
+"images/plastic-fantastic/plastic_fantastic_005.jpg",
+"images/plastic-fantastic/plastic_fantastic_006.jpg",
+"images/plastic-fantastic/plastic_fantastic_007.jpg",
+"images/plastic-fantastic/plastic_fantastic_008.jpg",
+"images/plastic-fantastic/plastic_fantastic_009.jpg",
+"images/plastic-fantastic/plastic_fantastic_010.jpg",
+"images/plastic-fantastic/plastic_fantastic_011.jpg",
+];
+
+export const equipmentImages = [
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_001.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_002.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_003.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_004.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_005.jpg",
+
+];
+
+<TextContent>
+  **Plastic Fantastic** – це бренд, що об'єднує екоактивістів, дизайнерів та
+  мейкерів задля дослідження процесів переробки пластику і використання його як
+  ресурсу для предметного дизайну.
+</TextContent>
+
+<TextContent>
+  <Badge>Проблема</Badge>
+  Створення великих сміттєпереробних заводів в Україні – це дуже актуально, проте,
+  на жаль, дорого і довго. Чинні муніципальні моделі збору твердих побутових відходів
+  виключають сортування й переробку. Відходи захоронюються поблизу міст на полігонах,
+  що переповнені й, насправді, мали би бути давно зачиненими.
+</TextContent>
+
+{/* prettier-ignore */}
+<Blockquote>
+
+<span>«</span>Ми бачимо майбутнє за локальними майстернями й сортувальними
+станціями, що займатимуться переробкою вторсировини і формуватимуть навколо себе
+свідомі спільноти.
+<span>»</span>
+
+  <BlockquoteFooter>
+  Громадська організація «Еко Місто Чернігів»
+</BlockquoteFooter>
+</Blockquote>
+
+<TextContent>
+### З чого складається наш сміттєвий кошик?
+
+Майже 50% – це органіка, яку можна компостувати, 45% – паковання, що можна повернути в цикл переробки й отримати цінний ресурс. І лише близько 5% побутових відходів підлягають захороненню чи високотемпературній утилізації.
+
+Як виявилося з практики роздільного збору, більше всього проблем і запитань стосуються пластика. По-перше, на пакованні можна знайти 7 різних маркувань, а по-друге, не весь пластик підлягає переробці та, відповідно, може здаватися до пунктів прийому.
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Centered>
+
+  <ImageGrid>
+    <Full src={plasticTypes} />
+  </ImageGrid>
+</Centered>
+
+<TextContent>
+  <Badge>Підхід</Badge>
+
+Майстерня Plastic Fantastic у Чернігові працює у форматі Fab Lab при мейкерському просторі Peremoha lab Національного університету «Чернігівська політехніка». У розпорядженні дизайнерів, архітекторів і винахідників є шредер для подрібнення пластику, термопрес, інжектор та екструдер для виготовлення нових «фантастичних» виробів.
+
+**Ми проводимо відкриті екскурсії та воркшопи по роботі зі вторинним пластиком для всіх охочих, популяризуючи його роздільний збір і відповідальне споживання.**
+
+</TextContent>
+
+<MultiSlideGallery imagePaths={equipmentImages} orientation="square">
+  Обладнання майстерні Plastic Fantastic
+</MultiSlideGallery>
+
+<TextContent>
+  <Badge>Локально</Badge>
+  Один раз на місяць ми організовуємо день відкритих дверей в майстерні ресайклінгу
+  Plastic Fantastic і приймаємо на переробку чистий і сухий пластик типу 2 HDPE.
+  Пластик для переробки збирають більше 30 дитячих садочків в Чернігові в рамках
+  довгострокової ініціативи «Кришки на іграшки».
+
+Пластик 2 HDPE (анл. high depth polietilen) – поліетилен високого тиску – це харчовий, нетоксичний пластик, що може бути переробленим нескінченну кількість разів. Часто використовується в побуті у вигляді кришок від напоїв і рідин, а також флаконів з побутової хімії, засобів гігієни, миючих засобів тощо. Ми приймаємо поліетилен кожну першу суботу місяця після анонсу в телеграм-боті.
+
+Теми ресайклінгу та свідомого споживання — ключові у проєкті. Існує багато
+прикладів того, як різні світові бренди роблять стильні елементи гардеробу зі
+вторсировини. Втім, в інших галузях якісних продуктів не так багато. У
+більшості випадків перероблене сміття перетворюється на інше «сміття», що ніяк
+не покращує наш побут і не вирішує проблеми із забрудненням. Аби уникнути
+цього ми керуємось не лише естетичним, а й системним підходом до втілення
+ідей.
+
+**В перспективі, ми мріємо про платформу, що об'єднуватиме майстерні і митців по всій Україні, допомогатиме обмінюватись досвідом, а також підтримувати тих, хто починає свій шлях у ресайклінгу.**
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Centered>
+
+  <ImageGrid>
+    <Half src={product1} orientation="portrait" />
+    <Half src={product2} orientation="portrait" />
+    <Half src={product3} orientation="portrait" />
+    <Half src={product4} orientation="portrait" />
+  </ImageGrid>
+</Centered>
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>Пропозиції</Badge>
+
+    <ResultList>
+      - Крафтові вироби Plastic Fantastic.
+      - Листи з переробленого пластику різної товщини і дизайну.
+      - Індивідуальні та групові воркшопи з ресайклінгу для дорослих і дітей.
+      - Екскурсії для груп школярів і студентів.
+      - Волонтерство, стажування.
+      - Дослідження і практика в рамках дипломних і курсових робіт.
+    </ResultList>
+
+  </TextContent>
+
+{" "}
+
+<Logos>
+  <Icon name="donors-transition" />
+  <div class="donor-logo">
+    <MyPicture src={gizLogo} width={300} alt="GIZ logo" />
+  </div>
+  <Icon name="partners-politehnika-original" />
+  <Icon name="partners-ostriv-original" />
+  <Icon name="partners-zelenew-original" />
+  <Icon name="partners-tolocar-original" />
+</Logos>
+
+<MultiSlideGallery imagePaths={workshopImages} isFullscreen />
