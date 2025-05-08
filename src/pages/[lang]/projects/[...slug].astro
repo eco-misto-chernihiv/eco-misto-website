@@ -32,6 +32,7 @@ import { getProjectIdWithoutLang } from "@/i18n/getProjectIdWithoutLang";
 
 // Data
 import { buttonsData } from "@/data/siteData";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 // Routes
 export async function getStaticPaths() {
@@ -90,8 +91,8 @@ const template = cover.image.format === "png" ? "projectCover" : "projectPhoto";
 
 // Translations
 const buttons = buttonsData[lang];
-const otherProjects = lang === "uk" ? "Інші проєкти" : "Other projects";
-const ecoMisto = lang === "uk" ? "Еко Місто" : "Eco Misto";
+const otherProjects = lang === "ua" ? "Інші проєкти" : "Other projects";
+const ecoMisto = lang === "ua" ? "Еко Місто" : "Eco Misto";
 ---
 
 <BaseLayout
@@ -159,7 +160,10 @@ const ecoMisto = lang === "uk" ? "Еко Місто" : "Eco Misto";
           class="col-12 tablet:col-6 color-secondary">{otherProjects}</Heading
         >
         <div class="col-12 tablet:col-6 all-projects">
-          <ButtonArrow tagName="a" style="primary" href="/projects"
+          <ButtonArrow
+            tagName="a"
+            style="primary"
+            href={`${getRelativeLocaleUrl(lang, "/projects")}`}
             >{buttons.allProjects}
           </ButtonArrow>
         </div>

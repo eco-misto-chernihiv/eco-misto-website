@@ -16,9 +16,10 @@ import MobileMenu from "@/components/MobileMenu.astro";
 import "@styles/main.css";
 
 const currentLocale = Astro.currentLocale as Lang;
+const locale = currentLocale === "ua" ? "uk" : currentLocale;
 ---
 
-<html lang={currentLocale}>
+<html lang={locale}>
   <Head {...Astro.props} />
   <body>
     <div id="root">

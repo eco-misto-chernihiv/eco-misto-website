@@ -1,7 +1,7 @@
 export const Languages = [
   {
     name: "ua",
-    value: "uk",
+    value: "ua",
   },
   {
     name: "en",
@@ -9,7 +9,7 @@ export const Languages = [
   },
 ] as const;
 
-export const defaultLanguage = "uk";
+export const defaultLanguage = "ua";
 
 // Easily pick language
 export type Lang = (typeof Languages)[number]["value"];

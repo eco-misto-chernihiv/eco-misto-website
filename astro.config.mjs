@@ -14,8 +14,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://ecomisto.org",
   i18n: {
-    defaultLocale: "uk",
-    locales: ["uk", "en"],
+    defaultLocale: "ua",
+    locales: ["ua", "en"],
     routing: {
       prefixDefaultLocale: true,
     },

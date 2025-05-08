@@ -1,5 +1,6 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
 import Stack from "./compositions/Stack.astro";
@@ -13,8 +14,8 @@ import Heading from "./ui/Heading.astro";
 
 // Data
 import { cooperationData, cooperationText, buttonsData } from "@/data/siteData";
-import type { Lang } from "@/i18n/defaultLangOptions";
 
+// Translations
 const currentLocale = Astro.currentLocale as Lang;
 const cooperationInput = cooperationData[currentLocale];
 const text = cooperationText[currentLocale];

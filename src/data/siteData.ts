@@ -1,5 +1,5 @@
 export const baseData = {
-  uk: {
+  ua: {
     title: "Громадська організація «Еко Місто Чернігів»",
     description:
       "Популяризуємо розвиток мейкерства, ресайклінга та підтримуємо велосипедний рух в Чернігові.",
@@ -12,7 +12,7 @@ export const baseData = {
 };
 
 export const aboutData = {
-  uk: {
+  ua: {
     p1: "Громадська організація «Еко Місто Чернігів» — це урбаністична ініціатива, спрямована на покращення якості життя через проєкти тактичного урбанізму та формування спільнот.",
     p2: "Наша діяльність включає популяризацію сталих підходів, а саме розвиток мейкерства, ресайклінг та підтримку велосипедного руху в Чернігові.",
   },
@@ -23,7 +23,7 @@ export const aboutData = {
 };
 
 export const navData = {
-  uk: [
+  ua: [
     {
       title: "Проєкти",
       href: "/projects",
@@ -46,7 +46,7 @@ export const navData = {
 };
 
 export const missionData = {
-  uk: {
+  ua: {
     tag: "Місія",
     text: "Сприяти сталому розвитку Чернігова шляхом впровадження інноваційних та креативних рішень, залучаючи спільноту на всіх рівнях.",
   },
@@ -57,7 +57,7 @@ export const missionData = {
 };
 
 export const partnersData = {
-  uk: {
+  ua: {
     tag: "Партнери",
     title: "Запрошуємо до співпраці",
     text: "Ми пропонуємо спільно брати участь у соціальних змінах для впровадження сталих підходів у розвитку міст. Свою місію реалізуємо через урбаністичні інтервенції, освітні програми та соціальне підприємництво. Долучайтесь до нас як волонтер або партнер. Разом ми можемо творити зміни!",
@@ -70,7 +70,7 @@ export const partnersData = {
 };
 
 export const achievmentsData = {
-  uk: [
+  ua: [
     {
       title: "612",
       description: "креативних заходів проведено",
@@ -157,7 +157,7 @@ export const socialData = [
 ];
 
 export const contactsData = {
-  uk: [
+  ua: [
     {
       description: "info@ecomisto.org",
       icon: "icon-mail",
@@ -184,7 +184,7 @@ export const contactsData = {
 };
 
 export const footerData = {
-  uk: {
+  ua: {
     copy: "Громадська організація «Еко Місто Чернігів»",
     rights: "Усі права захищені",
     privacyPolicy: "Політика конфіденційності",
@@ -197,7 +197,7 @@ export const footerData = {
 };
 
 export const notFoundData = {
-  uk: {
+  ua: {
     headTitle: "Сторінку не знайдено",
     title: "Упс, сторінку не знайдено",
     description:
@@ -214,7 +214,7 @@ export const notFoundData = {
 // MODALS DATA
 
 export const cooperationText = {
-  uk: {
+  ua: {
     title: "Опишіть ваш запит",
     description:
       "Розкажіть про себе та сформулюйте свою пропозицію, або ідею. Ми постараємось дати відповідь якнайшвидше.",
@@ -228,7 +228,7 @@ export const cooperationText = {
 
 // prettier-ignore
 export const cooperationData = {
-  uk: [
+  ua: [
     {
       label: "Мене звати *",
       formControl: "input",
@@ -319,7 +319,7 @@ export const cooperationData = {
 };
 
 export const donateText = {
-  uk: {
+  ua: {
     title: "Зробити внесок",
     description:
       "Усі кошти будуть витрачені на забезпечення адміністративної діяльності громадської організації “Еко Місто Чернігів” та нові інноваційні проєкти для розвитку міста.",
@@ -339,7 +339,7 @@ export const donateText = {
 // TODO: Check email patterns
 // prettier-ignore
 export const donateData = {
-  uk: [
+  ua: [
     {
       label: "Введіть суму *",
       formControl: "input",
@@ -384,7 +384,7 @@ export const donateData = {
 // MISC
 
 export const callToActionData = {
-  uk: {
+  ua: {
     title: "Подобається, що ми робимо?",
     description:
       "Ми відкриті до співпраці й будемо раді будь-якій допомозі: пиши, дзвони, донать, долучайся!",
@@ -397,7 +397,7 @@ export const callToActionData = {
 };
 
 export const buttonsData = {
-  uk: {
+  ua: {
     support: "Підтримати",
     contact: "Написати",
     send: "Надіслати",
@@ -416,7 +416,7 @@ export const buttonsData = {
 };
 
 export const workingHoursData = {
-  uk: {
+  ua: {
     title: `Працюємо<br /> з понеділка по пʼятницю`,
     adress: "Проспект Левка Лук’яненка, 2А",
     place: "Центр «Перемога»",

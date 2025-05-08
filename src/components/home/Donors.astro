@@ -42,7 +42,9 @@ const donors = [
 
 import gizLogo from "@/assets/images/giz.png";
 
+// Translations
 const currentLocale = Astro.currentLocale as Lang;
+const text = currentLocale === "ua" ? "Нам довіряють" : "Trusted by";
 ---
 
 <section class="donors">
@@ -54,8 +56,7 @@ const currentLocale = Astro.currentLocale as Lang;
           size="medium"
           class="font-medium"
           isBadge
-          variant="neutral"
-          >{currentLocale === "uk" ? "Нам довіряють" : "Trusted by"}</Text
+          variant="neutral">{text}</Text
         >
       </div>
 

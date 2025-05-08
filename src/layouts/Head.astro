@@ -38,7 +38,7 @@ const currentLocale = Astro.currentLocale as Lang;
 const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png?${new URLSearchParams(ogImage?.data)}`;
 
 const base = baseData[currentLocale];
-const ogLocale = currentLocale === "uk" ? "uk_UA" : "en_US";
+const ogLocale = currentLocale === "ua" ? "uk_UA" : "en_US";
 
 // TODO: Fix OG image text to proper render based on locale
 ---
