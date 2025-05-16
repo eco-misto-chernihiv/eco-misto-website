@@ -15,20 +15,18 @@ export function getURLAndSearchParams() {
 }
 
 /**
- * Extracts the base path from a given URL path.
+ * Extracts the base path from a URL path by parsing the locale and first segment.
  *
- * @param {string} path - The full URL path to process.
- * @returns {string} The base path (first segment after the leading slash) or an empty string if not found.
- *
- * @example
- * Returns "/dashboard"
- * getBasePath("/dashboard/users");
+ * @param {string} path - The full URL path to parse (e.g., "/en/dashboard/settings")
+ * @returns {string} The base path including locale and first path segment with trailing slash,
+ *                   or an empty string if there aren't enough path segments (e.g., "/en/dashboard/")
+ 
  */
 export function getBasePath(path) {
-  const parts = path.split("/");
+  const [_, locale, ...paths] = path.split("/");
 
-  if (parts.length >= 2) {
-    return `/${parts[1]}`;
+  if (paths.length >= 2) {
+    return `/${locale}/${paths[0]}/`;
   }
 
   return "";
