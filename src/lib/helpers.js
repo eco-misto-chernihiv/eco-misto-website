@@ -33,6 +33,24 @@ export function getBasePath(path) {
 }
 
 /**
+ * Extracts the locale from a URL path. filter(Boolean) removes all "falsy" values from an array.
+ *
+ * "/en/about".split("/") -> ["", "en", "about"]
+ * "/en/about".split("/").filter(Boolean) -> ["en", "about"]
+ *
+ * @param {string} path - The URL path (e.g., "/en/about", "/ua/contact")
+ * @returns {string|undefined} The locale code if found, undefined otherwise
+ */
+export function getLocale(path) {
+  if (!path || typeof path !== "string") {
+    return undefined;
+  }
+
+  const parts = path.split("/").filter(Boolean);
+  return parts[0] || undefined;
+}
+
+/**
  * Creates breakpoints classes to use in class:list directive
  */
 export function getBreakpoints(prefix, prop) {

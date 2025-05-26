@@ -48,6 +48,9 @@ const buttons = buttonsData[currentLocale];
 
 <script>
   import sanitizeHtml from "sanitize-html";
+  import { buttonsState } from "../data/siteData.ts";
+  import { getLocale } from "../lib/helpers.js";
+  import type { Lang } from "@/i18n/defaultLangOptions";
 
   type FormValues = {
     name: string;
@@ -76,6 +79,8 @@ const buttons = buttonsData[currentLocale];
     // If form is submitted, ignore
     if (form.hasAttribute("data-submitting")) return;
 
+    const locale = getLocale(window.location.pathname) as Lang;
+
     // Get data
     const data = new FormData(form);
     let {
@@ -103,7 +108,8 @@ const buttons = buttonsData[currentLocale];
     try {
       // Disable form
       form.setAttribute("data-submitting", "true");
-      submitButton.innerText = "Надсилаю...";
+      console.log(locale);
+      submitButton.innerText = buttonsState[locale].ongoing;
 
       const request = await fetch("/api/request-partnership", {
         method: "POST",
@@ -125,15 +131,21 @@ const buttons = buttonsData[currentLocale];
 
       const response = await request.json();
 
-      // console.log(response);
+      console.log(response);
 
-      // Enable form
-      resetForm();
+      submitButton.innerText = buttonsState[locale].success;
+
+      setTimeout(() => {
+        resetForm();
+      }, 3000);
     } catch (error) {
       console.log(error);
 
-      // Enable form
-      resetForm();
+      submitButton.innerText = buttonsState[locale].error;
+
+      setTimeout(() => {
+        resetForm();
+      }, 3000);
     }
   }
 

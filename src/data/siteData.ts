@@ -415,6 +415,19 @@ export const buttonsData = {
   },
 };
 
+export const buttonsState = {
+  ua: {
+    ongoing: "Надсилаю...",
+    success: "Надіслано",
+    error: "Помилка. Спробуйте ще раз!",
+  },
+  en: {
+    ongoing: "Sending...",
+    success: "Sent!",
+    error: "Failed. Try again!",
+  },
+};
+
 export const workingHoursData = {
   ua: {
     title: `Працюємо<br /> з понеділка по пʼятницю`,
