@@ -72,7 +72,7 @@ export const partnersData = {
 export const achievmentsData = {
   ua: [
     {
-      title: "625",
+      title: "637",
       description: "креативних заходів проведено",
       id: "primary",
       "left-translateX": "-100%",
@@ -80,7 +80,7 @@ export const achievmentsData = {
       "right-rotate": "270deg",
     },
     {
-      title: "941",
+      title: "965",
       description: "соціальних велосипедів видано",
       id: "primary-light",
       "left-translateX": "-100%",
@@ -100,7 +100,7 @@ export const achievmentsData = {
   ],
   en: [
     {
-      title: "625",
+      title: "637",
       description: "creative events held",
       id: "primary",
       "left-translateX": "-100%",
@@ -108,7 +108,7 @@ export const achievmentsData = {
       "right-rotate": "270deg",
     },
     {
-      title: "941",
+      title: "965",
       description: "community bikes distributed",
       id: "primary-light",
       "left-translateX": "-100%",
