@@ -2,6 +2,9 @@
 // Tools
 import { Icon } from "astro-icon/components";
 
+// Helpers
+import { getLogo } from "@/lib/helpers";
+
 // Components
 import Link from "./ui/Link.astro";
 import type { Lang } from "@/i18n/defaultLangOptions";
@@ -10,15 +13,23 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 type Props = {
   color: "primary" | "secondary" | "white" | "black";
   class?: string;
+  isMobile?: boolean;
 
   [key: string]: any;
 };
 
-const { class: classList, color, isHovered = false, ...rest } = Astro.props;
+const {
+  class: classList,
+  color,
+  isHovered = false,
+  isMobile = false,
+  ...rest
+} = Astro.props;
 
 // Translations
 const currentLocale = Astro.currentLocale as Lang;
-const logo = currentLocale === "ua" ? "ecomisto-logo" : "ecomisto-logo-en";
+
+const logo = getLogo(currentLocale, isMobile);
 ---
 
 <Link

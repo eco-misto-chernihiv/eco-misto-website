@@ -21,14 +21,25 @@ const { class: classList, name } = Astro.props;
 <dialog class:list={[classList]} data-dialog={name}>
   <div class="header-wrapper">
     <Cluster alignItems="center" justify="between" class="header">
-      <Logo
-        name="ecomisto-logo"
-        color="secondary"
-        style={{ "--width": "136px" }}
-      />
+      <Logo color="secondary" isMobile={true} style={{ "--width": "100px" }} />
 
       <Cluster alignItems="center" space="space-2">
-        <LanguagePicker isInverted />
+        <Button
+          style="secondary"
+          variant="round"
+          isDefault={false}
+          size="medium"
+          class="support"
+          data-open-donate
+          aria-label="Open donate form modal"
+        >
+          <Icon
+            name="icon-heart"
+            aria-hidden="true"
+            focusable="false"
+          /></Button
+        >
+        <LanguagePicker color="secondary" size="medium" />
         <Button
           variant="icon"
           style="ghost"

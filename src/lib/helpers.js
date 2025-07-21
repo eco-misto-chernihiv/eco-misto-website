@@ -181,3 +181,27 @@ export function createResponse({ message, success, status }) {
 export function updateBrowserHistory(url) {
   window.history.replaceState({}, "", url);
 }
+
+/**
+ * Generates the appropriate logo filename based on locale and device type.
+ *
+ * @param {string} locale - The locale code (e.g., 'ua', 'en')
+ * @param {boolean} [isMobile=false] - Whether to use the compact mobile version
+ * @returns {string} The logo filename without extension (e.g., 'ecomisto-logo-ua-compact')
+ *
+ * @example
+ * // Desktop Ukrainian logo
+ * getLogo('ua', false); // → 'ecomisto-logo-ua'
+ *
+ * @example
+ * // Mobile English logo
+ * getLogo('en', true); // → 'ecomisto-logo-en-compact'
+ *
+ * @example
+ * // Desktop logo (mobile defaults to false)
+ * getLogo('ua'); // → 'ecomisto-logo-ua'
+ */
+export function getLogo(locale, isMobile) {
+  const suffix = isMobile ? "-compact" : "";
+  return `ecomisto-logo-${locale}${suffix}`;
+}

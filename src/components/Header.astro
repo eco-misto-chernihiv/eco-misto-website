@@ -53,10 +53,25 @@ const buttons = buttonsData[currentLocale];
     </Cluster>
 
     <Cluster alignItems="center" justify="between" class="header-inner mobile">
-      <Logo color="primary" style={{ "--width": "136px" }} />
+      <Logo color="primary" isMobile={true} style={{ "--width": "100px" }} />
 
       <Cluster alignItems="center" space="space-2">
-        <LanguagePicker />
+        <Button
+          style="primary"
+          variant="round"
+          isDefault={false}
+          size="medium"
+          class="support"
+          data-open-donate
+          aria-label="Open donate form modal"
+        >
+          <Icon
+            name="icon-heart"
+            aria-hidden="true"
+            focusable="false"
+          /></Button
+        >
+        <LanguagePicker size="medium" />
         <Button
           variant="icon"
           style="ghost"
@@ -212,7 +227,8 @@ const buttons = buttonsData[currentLocale];
 
   // Fixed header
   const header = document.querySelector("header") as HTMLElement;
-  const supportButton = header.querySelector(".support");
+  const supportButton = [...header.querySelectorAll(".support")];
+  const langButtons = [...header.querySelectorAll(".lang-button")];
 
   const THRESHOLD = 8 as number;
 
@@ -221,12 +237,23 @@ const buttons = buttonsData[currentLocale];
 
     if (scrollTop > THRESHOLD) {
       header?.classList.add("fixed");
-      supportButton?.setAttribute("data-style", "secondary");
+      supportButton?.forEach((supportButton) =>
+        supportButton.setAttribute("data-style", "secondary")
+      );
+      langButtons.forEach((langButton) =>
+        langButton?.setAttribute("data-style", "secondary")
+      );
+
       // supportButton?.classList.remove("primary");
     } else {
       header?.classList.remove("fixed");
       // supportButton?.classList.remove("secondary");
-      supportButton?.setAttribute("data-style", "primary");
+      supportButton?.forEach((supportButton) =>
+        supportButton.setAttribute("data-style", "primary")
+      );
+      langButtons.forEach((langButton) =>
+        langButton?.setAttribute("data-style", "accent")
+      );
     }
   });
 

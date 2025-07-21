@@ -1,0 +1,154 @@
+---
+// Tools
+import { Languages } from "@/i18n/defaultLangOptions";
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
+
+
+// Components
+import Text from "./ui/Text.astro";
+
+// Types
+
+interface Props {
+  isInverted?: boolean;
+}
+
+// Props
+const {isInverted = false} = Astro.props;
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+
+const id = crypto.randomUUID();
+---
+
+<div class:list={['language-tabs', {inverted: isInverted}]}>
+  {
+    Languages.map((lang) => (
+      <input
+        type="radio"
+        id={`${id}-${lang.name}`}
+        value={lang.value}
+        class="sr-only"
+        checked={lang.value === currentLocale}
+      />
+      <Text tagName="label" size="x-small" for={`${id}-${lang.name}`}>{lang.name}</Text >
+    ))
+  }
+</div>
+
+<style>
+  
+
+  .language-tabs {
+    --_height: 32px;
+    --_border: 2px;
+    --_radius: var(--rounded-full);
+    position: relative;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    height: var(--_height);
+    /* border: var(--_border) solid var(--color-accent); */
+    border-radius: var(--_radius);
+  }
+
+  .language-tabs input:checked + label {
+    line-height: 1;
+    background: var(--_header-accent);
+    color: var(--_header-secondary);
+
+  }
+
+  .language-tabs input:not(:checked) + label:hover {
+    color: var(--_header-secondary);
+    background: var(--_header-accent);
+    border-radius: calc(var(--_radius) - var(--_border));
+    opacity: 0.25;
+}
+
+  .language-tabs label {
+    display: grid;
+    place-items: center;
+    padding: 0 .5rem;
+    height: 100%;
+    font-size: var(--text-minus-3);
+    font-weight: var(--font-medium);
+    color: var(--_header-accent);
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: calc(var(--_radius) - var(--_border));
+    cursor: pointer;
+
+    transition: background-color var(--transition-default), opacity var(--transition-default), color var(--transition-default);
+  }
+
+  /* Inverted colors */
+  .language-tabs.inverted input:checked + label {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .language-tabs.inverted label {
+    color: var(--color-secondary);
+  }
+
+  .language-tabs.inverted input:not(:checked) + label:hover {
+    color: var(--color-primary);
+    background: var(--color-secondary);
+}
+
+/* Accessibility */
+
+.language-tabs input:focus-visible + label {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+</style>
+
+<script>
+  const langContainers = [...document.querySelectorAll(".language-tabs")] as HTMLDivElement[];
+
+
+
+  function handleClick(event: Event) {
+
+    // Check if clicked element exists
+    const clicked = event.target as HTMLInputElement;
+    if (!clicked) return;
+
+    // Select and check if input exits
+    const langTab = clicked.closest("input[type='radio']") as HTMLInputElement;
+    if (!langTab) return;
+
+    // Select and check if parentElement exists
+    const langContainer = langTab.parentElement;
+    if (!langContainer) return;
+
+    // Select all inputs
+    const langTabs = [...langContainer.querySelectorAll('input')] as HTMLInputElement[];
+
+    langTabs.forEach((langTab) => langTab.removeAttribute('checked'));
+    langTab.setAttribute('checked', "true");
+
+    // // Get lang value from span element
+    const newLocale = langTab.value;
+
+    // // Split the url and grab only what is after locale e.g after /en/path
+    const [_, locale, ...path] = window.location.pathname.split("/");
+
+    // Don't re-assemble the page if locale is the same 
+    if (locale === newLocale) return;
+
+    // // Re-assemble the url with new locale
+    // // TODO: sanitize?
+    window.location.assign(`/${newLocale}/${path.join("/")}`);
+  }
+
+  langContainers.forEach((langContainer) =>
+    langContainer.addEventListener("click", handleClick)
+  );
+</script>
