@@ -63,7 +63,7 @@ try {
       title: parseTitle(item.snippet.title),
       videoId: item.id.videoId,
     };
-  });
+  }).slice(0, 3); // Take only the first 3 videos after filtering
 
   // console.log(youtubeVideos);
 } catch (error) {
