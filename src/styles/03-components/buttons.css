@@ -145,13 +145,11 @@
 .button[data-style="accent"][data-variant="round"] {
   --_text-color: var(--color-secondary);
   --_background-color: var(--color-accent);
-  /* opacity: 1; */
 
   &:hover {
     --_text-color: var(--color-accent);
     --_background-color: var(--color-secondary);
     border-color: var(--color-accent);
-    /* opacity: 0.5; */
   }
 }
 

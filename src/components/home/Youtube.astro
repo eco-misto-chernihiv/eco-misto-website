@@ -56,8 +56,8 @@ try {
 
   // Get desired data shape
   // &#39;
-  // .filter((item: any) => !item.snippet.title.includes('#')) // Exclude titles with '#'
-  youtubeVideos = data.items.map((item: any) => {
+  // Exclude titles with '#'
+  youtubeVideos = data.items.filter((item: any) => !item.snippet.title.includes('#')).map((item: any) => {
     return {
       thumbnail: item.snippet.thumbnails.high.url,
       title: parseTitle(item.snippet.title),
