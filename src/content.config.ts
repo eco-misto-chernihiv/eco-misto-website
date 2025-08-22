@@ -57,6 +57,19 @@ const membersEn = defineCollection({
   schema: membersSchema,
 });
 
+const reportsSchema = (context: SchemaContext) =>
+  z.object({
+    href: z.string(),
+    picture: context.image(),
+    year: z.number(),
+    alt: z.string(),
+  });
+
+const reports = defineCollection({
+  loader: file("./src/content/reports/reports.json"),
+  schema: reportsSchema,
+});
+
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: ({ image }) =>
@@ -100,5 +113,6 @@ const projects = defineCollection({
 export const collections = {
   members,
   membersEn,
+  reports,
   projects,
 };

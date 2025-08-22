@@ -1,10 +1,11 @@
 ---
 // Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
 
 // Compositions
+import Center from "../compositions/Center.astro";
 
 // Components
-import type { Lang } from "@/i18n/defaultLangOptions";
 import Heading from "../ui/Heading.astro";
 import Section from "../ui/Section.astro";
 
@@ -13,7 +14,12 @@ const title = currentLocale === "ua" ? "Наші проєкти" : "Our pojects"
 ---
 
 <Section class="hero" isRoundBottom>
-  <Heading tagName="h1" size="h3" class="color-primary">{title}</Heading>
+  <Center
+    maxWidth="80rem"
+    space={{ default: "space-6", tablet: "space-7", laptop: "space-9" }}
+  >
+    <Heading tagName="h1" size="h3" class="color-primary">{title}</Heading>
+  </Center>
 </Section>
 
 <style>

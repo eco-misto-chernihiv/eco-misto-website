@@ -1,0 +1,26 @@
+---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+import { getCollection } from "astro:content";
+
+// Compositions
+
+// Components
+import Section from "../ui/Section.astro";
+import SingleReport from "./SingleReport.astro";
+
+// Data
+const reports = await getCollection("reports");
+
+const sortedReports = reports.sort((a, b) => a.data.year - b.data.year);
+---
+
+<Section class="reports">
+  {sortedReports.map((report) => <SingleReport report={report} />)}
+</Section>
+
+<style>
+  .reports {
+    padding-block-end: var(--space-11-fixed);
+  }
+</style>

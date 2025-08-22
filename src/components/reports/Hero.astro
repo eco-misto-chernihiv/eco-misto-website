@@ -1,0 +1,28 @@
+---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
+// Components
+import Heading from "../ui/Heading.astro";
+import Section from "../ui/Section.astro";
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+---
+
+<Section class="hero">
+  <Heading
+    tagName="h1"
+    size="h3"
+    class="font-heading color-secondary text-center"
+  >
+    {currentLocale === "ua" ? "Публічна звітність" : "Public reports"}</Heading
+  >
+</Section>
+
+<style>
+  .hero {
+    margin-block-start: calc(var(--space-11-fixed) + var(--header-height));
+  }
+</style>

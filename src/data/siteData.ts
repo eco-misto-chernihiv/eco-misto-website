@@ -29,6 +29,10 @@ export const navData = {
       href: "/projects",
     },
     {
+      title: "Звітність",
+      href: "/reports",
+    },
+    {
       title: "Контакти",
       href: "#contacts",
     },
@@ -37,6 +41,10 @@ export const navData = {
     {
       title: "Projects",
       href: "/projects",
+    },
+    {
+      title: "Reports",
+      href: "/reports",
     },
     {
       title: "Contacts",
@@ -193,6 +201,34 @@ export const footerData = {
     copy: "NGO Eco Misto Chernihiv",
     rights: "All rights reserved",
     privacyPolicy: "Privacy policy",
+  },
+};
+
+export const reportsData = {
+  ua: {
+    headTitle: "Звітність",
+    title: "Публічна звітність",
+    text: "Звіт про діяльність громадської організації «Еко Місто Чернігів» за",
+    yearText: "рік",
+    reports: [
+      {
+        year: 2025,
+        href: "#",
+      },
+    ],
+  },
+  en: {
+    headTitle: "Reports",
+    title: "Public reports",
+    text: 'Report on the activities of the public organization "Eco Misto Chernihiv" for',
+    yearText: "year",
+    reports: [
+      {
+        year: 2025,
+        href: "#",
+        image: "src/assets/images/reports/report_2025.jpg",
+      },
+    ],
   },
 };
 
@@ -404,6 +440,7 @@ export const buttonsData = {
     allProjects: "Усі проєкти",
     view: "Дивитись",
     backToMain: "Назад на головну",
+    viewReport: "Переглянути звіт",
   },
   en: {
     support: "Donate",
@@ -412,6 +449,7 @@ export const buttonsData = {
     allProjects: "All projects",
     view: "View",
     backToMain: "Back to main",
+    viewReport: "View the report",
   },
 };
 

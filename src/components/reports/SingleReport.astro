@@ -1,0 +1,102 @@
+---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+import type { CollectionEntry } from "astro:content";
+
+// Compositions
+import Row from "../compositions/Row.astro";
+
+// Components
+import MyPicture from "../ui/MyPicture.astro";
+import Frame from "../compositions/Frame.astro";
+import Heading from "../ui/Heading.astro";
+import ButtonArrow from "../ui/ButtonArrow.astro";
+
+// Data
+import { buttonsData } from "@/data/siteData";
+
+// Translations
+const currentLocale = Astro.currentLocale as Lang;
+
+const buttons = buttonsData[currentLocale];
+
+// Types
+type Props = {
+  report: CollectionEntry<"reports">;
+};
+
+// Props
+const { report } = Astro.props;
+const { picture, year, href, alt } = report.data;
+
+const text =
+  currentLocale === "ua"
+    ? `Звіт про діяльність громадської організації «Еко Місто Чернігів» за <span class="color-primary">${year} рік</span>`
+    : `Report on the activities of the public organization "Eco Misto Chernihiv" for <span class="color-primary">${year} year</span>`;
+---
+
+<article class="report">
+  <Row>
+    <Frame ratio="3:2" class="picture col-12 tablet:col-5">
+      <MyPicture src={picture} alt={alt} />
+    </Frame>
+    <div class="text col-12 tablet:col-7">
+      <Heading
+        tagName="h2"
+        size="h6"
+        class="color-white font-medium"
+        set:html={text}
+      />
+      <ButtonArrow
+        tagName="a"
+        style="primary"
+        href={href}
+        target="_blank"
+        isExternal
+        class="download"
+        >{buttons.viewReport}
+      </ButtonArrow>
+    </div>
+  </Row>
+</article>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .report {
+    --_border-radius: var(--rounded-2xl);
+
+    border-radius: var(--_border-radius);
+    background-color: var(--color-secondary);
+
+    /* Round corner for images */
+    overflow: hidden;
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+    }
+  }
+
+  .picture {
+    block-size: 16rem;
+    width: 100%;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4-fixed);
+    block-size: 100%;
+    padding: var(--space-7-fixed);
+    padding-block-end: var(--space-6-fixed);
+
+    @media (--tablet-and-up) {
+      /* align-items: flex-start; */
+    }
+  }
+
+  .report :global(.download) {
+    margin-block-start: auto;
+  }
+</style>

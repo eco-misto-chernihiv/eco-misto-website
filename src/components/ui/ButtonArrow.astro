@@ -8,6 +8,8 @@ const styleOptions = {
 
 type Props = {
   tagName?: "a" | "button";
+  rel?: string;
+  isExternal?: boolean;
   class?: string;
   style: keyof typeof styleOptions;
   noArrow?: boolean;
@@ -18,6 +20,8 @@ const {
   class: classList,
   tagName = "button",
   style,
+  rel = "",
+  isExternal,
   noArrow = false,
   ...rest
 } = Astro.props;
@@ -32,6 +36,7 @@ const Tag = tagName;
     styleOptions[style],
     { ["no-arrow"]: noArrow },
   ]}
+  rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
   {...rest}
 >
   <slot />
