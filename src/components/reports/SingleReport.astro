@@ -44,7 +44,7 @@ const text =
       <Heading
         tagName="h2"
         size="h6"
-        class="color-white font-medium"
+        class="color-white font-medium title"
         set:html={text}
       />
       <ButtonArrow
@@ -94,6 +94,10 @@ const text =
     @media (--tablet-and-up) {
       /* align-items: flex-start; */
     }
+  }
+
+  .text .title {
+    font-size: var(--heading-1);
   }
 
   .report :global(.download) {
