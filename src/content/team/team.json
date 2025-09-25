@@ -35,20 +35,6 @@
     "indexId": 6
   },
   {
-    "id": 6,
-    "name": "Анна",
-    "position": "Контентмейкерка",
-    "picture": "./images/anna.png",
-    "indexId": 5
-  },
-  {
-    "id": 7,
-    "name": "Євген",
-    "position": "Веломайстер",
-    "picture": "./images/evgen.png",
-    "indexId": 8
-  },
-  {
     "id": 8,
     "name": "Олексій",
     "position": "Молодший спеціаліст",

@@ -35,20 +35,6 @@
     "indexId": 6
   },
   {
-    "id": 6,
-    "name": "Anna",
-    "position": "Content Maker",
-    "picture": "./images/anna.png",
-    "indexId": 5
-  },
-  {
-    "id": 7,
-    "name": "Yevhen",
-    "position": "Bicycle Mechanic",
-    "picture": "./images/evgen.png",
-    "indexId": 8
-  },
-  {
     "id": 8,
     "name": "Oleksii",
     "position": "Junior Specialist",
