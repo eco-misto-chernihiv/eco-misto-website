@@ -21,6 +21,7 @@ import MyPicture from "../ui/MyPicture.astro";
 // Assets
 import chernigivMonumentalism from "@/assets/images/chernigiv-monumentalism.png";
 import chernigivPatrolPolice from "@/assets/images/chernigiv-patrol-police.png";
+import repairTogether from "@/assets/images/logo-repair-together.png";
 
 // Data
 import { partnersData, buttonsData } from "@/data/siteData";
@@ -101,10 +102,6 @@ const buttons = buttonsData[currentLocale];
               </div>
 
               <div class="partner-logo">
-                <MyIcon name="partners-agenciya" />
-              </div>
-
-              <div class="partner-logo">
                 <MyIcon name="partners-chernigiv-it" />
               </div>
 
@@ -115,14 +112,18 @@ const buttons = buttonsData[currentLocale];
                   alt="Chernigiv Monumentalism logo"
                 />
               </div>
+
+              <div class="partner-logo">
+                <MyPicture
+                  src={repairTogether}
+                  width={300}
+                  alt="Repair Together logo"
+                />
+              </div>
             </div>
           </Marquee>
           <Marquee direction="right" space="space-4" duration="slow">
             <div class="partner-logos marquee-inner">
-              <div class="partner-logo">
-                <MyIcon name="partners-mart" />
-              </div>
-
               <div class="partner-logo">
                 <MyIcon name="partners-ostriv" />
               </div>
