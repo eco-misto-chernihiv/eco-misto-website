@@ -145,12 +145,24 @@ export const fullScreenConfig = {
 };
 
 /**
- * Init Swipers
+ * Initialize all Swipers
  */
-const multiSlideSwiper = new Swiper(".multi-slide-swiper", multiSlideConfig);
-const singleSlideSwiper = new Swiper(".single-slide-swiper", singSlideConfig);
-const teamMembersSwiper = new Swiper(".team-members-swiper", teamMembersConfig);
-const relatedProjectsSwiper = new Swiper(
-  ".related-projects-swiper",
-  relatedProjectsConfig
-);
+export default function initSwiper() {
+  const multiSlideSwiper = new Swiper(".multi-slide-swiper", multiSlideConfig);
+  const singleSlideSwiper = new Swiper(".single-slide-swiper", singSlideConfig);
+  const teamMembersSwiper = new Swiper(
+    ".team-members-swiper",
+    teamMembersConfig
+  );
+  const relatedProjectsSwiper = new Swiper(
+    ".related-projects-swiper",
+    relatedProjectsConfig
+  );
+
+  return {
+    multiSlideSwiper,
+    singleSlideSwiper,
+    teamMembersSwiper,
+    relatedProjectsSwiper,
+  };
+}

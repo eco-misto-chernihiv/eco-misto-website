@@ -225,51 +225,53 @@ const buttons = buttonsData[currentLocale];
 <script>
   import { getBasePath } from "@/lib/helpers";
 
-  // Fixed header
-  const header = document.querySelector("header") as HTMLElement;
-  const supportButton = [...header.querySelectorAll(".support")];
-  const langButtons = [...header.querySelectorAll(".lang-button")];
+  document.addEventListener("astro:page-load", () => {
+    // Fixed header
+    const header = document.querySelector("header") as HTMLElement;
+    const supportButton = [...header.querySelectorAll(".support")];
+    const langButtons = [...header.querySelectorAll(".lang-button")];
 
-  const THRESHOLD = 8 as number;
+    const THRESHOLD = 8 as number;
 
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    if (scrollTop > THRESHOLD) {
-      header?.classList.add("fixed");
-      supportButton?.forEach((supportButton) =>
-        supportButton.setAttribute("data-style", "secondary")
-      );
-      langButtons.forEach((langButton) =>
-        langButton?.setAttribute("data-style", "secondary")
-      );
+      if (scrollTop > THRESHOLD) {
+        header?.classList.add("fixed");
+        supportButton?.forEach((supportButton) =>
+          supportButton.setAttribute("data-style", "secondary")
+        );
+        langButtons.forEach((langButton) =>
+          langButton?.setAttribute("data-style", "secondary")
+        );
 
-      // supportButton?.classList.remove("primary");
-    } else {
-      header?.classList.remove("fixed");
-      // supportButton?.classList.remove("secondary");
-      supportButton?.forEach((supportButton) =>
-        supportButton.setAttribute("data-style", "primary")
-      );
-      langButtons.forEach((langButton) =>
-        langButton?.setAttribute("data-style", "accent")
-      );
-    }
-  });
+        // supportButton?.classList.remove("primary");
+      } else {
+        header?.classList.remove("fixed");
+        // supportButton?.classList.remove("secondary");
+        supportButton?.forEach((supportButton) =>
+          supportButton.setAttribute("data-style", "primary")
+        );
+        langButtons.forEach((langButton) =>
+          langButton?.setAttribute("data-style", "accent")
+        );
+      }
+    });
 
-  // Set active state on site-nav
-  const { pathname } = window.location;
+    // Set active state on site-nav
+    const { pathname } = window.location;
 
-  // TODO: Adjust to select a mobile navigation
-  const activeNavigationElements = [
-    ...document.querySelectorAll(
-      `.site-nav a[href="${getBasePath(pathname)}"]`
-    ),
-  ];
+    // TODO: Adjust to select a mobile navigation
+    const activeNavigationElements = [
+      ...document.querySelectorAll(
+        `.site-nav a[href="${getBasePath(pathname)}"]`
+      ),
+    ];
 
-  activeNavigationElements.forEach((navElement) => {
-    if (navElement) {
-      navElement.classList.add("active");
-    }
+    activeNavigationElements.forEach((navElement) => {
+      if (navElement) {
+        navElement.classList.add("active");
+      }
+    });
   });
 </script>

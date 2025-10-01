@@ -144,219 +144,223 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
     email: string;
   };
 
-  // Get all forms
-  const forms = [
-    ...document.querySelectorAll("form[data-form='donate']"),
-  ] as HTMLFormElement[];
+  document.addEventListener("astro:page-load", () => {
+    // Get all forms
+    const forms = [
+      ...document.querySelectorAll("form[data-form='donate']"),
+    ] as HTMLFormElement[];
 
-  // Loop through them
-  forms.forEach((form) => {
-    /**
-     * Elements
-     */
-    // Get number element
-    const moneyInputElement = form.querySelector(
-      'input[type="number"]'
-    ) as HTMLInputElement;
+    // Loop through them
+    forms.forEach((form) => {
+      /**
+       * Elements
+       */
+      // Get number element
+      const moneyInputElement = form.querySelector(
+        'input[type="number"]'
+      ) as HTMLInputElement;
 
-    /**
-     * Helpers
-     */
+      /**
+       * Helpers
+       */
 
-    /**
-     * Retrieves the public key from the form's data attribute.
-     * @returns {string} The public key.
-     */
-    function getPublicKey(): string {
-      const key = form.getAttribute("data-liqpay-key") || "";
+      /**
+       * Retrieves the public key from the form's data attribute.
+       * @returns {string} The public key.
+       */
+      function getPublicKey(): string {
+        const key = form.getAttribute("data-liqpay-key") || "";
 
-      if (!key) {
-        throw new Error("Please provide public key");
+        if (!key) {
+          throw new Error("Please provide public key");
+        }
+
+        return key;
       }
 
-      return key;
-    }
-
-    /**
-     * Generates a formatted date string for the current date and time.
-     * @returns {string} The formatted date string.
-     */
-    function getFormattedSubscribeDate(): string {
-      return format(new Date(), "yyyy-MM-dd HH:mm:ss");
-    }
-
-    /**
-     * Generates a unique order ID.
-     * @returns {string} The generated order ID.
-     */
-    function generateOrderId(): string {
-      return `order_id-${crypto.randomUUID()}`;
-    }
-
-    /**
-     * Creates a LiqPay data object from form values.
-     * @param {FormValues} values - The form values.
-     * @returns {LiqPayObject} The LiqPay data object
-     */
-    function createLiqPayData(values: FormValues): LiqPayObject {
-      const { pay, email, amount } = values;
-      const public_key = getPublicKey();
-
-      return {
-        public_key,
-        version: 3,
-        action: pay,
-        subscribe_date_start: getFormattedSubscribeDate(),
-        subscribe_periodicity: "month",
-        amount: parseFloat(amount),
-        paytypes: "gpay,apay,card,privat24",
-        currency: "UAH",
-        description: "Благодійний внесок на статутну діяльність",
-        order_id: generateOrderId(),
-        result_url: `${window.location.href}`,
-        server_url: "https://ecomisto.org/api/liqpay-sendpulse",
-        dae: encodeBase64(JSON.stringify({ email })),
-      };
-    }
-
-    /**
-     * Retrieves a signature from the server by sending a POST request with JSON data.
-     * @async
-     * @param {String} jsonString — The JSON string to be sent in the request body.
-     * @returns {Promise<string>} A promise that resolves to the signature string received from the server.
-     */
-    async function getSignature(jsonString: string): Promise<"string"> {
-      // Send json string to checkout route
-      const request = await fetch("/api/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: jsonString }),
-      });
-
-      // if request failed throw request
-      if (!request.ok) {
-        throw request;
+      /**
+       * Generates a formatted date string for the current date and time.
+       * @returns {string} The formatted date string.
+       */
+      function getFormattedSubscribeDate(): string {
+        return format(new Date(), "yyyy-MM-dd HH:mm:ss");
       }
 
-      // Get signature from response
-      const response = await request.json();
+      /**
+       * Generates a unique order ID.
+       * @returns {string} The generated order ID.
+       */
+      function generateOrderId(): string {
+        return `order_id-${crypto.randomUUID()}`;
+      }
 
-      return response.data;
-    }
+      /**
+       * Creates a LiqPay data object from form values.
+       * @param {FormValues} values - The form values.
+       * @returns {LiqPayObject} The LiqPay data object
+       */
+      function createLiqPayData(values: FormValues): LiqPayObject {
+        const { pay, email, amount } = values;
+        const public_key = getPublicKey();
 
-    /**
-     * Create and submit form with data to liqpay
-     * @param {String} jsonString
-     * @param {String} signature
-     */
-    function sumbitFormToLiqPay(jsonString: string, signature: string) {
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = "https://www.liqpay.ua/api/3/checkout";
-      form.innerHTML = `
+        return {
+          public_key,
+          version: 3,
+          action: pay,
+          subscribe_date_start: getFormattedSubscribeDate(),
+          subscribe_periodicity: "month",
+          amount: parseFloat(amount),
+          paytypes: "gpay,apay,card,privat24",
+          currency: "UAH",
+          description: "Благодійний внесок на статутну діяльність",
+          order_id: generateOrderId(),
+          result_url: `${window.location.href}`,
+          server_url: "https://ecomisto.org/api/liqpay-sendpulse",
+          dae: encodeBase64(JSON.stringify({ email })),
+        };
+      }
+
+      /**
+       * Retrieves a signature from the server by sending a POST request with JSON data.
+       * @async
+       * @param {String} jsonString — The JSON string to be sent in the request body.
+       * @returns {Promise<string>} A promise that resolves to the signature string received from the server.
+       */
+      async function getSignature(jsonString: string): Promise<"string"> {
+        // Send json string to checkout route
+        const request = await fetch("/api/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data: jsonString }),
+        });
+
+        // if request failed throw request
+        if (!request.ok) {
+          throw request;
+        }
+
+        // Get signature from response
+        const response = await request.json();
+
+        return response.data;
+      }
+
+      /**
+       * Create and submit form with data to liqpay
+       * @param {String} jsonString
+       * @param {String} signature
+       */
+      function sumbitFormToLiqPay(jsonString: string, signature: string) {
+        const form = document.createElement("form");
+        form.method = "POST";
+        form.action = "https://www.liqpay.ua/api/3/checkout";
+        form.innerHTML = `
         <input type="hidden" name="data" value="${jsonString}" />
         <input type="hidden" name="signature" value="${signature}" />
   `;
 
-      document.body.appendChild(form);
-      form.submit();
-      document.body.removeChild(form);
-    }
-
-    /**
-     * Handlers
-     */
-
-    function handleChipButton(chipButton: HTMLButtonElement) {
-      // Get choice and number input values and convert them to a number
-      const choice = Number(chipButton.textContent);
-      const moneyInput = Number(moneyInputElement.value);
-
-      // Set new number input value and convert it to string
-      moneyInputElement.value = (choice + moneyInput).toString();
-    }
-
-    function handlePayRadioButton(radioButton: HTMLInputElement) {
-      const { url, params } = getURLAndSearchParams();
-
-      if (!params.has("donate")) return;
-
-      params.set("donate", radioButton.value);
-      url.search = params.toString();
-
-      updateBrowserHistory(url);
-    }
-
-    /**
-     * Add choice values to a number input
-     * @param {Object} event
-     */
-    function handleClick(event: Event) {
-      // Matching strategy
-      const target = event.target as HTMLElement;
-      const chipButton = target.closest(
-        "[data-variant='chip']"
-      ) as HTMLButtonElement;
-      const radioButton = target.closest(
-        "input[type='radio']"
-      ) as HTMLInputElement;
-
-      if (chipButton) {
-        handleChipButton(chipButton);
-        return;
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
       }
 
-      if (radioButton) {
-        handlePayRadioButton(radioButton);
-        return;
+      /**
+       * Handlers
+       */
+
+      function handleChipButton(chipButton: HTMLButtonElement) {
+        // Get choice and number input values and convert them to a number
+        const choice = Number(chipButton.textContent);
+        const moneyInput = Number(moneyInputElement.value);
+
+        // Set new number input value and convert it to string
+        moneyInputElement.value = (choice + moneyInput).toString();
       }
-    }
 
-    /**
-     * Submit data to liqpay
-     * @param {SubmitEvent} event
-     */
-    async function handleSubmit(event: SubmitEvent) {
-      event.preventDefault();
+      function handlePayRadioButton(radioButton: HTMLInputElement) {
+        const { url, params } = getURLAndSearchParams();
 
-      try {
-        // Get data
-        const formData = new FormData(form);
+        if (!params.has("donate")) return;
 
-        let { pay, amount, email } = Object.fromEntries(formData) as FormValues;
+        params.set("donate", radioButton.value);
+        url.search = params.toString();
 
-        // If no values do nothing
-        if (!pay || !amount || !email) {
-          // TODO: Show errors in the UI
-          console.error("Please include all required values");
+        updateBrowserHistory(url);
+      }
+
+      /**
+       * Add choice values to a number input
+       * @param {Object} event
+       */
+      function handleClick(event: Event) {
+        // Matching strategy
+        const target = event.target as HTMLElement;
+        const chipButton = target.closest(
+          "[data-variant='chip']"
+        ) as HTMLButtonElement;
+        const radioButton = target.closest(
+          "input[type='radio']"
+        ) as HTMLInputElement;
+
+        if (chipButton) {
+          handleChipButton(chipButton);
           return;
         }
 
-        // Sanitize values
-        email = sanitizeHtml(email.trim());
-        amount = sanitizeHtml(amount.trim());
-
-        // Create data
-        const data = createLiqPayData({ pay, email, amount });
-
-        // Encode data into base64 string
-        const jsonString = encodeBase64(JSON.stringify(data));
-
-        const signature = await getSignature(jsonString);
-
-        sumbitFormToLiqPay(jsonString, signature);
-      } catch (error) {
-        console.error(error);
-        console.error("Something went wrong, try again!");
+        if (radioButton) {
+          handlePayRadioButton(radioButton);
+          return;
+        }
       }
-    }
 
-    /**
-     * Event Liseners
-     */
-    form?.addEventListener("click", handleClick);
-    form?.addEventListener("submit", handleSubmit);
+      /**
+       * Submit data to liqpay
+       * @param {SubmitEvent} event
+       */
+      async function handleSubmit(event: SubmitEvent) {
+        event.preventDefault();
+
+        try {
+          // Get data
+          const formData = new FormData(form);
+
+          let { pay, amount, email } = Object.fromEntries(
+            formData
+          ) as FormValues;
+
+          // If no values do nothing
+          if (!pay || !amount || !email) {
+            // TODO: Show errors in the UI
+            console.error("Please include all required values");
+            return;
+          }
+
+          // Sanitize values
+          email = sanitizeHtml(email.trim());
+          amount = sanitizeHtml(amount.trim());
+
+          // Create data
+          const data = createLiqPayData({ pay, email, amount });
+
+          // Encode data into base64 string
+          const jsonString = encodeBase64(JSON.stringify(data));
+
+          const signature = await getSignature(jsonString);
+
+          sumbitFormToLiqPay(jsonString, signature);
+        } catch (error) {
+          console.error(error);
+          console.error("Something went wrong, try again!");
+        }
+      }
+
+      /**
+       * Event Liseners
+       */
+      form?.addEventListener("click", handleClick);
+      form?.addEventListener("submit", handleSubmit);
+    });
   });
 </script>

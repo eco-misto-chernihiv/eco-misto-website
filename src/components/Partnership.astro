@@ -60,97 +60,99 @@ const buttons = buttonsData[currentLocale];
     email: string;
   };
 
-  const form = document.querySelector(
-    '[data-form="partnership"]'
-  ) as HTMLFormElement;
-  const submitButton = form?.querySelector(
-    "button[type='submit']"
-  ) as HTMLButtonElement;
+  document.addEventListener("astro:page-load", () => {
+    const form = document.querySelector(
+      '[data-form="partnership"]'
+    ) as HTMLFormElement;
+    const submitButton = form?.querySelector(
+      "button[type='submit']"
+    ) as HTMLButtonElement;
 
-  function resetForm(locale: Lang) {
-    form.reset();
-    form.removeAttribute("data-submitting");
-    submitButton.innerText = buttonsData[locale].send;
-  }
-
-  function statusMessage(message: string) {
-    return (submitButton.innerText = message);
-  }
-
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
-
-    // If form is submitted, ignore
-    if (form.hasAttribute("data-submitting")) return;
-
-    // Get locale from url
-    const locale = getLocale(window.location.pathname) as Lang;
-
-    // Get data
-    const data = new FormData(form);
-    let {
-      name,
-      organization,
-      message,
-      source = "",
-      email,
-    } = Object.fromEntries(data) as FormValues;
-
-    // If no values do nohing
-    if (!name || !organization || !message || !email) {
-      // TODO: Show errors in the UI
-      console.log("Please include all required values");
-      return;
+    function resetForm(locale: Lang) {
+      form.reset();
+      form.removeAttribute("data-submitting");
+      submitButton.innerText = buttonsData[locale].send;
     }
 
-    // Sanitize values
-    name = sanitizeHtml(name.trim());
-    organization = sanitizeHtml(organization.trim());
-    message = sanitizeHtml(message.trim());
-    source = sanitizeHtml(source?.trim());
-    email = sanitizeHtml(email.trim());
+    function statusMessage(message: string) {
+      return (submitButton.innerText = message);
+    }
 
-    try {
-      // Disable form
-      form.setAttribute("data-submitting", "true");
+    async function handleSubmit(event: SubmitEvent) {
+      event.preventDefault();
 
-      statusMessage(buttonsState[locale].ongoing);
+      // If form is submitted, ignore
+      if (form.hasAttribute("data-submitting")) return;
 
-      const request = await fetch("/api/request-partnership", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          organization,
-          message,
-          source,
-          email,
-        }),
-      });
+      // Get locale from url
+      const locale = getLocale(window.location.pathname) as Lang;
 
-      if (!request.ok) {
-        throw new Error("Something went wrong with request");
+      // Get data
+      const data = new FormData(form);
+      let {
+        name,
+        organization,
+        message,
+        source = "",
+        email,
+      } = Object.fromEntries(data) as FormValues;
+
+      // If no values do nohing
+      if (!name || !organization || !message || !email) {
+        // TODO: Show errors in the UI
+        console.log("Please include all required values");
+        return;
       }
 
-      const response = await request.json();
+      // Sanitize values
+      name = sanitizeHtml(name.trim());
+      organization = sanitizeHtml(organization.trim());
+      message = sanitizeHtml(message.trim());
+      source = sanitizeHtml(source?.trim());
+      email = sanitizeHtml(email.trim());
 
-      statusMessage(buttonsState[locale].success);
+      try {
+        // Disable form
+        form.setAttribute("data-submitting", "true");
 
-      setTimeout(() => {
-        resetForm(locale);
-      }, 3000);
-    } catch (error) {
-      console.log(error);
+        statusMessage(buttonsState[locale].ongoing);
 
-      statusMessage(buttonsState[locale].error);
+        const request = await fetch("/api/request-partnership", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            organization,
+            message,
+            source,
+            email,
+          }),
+        });
 
-      setTimeout(() => {
-        resetForm(locale);
-      }, 3000);
+        if (!request.ok) {
+          throw new Error("Something went wrong with request");
+        }
+
+        const response = await request.json();
+
+        statusMessage(buttonsState[locale].success);
+
+        setTimeout(() => {
+          resetForm(locale);
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+
+        statusMessage(buttonsState[locale].error);
+
+        setTimeout(() => {
+          resetForm(locale);
+        }, 3000);
+      }
     }
-  }
 
-  form?.addEventListener("submit", handleSubmit);
+    form?.addEventListener("submit", handleSubmit);
+  });
 </script>

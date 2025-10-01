@@ -1,0 +1,149 @@
+---
+title: Plastic Fantastic
+description: A workshop and brand exploring recycled plastic processing and promoting its use as a resource for product design.
+pubDate: 2999-01-02
+cover:
+  image: ../images/plastic-fantastic/cover_plastic-fantastic-2.png
+  alt: "Опис"
+isActive: true
+isCollage: true
+---
+
+{/* Assets */}
+import product1 from "../images/plastic-fantastic/plastic_fantastic_product_001.jpg";
+import product2 from "../images/plastic-fantastic/plastic_fantastic_product_002.jpg";
+import product3 from "../images/plastic-fantastic/plastic_fantastic_product_003.jpg";
+import product4 from "../images/plastic-fantastic/plastic_fantastic_product_004.jpg";
+import product5 from "../images/plastic-fantastic/plastic_fantastic_product_005.jpg";
+import plasticTypes from "../images/plastic-fantastic/plastic-types.png";
+import gizLogo from "@/assets/images/giz.png";
+
+{/* Should start with 'images' */}
+export const workshopImages = [
+"images/plastic-fantastic/plastic_fantastic_001.jpg",
+"images/plastic-fantastic/plastic_fantastic_002.jpg",
+"images/plastic-fantastic/plastic_fantastic_003.jpg",
+"images/plastic-fantastic/plastic_fantastic_004.jpg",
+"images/plastic-fantastic/plastic_fantastic_005.jpg",
+"images/plastic-fantastic/plastic_fantastic_006.jpg",
+"images/plastic-fantastic/plastic_fantastic_007.jpg",
+"images/plastic-fantastic/plastic_fantastic_008.jpg",
+"images/plastic-fantastic/plastic_fantastic_009.jpg",
+"images/plastic-fantastic/plastic_fantastic_010.jpg",
+"images/plastic-fantastic/plastic_fantastic_011.jpg",
+];
+
+export const equipmentImages = [
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_001.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_002.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_003.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_004.jpg",
+"images/plastic-fantastic/multiple_gallery_plastic-equipment_005.jpg",
+
+];
+
+<TextContent>
+  **Plastic Fantastic** is a brand that brings together eco-activists, designers, and makers to explore plastic recycling and promote its use as a material for product design.
+
+</TextContent>
+
+<TextContent>
+  <Badge>The Problem</Badge>
+  Building large-scale waste processing plants in Ukraine is urgently needed, but unfortunately, it’s expensive and time-consuming. Current municipal waste collection systems do not support sorting or recycling. Instead, waste is buried near cities in overcrowded landfills that should have been closed long ago.
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Blockquote>
+
+<span>“</span>We see the future in local workshops and sorting stations that
+recycle secondary raw materials and foster conscious communities around them.
+<span>”</span>
+
+  <BlockquoteFooter>
+  NGO Eco Misto Chernihiv
+</BlockquoteFooter>
+</Blockquote>
+
+<TextContent>
+### What’s in our trash bin?
+
+Almost 50% is organic waste that can be composted, 45% is packaging that can be recycled and turned into valuable resources. Only about 5% of household waste needs to be landfilled or incinerated.
+
+From our experience with separate waste collection, plastic causes the most confusion. First, there are seven different labeling codes, and second, not all plastics are recyclable or accepted by collection points.
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Centered>
+
+  <ImageGrid>
+    <Full src={plasticTypes} />
+  </ImageGrid>
+</Centered>
+
+<TextContent>
+  <Badge>Our Approach</Badge>
+
+The Plastic Fantastic workshop in Chernihiv operates as a Fab Lab within the Peremoha Lab makerspace at the Chernihiv Polytechnic National University. Designers, architects, and inventors have access to a plastic shredder, thermo press, injector, and extruder to craft new "fantastic" recycled objects.
+
+**We run open tours and workshops on working with recycled plastic, encouraging responsible consumption and separate collection of plastic waste.**
+
+</TextContent>
+
+<MultiSlideGallery imagePaths={equipmentImages} orientation="square">
+  Plastic Fantastic workshop equipment
+</MultiSlideGallery>
+
+<TextContent>
+  <Badge>Local Impact</Badge>
+  Once a month, we host an open day at the Plastic Fantastic recycling workshop, where we accept clean and dry HDPE type 2 plastic for recycling. More than 30 kindergartens in Chernihiv collect plastic as part of our long-term "Caps for Toys" initiative.
+
+HDPE type 2 (high-density polyethylene) is a food-grade, non-toxic plastic that can be recycled an unlimited number of times. It’s commonly found in bottle caps, hygiene product containers, and household cleaning bottles. We accept HDPE every first Saturday of the month, as announced via our Telegram bot.
+
+Recycling and conscious consumption are core values of our project. While global fashion brands are turning waste into trendy wardrobe pieces, other industries still lack high-quality recycled products. In many cases, recycled waste becomes just another form of waste that does little to improve everyday life or reduce pollution. That’s why we follow not only an aesthetic but a systematic approach to bringing our ideas to life.
+
+**Looking ahead, we dream of creating a platform that unites workshops and makers across Ukraine — a space for sharing knowledge, experience, and supporting those taking their first steps into recycling.**
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Centered>
+
+  <ImageGrid>
+    <Half src={product1} orientation="portrait" />
+    <Half src={product2} orientation="portrait" />
+    <Half src={product3} orientation="portrait" />
+    <Half src={product4} orientation="portrait" />
+  </ImageGrid>
+</Centered>
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>What We Offer</Badge>
+
+    <ResultList>
+      - Handcrafted Plastic Fantastic products.
+      - Recycled plastic sheets in various thicknesses and designs.
+      - Individual and group recycling workshops for kids and adults.
+      - Guided tours for school and university groups.
+      - Volunteer and internship opportunities.
+      - Research and practice opportunities for thesis and course projects.
+    </ResultList>
+
+  </TextContent>
+
+{" "}
+
+<Logos>
+  <Icon name="donors-transition" />
+  <div class="donor-logo">
+    <MyPicture src={gizLogo} width={300} alt="GIZ logo" />
+  </div>
+  <Icon name="partners-politehnika-original" />
+  <Icon name="partners-ostriv-original" />
+  <Icon name="partners-zelenew-original" />
+  <Icon name="partners-tolocar-original" />
+</Logos>
+
+<MultiSlideGallery imagePaths={workshopImages} isFullscreen />

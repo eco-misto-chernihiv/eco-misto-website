@@ -234,8 +234,10 @@ const footerText = footerData[currentLocale];
 </style>
 
 <script>
-  const copyrightDate = document.querySelector(
-    ".copyright span"
-  ) as HTMLSpanElement;
-  copyrightDate.textContent = new Date().getFullYear().toString();
+  document.addEventListener("astro:page-load", () => {
+    const copyrightDate = document.querySelector(
+      ".copyright span"
+    ) as HTMLSpanElement;
+    copyrightDate.textContent = new Date().getFullYear().toString();
+  });
 </script>

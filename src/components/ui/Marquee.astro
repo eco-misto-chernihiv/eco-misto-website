@@ -122,47 +122,49 @@ const marqueeGap = `var(--${space}-fixed)`;
 </style>
 
 <script>
-  // Select all marquee elements
-  const marquues = [...document.querySelectorAll(".marquee")];
+  document.addEventListener("astro:page-load", () => {
+    // Select all marquee elements
+    const marquues = [...document.querySelectorAll(".marquee")];
 
-  /**
-   * Adds marquee animation to an marquee inner
-   */
-  function addAnimation() {
-    // Loop through all marquees
-    marquues.forEach((marquee) => {
-      // Set animated state
-      marquee.setAttribute("data-animated", "true");
+    /**
+     * Adds marquee animation to an marquee inner
+     */
+    function addAnimation() {
+      // Loop through all marquees
+      marquues.forEach((marquee) => {
+        // Set animated state
+        marquee.setAttribute("data-animated", "true");
 
-      // Select inner element
-      const marqueeInner = marquee.querySelector(
-        ".marquee-inner"
-      ) as HTMLElement;
+        // Select inner element
+        const marqueeInner = marquee.querySelector(
+          ".marquee-inner"
+        ) as HTMLElement;
 
-      // Select all children elements
-      const marqueeContent = [...marqueeInner.children];
+        // Select all children elements
+        const marqueeContent = [...marqueeInner.children];
 
-      // Create temporary placeholder
-      const fragment = new DocumentFragment();
+        // Create temporary placeholder
+        const fragment = new DocumentFragment();
 
-      // Loop through marquee children
-      marqueeContent.forEach((item) => {
-        // Duplicate content item
-        const duplicate = item.cloneNode(true) as HTMLElement;
-        // Hide duplicated item from screenreader
-        duplicate.setAttribute("aria-hidden", "true");
+        // Loop through marquee children
+        marqueeContent.forEach((item) => {
+          // Duplicate content item
+          const duplicate = item.cloneNode(true) as HTMLElement;
+          // Hide duplicated item from screenreader
+          duplicate.setAttribute("aria-hidden", "true");
 
-        // Add to a fragment
-        fragment.append(duplicate);
+          // Add to a fragment
+          fragment.append(duplicate);
+        });
+
+        // Add all duplicates to an inner element
+        marqueeInner.append(fragment);
       });
+    }
 
-      // Add all duplicates to an inner element
-      marqueeInner.append(fragment);
-    });
-  }
-
-  // Only add animation if reduced motion is disabled
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    addAnimation();
-  }
+    // Only add animation if reduced motion is disabled
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+    }
+  });
 </script>

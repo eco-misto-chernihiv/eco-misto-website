@@ -9,14 +9,16 @@
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-WEDWJXK0VD"></script>
   <script type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
+    document.addEventListener("astro:page-load", () => {
+      window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-    gtag("js", new Date());
+      gtag("js", new Date());
 
-    gtag("config", "G-WEDWJXK0VD");
+      gtag("config", "G-WEDWJXK0VD");
+    });
   </script>
 </>

@@ -56,7 +56,11 @@ const siteUrl =
   >
     <Stack space="space-6">
       <Frame ratio="3:2" class:list={["cover-wrapper", { collage: isCollage }]}>
-        <Image src={cover.image} alt={cover.alt} />
+        <Image
+          src={cover.image}
+          alt={cover.alt}
+          transition:name={`${projectId}-image`}
+        />
       </Frame>
 
       <Stack space="space-2">
@@ -66,9 +70,15 @@ const siteUrl =
             <Heading
               tagName="h4"
               size="h6"
-              class="title font-heading color-secondary">{title}</Heading
+              class="title font-heading color-secondary"
+              transition:name={`${projectId}-title`}>{title}</Heading
             >
-            <Text tagName="p" size="medium" class="color-black description">
+            <Text
+              tagName="p"
+              size="medium"
+              class="color-black description"
+              transition:name={`${projectId}-description`}
+            >
               {description}
             </Text>
           </Stack>

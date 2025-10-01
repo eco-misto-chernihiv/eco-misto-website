@@ -1,0 +1,124 @@
+---
+title: Велокухня
+description: Соціальна веломайстерня для покращення сталої мобільності у постраждалих від бойових дій та деокупованих громадах.
+pubDate: 2999-01-03
+cover:
+  image: ../images/velokuhnya/cover_velokuhnya.png
+  alt: "Опис"
+isActive: true
+isCollage: true
+---
+
+import WorkingHours from "@/components/project/WorkingHours.astro";
+import bikesForUkraine from "../images/velokuhnya/bikes-for-ukraine.png";
+import workingHours from "../images/velokuhnya/working-hours.jpg";
+
+{/* Should start with 'images' */}
+export const velokuhnyaImages = [
+"images/velokuhnya/velokuhnya_001.jpg",
+"images/velokuhnya/velokuhnya_002.jpg",
+"images/velokuhnya/velokuhnya_003.jpg",
+"images/velokuhnya/velokuhnya_004.jpg",
+"images/velokuhnya/velokuhnya_005.jpg",
+"images/velokuhnya/velokuhnya_006.jpg",
+"images/velokuhnya/velokuhnya_007.jpg",
+"images/velokuhnya/velokuhnya_008.jpg",
+"images/velokuhnya/velokuhnya_009.jpg",
+"images/velokuhnya/velokuhnya_010.jpg",
+"images/velokuhnya/velokuhnya_011.jpg",
+"images/velokuhnya/velokuhnya_012.jpg",
+];
+
+<TextContent>
+  **Велокухня** — це соціальна веломайстерня, створена для покращення сталої
+  мобільності у постраждалих від бойових дій районах Чернігова та деокупованих
+  громадах Чернігівщини.
+</TextContent>
+
+<TextContent>
+  <Badge>Проблема</Badge>
+  У 2022 році громадський транспорт у Чернігові зупинився на 40 днів через інтенсивні обстріли на початку повномасштабного вторгнення і блокади міста. З паливною кризою стикнулася і вся Чернігівщина.
+
+Відсутність громадського транспорту обмежувала мобільність в межах міста для задоволення базових потреб, таких як отримання медичної допомоги та евакуація з небезпечних зон​. Зупинка транспорту ускладнила логістику і доставку гуманітарної допомоги для маломобільних категорій містян.
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Blockquote>
+
+<span>«</span>Велосипед має стати основним транспортом для міської мобільності,
+заклавши фундамент для велосипедизації і демократизації українських міст в
+довгостроковій перспективі.<span>»</span>
+
+  <BlockquoteFooter>
+  Громадська організація «Еко Місто Чернігів»
+</BlockquoteFooter>
+</Blockquote>
+
+<TextContent>
+### #BikesForUkraine
+
+Громадська організація «Еко Місто Чернігів» – співзасновники кампанії #BikesForUkraine – міжнародної ініціативи, спрямованої на підтримку українських громад, що постраждали від війни.
+
+Кампанія була започаткована шістьма українськими неурядовими організаціями і займається збором велосипедів від донорів з усього світу. Ми прагнемо підвищити мобільність українських волонтерів і волонтерок, персоналу критично важливих комунальних служб, щоб забезпечити доступ до гуманітарної та іншої допомоги тим, хто найбільше цього потребує.
+
+А також велосипеди можуть отримати внутрішньо переміщені особи та мешканці модульних містечок і постраждалих районів, заповнивши форму на сайті.
+
+Більше 700 велосипедів в рамках кампанії #BikesForUkraine було надано партнерами з Європи та відремонтовано на Велотолоках разом з волонтерами у соціальній веломайстерні.
+
+Веломайстерня отримувала вживані велосипеди та інші ресурси від міжнародних партнерів, зокрема з Німеччини, Данії, Нідерландів, Італії та Латвії.
+
+Ініціатори кампанії: [U-Cycle](https://u-cycle.org.ua) (Київ), ГО [«Еко Місто»](https://www.facebook.com/eco.cn.ua/) (Чернігів), ГО [«Молодіжне об’єднання Екстрим стайл»](https://www.facebook.com/sumyextremestyle) (Суми), [ГО «Міські реформи»](https://www.facebook.com/urbanreform.ua) (Харків), ГО [«ФОРЗА»](https://www.facebook.com/ngoforza) (Ужгород), ГО [«ВелоВектор»](https://www.facebook.com/velovector.org) (Одеса)
+
+</TextContent>
+
+{/* prettier-ignore */}
+<TextContent>
+
+  <ImageGrid>
+    <Full src={bikesForUkraine} orientation="portrait"/>
+  </ImageGrid>
+</TextContent>
+
+<TextContent>
+  <Badge>Підхід</Badge>
+
+Для розвитку та популяризації велосипедного руху в Чернігові ми заснували першу соціальну веломайстерню, організовуємо заходи для розвитку велоспільноти та адвокатуємо міські інфраструктурні проєкти і стратегії.
+
+**Чому веломайстерня соціальна?**
+
+Майстерня надає можливість безкоштовного користуватися професійним інструментом та отримати консультації з ремонту та обслуговування велосипедів від досвідчених механіків.
+
+Майстерня проводить освітні заходи, де охочі можуть навчитися доглядати за своїми велосипедами. Це включає як теоретичні знання, так і практичні навички, що дозволяють учасникам самостійно виконувати дрібні ремонти та обслуговування власних велосипедів​.
+
+</TextContent>
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>Наші пропозиції</Badge>
+
+    <ResultList>
+      - Безкоштовні велосипеди для волонтерів, соціальних працівників.
+      - Професійний інструмент у вільному доступі для велосипедистів.
+      - Послуги з ремонту та догляду за приватними велосипедами.
+      - Заходи та активності для розвитку велосипедної спільноти.
+      - Воркшопи з ремонту та догляду за велосипедом.
+      - Прокат велосипедів.
+    </ResultList>
+
+  </TextContent>
+
+<WorkingHours />
+
+  <Logos>
+    <Icon name="donors-eed" />
+    <Icon name="donors-usaid" />
+    <Icon name="partners-ecovisio-original" />
+    <Icon name="partners-u-cycle-original" />
+    <Icon name="partners-agenciya-original" />
+    <Icon name="partners-chernigiv-city-council" />
+    <Icon name="partners-chernigiv-ova" />
+
+  </Logos>
+
+<MultiSlideGallery imagePaths={velokuhnyaImages} isFullscreen />

@@ -56,7 +56,11 @@ const buttons = buttonsData[currentLocale];
       noWrap
     >
       <Frame ratio="1:1" class="img-wrapper">
-        <Image src={cover.image} alt={cover.alt} />
+        <Image
+          src={cover.image}
+          alt={cover.alt}
+          transition:name={`${projectId}-image`}
+        />
       </Frame>
       <Stack space="space-3" class="info">
         <Stack space="space-2">
@@ -67,11 +71,15 @@ const buttons = buttonsData[currentLocale];
           <Heading
             tagName="h4"
             size="h6"
-            class="title font-heading color-secondary">{title}</Heading
+            class="title font-heading color-secondary"
+            transition:name={`${projectId}-title`}>{title}</Heading
           >
         </Stack>
-        <Text tagName="p" size="medium" class="color-dark-gray description"
-          >{description}</Text
+        <Text
+          tagName="p"
+          size="medium"
+          class="color-dark-gray description"
+          transition:name={`${projectId}-description`}>{description}</Text
         >
       </Stack>
 

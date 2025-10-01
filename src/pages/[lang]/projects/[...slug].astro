@@ -65,7 +65,7 @@ interface Props {
 
 // Props
 const { project, projects } = Astro.props;
-const { lang } = Astro.params;
+const { slug, lang } = Astro.params;
 
 const { Content } = await render(project);
 const { title, description, cover, isCollage = false } = project.data;
@@ -118,14 +118,24 @@ const ecoMisto = lang === "ua" ? "Еко Місто" : "Eco Misto";
             <Heading
               tagName="h1"
               size="h3"
-              class="title font-heading color-secondary">{title}</Heading
+              class="title font-heading color-secondary"
+              transition:name={`${slug}-title`}>{title}</Heading
             >
-            <Text tagName="p" size="large">{description}</Text>
+            <Text
+              tagName="p"
+              size="large"
+              transition:name={`${slug}-description`}>{description}</Text
+            >
           </Stack>
         </div>
 
         <div class:list={["hero-img", { collage: isCollage }]}>
-          <MyPicture src={cover.image} alt="" width={1120} />
+          <MyPicture
+            src={cover.image}
+            alt=""
+            width={1120}
+            transition:name={`${slug}-image`}
+          />
         </div>
       </div>
     </Center>

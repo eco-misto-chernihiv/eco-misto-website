@@ -12,6 +12,7 @@ import faviconPngSrc from "../assets/favicon.png";
 
 // Data
 import { baseData } from "../data/siteData";
+import { ClientRouter } from "astro:transitions";
 
 // Favicons
 const appleTouchIcon = await getImage({
@@ -97,4 +98,5 @@ const ogLocale = currentLocale === "ua" ? "uk_UA" : "en_US";
     }}
   />
   <GoogleAnalytics />
+  <ClientRouter />
 </head>

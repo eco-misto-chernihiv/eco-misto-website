@@ -49,7 +49,12 @@ const siteUrl =
   >
     <Stack space="space-8">
       <Frame ratio="4:3" class="cover-wrapper">
-        <MyPicture src={cover.image} width={600} alt="" />
+        <MyPicture
+          src={cover.image}
+          width={600}
+          alt=""
+          transition:name={`${projectId}-image`}
+        />
       </Frame>
 
       <Cluster noWrap justify="between" alignItems="baseline" space="space-7">
@@ -58,10 +63,16 @@ const siteUrl =
             tagName="h4"
             size="h5"
             class="title font-heading color-secondary"
+            transition:name={`${projectId}-title`}
           >
             {title}
           </Heading>
-          <Text tagName="p" size="medium" class="color-black description">
+          <Text
+            tagName="p"
+            size="medium"
+            class="color-black description"
+            transition:name={`${projectId}-description`}
+          >
             {description}
           </Text>
         </Stack>

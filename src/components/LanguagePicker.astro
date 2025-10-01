@@ -63,35 +63,37 @@ const currentLocale = Astro.currentLocale as Lang;
 </style>
 
 <script>
-  const langContainers = [
-    ...document.querySelectorAll(".language-picker"),
-  ] as HTMLDivElement[];
+  document.addEventListener("astro:page-load", () => {
+    const langContainers = [
+      ...document.querySelectorAll(".language-picker"),
+    ] as HTMLDivElement[];
 
-  function handleClick(event: Event) {
-    // Check if clicked element exists
-    const clicked = event.target as HTMLInputElement;
-    if (!clicked) return;
+    function handleClick(event: Event) {
+      // Check if clicked element exists
+      const clicked = event.target as HTMLInputElement;
+      if (!clicked) return;
 
-    // Select and check if input exits
-    const langButton = clicked.closest(".lang-button") as HTMLInputElement;
-    if (!langButton) return;
+      // Select and check if input exits
+      const langButton = clicked.closest(".lang-button") as HTMLInputElement;
+      if (!langButton) return;
 
-    // Select and check if parentElement exists
-    const langContainer = langButton.parentElement;
-    if (!langContainer) return;
+      // Select and check if parentElement exists
+      const langContainer = langButton.parentElement;
+      if (!langContainer) return;
 
-    // // Get lang value from span element
-    const newLocale = langButton.getAttribute("data-lang");
+      // // Get lang value from span element
+      const newLocale = langButton.getAttribute("data-lang");
 
-    // // Split the url and grab only what is after locale e.g after /en/path
-    const [_, locale, ...path] = window.location.pathname.split("/");
+      // // Split the url and grab only what is after locale e.g after /en/path
+      const [_, locale, ...path] = window.location.pathname.split("/");
 
-    // // Re-assemble the url with new locale
-    // // TODO: sanitize?
-    window.location.assign(`/${newLocale}/${path.join("/")}`);
-  }
+      // // Re-assemble the url with new locale
+      // // TODO: sanitize?
+      window.location.assign(`/${newLocale}/${path.join("/")}`);
+    }
 
-  langContainers.forEach((langContainer) =>
-    langContainer.addEventListener("click", handleClick)
-  );
+    langContainers.forEach((langContainer) =>
+      langContainer.addEventListener("click", handleClick)
+    );
+  });
 </script>
