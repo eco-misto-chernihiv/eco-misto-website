@@ -219,7 +219,6 @@ function initDialog() {
       videoElement.load();
 
       promoDialog.showModal();
-      console.log("Dialog opened");
     });
   }
 
