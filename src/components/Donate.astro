@@ -14,10 +14,18 @@ import InputGroup from "./ui/InputGroup.astro";
 import Text from "./ui/Text.astro";
 
 // Data
-import { donateData, donateText, buttonsData } from "@/data/siteData.ts";
+import {
+  donateData,
+  donateText,
+  donateChipValues,
+  donateConfig,
+  buttonsData,
+} from "@/data/siteData.ts";
 
 const currentLocale = Astro.currentLocale as Lang;
 const donateInuts = donateData[currentLocale];
+const config = donateConfig[currentLocale];
+const chipValues = donateChipValues[currentLocale];
 const text = donateText[currentLocale];
 const buttons = buttonsData[currentLocale];
 
@@ -26,11 +34,22 @@ const [amountData, emailData] = donateInuts;
 // TODO: Because i have same code in multiple modals, i need unique ids for each id-label pair
 const id = crypto.randomUUID();
 
-const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
+/**
+ * Set key based on locale:
+ * ua = liqpay
+ * en = monobank
+ */
+const PUBLIC_LIQPAY_KEY =
+  config.provider === "liqpay" ? process.env.PUBLIC_LIQPAY_KEY : "";
 ---
 
 <aside class="donate aside-modal">
-  <form action="" data-form="donate" data-liqpay-key={PUBLIC_LIQPAY_KEY}>
+  <form
+    action=""
+    data-form="donate"
+    data-payment-provider={config.provider}
+    data-liqpay-key={PUBLIC_LIQPAY_KEY}
+  >
     <Stack space="space-4" class="header">
       <Heading tagName="h2" size="h6" class="color-secondary font-heading"
         >{text.title}</Heading
@@ -40,32 +59,42 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
     <div class="main">
       <Stack space="space-6">
         <Cluster alignItems="baseline" class="donate-tabs">
-          <input
-            type="radio"
-            name="pay"
-            id={`pay-once-${id}`}
-            value="pay"
-            checked
-          />
-          <Text
-            tagName="label"
-            size="small"
-            class="font-medium"
-            for={`pay-once-${id}`}>{text.pay}</Text
-          >
+          <Stack space="space-0">
+            <input
+              type="radio"
+              name="pay"
+              id={`pay-once-${id}`}
+              value="pay"
+              checked
+            />
+            <Text
+              tagName="label"
+              size="small"
+              class="font-medium"
+              for={`pay-once-${id}`}>{text.pay}</Text
+            >
+          </Stack>
 
-          <input
-            type="radio"
-            name="pay"
-            id={`pay-monthly-${id}`}
-            value="subscribe"
-          />
-          <Text
-            tagName="label"
-            size="small"
-            class="font-medium"
-            for={`pay-monthly-${id}`}>{text.subscribe}</Text
-          >
+          {
+            config.showSubscribe && (
+              <Stack space="space-0">
+                <input
+                  type="radio"
+                  name="pay"
+                  id={`pay-monthly-${id}`}
+                  value="subscribe"
+                />
+                <Text
+                  tagName="label"
+                  size="small"
+                  class="font-medium"
+                  for={`pay-monthly-${id}`}
+                >
+                  {text.subscribe}
+                </Text>
+              </Stack>
+            )
+          }
         </Cluster>
 
         <Stack space="space-8">
@@ -73,15 +102,18 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
             <InputGroup data={amountData} />
 
             <Cluster space="space-3" class="choice-row">
-              <Button style="accent" size="x-small" variant="chip" type="button"
-                >+100</Button
-              >
-              <Button style="accent" size="x-small" variant="chip" type="button"
-                >+200</Button
-              >
-              <Button style="accent" size="x-small" variant="chip" type="button"
-                >+500</Button
-              >
+              {
+                chipValues.map((value) => (
+                  <Button
+                    style="accent"
+                    size="x-small"
+                    variant="chip"
+                    type="button"
+                  >
+                    +{value}
+                  </Button>
+                ))
+              }
             </Cluster>
           </Stack>
           <InputGroup data={emailData} />
@@ -130,16 +162,21 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
 
 <script>
   import sanitizeHtml from "sanitize-html";
-  import type { LiqPayObject, LiqPayAction } from "@/lib/types.ts";
+  import type {
+    LiqPayObject,
+    LiqPayAction,
+    MonobankObject,
+  } from "@/lib/types.ts";
   import { format } from "date-fns";
   import {
     encodeBase64,
     updateBrowserHistory,
     getURLAndSearchParams,
+    getUrlWithoutParams,
   } from "../lib/helpers.js";
 
   type FormValues = {
-    pay: LiqPayAction;
+    pay?: LiqPayAction;
     amount: string;
     email: string;
   };
@@ -149,6 +186,10 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
     const forms = [
       ...document.querySelectorAll("form[data-form='donate']"),
     ] as HTMLFormElement[];
+
+    const DESCRIPTION = "Благодійний внесок на статутну діяльність";
+    const ORIGIN = window.location.origin;
+    const CURRENT_URL = getUrlWithoutParams(window.location.href);
 
     // Loop through them
     forms.forEach((form) => {
@@ -172,7 +213,7 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
         const key = form.getAttribute("data-liqpay-key") || "";
 
         if (!key) {
-          throw new Error("Please provide public key");
+          throw new Error(`Please provide liqpay key`);
         }
 
         return key;
@@ -209,15 +250,77 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
           action: pay,
           subscribe_date_start: getFormattedSubscribeDate(),
           subscribe_periodicity: "month",
-          amount: parseFloat(amount),
+          amount: Number(amount),
           paytypes: "gpay,apay,card,privat24",
           currency: "UAH",
-          description: "Благодійний внесок на статутну діяльність",
+          description: DESCRIPTION,
           order_id: generateOrderId(),
-          result_url: `${window.location.href}`,
-          server_url: "https://ecomisto.org/api/liqpay-sendpulse",
+          result_url: CURRENT_URL,
+          server_url: `${ORIGIN}/api/liqpay-sendpulse`,
           dae: encodeBase64(JSON.stringify({ email })),
         };
+      }
+
+      function createMonobankData(values: FormValues): MonobankObject {
+        const { email, amount } = values;
+        const amountNumeric = Number(amount);
+        const paymentAmount = amountNumeric ? amountNumeric * 100 : 100;
+
+        // ccy: 978 - ISO 4217 code for EUR
+        return {
+          amount: paymentAmount,
+          ccy: 978,
+          merchantPaymInfo: {
+            reference: `${generateOrderId()}:${email}`,
+            destination: DESCRIPTION,
+            basketOrder: [
+              {
+                name: `Donate from ${email}`,
+                qty: 1,
+                sum: paymentAmount,
+              },
+            ],
+          },
+          redirectUrl: CURRENT_URL,
+          webHookUrl: `${ORIGIN}/api/monobank-webhook`,
+          validity: 3600,
+        };
+      }
+
+      /**
+       * Submit invoice data to Monobank API
+       * @param {MonobankObject} data - The Monobank invoice data
+       */
+      async function submitToMonobank(data: MonobankObject) {
+        try {
+          const response = await fetch(
+            `${ORIGIN}/api/monobank-create-invoice`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+          }
+
+          const result = await response.json();
+          const { message } = result;
+
+          // Monobank returns pageUrl - redirect user to payment page
+          if (message.pageUrl) {
+            window.location.href = message.pageUrl;
+          } else {
+            throw new Error("No payment URL received from Monobank");
+          }
+        } catch (error) {
+          console.error("Monobank submission failed:", error);
+          throw error;
+        }
       }
 
       /**
@@ -330,6 +433,10 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
             formData
           ) as FormValues;
 
+          // Sanitize values
+          email = sanitizeHtml(email?.trim() || "");
+          amount = sanitizeHtml(amount?.trim() || "");
+
           // If no values do nothing
           if (!pay || !amount || !email) {
             // TODO: Show errors in the UI
@@ -337,19 +444,36 @@ const PUBLIC_LIQPAY_KEY = process.env.PUBLIC_LIQPAY_KEY;
             return;
           }
 
-          // Sanitize values
-          email = sanitizeHtml(email.trim());
-          amount = sanitizeHtml(amount.trim());
+          // Validate amount is a valid number and greater than 0
+          // numericAmount is ONLY used for validation, not passed to functions
+          const numericAmount = Number(amount);
+          if (isNaN(numericAmount) || numericAmount <= 0) {
+            // TODO: Show errors in the UI
+            console.error("Please enter a valid amount greater than 0");
+            return;
+          }
 
-          // Create data
-          const data = createLiqPayData({ pay, email, amount });
+          // Get payment provider from the form
+          const provider = form.getAttribute("data-payment-provider") || "";
+          if (!provider) {
+            console.error("Please provide a payment provider");
+            return;
+          }
 
-          // Encode data into base64 string
-          const jsonString = encodeBase64(JSON.stringify(data));
+          if (provider === "liqpay") {
+            // Create liqpay data
+            const liqpayData = createLiqPayData({ pay, email, amount });
+            // Encode data into base64 string
+            const jsonString = encodeBase64(JSON.stringify(liqpayData));
+            const signature = await getSignature(jsonString);
 
-          const signature = await getSignature(jsonString);
+            sumbitFormToLiqPay(jsonString, signature);
+          } else {
+            // Create monobank data
+            const monobankData = createMonobankData({ amount, email });
 
-          sumbitFormToLiqPay(jsonString, signature);
+            await submitToMonobank(monobankData);
+          }
         } catch (error) {
           console.error(error);
           console.error("Something went wrong, try again!");

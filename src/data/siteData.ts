@@ -305,7 +305,7 @@ export const cooperationData = {
       placeholder: "kostya@gmail.com",
       type: "email",
       required: true,
-      pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
+      pattern: String.raw`^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$`,
     },
   ],
   en: [
@@ -349,7 +349,7 @@ export const cooperationData = {
       placeholder: "john@gmail.com",
       type: "email",
       required: true,
-      pattern: "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~\\-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*",
+      pattern: String.raw`^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$`,
     },
   ]
 };
@@ -377,7 +377,7 @@ export const donateText = {
 export const donateData = {
   ua: [
     {
-      label: "Введіть суму *",
+      label: "Введіть суму (UAH)*",
       formControl: "input",
       name: "amount",
       placeholder: "0",
@@ -389,15 +389,15 @@ export const donateData = {
       label: "Ваша пошта *",
       formControl: "input",
       name: "email",
-      placeholder: "marusya@gmail.com",
+      placeholder: "oksana@gmail.com",
       type: "text",
       required: true,
-      pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
+      pattern: String.raw`^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$`,
     },
   ],
   en: [
     {
-      label: "Enter amount *",
+      label: "Enter amount (EUR)*",
       formControl: "input",
       name: "amount",
       placeholder: "0",
@@ -409,12 +409,30 @@ export const donateData = {
       label: "Your email *",
       formControl: "input",
       name: "email",
-      placeholder: "marusya@gmail.com",
+      placeholder: "john@gmail.com",
       type: "text",
       required: true,
-      pattern: "^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim",
+      pattern: String.raw`^[\w\-.]+@([\w\-]+\.)+[\w\-]{2,4}$`,
     },
   ]
+};
+
+// Add chip button configuration
+export const donateChipValues = {
+  ua: [100, 200, 500],
+  en: [10, 50, 100],
+};
+
+// Add payment type configuration
+export const donateConfig = {
+  ua: {
+    showSubscribe: true,
+    provider: "liqpay",
+  },
+  en: {
+    showSubscribe: false,
+    provider: "monobank",
+  },
 };
 
 // MISC

@@ -1,3 +1,7 @@
+/**
+ * LiqPay
+ */
+
 export interface LiqPayPayload {
   signature: string;
   data: string;
@@ -15,7 +19,7 @@ export interface LiqPayObject {
   version: number;
   status?: string;
   payment_id?: number;
-  action: LiqPayAction;
+  action?: LiqPayAction;
   amount: number;
   currency: "USD" | "UAH" | "EUR";
   description: string;
@@ -31,4 +35,29 @@ export interface LiqPayObject {
 
 export interface LiqPayCustomData {
   email: string;
+}
+
+/**
+ * Monobank
+ */
+
+export interface BasketOrder {
+  name: string;
+  qty: number;
+  sum: number;
+}
+
+export interface MerchantPaymInfo {
+  reference: string;
+  destination: string;
+  basketOrder: BasketOrder[];
+}
+
+export interface MonobankObject {
+  amount: number;
+  ccy: number;
+  merchantPaymInfo: MerchantPaymInfo;
+  redirectUrl: string;
+  webHookUrl: string;
+  validity: number;
 }

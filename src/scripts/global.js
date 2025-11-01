@@ -32,9 +32,22 @@ document.addEventListener("astro:page-load", () => {
     const value = params.get(param);
     if (!value) return;
 
+    // Grab all radio inputs
     const radioInputs = [...dialog.querySelectorAll('input[type="radio"]')];
 
-    radioInputs.forEach((input) => (input.checked = input.value === value));
+    // Check if radio input with value exists
+    const targetRadio = radioInputs.find((input) => input.value === value);
+
+    if (targetRadio) {
+      // If the radio button exists, set it as checked
+      radioInputs.forEach((input) => (input.checked = input.value === value));
+    } else {
+      // If the radio button doesn't exist (e.g., 'subscribe' on EN version),
+      // ensure the first available radio button is checked (typically 'pay')
+      if (radioInputs.length > 0) {
+        radioInputs[0].checked = true;
+      }
+    }
   }
 
   /**
@@ -54,18 +67,3 @@ document.addEventListener("astro:page-load", () => {
 
   handleURLParamDialog();
 });
-
-// document.addEventListener("astro:before-preparation", () => {
-//   const videoDialog = document.querySelector(
-//     "dialog[data-dialog='promo-video']"
-//   );
-
-//   if (videoDialog) {
-//     const video = videoDialog.querySelector("video");
-//     console.log(video);
-
-//     video.pause();
-//     video.removeAttribute("src");
-//     video.load();
-//   }
-// });

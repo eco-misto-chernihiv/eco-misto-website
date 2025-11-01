@@ -32,6 +32,10 @@ export function getBasePath(path) {
   return "";
 }
 
+export function getUrlWithoutParams(url) {
+  return window.location.origin + window.location.pathname;
+}
+
 /**
  * Extracts the locale from a URL path. filter(Boolean) removes all "falsy" values from an array.
  *
