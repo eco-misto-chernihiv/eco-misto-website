@@ -37,14 +37,14 @@
   {
     "id": 8,
     "name": "Oleksii",
-    "position": "Junior Specialist",
+    "position": "Lab Assistant",
     "picture": "./images/oleksiy.png",
     "indexId": 9
   },
   {
     "id": 9,
     "name": "Katya",
-    "position": "Lab Assistant",
+    "position": "Communications manager",
     "picture": "./images/katya.png",
     "indexId": 7
   }

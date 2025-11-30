@@ -37,14 +37,14 @@
   {
     "id": 8,
     "name": "Олексій",
-    "position": "Молодший спеціаліст",
+    "position": "Лаборант",
     "picture": "./images/oleksiy.png",
     "indexId": 9
   },
   {
     "id": 9,
     "name": "Катя",
-    "position": "Лаборантка",
+    "position": "Комунікаційна менеджерка",
     "picture": "./images/katya.png",
     "indexId": 7
   }
