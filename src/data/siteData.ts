@@ -80,7 +80,7 @@ export const partnersData = {
 export const achievmentsData = {
   ua: [
     {
-      title: "678",
+      title: "696",
       description: "креативних заходів проведено",
       id: "primary",
       "left-translateX": "-100%",
@@ -88,7 +88,7 @@ export const achievmentsData = {
       "right-rotate": "270deg",
     },
     {
-      title: "1031",
+      title: "1032",
       description: "соціальних велосипедів видано",
       id: "primary-light",
       "left-translateX": "-100%",
@@ -97,7 +97,7 @@ export const achievmentsData = {
       "right-rotate": "180deg",
     },
     {
-      title: "8",
+      title: "11",
       description: "публічних просторів оновлено",
       id: "accent",
       "left-translateX": "-100%",
@@ -108,7 +108,7 @@ export const achievmentsData = {
   ],
   en: [
     {
-      title: "678",
+      title: "696",
       description: "creative events held",
       id: "primary",
       "left-translateX": "-100%",
@@ -116,7 +116,7 @@ export const achievmentsData = {
       "right-rotate": "270deg",
     },
     {
-      title: "1031",
+      title: "1032",
       description: "community bikes distributed",
       id: "primary-light",
       "left-translateX": "-100%",
@@ -125,7 +125,7 @@ export const achievmentsData = {
       "right-rotate": "180deg",
     },
     {
-      title: "8",
+      title: "11",
       description: "public spaces revitalized",
       id: "accent",
       "left-translateX": "-100%",
