@@ -1,0 +1,95 @@
+---
+title: Solar Power Station
+description: Освітньо-практичний проєкт із монтажу гібридної сонячної електростанції на даху Центру «Перемога».
+pubDate: 2025-12-12
+cover:
+  image: ../images/solar-power-station/multiple_gallery_solar-power-station_001.jpg
+  alt: "desc"
+isActive: false
+period:
+  startYear: 2025
+  startMonth: Серпень
+  endYear: 2025
+  endMonth: Жовтень
+---
+
+import repairTogetherLogo from "@/assets/images/logo-repair-together-inverted.png";
+import nesenhutiLogo from "@/assets/images/logo-nesenhuti.png";
+
+export const solarPowerStationImages = [
+  "images/solar-power-station/multiple_gallery_solar-power-station_001.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_002.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_003.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_004.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_005.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_006.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_007.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_008.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_009.jpg",
+  "images/solar-power-station/multiple_gallery_solar-power-station_010.jpg",
+];
+
+{/* prettier-ignore */}
+<TextContent>
+  <Badge>Мета</Badge>
+  ## Підвищити енергостійкість Центру «Перемога» та надати ветеранам, студентам і волонтерам практичні знання й навички роботи з відновлюваними джерелами енергії.
+</TextContent>
+
+<TextContent>
+  <Badge>Процес</Badge>
+
+На базі Центру стартапів та інновацій «Перемога» реалізовано проєкт зі встановлення гібридної сонячної електростанції потужністю 15 кВт. Роботи розпочали під час дводенного практичного воркшопу спільно з мобільним мейкерським простором #TOLOCAR, де ветерани, волонтери та мешканці Чернігова навчалися працювати з сонячними панелями – від підготовки конструкцій до монтажу системи. Окрім практики, учасники пройшли короткий теоретичний блок, присвячений принципам роботи сонячних установок і правилам безпеки.
+
+</TextContent>
+
+<Blockquote>
+<span>«</span>Мене зацікавила ця ініціатива, адже напрямок відновлюваної енергетики дуже перспективний. Хотілося побачити процес на власні очі, щоб у майбутньому ділитися досвідом із побратимами та залучати інших ветеранів до подібних проєктів.<span>»</span>
+
+    <BlockquoteFooter>
+        Олександр Хроленко
+
+        керівник ГО «Сіверські побратими»
+    </BlockquoteFooter>
+
+</Blockquote>
+
+<TextContent>
+
+Після воркшопу монтаж продовжився за участі волонтерських організацій Repair Together, БУР Чернігів, студентів Чернігівської політехніки та команди ГО «Еко Місто». У межах проєкту було встановлено 56 уживаних панелей, отриманих із Чехії в межах гуманітарного проєкту Sun for Ukraine за підтримки NESEHNUTÍ та компанії FEČ s.r.o. Гібридні інвертори та акумулятори потужністю 20 кВт профінансовано European Endowment for Democracy, а допоміжні матеріали закуплено за рахунок спеціального фонду університету.
+
+Результатом спільної роботи стало створення власного джерела чистої енергії, що забезпечує автономне живлення лабораторій Peremoha Lab та резервну енергопідтримку укриття Центру. Це рішення підвищує стійкість будівлі до можливих відключень електроенергії та створює безпечніші умови для студентів і мешканців громади.
+
+</TextContent>
+
+{/* prettier-ignore */}
+  <TextContent>
+    <Badge>Результат</Badge>
+
+    <ResultList>
+      - Проведено 2-денний воркшоп із теоретичною та практичною частинами.
+      - Встановлено 56 сонячних панелей потужністю 15 кВт.
+      - Залучено ветеранів, студентів, волонтерів і внутрішньо переміщених осіб.
+      - Забезпечено резервне живлення укриття та часткову автономність Центру «Перемога».
+      - Посилено енергонезалежність і стійкість громади Чернігова.
+    </ResultList>
+
+  </TextContent>
+
+<Logos>
+  <Icon name="partners-politehnika-original" />
+  <Icon name="partners-tolocar-original" />
+  <Icon name="partners-bur" />
+  <Icon name="donors-eed" />
+  <div class="donor-logo">
+    <MyPicture
+      src={repairTogetherLogo}
+      width={300}
+      alt="Repair Together Logo"
+    />
+  </div>
+  <div class="donor-logo">
+    <MyPicture src={nesenhutiLogo} width={300} alt="Nesenhuti Logo" />
+  </div>
+</Logos>
+
+<MultiSlideGallery imagePaths={solarPowerStationImages} isFullscreen />
