@@ -75,7 +75,7 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       id: z.string().optional(),
-      title: z.string().max(38, {
+      title: z.string().max(60, {
         message: "Title cannot be longer that 38 characters",
       }),
       description: z

@@ -1,0 +1,135 @@
+---
+title: "Bike Kitchen: Promoting Sustainable Mobility in Chernihiv"
+description: A project aimed at developing sustainable mobility and local democracy in Chernihiv.
+pubDate: 2026-01-14
+cover:
+  image: ../images/bike-kitchen/multiple_gallery_bike-kitchen_001.jpg
+  alt: "desc"
+isActive: false
+period:
+  startYear: 2023
+  startMonth: November
+  endYear: 2025
+  endMonth: November
+---
+
+import cycPlanImage from "../images/bike-kitchen/bike-strategy.jpg";
+import bikeCityConsulting from "@/assets/images/logo-bike-city-consulting.png";
+
+{/* Should start with 'images' */}
+export const bikeKitchenImages = [
+"images/bike-kitchen/multiple_gallery_bike-kitchen_001.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_002.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_003.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_004.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_005.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_006.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_007.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_008.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_009.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_010.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_011.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_012.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_013.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_014.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_015.jpg",
+"images/bike-kitchen/multiple_gallery_bike-kitchen_016.jpg"
+];
+
+{/* prettier-ignore */}
+<TextContent>
+  <Badge>The Goal</Badge>
+  ## To promote the development of sustainable urban mobility in Chernihiv, popularize cycling as a daily mode of transport, and strengthen community participation in decision-making related to the city’s development.
+</TextContent>
+
+<TextContent>
+  <Badge>The Process</Badge>
+
+The Bike Kitchen project was implemented by the NGO Eco Misto from autumn 2023 to autumn 2025 with financial support from the European Endowment for Democracy.
+
+A key element of the project was the Bike Kitchen – a community bicycle workshop, social enterprise, and café operating on the principles of a community bike workshop. The space combines bicycle repair and maintenance services with a hub for the development of the local cycling community. Its social component focuses on supporting crowdfunding projects on the City Workshop platform and strengthening grassroots urban initiatives.
+
+</TextContent>
+
+<Blockquote>
+<span>«</span>For us, the Bike Kitchen is not only about bicycles. It is a social enterprise that systematically reinvests 10% of its income into crowdfunding projects on the City Workshop platform, supporting initiatives that transform Chernihiv from the bottom up<span>»</span>.
+
+    <BlockquoteFooter>
+        Sergiy Bezborodko
+
+        Head of NGO Eco Misto
+    </BlockquoteFooter>
+
+</Blockquote>
+
+<TextContent>
+An important part of the project was the cycling promotion program. During its implementation, more than 80 public events were held, including bike breakfasts, community bike clean-ups, cycling tours, children’s bike parades, and road safety workshops. The project team participated in European Mobility Week twice, organizing week-long event programs in Chernihiv dedicated to sustainable modes of transportation.
+
+### Advocacy and Community Engagement
+
+As part of the project, an advocacy campaign was implemented to develop and approve the Chernihiv Cycling Infrastructure Development Plan. A transport needs assessment involving more than 3,000 respondents was conducted, alongside the organization of working groups, public presentations, and discussions with the participation of community members, experts, and local authorities.
+
+As a result, the City Cycling Infrastructure Development Plan was developed and officially approved.
+
+</TextContent>
+
+{/* prettier-ignore */}
+<Centered>
+  <ImageGrid isFull>
+    <Full src={cycPlanImage} orientation="wide"/>
+  </ImageGrid>
+  <Annotation>
+    You can view the plan at the following link:
+
+    <Link
+      href="https://drive.google.com/file/d/1yTnel92KSM2YuWjFrItqXvGRX5WYao89/view"
+      isHovered
+      hoverHeight="1px"
+      isExternal
+      target="_blank"
+    >
+      City Cycling Infrastructure Development Plan
+    </Link>
+
+  </Annotation>
+  
+</Centered>
+
+<TextContent>
+As part of the project, two bicycle counts were also conducted in 2024 and 2025. Volunteers were stationed at key cycling corridors across the city, where they recorded the number of cyclists at different times of day and collected information on their practical experience of moving around the city. Compared to 2024, the 2025 bicycle count results showed a noticeable increase in the number of cyclists in Chernihiv. The data from the bicycle counts became an important analytical tool for assessing actual demand for cycling infrastructure and were used in advocacy efforts related to the development of the Chernihiv Cycling Infrastructure Development Plan.
+
+</TextContent>
+
+<Video src="https://www.youtube.com/embed/lCMm4DzZQ40?si=dOL5vkSRqKnYqw5t" />
+
+<TextContent>
+  <Badge>The Result</Badge>
+
+ <ResultList>
+- A social enterprise was established the Bike Kitchen, a community bicycle workshop, café, and space for interaction.
+- Over 80 events promoting cycling were held.
+- A week-long European Mobility Week program was implemented twice.
+- A mobility study involving more than 3,000 residents was conducted.
+- The Chernihiv Cycling Infrastructure Development Plan was developed and approved.
+- More than 500 bicycles were repaired and distributed through the #BikesForUkraine initiative.
+- Community participation in local decision-making processes was strengthened.
+ </ResultList>
+ 
+</TextContent>
+
+<Logos>
+  <Icon name="donors-eed" />
+  <div class="donor-logo">
+    <MyPicture src={bikeCityConsulting} width={300} alt="Nesenhuti Logo" />
+  </div>
+  <Icon name="partners-politehnika-original" />
+  <Icon name="partners-chernigiv-city-council" />
+  <Icon name="donors-eed" />
+  <div class="donor-logo">
+    <MyPicture src={bikeCityConsulting} width={300} alt="Nesenhuti Logo" />
+  </div>
+  <Icon name="partners-politehnika-original" />
+  <Icon name="partners-chernigiv-city-council" />
+</Logos>
+
+<MultiSlideGallery imagePaths={bikeKitchenImages} isFullscreen />
