@@ -21,6 +21,7 @@ const currentLocale = Astro.currentLocale as Lang;
 // const apiKey = import.meta.env.YOUTUBE_API_KEY;
 const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
+const uploadsPlaylistId = 'UU' + channelId.slice(2);
 
 type YoutubeVideos = {
   thumbnail: string;
@@ -36,7 +37,7 @@ let youtubeVideos: YoutubeVideos[] = [];
 
 try {
   const request = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`
+    `https://www.googleapis.com/youtube/v3/playlistItems?key=${apiKey}&playlistId=${uploadsPlaylistId}&part=snippet,status&maxResults=20`
   );
 
   
@@ -52,7 +53,7 @@ try {
   
   const data = await request.json();
 
-  // console.log(data.items);
+  console.log(data.items);
 
   // Get desired data shape
   // &#39;
