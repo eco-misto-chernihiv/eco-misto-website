@@ -18,8 +18,8 @@ import YoutubeVideo from "./YoutubeVideo.astro";
 const currentLocale = Astro.currentLocale as Lang;
 
 // Data
-// const apiKey = import.meta.env.YOUTUBE_API_KEY;
-const apiKey = process.env.YOUTUBE_API_KEY;
+const apiKey = import.meta.env.YOUTUBE_API_KEY;
+// const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
 const uploadsPlaylistId = 'UU' + channelId.slice(2);
 
@@ -58,13 +58,15 @@ try {
   // Get desired data shape
   // &#39;
   // Exclude titles with '#'
-  youtubeVideos = data.items.filter((item: any) => !item.snippet.title.includes('#')).map((item: any) => {
-    return {
-      thumbnail: item.snippet.thumbnails.high.url,
+  youtubeVideos = data.items
+    .filter((item: any) => item.status?.privacyStatus === 'public')
+    .filter((item: any) => !item.snippet.title.includes('#'))
+    .map((item: any) => ({
+      thumbnail: item.snippet.thumbnails?.high?.url,
       title: parseTitle(item.snippet.title),
-      videoId: item.id.videoId,
-    };
-  }).slice(0, 3); // Take only the first 3 videos after filtering
+      videoId: item.snippet.resourceId.videoId,
+    }))
+    .slice(0, 3); // Take only the first 3 videos after filtering
 
   // console.log(youtubeVideos);
 } catch (error) {
