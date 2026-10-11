@@ -13,6 +13,8 @@ period:
   endMonth: Травень
 ---
 
+import fundedLogo from "@/assets/images/logo-funded.png";
+
 {/* Should start with 'images' */}
 export const tolocarImages = [
 "images/tolocar-on-the-road-again/multiple_gallery_tolocar-on-the-road-again_001.jpg",
@@ -104,6 +106,8 @@ TOLOCAR допомагав не лише навчатися, а й створю�
 
 Сьогодні TOLOCAR продовжує працювати як постійна точка доступу до сучасних технологій для школярів, студентів, педагогів і мешканців громад Чернігівщини.
 
+Проєкт фінансовано Європейським Союзом через  Prague Civil Society Centre.
+
 </TextContent>
 
 {/* prettier-ignore */}
@@ -125,10 +129,24 @@ TOLOCAR допомагав не лише навчатися, а й створю�
   <Icon name="partners-tolocar-original" />
   <Icon name="partners-ostriv-original" />
   <Icon name="partners-politehnika-original" />
+  <div class="donor-logo">
+    <MyPicture
+      src={fundedLogo}
+      width={300}
+      alt="Funded by the European Union Logo"
+    />
+  </div>
   <Icon name="logo-ohtyrskiy-center" />
   <Icon name="partners-tolocar-original" />
   <Icon name="partners-ostriv-original" />
   <Icon name="partners-politehnika-original" />
+  <div class="donor-logo">
+    <MyPicture
+      src={fundedLogo}
+      width={300}
+      alt="Funded by the European Union Logo"
+    />
+  </div>
 </Logos>
 
 <MultiSlideGallery imagePaths={tolocarImages} isFullscreen />
