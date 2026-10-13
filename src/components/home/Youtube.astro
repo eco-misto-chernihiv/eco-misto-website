@@ -18,8 +18,8 @@ import YoutubeVideo from "./YoutubeVideo.astro";
 const currentLocale = Astro.currentLocale as Lang;
 
 // Data
-const apiKey = import.meta.env.YOUTUBE_API_KEY;
-// const apiKey = process.env.YOUTUBE_API_KEY;
+// const apiKey = import.meta.env.YOUTUBE_API_KEY;
+const apiKey = process.env.YOUTUBE_API_KEY;
 const channelId = "UCCh0j7kJcOeSmOi2vJDc6Tw";
 const uploadsPlaylistId = 'UU' + channelId.slice(2);
 
@@ -33,7 +33,7 @@ let youtubeVideos: YoutubeVideos[] = [];
 
 // Using top-level await
 // We don't need to woory about blocking code
-// Because we are using SSG nad it will be rendered once at build
+// Because we are using SSG and it will be rendered once at build
 
 try {
   const request = await fetch(
@@ -53,8 +53,6 @@ try {
   
   const data = await request.json();
 
-  console.log(data.items);
-
   // Get desired data shape
   // &#39;
   // Exclude titles with '#'
@@ -68,7 +66,6 @@ try {
     }))
     .slice(0, 3); // Take only the first 3 videos after filtering
 
-  // console.log(youtubeVideos);
 } catch (error) {
   console.error(error);
   console.error("Error fetching youtube videos");
