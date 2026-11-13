@@ -29,6 +29,9 @@ type Props = {
   variant?: keyof typeof variantOptions;
   isDefault?: boolean;
   isInverted?: boolean;
+  href?: string;
+  rel?: string;
+  isExternal?: boolean;
   [key: string]: any;
 };
 
@@ -40,6 +43,9 @@ const {
   variant = "button",
   isDefault = true,
   isInverted = false,
+  href,
+  isExternal,
+  rel = "",
   ...rest
 } = Astro.props;
 
@@ -53,9 +59,11 @@ const Tag = tagName;
     { default: isDefault },
     { inverted: isInverted },
   ]}
+  href={href}
   data-style={styleOptions[style]}
   data-size={sizeOptions[size]}
   data-variant={variantOptions[variant]}
+  rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
   {...rest}
 >
   <span>

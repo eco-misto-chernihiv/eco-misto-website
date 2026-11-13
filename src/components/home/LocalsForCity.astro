@@ -1,0 +1,305 @@
+---
+// Tools
+import type { Lang } from "@/i18n/defaultLangOptions";
+
+// Compositions
+import Center from "../compositions/Center.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Button from "../ui/Button.astro";
+import Heading from "../ui/Heading.astro";
+import Text from "../ui/Text.astro";
+import Section from "../ui/Section.astro";
+
+// Assets
+import WaterPot from "@/assets/decor/water-pot.svg";
+import ChatBubble from "@/assets/decor/chat-bubble.svg";
+import Bird from "@/assets/decor/bird.svg";
+import MusicClef from "@/assets/decor/music-clef.svg";
+
+// Data
+import { localsForCityData, buttonsData } from "@/data/siteData";
+
+const currentLocale = Astro.currentLocale as Lang;
+const localsForCity = localsForCityData[currentLocale];
+const buttons = buttonsData[currentLocale];
+---
+
+<Section class="locals-for-city">
+  <div class="inner">
+    <!-- Decorative shapes: position, size & rotation are set in the <style> block below (look for ✏️) -->
+    <div class="decor" aria-hidden="true">
+      <span class="decor-item water-pot"><WaterPot /></span>
+      <span class="decor-item chat-bubble"><ChatBubble /></span>
+      <span class="decor-item bird"><Bird /></span>
+      <span class="decor-item music-clef"><MusicClef /></span>
+    </div>
+
+    <Center
+      andText
+      maxWidth="42.5rem"
+      space={{ default: "space-7", tablet: "space-8" }}
+    >
+      <Stack space="space-5">
+        <Stack space="space-4">
+          <Heading tagName="h3" size="h5" class="color-secondary"
+            >{localsForCity.title}</Heading
+          >
+          <Text tagName="p" size="x-large" class="color-secondary"
+            >{localsForCity.text}
+          </Text>
+        </Stack>
+
+        <Button
+          tagName="a"
+          href="https://base.monobank.ua/AoiJRirXp6WMD6#subscriptions"
+          class="join"
+          isExternal
+          style="secondary"
+          target="_blank"
+          aria-label="Open cooperation form modal"
+          >{buttons.join}
+        </Button>
+      </Stack>
+    </Center>
+  </div>
+</Section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .locals-for-city {
+    /* padding-block-start: var(--space-11-fixed); */
+  }
+
+  .locals-for-city .inner {
+    --_border-radius: var(--rounded-2xl);
+
+    /* Needed for DriftingBlobs: clips the blobs and keeps them behind the content */
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    padding-block: var(--space-10-fixed);
+    background-color: var(--color-primary-50);
+
+    border-radius: var(--_border-radius);
+
+    @media (--laptop-and-up) {
+      --_border-radius: var(--rounded-3xl);
+    }
+  }
+
+  .locals-for-city a.join {
+    align-self: center;
+  }
+
+  /* ============================================================
+   * DECOR SHAPES
+   * Each shape is placed with position: absolute inside .inner
+   * (.inner is position: relative, so it's the reference box).
+   *
+   * ✏️ To tweak a shape, change its variables:
+   *   --top / --bottom   distance from the top / bottom edge of the banner
+   *   --left / --right   distance from the left / right edge
+   *                      (use only one of top/bottom and one of left/right)
+   *   --size             width of the shape (height follows automatically)
+   *   --rotate           rotation, e.g. -15deg (counter-clockwise) or 20deg
+   * Percentages are relative to the banner, so shapes stay in place when it resizes.
+   * Negative values push a shape partly outside the banner (it gets clipped).
+   * ============================================================ */
+
+  .decor {
+    /* ✏️ Shared look for all shapes */
+    /* mint with 25% teal mixed in; raise the % for darker lines, lower it for subtler ones */
+    --decor-color: color-mix(
+      in oklab,
+      var(--color-primary),
+      var(--color-secondary) 25%
+    );
+    --decor-stroke: 8;
+
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* behind the text, above the background */
+    pointer-events: none;
+  }
+
+  .decor-item {
+    position: absolute;
+    top: var(--top, auto);
+    bottom: var(--bottom, auto);
+    left: var(--left, auto);
+    right: var(--right, auto);
+    width: var(--size);
+    rotate: var(--rotate, 0deg);
+    color: var(--decor-color);
+  }
+
+  .decor-item :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* The SVGs are drawn in white: recolor their lines from CSS */
+  .decor-item :global(path) {
+    stroke: currentColor;
+    stroke-width: var(--decor-stroke);
+  }
+
+  /* ---------- MOBILE & TABLET (default) ----------
+   * No free space beside the text here, so the shapes are smaller and
+   * tucked into the corners, partly outside the banner. */
+
+  /* ✏️ Water pot: top-left corner */
+  .water-pot {
+    --top: 0%;
+    --left: 2%;
+    --size: 9rem;
+    --rotate: 8deg;
+  }
+
+  /* ✏️ Chat bubble: bottom-left corner */
+  .chat-bubble {
+    --bottom: 14%;
+    --left: -6%;
+    --size: 7.75rem;
+  }
+
+  /* ✏️ Bird: top-right corner */
+  .bird {
+    --top: 24%;
+    --right: 0%;
+    --rotate: -4deg;
+    --size: 6rem;
+  }
+
+  /* ✏️ Music clef: bottom-right corner */
+  .music-clef {
+    --bottom: -5%;
+    --right: 8%;
+    --size: 6rem;
+  }
+
+  @media (--tablet-and-up) {
+    /* ✏️ Water pot: top-left corner */
+    .water-pot {
+      --top: 0%;
+      --left: 2%;
+      --size: 10rem;
+      --rotate: 8deg;
+    }
+
+    /* ✏️ Chat bubble: bottom-left corner */
+    .chat-bubble {
+      --bottom: 14%;
+      --left: -6%;
+      --size: 8rem;
+    }
+
+    /* ✏️ Bird: top-right corner */
+    .bird {
+      --top: 16%;
+      --right: 0%;
+      --rotate: -4deg;
+      --size: 7rem;
+    }
+
+    /* ✏️ Music clef: bottom-right corner */
+    .music-clef {
+      --bottom: -5%;
+      --right: 8%;
+      --size: 7rem;
+    }
+  }
+
+  /* ---------- LAPTOP & UP (≥1100px) ----------
+   * Enough room beside the text: left pair and right pair sit in the side gutters.
+   * Only the values you set here change; anything left out (e.g. --rotate)
+   * keeps its value from above. */
+  @media (--laptop-and-up) {
+    /* LEFT SIDE */
+    /* ✏️ Water pot: upper left */
+    .water-pot {
+      --top: 0%;
+      --left: 2%;
+      --size: 11rem;
+      --rotate: 8deg;
+    }
+    /* ✏️ Chat bubble: lower left */
+    .chat-bubble {
+      --bottom: 10%;
+      --left: 0%;
+      --size: 8.75rem;
+    }
+
+    /* RIGHT SIDE */
+    /* ✏️ Bird: upper right */
+    .bird {
+      --top: 14%;
+      --right: 0%;
+      --rotate: -4deg;
+      --size: 8rem;
+    }
+    /* ✏️ Music clef: lower right */
+    .music-clef {
+      --bottom: -5%;
+      --right: 8%;
+      --size: 8rem;
+    }
+  }
+
+  /* ============================================================
+   * PARALLAX
+   * Pure CSS (scroll-driven animations), no JavaScript.
+   * While the banner scrolls through the screen, each shape slides vertically
+   * from +depth to -depth. Different depths = different speeds = parallax feel.
+   *
+   * ✏️ --parallax per shape: how far it travels (each direction).
+   *    Bigger = faster / feels closer. 0 = no movement.
+   *    Negative = moves the opposite way (feels further away).
+   *
+   * Browsers without support (currently Firefox) and visitors with
+   * "reduce motion" turned on simply see the shapes standing still.
+   * ============================================================ */
+
+  .water-pot {
+    --parallax: 40px;
+  }
+  .chat-bubble {
+    --parallax: 20px;
+  }
+  .bird {
+    --parallax: 50px;
+  }
+  .music-clef {
+    --parallax: 25px;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      /* The banner itself is the scroll "ruler" for all four shapes */
+      .locals-for-city .inner {
+        view-timeline-name: --locals-banner;
+      }
+
+      .decor-item {
+        animation: decor-parallax linear both;
+        animation-timeline: --locals-banner; /* must come after the `animation` shorthand */
+        animation-range: cover; /* from banner entering the screen to fully leaving it */
+      }
+
+      @keyframes decor-parallax {
+        from {
+          translate: 0 var(--parallax, 0px);
+        }
+        to {
+          translate: 0 calc(var(--parallax, 0px) * -1);
+        }
+      }
+    }
+  }
+</style>

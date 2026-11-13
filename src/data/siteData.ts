@@ -144,6 +144,17 @@ export const achievmentsData = {
   ],
 };
 
+export const localsForCityData = {
+  ua: {
+    title: "Стань Своїм для міста",
+    text: "Твоя щомісячна підтримка перетворює Чернігів на чисте, комфортне та сучасне місто.",
+  },
+  en: {
+    title: "Become a Local Hero for the City",
+    text: "Your monthly support transforms Chernihiv into a clean, comfortable, and modern city.",
+  },
+};
+
 export const socialData = [
   {
     title: "Instagram",
@@ -468,6 +479,7 @@ export const buttonsData = {
     backToMain: "Назад на головну",
     viewReport: "Переглянути звіт",
     read: "Читати",
+    join: "Долучайся!",
   },
   en: {
     support: "Donate",
@@ -478,6 +490,7 @@ export const buttonsData = {
     backToMain: "Back to main",
     viewReport: "View the report",
     read: "Read",
+    join: "Join!",
   },
 };
 

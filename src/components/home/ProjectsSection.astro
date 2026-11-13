@@ -15,6 +15,7 @@ import ButtonArrow from "../ui/ButtonArrow.astro";
 // Data
 import { buttonsData } from "@/data/siteData";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import LocalsForCity from "./LocalsForCity.astro";
 
 const currentLocale = Astro.currentLocale as Lang;
 const buttons = buttonsData[currentLocale];
@@ -30,6 +31,7 @@ const buttons = buttonsData[currentLocale];
         space={{ default: "space-12", tablet: "space-14", laptop: "space-16" }}
       >
         <ActiveProjects />
+        <LocalsForCity />
         <ArchiveProjects />
       </Stack>
       <ButtonArrow

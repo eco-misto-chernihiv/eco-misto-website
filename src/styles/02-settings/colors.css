@@ -11,6 +11,8 @@
   --color-secondary: hsl(166, 100%, 14%);
   --color-secondary-10: #4d7e73;
   --color-accent: hsl(47, 100%, 96%);
+  --color-primary-50: hsl(146, 70%, 96%); /* barely-there mint wash */
+  --color-accent-150: hsl(47, 98%, 94%); /* soft cream */
 
   /* Neutral colors */
   --color-black: hsl(200, 11%, 5%);
