@@ -146,12 +146,12 @@ export const achievmentsData = {
 
 export const localsForCityData = {
   ua: {
-    title: "Стань Своїм для міста",
-    text: "Твоя щомісячна підтримка перетворює Чернігів на чисте, комфортне та сучасне місто.",
+    title: "Свої для міста",
+    text: "До нашого 10-річчя ми формуємо спільноту однодумців, готових підтримувати розвиток ГО «Еко Місто». Долучайся, щоб разом створювати можливості, що працюватимуть для міста роками.",
   },
   en: {
-    title: "Become a Local Hero for the City",
-    text: "Your monthly support transforms Chernihiv into a clean, comfortable, and modern city.",
+    title: "Locals for the City",
+    text: 'For our 10th anniversary, we’re bringing together a community of supporters to help grow NGO "Eco Misto." Join in to build lasting opportunities for our city.',
   },
 };
 
@@ -479,7 +479,7 @@ export const buttonsData = {
     backToMain: "Назад на головну",
     viewReport: "Переглянути звіт",
     read: "Читати",
-    join: "Долучайся!",
+    join: "Підписатися",
   },
   en: {
     support: "Donate",
@@ -490,7 +490,7 @@ export const buttonsData = {
     backToMain: "Back to main",
     viewReport: "View the report",
     read: "Read",
-    join: "Join!",
+    join: "Subscribe",
   },
 };
 
