@@ -19,6 +19,10 @@ import ProjectRow from "./ProjectRow.astro";
     margin-inline: auto;
     max-inline-size: 40ch;
 
+    & > :global(a) {
+      color: var(--color-secondary);
+    }
+
     @media (--tablet-and-up) {
       max-inline-size: 60ch;
     }
